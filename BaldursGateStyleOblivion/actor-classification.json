@@ -1,0 +1,15 @@
+{
+  "Rules": [
+    {"Evidence":"Faction","Match":"BanditFaction","Values":{"ActorCategory":"Bandit"},"Id":"Bandit faction","Priority":"Faction"},
+    {"Evidence":"Faction","Match":"MarauderFaction","Values":{"ActorCategory":"Marauder"},"Id":"Marauder faction","Priority":"Faction"},
+    {"Evidence":"Faction","Match":"VampireFaction","Values":{"ActorNature":"Undead"},"Id":"Vampire faction","Priority":"Faction"},
+    {"Evidence":"Faction","Match":"NecromancerFaction","Values":{"ActorCategory":"Necromancer"},"Id":"Necromancer faction","Priority":"Faction"},
+    {"Evidence":"Class","Match":"Archer","Values":{"CombatRole":"Archer"},"Id":"Archer class","Priority":"Class"},
+    {"Evidence":"Class","Match":"Mage","Values":{"CombatRole":"Mage"},"Id":"Mage class","Priority":"Class"},
+    {"Evidence":"Class","Match":"Battlemage","Values":{"CombatRole":"Battlemage"},"Id":"Battlemage class","Priority":"Class"},
+    {"Evidence":"CreatureType","Match":"Daedra","Values":{"ActorCategory":"Daedra","ActorNature":"Daedric"},"Id":"Daedra type","Priority":"RaceCreature"},
+    {"Evidence":"CreatureType","Match":"Undead","Values":{"ActorCategory":"Undead","ActorNature":"Undead"},"Id":"Undead type","Priority":"RaceCreature"},
+    {"Evidence":"CreatureType","Match":"Horse","Values":{"ActorCategory":"Animal","ActorNature":"Animal"},"Id":"Horse type","Priority":"RaceCreature"}
+  ],
+  "FormKeyOverrides": {}
+}
