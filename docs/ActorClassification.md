@@ -56,3 +56,5 @@ Initial rules classify a few faction identities, class combat roles, and explici
 Output: `<patch-name>.actor-classifications.json`, in the configured persistent report directory (see [foundation settings](Foundation.md)). These are preliminary classifications for review, not a complete actor taxonomy.
 
 
+
+Grouped configuration, actor handling categories, and AI-assisted review are documented in [Actor Configuration and Research](ActorConfiguration.md).

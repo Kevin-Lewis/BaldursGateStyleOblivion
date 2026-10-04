@@ -5,9 +5,11 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <Compile Include="../../BaldursGateStyleOblivion/Core/RuleResolver.cs" Link="RuleResolver.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/PowerProfiles.cs" Link="PowerProfiles.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorProfile.cs" Link="ActorProfile.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorConfiguration.cs" Link="ActorConfiguration.cs" />
+    <None Update="catalog.html" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

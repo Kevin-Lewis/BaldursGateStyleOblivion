@@ -8,6 +8,7 @@ public sealed class PatcherSettings
     public bool EnableActorClassification { get; set; } = true;
     public List<string> IncludedPlugins { get; set; } = new();
     public List<string> ExcludedPlugins { get; set; } = new();
+    public string ActorConfigurationFile { get; set; } = "";
     public string ReportDirectory { get; set; } = "Reports";
 
     public bool AllowsModule(bool enabled, bool modifiesGameplay) => enabled && (!ReportOnly || !modifiesGameplay);

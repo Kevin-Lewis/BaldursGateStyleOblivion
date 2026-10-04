@@ -20,25 +20,9 @@ internal static class ActorClassification
     {
         var settingsPath = Path.Combine(run.DataDirectory, "actor-classification.json");
         if (!File.Exists(settingsPath)) settingsPath = Path.Combine(AppContext.BaseDirectory, "actor-classification.json");
+        if (!string.IsNullOrWhiteSpace(run.Settings.ActorConfigurationFile)) settingsPath = Path.GetFullPath(run.Settings.ActorConfigurationFile, run.DataDirectory);
         run.Log($"Actor classification settings: {settingsPath}");
-        var settings = JsonSerializer.Deserialize<ClassificationSettings>(File.ReadAllText(settingsPath), JsonOptions)
-            ?? throw new InvalidDataException("Classification settings are empty.");
-        var ids = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        foreach (var rule in settings.Rules)
-        {
-            if (string.IsNullOrWhiteSpace(rule.Id) || !ids.Add(rule.Id))
-                throw new InvalidDataException($"Missing or duplicate rule ID: {rule.Id}");
-            if (rule.Priority is null || !Enum.IsDefined(rule.Priority.Value) || rule.Priority == RulePriority.ExplicitFormKeyOverride)
-                throw new InvalidDataException($"Missing or invalid priority: {rule.Id}");
-            if (rule.Evidence != "Always" && string.IsNullOrWhiteSpace(rule.Match))
-                throw new InvalidDataException($"Missing match: {rule.Id}");
-            if (rule.Evidence is not ("Faction" or "Class" or "Race" or "CreatureType" or "Plugin" or "EditorID" or "Name" or "FormKey" or "RecordType" or "Location" or "Archetype" or "Always"))
-                throw new InvalidDataException($"Unknown evidence: {rule.Evidence}");
-            new ActorProfile().Apply(rule.Values, rule.Id, "Settings validation", rule.Priority.Value);
-        }
-        foreach (var values in settings.FormKeyOverrides.Values)
-            new ActorProfile().Apply(values, "FormKey override", "Settings validation");
-
+        var settings = ActorConfiguration.Load(settingsPath);
         var factions = state.LoadOrder.PriorityOrder.Faction().WinningOverrides()
             .ToDictionary(record => record.FormKey, record => record.EditorID);
         var classes = state.LoadOrder.PriorityOrder.Class().WinningOverrides()
@@ -50,21 +34,7 @@ internal static class ActorClassification
 
         ActorProfile Classify(string formKey, string plugin, Dictionary<string, string[]> evidence)
         {
-            evidence["FormKey"] = [formKey];
-            var profile = new ActorProfile();
-            foreach (var rule in settings.Rules)
-            {
-                if (rule.SourcePlugin is not null && !string.Equals(rule.SourcePlugin, plugin, StringComparison.OrdinalIgnoreCase)) continue;
-                var matches = rule.Evidence == "Always" || (rule.Evidence == "Plugin"
-                    ? string.Equals(rule.Match, plugin, StringComparison.OrdinalIgnoreCase)
-                    : evidence.TryGetValue(rule.Evidence, out var signals) && signals.Contains(rule.Match, StringComparer.OrdinalIgnoreCase));
-                if (matches) profile.Apply(rule.Values, rule.Id,
-                    string.IsNullOrWhiteSpace(rule.Reason) ? $"{rule.Evidence} matched {rule.Match}" : rule.Reason, rule.Priority!.Value);
-            }
-            var explicitOverride = settings.FormKeyOverrides.FirstOrDefault(pair =>
-                string.Equals(pair.Key, formKey, StringComparison.OrdinalIgnoreCase));
-            if (explicitOverride.Value is not null)
-                profile.Apply(explicitOverride.Value, "FormKey override", $"Explicit override for {formKey}", RulePriority.ExplicitFormKeyOverride);
+            var profile = ActorConfiguration.Classify(settings, formKey, plugin, evidence);
             profiles.Add(FormKey.Factory(formKey), profile);
             return profile;
         }
@@ -83,7 +53,7 @@ internal static class ActorClassification
             };
             rows.Add(new { FormKey = actor.FormKey.ToString(), actor.EditorID, actor.Name, RecordType = "NPC",
                 SourcePlugin = actor.FormKey.ModKey.ToString(), WinningOverridePlugin = context.ModKey.ToString(),
-                Profile = Classify(actor.FormKey.ToString(), actor.FormKey.ModKey.ToString(), evidence) });
+                Evidence = evidence, Profile = Classify(actor.FormKey.ToString(), actor.FormKey.ModKey.ToString(), evidence) });
         }
         foreach (var context in state.LoadOrder.PriorityOrder.Creature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).OrderBy(c => c.Record.FormKey.ToString(), StringComparer.Ordinal))
         {
@@ -98,7 +68,7 @@ internal static class ActorClassification
             };
             rows.Add(new { FormKey = actor.FormKey.ToString(), actor.EditorID, actor.Name, RecordType = "Creature",
                 SourcePlugin = actor.FormKey.ModKey.ToString(), WinningOverridePlugin = context.ModKey.ToString(),
-                Profile = Classify(actor.FormKey.ToString(), actor.FormKey.ModKey.ToString(), evidence) });
+                Evidence = evidence, Profile = Classify(actor.FormKey.ToString(), actor.FormKey.ModKey.ToString(), evidence) });
         }
         if (run.Settings.EnableDiagnostics)
             run.WriteReport(".actor-classifications.json", new { Actors = rows }, JsonOptions);

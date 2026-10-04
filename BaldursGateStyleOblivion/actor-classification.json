@@ -1,15 +1,230 @@
 {
-  "Rules": [
-    {"Evidence":"Faction","Match":"BanditFaction","Values":{"ActorCategory":"Bandit"},"Id":"Bandit faction","Priority":"Faction"},
-    {"Evidence":"Faction","Match":"MarauderFaction","Values":{"ActorCategory":"Marauder"},"Id":"Marauder faction","Priority":"Faction"},
-    {"Evidence":"Faction","Match":"VampireFaction","Values":{"ActorNature":"Undead"},"Id":"Vampire faction","Priority":"Faction"},
-    {"Evidence":"Faction","Match":"NecromancerFaction","Values":{"ActorCategory":"Necromancer"},"Id":"Necromancer faction","Priority":"Faction"},
-    {"Evidence":"Class","Match":"Archer","Values":{"CombatRole":"Archer"},"Id":"Archer class","Priority":"Class"},
-    {"Evidence":"Class","Match":"Mage","Values":{"CombatRole":"Mage"},"Id":"Mage class","Priority":"Class"},
-    {"Evidence":"Class","Match":"Battlemage","Values":{"CombatRole":"Battlemage"},"Id":"Battlemage class","Priority":"Class"},
-    {"Evidence":"CreatureType","Match":"Daedra","Values":{"ActorCategory":"Daedra","ActorNature":"Daedric"},"Id":"Daedra type","Priority":"RaceCreature"},
-    {"Evidence":"CreatureType","Match":"Undead","Values":{"ActorCategory":"Undead","ActorNature":"Undead"},"Id":"Undead type","Priority":"RaceCreature"},
-    {"Evidence":"CreatureType","Match":"Horse","Values":{"ActorCategory":"Animal","ActorNature":"Animal"},"Id":"Horse type","Priority":"RaceCreature"}
-  ],
-  "FormKeyOverrides": {}
+  "ResearchModel": "gpt-6.1-sol",
+  "Groups": {
+    "animals": [
+      {
+        "Evidence": "CreatureType",
+        "Match": "Horse",
+        "Values": {
+          "ActorCategory": "Animal",
+          "ActorNature": "Animal"
+        },
+        "Id": "Horse type",
+        "Priority": "RaceCreature"
+      },
+      {
+        "Id": "animals tier template",
+        "Enabled": false,
+        "Priority": "RaceCreature",
+        "Evidence": "CreatureType",
+        "Match": "Horse",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "bandits": [
+      {
+        "Evidence": "Faction",
+        "Match": "BanditFaction",
+        "Values": {
+          "ActorCategory": "Bandit"
+        },
+        "Id": "Bandit faction",
+        "Priority": "Faction"
+      },
+      {
+        "Id": "bandits tier template",
+        "Enabled": false,
+        "Priority": "Faction",
+        "Evidence": "Faction",
+        "Match": "BanditFaction",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "combat-roles": [
+      {
+        "Evidence": "Class",
+        "Match": "Archer",
+        "Values": {
+          "CombatRole": "Archer"
+        },
+        "Id": "Archer class",
+        "Priority": "Class"
+      },
+      {
+        "Evidence": "Class",
+        "Match": "Mage",
+        "Values": {
+          "CombatRole": "Mage"
+        },
+        "Id": "Mage class",
+        "Priority": "Class"
+      },
+      {
+        "Evidence": "Class",
+        "Match": "Battlemage",
+        "Values": {
+          "CombatRole": "Battlemage"
+        },
+        "Id": "Battlemage class",
+        "Priority": "Class"
+      }
+    ],
+    "daedra": [
+      {
+        "Evidence": "CreatureType",
+        "Match": "Daedra",
+        "Values": {
+          "ActorCategory": "Daedra",
+          "ActorNature": "Daedric"
+        },
+        "Id": "Daedra type",
+        "Priority": "RaceCreature"
+      },
+      {
+        "Id": "daedra tier template",
+        "Enabled": false,
+        "Priority": "RaceCreature",
+        "Evidence": "CreatureType",
+        "Match": "Daedra",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "marauders": [
+      {
+        "Evidence": "Faction",
+        "Match": "MarauderFaction",
+        "Values": {
+          "ActorCategory": "Marauder"
+        },
+        "Id": "Marauder faction",
+        "Priority": "Faction"
+      },
+      {
+        "Id": "marauders tier template",
+        "Enabled": false,
+        "Priority": "Faction",
+        "Evidence": "Faction",
+        "Match": "MarauderFaction",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "necromancers": [
+      {
+        "Evidence": "Faction",
+        "Match": "NecromancerFaction",
+        "Values": {
+          "ActorCategory": "Necromancer"
+        },
+        "Id": "Necromancer faction",
+        "Priority": "Faction"
+      },
+      {
+        "Id": "necromancers tier template",
+        "Enabled": false,
+        "Priority": "Faction",
+        "Evidence": "Faction",
+        "Match": "NecromancerFaction",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "undead": [
+      {
+        "Evidence": "CreatureType",
+        "Match": "Undead",
+        "Values": {
+          "ActorCategory": "Undead",
+          "ActorNature": "Undead"
+        },
+        "Id": "Undead type",
+        "Priority": "RaceCreature"
+      },
+      {
+        "Id": "undead tier template",
+        "Enabled": false,
+        "Priority": "RaceCreature",
+        "Evidence": "CreatureType",
+        "Match": "Undead",
+        "Reason": "Assign a tier after reviewing this group; narrow the match for different ranks.",
+        "Values": {
+          "PowerTier": null
+        }
+      }
+    ],
+    "vampires": [
+      {
+        "Evidence": "Faction",
+        "Match": "VampireFaction",
+        "Values": {
+          "ActorNature": "Undead"
+        },
+        "Id": "Vampire faction",
+        "Priority": "Faction"
+      }
+    ]
+  },
+  "FormKeyOverrides": {
+    "033908:Oblivion.esm": {
+      "Name": "Mankar Camoran",
+      "PowerTier": 7,
+      "Handling": "MajorBoss",
+      "Description": "High Elf mage cult leader fought in Carac Agaialor during Paradise.",
+      "Reason": "Actor-specific UESP and record evidence show a mage boss with staff, Destruction, Silence, Disintegrate, Summon Daedra, Reflect Spell, Spell Absorption, and Restoration; strong magical offense, defenses, summoning, and healing support an exceptional tier.",
+      "Uncertainty": "Exact spell strength varies with skills and scaling.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mankar_Camoran"
+      ],
+      "Model": "gpt-5.5"
+    },
+    "016487:Oblivion.esm": {
+      "Name": "Mannimarco",
+      "PowerTier": 7,
+      "Handling": "MajorBoss",
+      "Description": "Mannimarco, King of Worms: unique High Elf necromancer fought in Echo Cave during the Mages Guild finale.",
+      "Reason": "Actor has Staff of Worms, powerful necromancer spell access including Lightning Ball and high-level Summon Lich, plus unique permanent health, Intelligence, magic resistance, weapon resistance, and paralysis resistance. Melee is weak, but sourced magic and defenses support exceptional combat power.",
+      "Uncertainty": "High-level spell availability varies with player level.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mannimarco"
+      ],
+      "Model": "gpt-5.5"
+    },
+    "000FB1:Knights.esp": {
+      "Name": "Umaril the Unfeathered",
+      "PowerTier": 8,
+      "Handling": "MajorBoss",
+      "Description": "Unused physical Umaril creature template for the Knights of the Nine final boss encounter.",
+      "Reason": "Actor-specific UESP describes a leveled daedric creature with enchanted Umaril’s Sword, Mortal Light damage spell, shock immunity, Wabbajack immunity, 33% magic/fire resistance, and 33% spell absorption; Crusader Relic weaknesses prevent a higher tier.",
+      "Uncertainty": "Template is unused directly; rating reflects the physical Umaril boss variant it templates.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
+      ],
+      "Model": "gpt-5.5"
+    },
+    "000FB4:Knights.esp": {
+      "Name": "Umaril the Unfeathered",
+      "PowerTier": 7,
+      "Handling": "MajorBoss",
+      "Description": "Unused spirit template for Umaril’s spiritual-plane daedric creature encounter in Knights of the Nine.",
+      "Reason": "Specific spirit template for Umaril’s post-death fight; evidence gives a grand-soul Daedra with enchanted claymore, Mortal Light damage, shock/Wabbajack immunity, and 33% magic/fire resistance and spell absorption, though Crusader Relics weaken him.",
+      "Uncertainty": "Template is unused directly; tier reflects its spirit encounter template evidence.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
+      ],
+      "Model": "gpt-5.5"
+    }
+  }
 }

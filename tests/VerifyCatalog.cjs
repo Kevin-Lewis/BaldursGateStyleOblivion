@@ -1,0 +1,17 @@
+const fs=require('node:fs');const vm=require('node:vm');
+const html=fs.readFileSync(process.argv[2]||'artifacts/actor-catalog.html','utf8');
+const elements=new Map();
+const element=id=>{if(!elements.has(id))elements.set(id,{value:id==='sort'?'group':'',checked:false,textContent:'',innerHTML:'',children:[],append(child){this.children.push(child)},addEventListener(){}});return elements.get(id)};
+const document={getElementById:element,createElement(){return {value:'',textContent:''}}};
+const context=vm.createContext({document,URL});
+vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
+const check=(condition,message)=>{if(!condition)throw new Error(message)};
+check(element('count').textContent==='3636 of 3636 actors','Catalog coverage mismatch');
+check(element('rows').innerHTML.includes('Edit:'),'Editable file path missing');
+element('search').value='016487:Oblivion.esm';vm.runInContext('render()',context);
+check(element('count').textContent==='1 of 3636 actors','FormKey filter failed');
+check(element('rows').innerHTML.includes('Mannimarco'),'Actor identity missing');
+element('search').value='';element('plugin').value='Knights.esp';vm.runInContext('render()',context);
+check(!element('rows').innerHTML.includes('Winner: Oblivion.esm'),'Plugin filter failed');
+check(!html.includes('AI proposal:')&&!html.includes('review statuses'),'Approval controls remain');
+console.log('Catalog checks passed: coverage, file paths, FormKey/plugin filters, and script execution.');

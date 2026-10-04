@@ -70,3 +70,45 @@ catch (JsonException) { missingBoundRejected = true; }
 Check(missingBoundRejected, "Missing JSON range bounds must not become zero implicitly.");
 Console.WriteLine("Power profile checks passed: assignment, explanations, precedence, partial overrides, validation, and serialization.");
 
+
+static void RejectConfiguration<T>(Action action, string message) where T : Exception
+{
+    try { action(); }
+    catch (T) { return; }
+    throw new Exception(message);
+}
+var configurationDirectory = Path.Combine(Path.GetTempPath(), "actor-configuration-" + Guid.NewGuid());
+Directory.CreateDirectory(configurationDirectory);
+try
+{
+    var rootFile = Path.Combine(configurationDirectory, "actor-classification.json");
+    File.WriteAllText(rootFile, """{"Includes":["group.json","override.json"]}""");
+    File.WriteAllText(Path.Combine(configurationDirectory, "group.json"), """
+        {"Rules":[{"Id":"basic bandit","Priority":"Faction","Evidence":"EditorID","Match":"Bandit","MatchMode":"Prefix",
+        "All":[{"Evidence":"Faction","Match":"BanditFaction"}],"Values":{"PowerTier":2,"Handling":"Generic"}}]}
+        """);
+    File.WriteAllText(Path.Combine(configurationDirectory, "override.json"), """
+        {"FormKeyOverrides":{"000123:Oblivion.esm":{"Name":"Bandit boss","PowerTier":null,"Reason":"AI proposal"}}}
+        """);
+    var config = ActorConfiguration.Load(rootFile);
+    var evidence = new Dictionary<string, string[]> { ["EditorID"] = ["BanditMelee"], ["Faction"] = ["BanditFaction"] };
+    var result = ActorConfiguration.Classify(config, "000123:Oblivion.esm", "Oblivion.esm", evidence);
+    Check(result.Tier?.Value == 2, "Empty override must preserve group rules");
+    config.FormKeyOverrides["000123:Oblivion.esm"].PowerTier = 6;
+    result = ActorConfiguration.Classify(config, "000123:Oblivion.esm", "Oblivion.esm", evidence);
+    Check(result.Tier?.Value == 6 && result.Dimensions["PowerTier"].Selected.Reason == "AI proposal", "Direct override and reason must win");
+    Check(result.Dimensions["Handling"].Selected.Value.Equals(ActorHandling.Generic), "Partial override preserves handling");
+    Check(ActorConfiguration.Classify(config, "000124:Oblivion.esm", "Oblivion.esm", new() { ["EditorID"] = ["BanditMelee"] }).Tier is null, "All conditions must match");
+    config.Rules[0].Enabled = false;
+    Check(ActorConfiguration.Classify(config, "000124:Oblivion.esm", "Oblivion.esm", evidence).Tier is null, "Disabled rules must not assign tiers");
+    File.WriteAllText(rootFile, """{"Includes":["group.json","group.json"]}""");
+    RejectConfiguration<InvalidDataException>(() => ActorConfiguration.Load(rootFile), "Repeated includes must fail");
+    File.WriteAllText(rootFile, """{"Includes":["../outside.json"]}""");
+    RejectConfiguration<InvalidDataException>(() => ActorConfiguration.Load(rootFile), "Outside includes must fail");
+    File.WriteAllText(rootFile, """{"Includes":["override.json"],"FormKeyOverrides":{"000123:Oblivion.esm":{}}}""");
+    RejectConfiguration<InvalidDataException>(() => ActorConfiguration.Load(rootFile), "Duplicate overrides must fail");
+    File.WriteAllText(rootFile, """{"Includes":[],"Rulez":[]}""");
+    RejectConfiguration<System.Text.Json.JsonException>(() => ActorConfiguration.Load(rootFile), "Misspelled settings must fail");
+    Console.WriteLine("Grouped rules, direct overrides, and include validation passed.");
+}
+finally { Directory.Delete(configurationDirectory, true); }

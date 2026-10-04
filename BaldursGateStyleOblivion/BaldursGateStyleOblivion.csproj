@@ -11,6 +11,6 @@
     <PackageReference Include="Mutagen.Bethesda.Oblivion" Version="0.54.4" />
     <PackageReference Include="Mutagen.Bethesda.Synthesis" Version="0.36.6" />
   </ItemGroup>
-  <ItemGroup><None Update="actor-classification.json" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><None Update="actor-classification.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 </Project>
 
