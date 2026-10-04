@@ -25,7 +25,7 @@ internal static class DiagnosticReports
     public static void Write(IPatcherState<IOblivionMod, IOblivionModGetter> state,
         IReadOnlyDictionary<FormKey, ActorProfile> profiles, PatcherRun run, IReadOnlyDictionary<FormKey, string[]> changes)
     {
-        var effects = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).MagicEffect().WinningOverrides()
+        var effects = state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).MagicEffect().WinningOverrides()
             .Where(effect => effect.EditorID is not null)
             .ToDictionary(effect => effect.EditorID!, effect => effect.Data?.MagicSchool.ToString(), StringComparer.Ordinal);
         var warnings = new List<DiagnosticWarning>();
@@ -55,8 +55,8 @@ internal static class DiagnosticReports
             run.Log($"Diagnostics: {rows.Length} {suffix} records.");
         }
 
-        var npcs = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Npc().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).ToArray();
-        var creatures = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Creature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).ToArray();
+        var npcs = state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Npc().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).ToArray();
+        var creatures = state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Creature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).ToArray();
         Report("npcs", npcs.Select(c => Record(c.Record, c.ModKey, "NPC", c.Record.Name, new
         {
             Level = c.Record.Configuration?.LevelOffset,
@@ -73,7 +73,7 @@ internal static class DiagnosticReports
             CreatureType = c.Record.Data?.Type.ToString(),
             Factions = c.Record.Factions.Select(f => new { FormKey = f.Faction.FormKey.ToString(), f.Rank }).ToArray()
         })));
-        Report("leveled-creatures", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).LeveledCreature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("leveled-creatures", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).LeveledCreature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "LeveledCreature", null, new
             {
                 Flags = c.Record.Flags?.ToString(), FlagsValue = (int?)c.Record.Flags,
@@ -81,21 +81,21 @@ internal static class DiagnosticReports
                 Script = c.Record.Script.FormKeyNullable?.ToString(), Template = c.Record.Template.FormKeyNullable?.ToString(),
                 Entries = c.Record.Entries?.Select(e => new { e.Level, Reference = e.Reference.FormKey.ToString(), e.Count }).ToArray()
             })));
-        Report("leveled-items", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).LeveledItem().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("leveled-items", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).LeveledItem().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "LeveledItem", null, new
             {
                 Flags = c.Record.Flags?.ToString(), FlagsValue = (int?)c.Record.Flags,
                 ChanceNone = c.Record.ChanceNone?.ToString(),
                 Entries = c.Record.Entries?.Select(e => new { e.Level, Reference = e.Reference.FormKey.ToString(), e.Count }).ToArray()
             })));
-        Report("weapons", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Weapon().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("weapons", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Weapon().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "Weapon", c.Record.Name, new
             {
                 Type = c.Record.Data?.Type.ToString(), c.Record.Data?.Damage, c.Record.Data?.Speed, c.Record.Data?.Reach,
                 c.Record.Data?.Weight, c.Record.Data?.Health, c.Record.Data?.Value, Flags = c.Record.Data?.Flags.ToString(),
                 Enchantment = c.Record.Enchantment.FormKeyNullable?.ToString(), c.Record.EnchantmentPoints
             })));
-        Report("armor", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Armor().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("armor", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Armor().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "Armor", c.Record.Name, new
             {
                 c.Record.Data?.ArmorValue, c.Record.Data?.Weight, c.Record.Data?.Health, c.Record.Data?.Value,
@@ -104,7 +104,7 @@ internal static class DiagnosticReports
                     : c.Record.ClothingFlags.GeneralFlags.HasFlag(EquipmentFlag.HeavyArmor) ? "Heavy" : "Light",
                 Enchantment = c.Record.Enchantment.FormKeyNullable?.ToString(), c.Record.EnchantmentPoints
             })));
-        Report("spells", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Spell().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("spells", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Spell().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "Spell", c.Record.Name, new
             {
                 Type = c.Record.Data?.Type.ToString(), c.Record.Data?.Cost,
@@ -120,7 +120,7 @@ internal static class DiagnosticReports
                     Script = e.ScriptEffect?.Data?.Script.FormKey.ToString()
                 }).ToArray()
             })));
-        Report("containers", state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Container().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
+        Report("containers", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Container().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))
             .Select(c => Record(c.Record, c.ModKey, "Container", c.Record.Name, new
             {
                 Flags = c.Record.Data?.Flags.ToString(), c.Record.Data?.Weight,

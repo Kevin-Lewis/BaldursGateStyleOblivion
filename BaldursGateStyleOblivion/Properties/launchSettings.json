@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "Oblivion - Install patch": {
+      "commandName": "Project",
+      "workingDirectory": "F:\\Modding\\Development\\BaldursGateStyleOblivion",
+      "commandLineArgs": "run-patcher -g Oblivion -d \"F:\\SteamLibrary\\steamapps\\common\\Oblivion\\Data\" -l \"C:\\Users\\kevle\\AppData\\Local\\Oblivion\\Plugins.txt\" -e \"F:\\Modding\\Development\\BaldursGateStyleOblivion\\artifacts\\phase0-data\" -o \"F:\\SteamLibrary\\steamapps\\common\\Oblivion\\Data\\BaldursGateStyleOblivion.esp\""
+    }
+  }
+}

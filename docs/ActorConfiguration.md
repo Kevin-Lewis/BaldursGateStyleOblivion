@@ -124,3 +124,9 @@ Creature offset mode changes the meaning of stored resource and combat values. W
 NPC auto-calc settings remain unchanged. No health compression, damage rebalance, new stat formulas, or encounter-list changes are introduced here. In-game checks should compare fresh creature instances at different player levels and verify both level and combat values. Existing save instances and scripted exceptions still require separate validation.
 
 Reference: [Construction Set creature flags](https://cs.uesp.net/wiki/Category:Creatures) and [creature stats](https://cs.uesp.net/wiki/Stats_Tab_-_Creatures).
+
+## Run from Visual Studio
+
+Select the **BaldursGateStyleOblivion** startup project and the **Oblivion - Install patch** launch profile. Press F5 or Ctrl+F5. It reads the active Oblivion load order and the development settings, and writes `BaldursGateStyleOblivion.esp` directly into the configured game Data folder. The previous output is excluded from input, so repeated runs rebuild from original winning records. Reports remain in `artifacts/phase0-data/Reports`.
+
+The plugin is enabled in this machine's load order. Close the game before rebuilding; restart the game afterward to load the new patch. The launch profile contains this development machine's local paths.

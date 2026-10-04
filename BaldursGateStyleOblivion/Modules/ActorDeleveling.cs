@@ -78,7 +78,7 @@ internal static class ActorDeleveling
     public static Dictionary<FormKey, string[]> Run(IPatcherState<IOblivionMod, IOblivionModGetter> state,
         IReadOnlyDictionary<FormKey, ActorProfile> profiles, ClassificationSettings settings, PatcherRun run)
     {
-        var records = ReadOriginalRecords(state);
+        var records = ReadOriginalRecords(state, run);
         var scriptRisks = ReviewScriptScaling(records, out var scriptRows);
         var changes = DelevelActors(state, profiles, settings, run, scriptRisks);
         WriteScalingPaths(records, scriptRows, run);
@@ -86,10 +86,10 @@ internal static class ActorDeleveling
     }
 
     // Exclude this run's output so decisions and diagnostics always use incoming records.
-    private static IMajorRecordGetter[] ReadOriginalRecords(IPatcherState<IOblivionMod, IOblivionModGetter> state)
+    private static IMajorRecordGetter[] ReadOriginalRecords(IPatcherState<IOblivionMod, IOblivionModGetter> state, PatcherRun run)
     {
         var winners = new Dictionary<FormKey, IMajorRecordGetter>();
-        foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey))
+        foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)))
             if (listing.Enabled && listing.Mod is not null)
                 foreach (var record in listing.Mod.EnumerateMajorRecords()) winners.TryAdd(record.FormKey, record);
         return winners.Values.Where(record => !record.IsDeleted).OrderBy(record => record.FormKey.ToString(), StringComparer.Ordinal).ToArray();
@@ -215,7 +215,7 @@ internal static class ActorDeleveling
                 PlannedFields = fields, ModifiedFields = changes.GetValueOrDefault(actor.FormKey, []) });
         }
         foreach (var context in state.LoadOrder.PriorityOrder
-            .Where(listing => listing.ModKey != state.PatchMod.ModKey)
+            .Where(listing => run.IsInputPlugin(listing.ModKey))
             .Npc().WinningContextOverrides()
             .Where(context => run.Includes(context.Record.FormKey.ModKey))
             .OrderBy(context => context.Record.FormKey.ToString(), StringComparer.Ordinal))
@@ -226,7 +226,7 @@ internal static class ActorDeleveling
                 config?.CalcMin ?? 0, config?.CalcMax ?? 0, target => Apply(state.PatchMod.Npcs.GetOrAddAsOverride(actor), target));
         }
         foreach (var context in state.LoadOrder.PriorityOrder
-            .Where(listing => listing.ModKey != state.PatchMod.ModKey)
+            .Where(listing => run.IsInputPlugin(listing.ModKey))
             .Creature().WinningContextOverrides()
             .Where(context => run.Includes(context.Record.FormKey.ModKey))
             .OrderBy(context => context.Record.FormKey.ToString(), StringComparer.Ordinal))

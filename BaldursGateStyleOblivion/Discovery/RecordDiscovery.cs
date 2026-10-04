@@ -26,7 +26,7 @@ internal static class RecordDiscovery
     {
         // Keep the first record in priority order, including deletion tombstones.
         var winners = new Dictionary<FormKey, (IMajorRecordGetter Record, ModKey Plugin)>();
-        foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey))
+        foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)))
             if (listing.Enabled && listing.Mod is not null)
                 foreach (var record in listing.Mod.EnumerateMajorRecords())
                     winners.TryAdd(record.FormKey, (record, listing.ModKey));

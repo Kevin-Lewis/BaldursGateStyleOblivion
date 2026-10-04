@@ -11,6 +11,8 @@ internal sealed class PatcherRun : IDisposable
     public string DataDirectory { get; }
     public string ReportDirectory { get; }
     private readonly string reportStem;
+    private readonly ModKey outputPlugin;
+    private readonly ModKey pipelinePlugin;
     private readonly HashSet<ModKey> included;
     private readonly HashSet<ModKey> excluded;
     private readonly StreamWriter log;
@@ -28,12 +30,17 @@ internal sealed class PatcherRun : IDisposable
             ? settings.ReportDirectory : Path.Combine(DataDirectory, settings.ReportDirectory));
         Directory.CreateDirectory(ReportDirectory);
         reportStem = Path.GetFileNameWithoutExtension(state.OutputPath.ToString());
+        outputPlugin = ModKey.FromNameAndExtension(Path.GetFileName(state.OutputPath.ToString()));
+        pipelinePlugin = state.PatchMod.ModKey;
         log = new StreamWriter(Path.Combine(ReportDirectory, reportStem + ".log"), append: false) { AutoFlush = true };
         Log($"Reports and log: {ReportDirectory}");
         Log($"ReportOnly: {settings.ReportOnly}. Synthesis still writes its pipeline ESP.");
         Log($"Included plugins: {(included.Count == 0 ? "all" : string.Join(", ", included.OrderBy(key => key.ToString())))}");
         Log($"Excluded plugins: {string.Join(", ", excluded.OrderBy(key => key.ToString()))}");
     }
+
+    // Never use the previous installed output as input when running directly from Visual Studio.
+    public bool IsInputPlugin(ModKey plugin) => plugin != outputPlugin && plugin != pipelinePlugin;
 
     // Filter by the originating plugin; excluded plugins always win.
     public bool Includes(ModKey plugin) => !excluded.Contains(plugin) && (included.Count == 0 || included.Contains(plugin));
