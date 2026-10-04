@@ -27,3 +27,5 @@ These are broad classification anchors shared across NPCs, creatures, weapons, a
 - TierAssignment: the assigned tier, applied rule, and reason.
 
 The initial domain model establishes these concepts and validates their bounds. It does not assign records or change gameplay.
+
+The shared Phase 2 profile implementation and assignment behavior are documented in [Power Profiles](PowerProfiles.md).

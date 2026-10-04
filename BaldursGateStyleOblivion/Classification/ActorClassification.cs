@@ -12,6 +12,7 @@ internal static class ActorClassification
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         WriteIndented = true,
+        RespectRequiredConstructorParameters = true,
         Converters = { new JsonStringEnumConverter(allowIntegerValues: false) }
     };
 
@@ -105,3 +106,4 @@ internal static class ActorClassification
         return profiles;
     }
 }
+

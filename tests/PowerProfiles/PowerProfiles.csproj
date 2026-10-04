@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../BaldursGateStyleOblivion/Core/RuleResolver.cs" Link="RuleResolver.cs" />
+    <Compile Include="../../BaldursGateStyleOblivion/Classification/PowerProfiles.cs" Link="PowerProfiles.cs" />
+    <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorProfile.cs" Link="ActorProfile.cs" />
+  </ItemGroup>
+</Project>

@@ -16,6 +16,9 @@ public sealed class RuleResolver<T>
 
     public void Add(string field, RuleDecision<T> decision)
     {
+        ArgumentException.ThrowIfNullOrWhiteSpace(field);
+        ArgumentException.ThrowIfNullOrWhiteSpace(decision.Rule);
+        ArgumentException.ThrowIfNullOrWhiteSpace(decision.Reason);
         if (!Enum.IsDefined(decision.Priority)) throw new ArgumentOutOfRangeException(nameof(decision));
         if (!candidates.TryGetValue(field, out var values)) candidates[field] = values = new();
         values.Add(decision);
@@ -28,3 +31,4 @@ public sealed class RuleResolver<T>
         return new ResolvedField<T>(ordered[0], ordered[1..]);
     }, StringComparer.Ordinal);
 }
+
