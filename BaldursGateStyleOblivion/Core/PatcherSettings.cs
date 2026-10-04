@@ -3,6 +3,7 @@ namespace BaldursGateStyleOblivion.Core;
 public sealed class PatcherSettings
 {
     public bool ReportOnly { get; set; } = true;
+    public bool EnableRecordDiscovery { get; set; } = true;
     public bool EnableDiagnostics { get; set; } = true;
     public bool EnableActorClassification { get; set; } = true;
     public List<string> IncludedPlugins { get; set; } = new();
@@ -11,4 +12,5 @@ public sealed class PatcherSettings
 
     public bool AllowsModule(bool enabled, bool modifiesGameplay) => enabled && (!ReportOnly || !modifiesGameplay);
 }
+
 

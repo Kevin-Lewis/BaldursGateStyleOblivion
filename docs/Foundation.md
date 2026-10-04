@@ -7,6 +7,7 @@ General settings are registered with Synthesis's generated settings UI as Settin
   "ReportOnly": true,
   "EnableDiagnostics": true,
   "EnableActorClassification": true,
+  "EnableRecordDiscovery": true,
   "IncludedPlugins": [],
   "ExcludedPlugins": [],
   "ReportDirectory": "Reports"
@@ -20,6 +21,7 @@ General settings are registered with Synthesis's generated settings UI as Settin
 - Filters apply to every record report and actor classification. The complete load order remains available for resolving references and looking up class, faction, race, and magic-effect data. They do not remove plugins from the game or discard overrides of included records.
 - EnableActorClassification: controls actor inference and overrides. Diagnostics still report original actor data when this is disabled.
 - EnableDiagnostics: controls JSON reports. Classification can run independently. A console/file log is always written.
+- EnableRecordDiscovery: controls Phase 1 discovery reports. Discovery runs only when diagnostics are also enabled.
 - ReportOnly: prevents gameplay-mutating modules from running. Module registration must explicitly declare whether it modifies gameplay. There are currently no gameplay modules, so either value produces no gameplay changes.
 
 Synthesis still writes its pipeline ESP in report-only mode. On a standalone run this is empty; when building on a previous patcher's output, that input is retained. Report-only is not a promise to suppress Synthesis's output file or undo previous patchers' work.
@@ -39,3 +41,4 @@ The Synthesis supplemental-data API and settings registration were verified thro
 ## Verification
 
 After building, run `tests/VerifyFoundation.ps1` with DataFolder and LoadOrder paths. It checks native configuration loading, inclusion/exclusion precedence, full reference context, module switches, report-only gating, deterministic summary output, persistent logs, and empty standalone ESPs.
+

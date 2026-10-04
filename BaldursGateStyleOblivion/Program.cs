@@ -31,6 +31,8 @@ public class Program
                 ActorReports.Write(state, run);
                 Diagnostics.DiagnosticReports.Write(state, profiles, run);
             });
+            run.Module("Record discovery", run.Settings.EnableRecordDiscovery && run.Settings.EnableDiagnostics, false,
+                () => Discovery.RecordDiscovery.Write(state, run));
             run.Log("Completed. No gameplay transformation modules are implemented yet.");
         }
         catch (Exception exception)
@@ -40,4 +42,5 @@ public class Program
         }
     }
 }
+
 

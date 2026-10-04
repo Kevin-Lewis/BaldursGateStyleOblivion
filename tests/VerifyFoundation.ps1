@@ -25,7 +25,7 @@ $summary = Get-Content (Join-Path $folder 'Reports\Test.diagnostic-summary.json'
 if ($summary.RecordCounts.spells -eq 0) { throw 'Include filter lost Knights spells' }
 Get-ChildItem (Join-Path $folder 'Reports') -Filter '*.json' | ForEach-Object {
     $report = Get-Content $_.FullName -Raw | ConvertFrom-Json
-    if (@($report.Records | Where-Object { $_ -and $_.SourcePlugin -ne 'Knights.esp' }).Count) { throw 'Include filter failed' }
+    if (@($report.Records | Where-Object { $owner = if ($_.Record) { $_.Record.SourcePlugin } else { $_.SourcePlugin }; $_ -and $owner -ne 'Knights.esp' }).Count) { throw 'Include filter failed' }
 }
 $spell = (Get-Content (Join-Path $folder 'Reports\Test.spells.json') -Raw | ConvertFrom-Json).Records |
     Where-Object EditorID -eq 'NDAbArmorCumulative'
@@ -47,9 +47,16 @@ if (($summary.ActorClassificationCoverage.PSObject.Properties.Value | Measure-Ob
 $folder = Run-Case 'diagnostics-off' @{ EnableDiagnostics = $false; EnableActorClassification = $false }
 if (@(Get-ChildItem (Join-Path $folder 'Reports') -Filter '*.json').Count) { throw 'Diagnostics switch ignored' }
 
+$folder = Run-Case 'discovery-off' @{ IncludedPlugins = @('Knights.esp'); EnableRecordDiscovery = $false }
+if (Test-Path (Join-Path $folder 'Reports\Test.discovery-summary.json')) { throw 'Discovery switch ignored' }
+if (!(Test-Path (Join-Path $folder 'Reports\Test.diagnostic-summary.json'))) { throw 'Discovery switch disabled diagnostics' }
+
 $assembly = [Reflection.Assembly]::LoadFrom([IO.Path]::ChangeExtension($PatcherPath, '.dll'))
 $settings = [Activator]::CreateInstance($assembly.GetType('BaldursGateStyleOblivion.Core.PatcherSettings'))
 if ($settings.AllowsModule($true, $true) -or !$settings.AllowsModule($true, $false)) { throw 'Report-only gate failed' }
 $settings.ReportOnly = $false
 if (!$settings.AllowsModule($true, $true) -or $settings.AllowsModule($false, $false)) { throw 'Module gate failed' }
 Write-Output "Foundation checks passed. Outputs: $root"
+
+
+

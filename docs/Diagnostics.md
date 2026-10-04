@@ -29,3 +29,5 @@ UnresolvedFormKey warnings list non-null FormKey references that cannot resolve 
 
 The earlier `.actors.json`, `.scaled-actors.json`, and `.actor-classifications.json` reports remain available. The leveled-creature report now uses the shared Records/Original structure instead of its previous LeveledCreatures array.
 
+
+Phase 1 adds relationship and source-code discovery reports; see [record discovery](Discovery/README.md).
