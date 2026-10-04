@@ -50,8 +50,10 @@ internal static class Catalog
             var usedBy = actor.Usage?.GetProperty("UsedBy").EnumerateArray().Where(item => item.GetProperty("RecordType").GetString() is "Quest" or "Script" or "DialogResponses").Select(item => item.GetProperty("EditorID").GetString() ?? item.GetProperty("FormKey").GetString()).ToArray() ?? [];
             return new { actor.FormKey, actor.Name, actor.EditorID, actor.SourcePlugin, actor.WinningOverridePlugin, actor.RecordType,
                 Group = Value("ActorCategory")?.ToString() ?? "Unclassified", Tier = profile.Tier?.Value,
-                OverrideTier = manual?.PowerTier, OverrideHandling = manual?.Handling?.ToString(), Handling = Value("Handling")?.ToString() ?? "Unclassified",
-                Description = notes?.Description ?? "", Reason = notes?.Reason ?? assignment?.Reason ?? "",
+                FixedLevel = manual?.FixedLevel, Delevel = manual?.Delevel, DelevelingReview = manual?.DelevelingReview ?? "",
+                MappedLevel = manual?.FixedLevel ?? (profile.Tier is null ? null : settings.LevelMapping.GetValueOrDefault(profile.Tier.Value.Value)),
+                HasOverride = manual is not null, OverrideTier = manual?.PowerTier, OverrideHandling = manual?.Handling?.ToString(), Handling = Value("Handling")?.ToString() ?? "Unclassified",
+                Model = notes?.Model ?? "", Description = notes?.Description ?? "", Reason = notes?.Reason ?? assignment?.Reason ?? "",
                 Uncertainty = notes?.Uncertainty ?? "", Sources = notes?.Sources ?? [], Rule = assignment?.Rule ?? "",
                 EditFile = manual?.ConfigurationFile ?? (assignment is not null ? settings.Rules.FirstOrDefault(rule => rule.Id == assignment.Rule)?.ConfigurationFile : null) ?? config,
                 actor.Original, ReviewSignals = usedBy, Dimensions = profile.Dimensions };

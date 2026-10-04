@@ -9,7 +9,7 @@ internal static class ActorReports
 {
     public static void Write(IPatcherState<IOblivionMod, IOblivionModGetter> state, PatcherRun run)
     {
-        var npcs = state.LoadOrder.PriorityOrder.Npc().WinningContextOverrides().Where(context => run.Includes(context.Record.FormKey.ModKey))
+        var npcs = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Npc().WinningContextOverrides().Where(context => run.Includes(context.Record.FormKey.ModKey))
             .OrderBy(context => context.Record.FormKey.ToString(), StringComparer.Ordinal)
             .Select(context =>
             {
@@ -36,7 +36,7 @@ internal static class ActorReports
                 };
             }).ToArray();
 
-        var creatures = state.LoadOrder.PriorityOrder.Creature().WinningContextOverrides().Where(context => run.Includes(context.Record.FormKey.ModKey))
+        var creatures = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Creature().WinningContextOverrides().Where(context => run.Includes(context.Record.FormKey.ModKey))
             .OrderBy(context => context.Record.FormKey.ToString(), StringComparer.Ordinal)
             .Select(context =>
             {

@@ -19,7 +19,7 @@ internal static class ConfigurationEditor
             var actors = Actors(root);
             var node = JsonSerializer.SerializeToNode(assignment, ActorConfiguration.JsonOptions)!.AsObject();
             var ordered = new JsonObject();
-            foreach (var name in new[] { "Name", "PowerTier", "Handling", "Description", "Reason", "Uncertainty", "Sources", "Model" })
+            foreach (var name in new[] { "Name", "PowerTier", "FixedLevel", "Delevel", "Handling", "Description", "Reason", "Uncertainty", "Sources", "Model" })
                 if (node.Remove(name, out var value)) ordered[name] = value;
             foreach (var pair in node) ordered[pair.Key] = pair.Value?.DeepClone();
             actors[key] = ordered;
@@ -28,10 +28,11 @@ internal static class ConfigurationEditor
         }
     }
 
-    public static void Actor(string path, string key, string name, int? tier, string? handling)
+    public static void Actor(string path, string key, string name, int? tier, string? handling, int? fixedLevel = null, bool? delevel = null)
     {
         ActorConfiguration.ValidateFormKey(key);
         if (tier is not null) _ = new PowerTier(tier.Value);
+        if (fixedLevel is not null) ActorConfiguration.ValidateFixedLevel(fixedLevel.Value);
         if (handling is not null && (!Enum.TryParse<ActorHandling>(handling, out var parsed) || !Enum.IsDefined(parsed)))
             throw new ArgumentException("Invalid actor handling.");
         lock (Gate)
@@ -43,8 +44,26 @@ internal static class ConfigurationEditor
             var entry = actors[stored]?.AsObject() ?? new JsonObject { ["Name"] = name };
             if (tier is null) entry.Remove("PowerTier"); else entry["PowerTier"] = tier.Value;
             if (handling is null) entry.Remove("Handling"); else entry["Handling"] = handling;
+            if (fixedLevel is null) entry.Remove("FixedLevel"); else entry["FixedLevel"] = fixedLevel.Value;
+            if (delevel is null) entry.Remove("Delevel"); else entry["Delevel"] = delevel.Value;
             if (actors[stored] is null) actors[stored] = entry;
             Save(path, root, original);
+        }
+    }
+
+    public static bool DeleteActor(string path, string key)
+    {
+        ActorConfiguration.ValidateFormKey(key);
+        lock (Gate)
+        {
+            var original = File.ReadAllText(path);
+            var root = JsonNode.Parse(original)!.AsObject();
+            var actors = root["FormKeyOverrides"]?.AsObject();
+            var stored = actors?.FirstOrDefault(pair => pair.Key.Equals(key, StringComparison.OrdinalIgnoreCase)).Key;
+            if (stored is null) return false;
+            actors!.Remove(stored);
+            Save(path, root, original);
+            return true;
         }
     }
 
@@ -77,8 +96,12 @@ internal static class ConfigurationEditor
         {
             File.WriteAllText(temporary, root.ToJsonString(ActorConfiguration.JsonOptions) + Environment.NewLine);
             _ = ActorConfiguration.Load(temporary);
-            if (File.ReadAllText(path) != original) throw new IOException("Configuration changed while saving; reload and try again.");
-            File.Move(temporary, path, true);
+            for (var attempt = 0; ; attempt++)
+            {
+                if (File.ReadAllText(path) != original) throw new IOException("Configuration changed while saving; reload and try again.");
+                try { File.Move(temporary, path, true); break; }
+                catch (Exception exception) when (attempt < 4 && exception is IOException or UnauthorizedAccessException) { Thread.Sleep(50); }
+            }
         }
         finally { if (File.Exists(temporary)) File.Delete(temporary); }
     }

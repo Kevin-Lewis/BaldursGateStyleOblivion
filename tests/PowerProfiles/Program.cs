@@ -112,3 +112,26 @@ try
     Console.WriteLine("Grouped rules, direct overrides, and include validation passed.");
 }
 finally { Directory.Delete(configurationDirectory, true); }
+
+var shipped = ActorConfiguration.Load(Path.GetFullPath("BaldursGateStyleOblivion/actor-classification.json"));
+ActorProfile TierFor(string name, string type, string cls = "") => ActorConfiguration.Classify(shipped,
+    "FFFFFF:Oblivion.esm", "Oblivion.esm", new() { ["Name"] = [name], ["RecordType"] = [type], ["Class"] = [cls] });
+Check(TierFor("Sharp Tooth Goblin Berserker", "Creature").Tier?.Value == 4, "Tribal specialist must beat ordinary goblin match.");
+Check(TierFor("Vampire Bard", "NPC", "Bard").Tier?.Value == 4, "Vampire identity must beat civilian class baseline.");
+Check(TierFor("Dremora Valkynaz", "NPC").Tier?.Value > TierFor("Dremora Churl", "NPC").Tier?.Value, "Dremora ranks must remain distinct.");
+Check(TierFor("Rat", "NPC").Tier is null && TierFor("Unrecognized Monster", "Creature").Tier is null, "Unknown identities must not inherit unrelated species tiers.");
+Check(TierFor("Umbra", "NPC", "Warrior").Tier is null, "Important named combatants need individual evidence.");
+Check(ActorConfiguration.Classify(shipped, "000007:Oblivion.esm", "Oblivion.esm", new() { ["Name"] = ["Bendu Olo"], ["RecordType"] = ["NPC"], ["Class"] = ["CharactergenClass"] }).Tier is null, "Player must remain unassigned.");
+shipped.FormKeyOverrides["FFFFFF:Oblivion.esm"] = new() { PowerTier = 6, Reason = "Personal judgment" };
+Check(TierFor("Bandit", "NPC").Tier?.Value == 6, "Individual edits must beat shipped group tiers.");
+Console.WriteLine("Shipped actor tiers: rank specificity, civilian conflicts, unknowns, player and overrides passed.");
+
+shipped.FormKeyOverrides.Remove("FFFFFF:Oblivion.esm");
+Check(TierFor("Ordinary Fighter", "NPC", "Warrior").Tier?.Value == 3, "Ordinary named fighter must receive class baseline.");
+Check(TierFor("Marauder Warlord", "NPC", "Warrior").Tier?.Value == 5, "Specific role must beat class baseline.");
+Check(TierFor("Hannibal Traven", "NPC", "Mage").Tier is null, "Prominent mage must remain available for lore review.");
+Check(ActorConfiguration.Classify(shipped, "FFFFFE:Oblivion.esm", "Oblivion.esm", new() { ["Name"] = ["Voice"], ["EditorID"] = ["DASheogorathVoice"], ["Class"] = ["Acrobat"], ["RecordType"] = ["NPC"] }).Tier is null, "Voice helpers must not inherit class tiers.");
+Console.WriteLine("Expanded coverage: class fallbacks, specific roles, exceptional actors and negative conditions passed.");
+
+Check(TierFor("Brother Martin", "NPC", "Conjurer").Tier is null, "Martin's actual display name must be excluded.");
+Check(ActorConfiguration.Classify(shipped, "FFFFFD:Oblivion.esm", "Oblivion.esm", new() { ["Name"] = ["Janus Hassildor"], ["RecordType"] = ["NPC"], ["Class"] = ["Noble"], ["Faction"] = ["VampireFaction"] }).Tier is null, "Named vampire lord must not inherit ordinary vampire or noble tiers.");

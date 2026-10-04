@@ -16,6 +16,11 @@ Research.Validate(proposal, ["https://en.m.uesp.net/wiki/Oblivion%3AMannimarco#N
 Reject(() => Research.Validate(proposal, []));
 proposal.Sources = ["https://uesp.net.evil.example/actor"];
 Reject(() => Research.Validate(proposal, [proposal.Sources[0]]));
+proposal.Sources = [$"([UESP]({source}))"];
+Research.Validate(proposal, [source]);
+Check(proposal.Sources[0] == source, "Markdown citations must normalize to the consulted URL");
+proposal.Sources = ["[UESP](https://en.uesp.net/wiki/Oblivion:Unconsulted)"];
+Reject(() => Research.Validate(proposal, [source]));
 proposal.Sources = [source];
 proposal.Description = string.Join(' ', Enumerable.Repeat("word", 31));
 Reject(() => Research.Validate(proposal, [source]));
@@ -40,6 +45,14 @@ try
     Check(File.ReadAllText(config) == original, "Invalid edits must leave the file intact");
     ConfigurationEditor.Actor(config, key, "Example", null, null);
     Check(ActorConfiguration.Classify(ActorConfiguration.Load(config), key, "Oblivion.esm", new()).Tier?.Value == 1, "Clearing an override must restore group rules");
+    const string other = "000123:Oblivion.esm";
+    Check(ConfigurationEditor.AddActor(config, other, new() { Name = "Other", PowerTier = 3, Reason = "Keep this actor" }), "Second actor must be added");
+    Check(ConfigurationEditor.DeleteActor(config, key.ToLowerInvariant()), "Deletion must match FormKeys case-insensitively");
+    updated = ActorConfiguration.Load(config);
+    Check(!updated.FormKeyOverrides.ContainsKey(key) && updated.FormKeyOverrides.ContainsKey(other), "Deletion must remove the entire entry and preserve other actors");
+    Check(ActorConfiguration.Classify(updated, key, "Oblivion.esm", new()).Tier?.Value == 1, "Deleted actor must return to automatic rules");
+    original = File.ReadAllText(config);
+    Check(!ConfigurationEditor.DeleteActor(config, key) && File.ReadAllText(config) == original, "Repeated deletion must be a no-op");
     File.WriteAllText(config, """{"Groups":{"bandits":[{"Id":"Bandit","Priority":"Fallback","Evidence":"Always","Values":{"PowerTier":2}}]}}""");
     ConfigurationEditor.Group(config, "bandits", "Bandit", 4, true);
     Check(ActorConfiguration.Classify(ActorConfiguration.Load(config), key, "Oblivion.esm", new()).Tier?.Value == 4, "Group editor must update effective tiers");
@@ -68,3 +81,9 @@ using (var disambiguation = JsonDocument.Parse("""
     Check(Uesp.PersonArticle(disambiguation.RootElement) == "Oblivion:Umaril the Unfeathered (person)", "Prefer person over quest article");
 }
 Console.WriteLine("UESP disambiguation resolution passed.");
+
+using (var apiError = JsonDocument.Parse("""{"error":{"code":"maxlag"}}"""))
+    Check(Uesp.Parse(apiError.RootElement) is null && Uesp.PersonArticle(apiError.RootElement) is null, "Wiki API errors must not abort a research batch.");
+
+Check(Uesp.FamilyTitle("Dremora Valkynaz") == "Oblivion:Dremora", "Generic ranks must have a family source fallback.");
+Check(Uesp.FamilyTitle("Bloodcrust Vampire") is null && Uesp.FamilyTitle("Mankar Camoran") is null, "Special actors must retain actor-specific research.");

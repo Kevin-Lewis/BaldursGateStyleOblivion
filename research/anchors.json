@@ -1,1 +1,102 @@
-[]
+[
+  {
+    "Reference": "Ordinary adult civilian",
+    "PowerTier": 2,
+    "Scope": "A mundane adult with no established combat training; not an unknown supernatural being."
+  },
+  {
+    "Reference": "Frail ordinary elderly civilian",
+    "PowerTier": 1,
+    "Scope": "Only when frailty or age-related limitations are established; not an accomplished elderly mage."
+  },
+  {
+    "Reference": "Professional soldier",
+    "PowerTier": 3,
+    "Scope": "Competent trained fighter."
+  },
+  {
+    "Reference": "Seasoned combatant",
+    "PowerTier": 4,
+    "Scope": "Veteran training or demonstrated dangerous ability."
+  },
+  {
+    "Reference": "Elite combatant",
+    "PowerTier": 5,
+    "Scope": "Highly accomplished specialist."
+  },
+  {
+    "Reference": "Master combat trainer",
+    "PowerTier": 6,
+    "Scope": "Established mastery in a combat discipline; unrelated technical mastery does not imply combat mastery."
+  },
+  {
+    "Reference": "Ghost",
+    "PowerTier": 3,
+    "Scope": "Verified ordinary ghost form."
+  },
+  {
+    "Reference": "Faded Wraith",
+    "PowerTier": 4,
+    "Scope": "Verified lesser wraith form."
+  },
+  {
+    "Reference": "Wraith",
+    "PowerTier": 5,
+    "Scope": "Verified wraith form."
+  },
+  {
+    "Reference": "Gloom Wraith",
+    "PowerTier": 6,
+    "Scope": "Verified potent wraith form."
+  },
+  {
+    "Reference": "Skeleton",
+    "PowerTier": 2,
+    "Scope": "Basic animated skeleton; trained or named warrior forms can differ."
+  },
+  {
+    "Reference": "Skeleton Hero",
+    "PowerTier": 4,
+    "Scope": "Verified experienced skeletal warrior form."
+  },
+  {
+    "Reference": "Skeleton Champion",
+    "PowerTier": 5,
+    "Scope": "Verified champion skeletal warrior form."
+  },
+  {
+    "Reference": "Zombie",
+    "PowerTier": 3,
+    "Scope": "Verified ordinary animated zombie form."
+  },
+  {
+    "Reference": "Lich",
+    "PowerTier": 6,
+    "Scope": "Verified lich form, reflecting necromantic mastery."
+  },
+  {
+    "Reference": "Xivilai",
+    "PowerTier": 6,
+    "Scope": "Verified Xivilai form; lack of unique feats is not a reason to downgrade."
+  },
+  {
+    "Reference": "Flesh Atronach",
+    "PowerTier": 6,
+    "Scope": "Verified formidable flesh construct; compare Gatekeeper lore carefully rather than treating a composite giant as a mundane human."
+  },
+  {
+    "Reference": "Storm Atronach",
+    "PowerTier": 6,
+    "Scope": "Verified storm atronach form."
+  },
+  {
+    "Reference": "Troll",
+    "PowerTier": 4,
+    "Scope": "Verified ordinary troll form."
+  },
+  {
+    "Reference": "Black/Brown Bear",
+    "PowerTier": 4,
+    "Scope": "Verified dangerous adult bear; cubs differ."
+  }
+]

@@ -5,6 +5,7 @@ public sealed class PatcherSettings
     public bool ReportOnly { get; set; } = true;
     public bool EnableRecordDiscovery { get; set; } = true;
     public bool EnableDiagnostics { get; set; } = true;
+    public bool EnableActorDeleveling { get; set; } = true;
     public bool EnableActorClassification { get; set; } = true;
     public List<string> IncludedPlugins { get; set; } = new();
     public List<string> ExcludedPlugins { get; set; } = new();

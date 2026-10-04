@@ -16,18 +16,22 @@ internal static class ActorClassification
         Converters = { new JsonStringEnumConverter(allowIntegerValues: false) }
     };
 
-    public static Dictionary<FormKey, ActorProfile> Write(IPatcherState<IOblivionMod, IOblivionModGetter> state, PatcherRun run)
+    public static ClassificationSettings LoadSettings(PatcherRun run)
     {
         var settingsPath = Path.Combine(run.DataDirectory, "actor-classification.json");
         if (!File.Exists(settingsPath)) settingsPath = Path.Combine(AppContext.BaseDirectory, "actor-classification.json");
         if (!string.IsNullOrWhiteSpace(run.Settings.ActorConfigurationFile)) settingsPath = Path.GetFullPath(run.Settings.ActorConfigurationFile, run.DataDirectory);
         run.Log($"Actor classification settings: {settingsPath}");
-        var settings = ActorConfiguration.Load(settingsPath);
-        var factions = state.LoadOrder.PriorityOrder.Faction().WinningOverrides()
+        return ActorConfiguration.Load(settingsPath);
+    }
+
+    public static Dictionary<FormKey, ActorProfile> Write(IPatcherState<IOblivionMod, IOblivionModGetter> state, PatcherRun run, ClassificationSettings settings)
+    {
+        var factions = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Faction().WinningOverrides()
             .ToDictionary(record => record.FormKey, record => record.EditorID);
-        var classes = state.LoadOrder.PriorityOrder.Class().WinningOverrides()
+        var classes = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Class().WinningOverrides()
             .ToDictionary(record => record.FormKey, record => record.EditorID);
-        var races = state.LoadOrder.PriorityOrder.Race().WinningOverrides()
+        var races = state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Race().WinningOverrides()
             .ToDictionary(record => record.FormKey, record => record.EditorID);
         var rows = new List<object>();
         var profiles = new Dictionary<FormKey, ActorProfile>();
@@ -39,7 +43,7 @@ internal static class ActorClassification
             return profile;
         }
 
-        foreach (var context in state.LoadOrder.PriorityOrder.Npc().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).OrderBy(c => c.Record.FormKey.ToString(), StringComparer.Ordinal))
+        foreach (var context in state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Npc().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).OrderBy(c => c.Record.FormKey.ToString(), StringComparer.Ordinal))
         {
             var actor = context.Record;
             var evidence = new Dictionary<string, string[]>
@@ -55,7 +59,7 @@ internal static class ActorClassification
                 SourcePlugin = actor.FormKey.ModKey.ToString(), WinningOverridePlugin = context.ModKey.ToString(),
                 Evidence = evidence, Profile = Classify(actor.FormKey.ToString(), actor.FormKey.ModKey.ToString(), evidence) });
         }
-        foreach (var context in state.LoadOrder.PriorityOrder.Creature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).OrderBy(c => c.Record.FormKey.ToString(), StringComparer.Ordinal))
+        foreach (var context in state.LoadOrder.PriorityOrder.Where(listing => listing.ModKey != state.PatchMod.ModKey).Creature().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey)).OrderBy(c => c.Record.FormKey.ToString(), StringComparer.Ordinal))
         {
             var actor = context.Record;
             var evidence = new Dictionary<string, string[]>

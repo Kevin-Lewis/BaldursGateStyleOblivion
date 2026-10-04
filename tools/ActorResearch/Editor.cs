@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using System.Security.Cryptography;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using BaldursGateStyleOblivion.Classification;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -9,11 +11,16 @@ using Microsoft.Extensions.Hosting;
 
 namespace ActorResearch;
 
-internal sealed record ActorEdit(string FormKey, int? Tier, string? Handling);
+internal sealed record ActorEdit(string FormKey, int? Tier, string? Handling, int? FixedLevel = null, bool? Delevel = null);
+internal sealed record ActorDelete(string FormKey);
 internal sealed record GroupEdit(string Group, string Id, int? Tier, bool Enabled);
 
 internal static class Editor
 {
+    // Row updates must match catalog property names and include nulls to clear old overrides.
+    private static readonly JsonSerializerOptions ResponseJson = new(ActorConfiguration.JsonOptions)
+    { DefaultIgnoreCondition = JsonIgnoreCondition.Never };
+
     public static async Task Run(Actor[] actors, string config, int port, bool open)
     {
         if (port is < 1024 or > 65535) throw new ArgumentException("Choose a port between 1024 and 65535.");
@@ -28,6 +35,7 @@ internal static class Editor
             if (context.Request.Host.Host != "127.0.0.1" || context.Request.Method == "POST" &&
                 (context.Request.Headers.Origin != url || context.Request.Headers["X-Actor-Editor-Token"] != token))
             { context.Response.StatusCode = 403; return; }
+            context.Response.Headers.CacheControl = "no-store";
             await next(context);
         });
         app.MapGet("/", () => Results.Content(Catalog.Html(actors, ActorConfiguration.Load(config), config, token), "text/html"));
@@ -37,10 +45,22 @@ internal static class Editor
             if (actor is null) return Results.BadRequest(new { error = "Actor not found in the loaded reports." });
             try
             {
-                ConfigurationEditor.Actor(config, actor.FormKey, actor.Name ?? actor.EditorID ?? actor.FormKey, edit.Tier, edit.Handling);
-                return Results.Ok(Catalog.Rows([actor], ActorConfiguration.Load(config), config)[0]);
+                ConfigurationEditor.Actor(config, actor.FormKey, actor.Name ?? actor.EditorID ?? actor.FormKey, edit.Tier, edit.Handling, edit.FixedLevel, edit.Delevel);
+                return Results.Json(Catalog.Rows([actor], ActorConfiguration.Load(config), config)[0], ResponseJson);
             }
-            catch (Exception exception) when (exception is ArgumentException or IOException or System.Text.Json.JsonException)
+            catch (Exception exception) when (exception is ArgumentException or IOException or UnauthorizedAccessException or InvalidDataException or JsonException)
+            { return Results.BadRequest(new { error = exception.Message }); }
+        });
+        app.MapPost("/api/actor/delete", (ActorDelete edit) =>
+        {
+            var actor = actors.FirstOrDefault(actor => actor.FormKey.Equals(edit.FormKey, StringComparison.OrdinalIgnoreCase));
+            if (actor is null) return Results.BadRequest(new { error = "Actor not found in the loaded reports." });
+            try
+            {
+                ConfigurationEditor.DeleteActor(config, actor.FormKey);
+                return Results.Json(Catalog.Rows([actor], ActorConfiguration.Load(config), config)[0], ResponseJson);
+            }
+            catch (Exception exception) when (exception is ArgumentException or IOException or UnauthorizedAccessException or InvalidDataException or JsonException)
             { return Results.BadRequest(new { error = exception.Message }); }
         });
         app.MapPost("/api/group", (GroupEdit edit) =>
@@ -48,9 +68,9 @@ internal static class Editor
             try
             {
                 ConfigurationEditor.Group(config, edit.Group, edit.Id, edit.Tier, edit.Enabled);
-                return Results.Ok(Catalog.Rows(actors, ActorConfiguration.Load(config), config));
+                return Results.Json(Catalog.Rows(actors, ActorConfiguration.Load(config), config), ResponseJson);
             }
-            catch (Exception exception) when (exception is ArgumentException or IOException or System.Text.Json.JsonException)
+            catch (Exception exception) when (exception is ArgumentException or IOException or UnauthorizedAccessException or InvalidDataException or JsonException)
             { return Results.BadRequest(new { error = exception.Message }); }
         });
         await app.StartAsync();

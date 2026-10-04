@@ -3,12 +3,12 @@ using Mutagen.Bethesda.Oblivion;
 
 namespace BaldursGateStyleOblivion.Discovery;
 
-internal sealed record ScriptSignal(int Line, string Command, string? Receiver, string Kind, string Source);
+internal sealed record ScriptSignal(int Line, string Command, string? Receiver, string Kind, string Source, string? ActorValue = null);
 
 internal static class ScriptDiscovery
 {
     private static readonly Regex Commands = new(
-        @"(?:(?<receiver>\b[a-z_][a-z0-9_]*)\s*\.\s*)?\b(?<command>AddItemNS|AddItem|AddSpell|GetLevel|SetStage)\b",
+        @"(?:(?<receiver>\b[a-z_][a-z0-9_]*)\s*\.\s*)?\b(?<command>AddItemNS|AddItem|AddSpell|GetLevel|SetStage|SetLevel|SetActorValue|ModActorValue|ForceActorValue|SetAV|ModAV|ForceAV)\b",
         RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
 
     public static ScriptSignal[] Scan(string? source)
@@ -27,14 +27,18 @@ internal static class ScriptDiscovery
                 else if (!quoted && code[j] == ';') { Array.Fill(code, ' ', j, code.Length - j); break; }
                 else if (quoted) code[j] = ' ';
             }
-            foreach (Match match in Commands.Matches(new string(code)))
+            var sanitized = new string(code);
+            foreach (Match match in Commands.Matches(sanitized))
             {
                 var command = match.Groups["command"].Value;
                 var receiver = match.Groups["receiver"].Success ? match.Groups["receiver"].Value : null;
                 var kind = command.Equals("GetLevel", StringComparison.OrdinalIgnoreCase)
                     ? string.Equals(receiver, "player", StringComparison.OrdinalIgnoreCase) ? "PlayerLevelRead" : "ActorLevelRead"
-                    : command.Equals("SetStage", StringComparison.OrdinalIgnoreCase) ? "QuestStageChange" : "GrantCandidate";
-                matches.Add(new(i + 1, command, receiver, kind, lines[i].Trim()));
+                    : command.Equals("SetStage", StringComparison.OrdinalIgnoreCase) ? "QuestStageChange"
+                    : command.Equals("SetLevel", StringComparison.OrdinalIgnoreCase) ? "ActorLevelWrite"
+                    : command.Contains("ActorValue", StringComparison.OrdinalIgnoreCase) || command.EndsWith("AV", StringComparison.OrdinalIgnoreCase) ? "ActorStatWrite" : "GrantCandidate";
+                var actorValue = kind == "ActorStatWrite" ? Regex.Match(sanitized[(match.Index + match.Length)..], @"^\s+(\w+)").Groups[1].Value : null;
+                matches.Add(new(i + 1, command, receiver, kind, lines[i].Trim(), actorValue));
             }
         }
         return matches.ToArray();

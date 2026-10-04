@@ -11,7 +11,7 @@ internal static class Program
         {
             if (args.Length == 0 || args[0] is "help" or "--help")
             {
-                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--port <port>] [--no-open] [--refresh]");
+                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--source-page <UESP-title>] [--port <port>] [--parallelism <1-8>] [--no-open] [--refresh]");
                 return 0;
             }
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -40,7 +40,18 @@ internal static class Program
                 var anchorsPath = Get("--anchors", Path.Combine(work, "anchors.json"));
                 var anchors = File.Exists(anchorsPath) ? File.ReadAllText(anchorsPath) : "[]";
                 using var parsedAnchors = JsonDocument.Parse(anchors);
-                foreach (var actor in selected) await Research.Run(actor, config, work, Get("--model", settings.ResearchModel), options.ContainsKey("--refresh"), anchors);
+                var parallelism = int.Parse(Get("--parallelism", "4"));
+                if (parallelism is < 1 or > 8) throw new ArgumentException("Parallelism must be between 1 and 8.");
+                var failures = new System.Collections.Concurrent.ConcurrentBag<string>();
+                await Parallel.ForEachAsync(selected.GroupBy(actor => actor.Name, StringComparer.OrdinalIgnoreCase),
+                    new ParallelOptions { MaxDegreeOfParallelism = parallelism }, async (group, _) =>
+                {
+                    foreach (var actor in group)
+                        try { await Research.Run(actor, config, work, Get("--model", settings.ResearchModel), options.ContainsKey("--refresh"), anchors, options.GetValueOrDefault("--source-page")); }
+                        catch (Exception exception) when (exception is InvalidDataException or HttpRequestException or TaskCanceledException or System.Text.Json.JsonException or KeyNotFoundException or IOException or UnauthorizedAccessException)
+                        { failures.Add(actor.FormKey); Console.Error.WriteLine($"Research failed for {actor.Name} ({actor.FormKey}): {exception.Message}"); }
+                });
+                if (!failures.IsEmpty) Console.Error.WriteLine("Unfinished research: " + string.Join(", ", failures.Order()));
             }
             else if (args[0] != "catalog") throw new ArgumentException($"Unknown command: {args[0]}");
             var output = Path.GetFullPath(Get("--output", "artifacts/actor-catalog.html"));

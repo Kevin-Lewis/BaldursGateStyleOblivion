@@ -9,5 +9,6 @@
     <Compile Include="../../BaldursGateStyleOblivion/Classification/PowerProfiles.cs" Link="PowerProfiles.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorProfile.cs" Link="ActorProfile.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorConfiguration.cs" Link="ActorConfiguration.cs" />
+      <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorLevelPolicy.cs" Link="ActorLevelPolicy.cs" />
   </ItemGroup>
 </Project>

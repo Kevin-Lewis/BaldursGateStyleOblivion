@@ -41,13 +41,16 @@ public sealed class ActorRule
     public string Match { get; set; } = "";
     public string MatchMode { get; set; } = "Exact";
     public List<ActorCondition> All { get; set; } = new();
+    public List<ActorCondition> None { get; set; } = new();
     public string? SourcePlugin { get; set; }
     public ActorValues Values { get; set; } = new();
 }
 
 public sealed class ClassificationSettings
 {
-    public string ResearchModel { get; set; } = "gpt-6.1-sol";
+    public string ResearchModel { get; set; } = "gpt-6-luna";
+    public Dictionary<int, int?> LevelMapping { get; set; } = new()
+    { [0] = 1, [1] = 2, [2] = 5, [3] = 10, [4] = 15, [5] = 20, [6] = 25, [7] = 30, [8] = 35, [9] = 40, [10] = null };
     public Dictionary<string, List<ActorRule>> Groups { get; set; } = new();
     public List<string> Includes { get; set; } = new();
     public List<ActorRule> Rules { get; set; } = new();
@@ -68,6 +71,9 @@ public sealed class ActorOverride : ActorValues
 {
     [System.Text.Json.Serialization.JsonIgnore]
     public string ConfigurationFile { get; set; } = "";
+    public int? FixedLevel { get; set; }
+    public bool? Delevel { get; set; }
+    public string DelevelingReview { get; set; } = "";
     public string Name { get; set; } = "";
     public string Description { get; set; } = "";
     public string Reason { get; set; } = "";

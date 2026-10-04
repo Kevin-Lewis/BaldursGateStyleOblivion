@@ -11,5 +11,6 @@
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorProfile.cs" Link="ActorProfile.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorConfiguration.cs" Link="ActorConfiguration.cs" />
     <None Update="catalog.html" CopyToOutputDirectory="PreserveNewest" />
+      <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorLevelPolicy.cs" Link="ActorLevelPolicy.cs" />
   </ItemGroup>
 </Project>

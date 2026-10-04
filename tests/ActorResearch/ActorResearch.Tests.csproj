@@ -9,5 +9,6 @@
 <Compile Include="../../tools/ActorResearch/Catalog.cs" Link="Catalog.cs" />
 <Compile Include="../../tools/ActorResearch/Uesp.cs" Link="Uesp.cs" />
 <Compile Include="../../tools/ActorResearch/ConfigurationEditor.cs" Link="ConfigurationEditor.cs" />
-</ItemGroup>
+    <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorLevelPolicy.cs" Link="ActorLevelPolicy.cs" />
+  </ItemGroup>
 </Project>

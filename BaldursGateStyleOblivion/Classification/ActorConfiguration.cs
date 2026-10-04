@@ -28,7 +28,7 @@ public static class ActorConfiguration
                 throw new InvalidDataException($"Outside configuration directory or repeated include: {file}");
             var part = JsonSerializer.Deserialize<ClassificationSettings>(File.ReadAllText(file), JsonOptions)
                 ?? throw new InvalidDataException($"Empty actor configuration: {file}");
-            if (file.Equals(Path.GetFullPath(path), StringComparison.OrdinalIgnoreCase)) result.ResearchModel = part.ResearchModel;
+            if (file.Equals(Path.GetFullPath(path), StringComparison.OrdinalIgnoreCase)) { result.ResearchModel = part.ResearchModel; result.LevelMapping = part.LevelMapping; }
             foreach (var group in part.Groups)
             {
                 if (!result.Groups.TryAdd(group.Key, group.Value)) throw new InvalidDataException($"Duplicate group: {group.Key}");
@@ -46,6 +46,12 @@ public static class ActorConfiguration
                 Read(Path.Combine(Path.GetDirectoryName(file)!, include));
         }
         Read(path);
+        foreach (var pair in result.LevelMapping)
+        {
+            _ = new PowerTier(pair.Key);
+            if (pair.Value is not null) ValidateFixedLevel(pair.Value.Value);
+            if (pair.Key == 10 && pair.Value is not null) throw new InvalidDataException("Tier 10 requires individual FixedLevel overrides.");
+        }
         var ids = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         foreach (var rule in result.Rules)
         {
@@ -53,15 +59,21 @@ public static class ActorConfiguration
             if (rule.Priority is null || !Enum.IsDefined(rule.Priority.Value) || rule.Priority == RulePriority.ExplicitFormKeyOverride)
                 throw new InvalidDataException($"Missing or invalid priority: {rule.Id}");
             ValidateCondition(rule.Evidence, rule.Match, rule.MatchMode);
-            foreach (var condition in rule.All) ValidateCondition(condition.Evidence, condition.Match, condition.MatchMode);
+            foreach (var condition in rule.All.Concat(rule.None)) ValidateCondition(condition.Evidence, condition.Match, condition.MatchMode);
             new ActorProfile().Apply(rule.Values, rule.Id, "Settings validation", rule.Priority.Value);
         }
         foreach (var pair in result.FormKeyOverrides)
         {
             ValidateFormKey(pair.Key);
+            if (pair.Value.FixedLevel is not null) ValidateFixedLevel(pair.Value.FixedLevel.Value);
             new ActorProfile().Apply(pair.Value, "FormKey override", "Settings validation");
         }
         return result;
+    }
+
+    public static void ValidateFixedLevel(int level)
+    {
+        if (level is < 1 or > short.MaxValue) throw new ArgumentOutOfRangeException(nameof(level), "Fixed level must be 1–32767.");
     }
 
     public static void ValidateFormKey(string key)
@@ -94,7 +106,8 @@ public static class ActorConfiguration
         foreach (var rule in settings.Rules)
             if (rule.Enabled && (rule.SourcePlugin is null || string.Equals(rule.SourcePlugin, plugin, StringComparison.OrdinalIgnoreCase))
                 && Matches(rule.Evidence, rule.Match, rule.MatchMode)
-                && rule.All.All(condition => Matches(condition.Evidence, condition.Match, condition.MatchMode)))
+                && rule.All.All(condition => Matches(condition.Evidence, condition.Match, condition.MatchMode))
+                && !rule.None.Any(condition => Matches(condition.Evidence, condition.Match, condition.MatchMode)))
                 profile.Apply(rule.Values, rule.Id, string.IsNullOrWhiteSpace(rule.Reason) ? $"{rule.Evidence} {rule.MatchMode} matched {rule.Match}" : rule.Reason, rule.Priority!.Value);
         if (settings.FormKeyOverrides.TryGetValue(formKey, out var assignment))
             profile.Apply(assignment, "FormKey override", string.IsNullOrWhiteSpace(assignment.Reason) ? $"Explicit override for {formKey}" : assignment.Reason, RulePriority.ExplicitFormKeyOverride);
