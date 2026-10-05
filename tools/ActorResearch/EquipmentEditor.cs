@@ -49,7 +49,7 @@ internal static class EquipmentEditor
             finally { if (File.Exists(temporary)) File.Delete(temporary); }
         }
         IResult Error(Exception error) => Results.BadRequest(new { error = error.Message });
-        app.MapGet("/equipment", () => Results.Content(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "equipment.html"))
+        app.MapGet("/equipment", () => Results.Content(EditorNavigation.ReadTemplate("equipment.html")
             .Replace("/*TOKEN*/\"\"", JsonSerializer.Serialize(token)), "text/html"));
         app.MapGet("/api/equipment", () =>
         {

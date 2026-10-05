@@ -2,7 +2,8 @@
 <style>
 body{font:15px system-ui;background:#171b20;color:#e3e7ee;margin:22px}a{color:#a8cdfa}input,select,button,textarea{font:inherit;background:#242b34;color:inherit;border:1px solid #4d5969;border-radius:5px;padding:7px}button{cursor:pointer;background:#3d597c}button.delete{background:#693f46}input.tier{width:48px}nav,.pager{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin:15px 0}table{width:100%;border-collapse:collapse}td,th{text-align:left;vertical-align:top;padding:8px;border-bottom:1px solid #343c48}small{display:block;color:#aeb8c6;margin-top:5px}.reason{width:min(470px,90%)}summary{cursor:pointer;color:#a8cdfa}pre{white-space:pre-wrap;font:12px ui-monospace}.notes{padding:12px;background:#20262f}.group{padding:12px;border-bottom:1px solid #3b4656}#message{color:#ffd68d}#search{width:300px}h1{margin-bottom:8px}
 </style>
-<h1>Geographic Difficulty Review</h1><a href="/">Actor tiers</a> · <a href="/lists">Creature lists</a>
+<!--EDITOR_NAV-->
+<h1>Geographic Difficulty Review</h1>
 <p>These are starting proposals for review. Changing a category supplies its default typical tier range. Check Custom range to set different limits. Saving edits updates geography.json. Rerun the patcher to apply saved ranges to encounter probabilities. Dungeon profiles apply across their rooms; an individual geographic cell override takes priority. Guarded encounters retain their existing behavior.</p>
 <details><summary>Default ranges by danger category</summary><div id="defaults"></div><p>These are typical tiers to favor, not spawn limits. Special locations use a handcrafted range.</p><button id="save-defaults">Save defaults</button></details>
 <details><summary>Dungeon group rules</summary><p>Edit the cap and other defaults here; these apply across matching dungeon sites after rerunning the patcher.</p><textarea id="dungeon-groups" rows="15" style="width:95%"></textarea><button id="save-dungeon-groups">Save dungeon groups</button></details>

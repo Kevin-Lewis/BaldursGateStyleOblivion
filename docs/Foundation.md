@@ -22,7 +22,7 @@ General settings are registered with Synthesis's generated settings UI as Settin
 - EnableActorClassification: controls actor inference and overrides. Diagnostics still report original actor data when this is disabled.
 - EnableDiagnostics: controls JSON reports. Classification can run independently. A console/file log is always written.
 - EnableRecordDiscovery: controls Phase 1 discovery reports. Discovery runs only when diagnostics are also enabled.
-- ReportOnly: prevents gameplay-mutating modules from running. Module registration must explicitly declare whether it modifies gameplay. There are currently no gameplay modules, so either value produces no gameplay changes.
+- ReportOnly: gameplay modules produce plans and reports while skipping writes to the patch. Module registration must explicitly declare whether it modifies gameplay when it cannot provide its own planning mode.
 
 Synthesis still writes its pipeline ESP in report-only mode. On a standalone run this is empty; when building on a previous patcher's output, that input is retained. Report-only is not a promise to suppress Synthesis's output file or undo previous patchers' work.
 
@@ -44,3 +44,7 @@ After building, run `tests/VerifyFoundation.ps1` with DataFolder and LoadOrder p
 
 
 Equipment distribution is enabled by `EnableEquipmentDistribution`; `EquipmentConfigurationFile` can select a different `equipment.json`. Report-only mode plans equipment changes and writes `.equipment-distribution.json` without adding inventory overrides or private lists to the patch. See [Actor configuration](ActorConfiguration.md#equipment-distribution-phase-9) for profiles and material rarity.
+
+World loot uses `EnableWorldLoot` and `LootConfigurationFile` (`loot.json`). It runs after equipment and geography, writes `.world-loot.json`, and honors report-only mode without inserting private lists, containers or inventory overrides. See [Actor configuration](ActorConfiguration.md#world-loot) for scarcity profiles and the World loot editor.
+
+Quest rewards and artifact handling are enabled by `EnableQuestRewards`. `RewardConfigurationFile` selects the editable `rewards.json`; reviewed lists/scripts are processed after world loot and before diagnostics. Report-only mode produces the same decisions without writing reward or artifact gameplay records. Artifact protections are also enforced by equipment and loot distribution. The dedicated report is `.quest-rewards.json`.

@@ -64,7 +64,7 @@ internal static class Catalog
     public static string Html(Actor[] actors, ClassificationSettings settings, string config, string token = "")
     {
         var options = new JsonSerializerOptions(ActorConfiguration.JsonOptions) { WriteIndented = false };
-        return File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "catalog.html"))
+        return EditorNavigation.ReadTemplate("catalog.html")
             .Replace("/*ACTORS*/[]", JsonSerializer.Serialize(Rows(actors, settings, config), options))
             .Replace("/*GROUPS*/[]", JsonSerializer.Serialize(settings.Groups.SelectMany(group => group.Value.Select(rule => new
             { Group = group.Key, rule.Id, rule.Enabled, Tier = rule.Values.PowerTier, Match = rule.Evidence + ": " + rule.Match })), options))

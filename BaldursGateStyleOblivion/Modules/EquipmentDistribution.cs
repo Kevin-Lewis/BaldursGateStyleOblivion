@@ -26,7 +26,7 @@ internal static class EquipmentDistributionModule
                 foreach (var record in listing.Mod.EnumerateMajorRecords()) winners.TryAdd(record.FormKey, (record, listing.ModKey));
         var records = winners.Where(pair => !pair.Value.Record.IsDeleted).ToDictionary(pair => pair.Key, pair => pair.Value.Record);
         var locations = ActorLocations(records);
-        var builder = new EquipmentPoolBuilder(records, settings, state.PatchMod.ModKey, state.PatchMod.ModHeader.Stats.NextFormID, run.Includes);
+        var builder = new EquipmentPoolBuilder(records, settings, state.PatchMod.ModKey, state.PatchMod.ModHeader.Stats.NextFormID, run.Includes, RewardRecords.Protected(RewardConfiguration.Load(RewardRecords.PathFor(run))));
         var changes = new Dictionary<FormKey, string[]>();
         var rows = new List<object>();
         var modifiedActors = new HashSet<FormKey>();

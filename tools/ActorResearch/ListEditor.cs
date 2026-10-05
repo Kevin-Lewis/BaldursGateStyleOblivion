@@ -60,7 +60,7 @@ internal static class ListEditor
         {
             try
             {
-                var html = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "lists.html"))
+                var html = EditorNavigation.ReadTemplate("lists.html")
                     .Replace("__LIST_DATA__", JsonSerializer.Serialize(Data(), CreatureListConfiguration.JsonOptions))
                     .Replace("__EDITOR_TOKEN__", token);
                 return Results.Content(html, "text/html");

@@ -16,12 +16,13 @@ internal sealed class EquipmentPoolBuilder
     private readonly Func<ModKey, bool> included;
     private readonly Dictionary<(FormKey, string, string), FormKey> pools = new();
     private readonly Dictionary<(FormKey, EquipmentQuality?, bool?, string, int, bool, string), FormKey?> filtered = new();
+    private readonly HashSet<FormKey> protectedArtifacts;
     public OblivionMod Patch { get; }
 
     public EquipmentPoolBuilder(IReadOnlyDictionary<FormKey, IMajorRecordGetter> records, EquipmentSettings settings,
-        ModKey patchKey, uint nextId, Func<ModKey, bool> included)
+        ModKey patchKey, uint nextId, Func<ModKey, bool> included, HashSet<FormKey>? protectedArtifacts = null)
     {
-        this.records = records; this.settings = settings; this.included = included;
+        this.records = records; this.settings = settings; this.included = included; this.protectedArtifacts = protectedArtifacts ?? [];
         Patch = new(patchKey, OblivionRelease.Oblivion); Patch.ModHeader.Stats.NextFormID = nextId;
     }
 
@@ -87,6 +88,7 @@ internal sealed class EquipmentPoolBuilder
                 foreach (var entry in list.Entries) Visit(entry.Reference.FormKey, Math.Max(requirement, entry.Level), path);
                 path.Remove(current); return;
             }
+            if (protectedArtifacts.Contains(current)) throw new InvalidDataException($"Protected artifact {current} retained.");
             if ((record.MajorRecordFlagsRaw & (int)OblivionMajorRecord.OblivionMajorRecordFlag.QuestItemPersistentReference) != 0) throw new InvalidDataException($"Quest-item equipment {current} retained.");
             if (!IsEquipment(record)) throw new InvalidDataException("Mixed loot or consumable list; deferred to loot distribution.");
             var script = Script(record);
@@ -209,7 +211,7 @@ internal sealed class EquipmentPoolBuilder
                 (IClothingGetter a, IClothingGetter b) => a.ClothingFlags?.BipedFlags == b.ClothingFlags?.BipedFlags,
                 _ => false
             };
-            var replacement = records.Values.Where(candidate => included(candidate.FormKey.ModKey) && Compatible(candidate) &&
+            var replacement = records.Values.Where(candidate => included(candidate.FormKey.ModKey) && !protectedArtifacts.Contains(candidate.FormKey) && Compatible(candidate) &&
                     Material(candidate) == "Other" && !Enchanted(candidate) && Script(candidate) is null &&
                     Regex.IsMatch(candidate.EditorID ?? "", @"^(WeapSteel|ArmorSteel|ArmorLeather|Dremora|ArrowSteel)", RegexOptions.IgnoreCase) &&
                     (candidate.MajorRecordFlagsRaw & (int)OblivionMajorRecord.OblivionMajorRecordFlag.QuestItemPersistentReference) == 0)

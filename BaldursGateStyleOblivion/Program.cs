@@ -64,6 +64,12 @@ public class Program
             run.Module("Equipment distribution", run.Settings.EnableEquipmentDistribution, false,
                 () => { foreach (var change in EquipmentDistributionModule.Run(state, profiles, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
+            run.Module("World loot", run.Settings.EnableWorldLoot, false,
+                () => { foreach (var change in WorldLoot.Run(state, profiles, run))
+                    changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
+            run.Module("Quest rewards and artifacts", run.Settings.EnableQuestRewards, false,
+                () => { foreach (var change in QuestRewards.Run(state, run))
+                    changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);

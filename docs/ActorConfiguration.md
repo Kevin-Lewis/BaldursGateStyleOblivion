@@ -164,3 +164,40 @@ Mixed loot/consumable lists, test actors, quest-item equipment, scripted items, 
 The engine's recursive list selection and Chance None behavior are documented in the [OBSE leveled-list reference](https://obse.silverlock.org/obse_command_doc.html#CalcLeveledItem). All generated eligibility levels are 1; weapon/armor types and native count behavior are preserved while the distribution becomes independent of player level.
 
 Race preferences are a strong bias within an already selected `HighQuality` band: Orcs favor Orcish, and High Elves favor Elven equipment. Matching options get eight times their normal selection weight within their existing branch (`RaceMaterialWeight: 8`, editable from 1–16). The preference is capped when necessary to stay within the native 255-entry limit. `RaceMaterials` maps race EditorIDs to material names; `PreferRaceMaterial: false` disables this for a profile (military and high Dremora defaults). Individual list definitions take precedence. No new equipment types are added, and quality, enchantment, Ebony, and Daedric rates do not increase. Orcish is explicitly classified as `HighQuality`.
+
+
+## World loot
+
+`loot.json` controls Phase 10. The editor has a **World loot** page at `/loot`, with search, paging, tier/profile sorting, individual override save/delete, and the full configuration editor. Save changes and rerun the patcher to apply them.
+
+Placed containers use the current geographic range, or a dungeon's `LootTierRange` maximum / `BasePowerTier` cap when no cell override applies. Container purpose chooses the profile: household barrels, sacks and cupboards stay modest; treasure/boss containers get a configurable one-tier bonus. Ordinary carried/death loot uses actor power. Pure equipment branches stay under the equipment module; equipment inside mixed loot families follows that family’s loot profile.
+
+Profiles use `PremiumPerThousand`, `GlassPerThousand`, `EbonyPerThousand`, and `DaedricPerThousand`. These are separate chances per source-list selection, only for items already present in that source family. Defaults for danger tiers 2–6 give premium opportunities of 1%, 2.5%, 5%, 8%, and 12%; Ebony opportunities of 0%, 0%, 0.1%, 0.2%, and 0.3%. Daedric profiles allow a 0.1% Daedric opportunity at tiers 5–6, while ordinary profiles allow none. Rare endgame tiers 7/8/9/10 use premium opportunities of 16%/20%/24%/28% and ordinary-context Ebony opportunities of 5%/10%/20%/35%. Daedric-context profiles shift half that Ebony opportunity to Daedric gear: Ebony is 2.5%/5%/10%/17.5% and Daedric is 5%/10%/20%/37.5%, preserving the combined material chance. These material rates require matching items in the original source pool; ordinary profiles never add a Daedric opportunity. Premium-only families add empty outcomes to enforce the profile rarity rather than guarantee expensive gear. Native empty chances can reduce the actual result; repeated rolls can increase the whole-container chance.
+
+`TierProfiles` maps danger tiers to profiles. `Groups` classify purpose and can assign a fixed profile or preservation policy; plugin-specific groups run first. `Overrides` accepts a placed-container FormKey, container base FormKey, or actor FormKey (placement overrides win over base overrides). `ListOverrides` assigns or preserves an individual source list. `ItemTiers` assigns an item's loot class: 0–3 ordinary, 4–10 premium. Glass/Ebony/Daedric remain under their separate material rules.
+
+The patcher creates private static lists and, where necessary, private container bases. Original shared lists and containers remain available to merchants and other uses. Inventory quantities, fixed contents and item stats remain intact. Script/quest references, scripted items, merchant stock, helper storage, unresolved dependencies, cycles and UseAll bundles are retained with reasons. No new artifacts or additional loot rolls are introduced.
+
+The `.world-loot.json` report lists each container placement and actor, its location/profile/rule, preserved branches, redirects and expected item yield. Whole-inventory premium/rare odds and expected base value cover processed branches only; fixed and preserved contents are excluded. Base value is not sale proceeds, and the current value estimate excludes soul gems. Existing inventories need a fresh spawn or normal reset to show changes. `EnableWorldLoot`, `LootConfigurationFile`, plugin filters and report-only mode follow the other modules.
+
+Glass equipment uses its own material branch, excluded from general premium loot. Default Glass opportunities for tiers 3–10 are 0.2%, 1%, 2%, 5%, 12%, 20%, 30%, and 37%. `Daedric10` uses 15% Glass to keep Daedric gear dominant; its existing Ebony and Daedric rates remain intact. Lower tiers and household profiles have no Glass opportunity. Rates apply only to available source items; the report/editor show the actual processed-inventory Glass chance after nested empty chances and multiple rolls.
+
+## Quest rewards and artifacts (Phases 13–14)
+
+Edit `BaldursGateStyleOblivion/rewards.json`, or open the **Rewards / artifacts** editor at `/rewards`. The file contains curated `Lists`, reviewed `Scripts`, and `Artifacts`. Run the patcher after saving. Existing acquired rewards are not retroactively replaced.
+
+- `SelectionLevel` is a constant selection benchmark: choose the version vanilla would give at that level, regardless of the actual player level. It is not a PowerTier or actor level.
+- `Variant` optionally selects an exact direct member of that reward list. Clearing it returns to benchmark selection.
+- `Count` optionally fixes the quantity for a single reward outcome. Clearing it preserves native quantity.
+- `Preserve: true` keeps the original list or script behavior, including any scaling.
+- `Fingerprint` protects a reviewed source list/script from unexpected mod changes. Leave it unchanged; a mismatch is reported and preserved rather than overwritten.
+
+Defaults deliberately differ by reward: early Brotherhood bonuses and ordinary bounties remain modest; later guild rewards are stronger. Major relics such as Mehrunes' Razor, Dawnfang/Duskfang, the Crusader relics and the Necromancer's Amulet use their strongest existing versions. The Crusader sword's initial placement is fixed as well. Day/night transformations, powered forms, quest choices, grant counts, timers and native empty chances remain intact. Sigil Stones use the static Transcendent effect pool. Fixed Daedric artifacts retain their existing records.
+
+Artifact metadata includes optional `ArtifactTier`, `Unique`, `QuestRelated`, `Daedric`, `HandTuned`, and `ExcludedFromNormalization`. Tier is descriptive metadata only; it applies no stat formula. Exclusion defaults to true and is enforced by equipment and world-loot builders, including mundane equipment fallback selection. The registry includes named unique reward variants as well as true artifacts. No artifact damage, armor, enchantment, value or script attached to the item is normalized.
+
+The `.quest-rewards.json` report contains original/planned entries, grant-script evidence, selected benchmarks, protections and retention reasons. Mod-added rewards require explicit definitions; unreviewed scripts remain auditable. Quest entry requirements and encounter-selection scripts are outside this reward pass.
+
+Ordinary boss-chest branches referenced only by grant scripts now receive private danger-based loot pools. Runtime list mutations and unavailable source scripts remain guarded. Original shared lists used by scripts are not redirected by this chest change. Scripted/quest containers retain their existing identity; their dedicated reward selectors can still be fixed by the quest-reward module.
+
+The matrix pickup script is explicitly fingerprint-reviewed in `loot.json` (`ReviewedItemScripts`): it only advances the Amber/Madness crafting quest on acquisition. Its script remains attached and unchanged, while the corresponding ordinary loot pools lose their level gates. A changed script returns to preservation.

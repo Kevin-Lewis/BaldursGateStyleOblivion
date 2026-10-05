@@ -1,0 +1,241 @@
+{
+  "Profiles": {
+    "Danger0": {
+      "PremiumPerThousand": 0,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Daedric0": {
+      "PremiumPerThousand": 0,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Danger1": {
+      "PremiumPerThousand": 5,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Daedric1": {
+      "PremiumPerThousand": 5,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Danger2": {
+      "PremiumPerThousand": 10,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Daedric2": {
+      "PremiumPerThousand": 10,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    },
+    "Danger3": {
+      "PremiumPerThousand": 25,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 2
+    },
+    "Daedric3": {
+      "PremiumPerThousand": 25,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 2
+    },
+    "Danger4": {
+      "PremiumPerThousand": 50,
+      "EbonyPerThousand": 1,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 10
+    },
+    "Daedric4": {
+      "PremiumPerThousand": 50,
+      "EbonyPerThousand": 1,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 10
+    },
+    "Danger5": {
+      "PremiumPerThousand": 80,
+      "EbonyPerThousand": 2,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 20
+    },
+    "Daedric5": {
+      "PremiumPerThousand": 80,
+      "EbonyPerThousand": 2,
+      "DaedricPerThousand": 1,
+      "GlassPerThousand": 20
+    },
+    "Danger6": {
+      "PremiumPerThousand": 120,
+      "EbonyPerThousand": 3,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 50
+    },
+    "Daedric6": {
+      "PremiumPerThousand": 120,
+      "EbonyPerThousand": 3,
+      "DaedricPerThousand": 1,
+      "GlassPerThousand": 50
+    },
+    "Danger7": {
+      "PremiumPerThousand": 160,
+      "EbonyPerThousand": 50,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 120
+    },
+    "Daedric7": {
+      "PremiumPerThousand": 160,
+      "EbonyPerThousand": 25,
+      "DaedricPerThousand": 50,
+      "GlassPerThousand": 120
+    },
+    "Danger8": {
+      "PremiumPerThousand": 200,
+      "EbonyPerThousand": 100,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 200
+    },
+    "Daedric8": {
+      "PremiumPerThousand": 200,
+      "EbonyPerThousand": 50,
+      "DaedricPerThousand": 100,
+      "GlassPerThousand": 200
+    },
+    "Danger9": {
+      "PremiumPerThousand": 240,
+      "EbonyPerThousand": 200,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 300
+    },
+    "Daedric9": {
+      "PremiumPerThousand": 240,
+      "EbonyPerThousand": 100,
+      "DaedricPerThousand": 200,
+      "GlassPerThousand": 300
+    },
+    "Danger10": {
+      "PremiumPerThousand": 280,
+      "EbonyPerThousand": 350,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 370
+    },
+    "Daedric10": {
+      "PremiumPerThousand": 280,
+      "EbonyPerThousand": 175,
+      "DaedricPerThousand": 375,
+      "GlassPerThousand": 150
+    },
+    "Modest": {
+      "PremiumPerThousand": 5,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "GlassPerThousand": 0
+    }
+  },
+  "TierProfiles": {
+    "0": "Danger0",
+    "1": "Danger1",
+    "2": "Danger2",
+    "3": "Danger3",
+    "4": "Danger4",
+    "5": "Danger5",
+    "6": "Danger6",
+    "7": "Danger7",
+    "8": "Danger8",
+    "9": "Danger9",
+    "10": "Danger10"
+  },
+  "Groups": [
+    {
+      "Name": "Merchant stock",
+      "Match": "Merchant|Vendor|StolenGoods|Evidence",
+      "Category": "Merchant",
+      "Profile": "Modest",
+      "Preserve": true
+    },
+    {
+      "Name": "Household storage",
+      "Match": "House|Cupboard|Dresser|Closet|Food|Sack|Barrel",
+      "Category": "Household",
+      "Profile": "Modest",
+      "Preserve": false
+    },
+    {
+      "Name": "Treasure and boss chests",
+      "Match": "Boss|Treasure|RewardChest",
+      "Category": "Boss",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Daedric containers",
+      "Match": "Daedr|Dremora|Oblivion",
+      "Category": "Daedric",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Necromancer containers",
+      "Match": "Necromancer",
+      "Category": "Necromancer",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Mage containers",
+      "Match": "Mage|Wizard",
+      "Category": "Mage",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Ayleid containers",
+      "Match": "Ayleid",
+      "Category": "Ayleid",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Undead containers",
+      "Match": "Undead|Vampire",
+      "Category": "Undead",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Goblin containers",
+      "Match": "Goblin",
+      "Category": "Goblin",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Bandit containers",
+      "Match": "Bandit",
+      "Category": "Bandit",
+      "Profile": null,
+      "Preserve": false
+    },
+    {
+      "Name": "Military containers",
+      "Match": "Military|Legion|Guard|Marauder",
+      "Category": "Military",
+      "Profile": null,
+      "Preserve": false
+    }
+  ],
+  "Overrides": {},
+  "ListOverrides": {},
+  "ItemTiers": {},
+  "TreasureTierBonus": 1,
+  "ReviewedItemScripts": {
+    "07E093:Oblivion.esm": "FEF2F0D195B7646529E1426BDE072C400FE83708A50A46BFCB5281FF9B799912"
+  }
+}

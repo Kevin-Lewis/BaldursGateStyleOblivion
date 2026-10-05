@@ -98,7 +98,7 @@ internal static class GeographicEditor
                 finally { if (File.Exists(temporary)) File.Delete(temporary); }
             }
         }
-        app.MapGet("/geography", () => Results.Content(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "geography.html"))
+        app.MapGet("/geography", () => Results.Content(EditorNavigation.ReadTemplate("geography.html")
             .Replace("__EDITOR_TOKEN__", token), "text/html"));
         app.MapGet("/api/geography", (HttpRequest request) =>
         {
