@@ -12652,7 +12652,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "014A28:Oblivion.esm": {
       "Name": "Assassin",
@@ -12661,7 +12662,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "017617:Oblivion.esm": {
       "Name": "Assassin",
@@ -12670,7 +12672,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "017618:Oblivion.esm": {
       "Name": "Assassin",
@@ -12679,7 +12682,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "017619:Oblivion.esm": {
       "Name": "Assassin",
@@ -12688,7 +12692,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "017620:Oblivion.esm": {
       "Name": "Assassin",
@@ -12697,7 +12702,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "017623:Oblivion.esm": {
       "Name": "Assassin",
@@ -12706,7 +12712,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "0176DB:Oblivion.esm": {
       "Name": "Assassin",
@@ -12715,7 +12722,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "01D0EE:Oblivion.esm": {
       "Name": "Assassin",
@@ -12724,7 +12732,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "01E6FF:Oblivion.esm": {
       "Name": "Assassin",
@@ -12733,7 +12742,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "0950DB:Oblivion.esm": {
       "Name": "Assassin",
@@ -12742,7 +12752,8 @@
       "Reason": "The supplied class article does not identify this actor, and no actor-specific UESP page was found to establish its combat capability.",
       "Uncertainty": "The record\u2019s identity, training, and encounter role remain unverified; assigning a tier would be speculative. Shared assessment from CGMythicDawnAssassin01; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "059D2F:Oblivion.esm": {
       "Name": "Astante",
@@ -48307,12 +48318,14 @@
     "009ABF:Oblivion.esm": {
       "Name": "Marauder Warlord",
       "Delevel": false,
-      "DelevelingReview": "Technical, unused, voice, test, or intentionally dead record; preserve original behavior."
+      "DelevelingReview": "Technical, unused, voice, test, or intentionally dead record; preserve original behavior.",
+      "PowerTier": 4
     },
     "009AC0:Oblivion.esm": {
       "Name": "Conjurer Adept",
       "Delevel": false,
-      "DelevelingReview": "Technical, unused, voice, test, or intentionally dead record; preserve original behavior."
+      "DelevelingReview": "Technical, unused, voice, test, or intentionally dead record; preserve original behavior.",
+      "PowerTier": 3
     },
     "009AC1:Oblivion.esm": {
       "Name": "Necromancer Adept",
@@ -48523,6 +48536,42 @@
     "06D31C:Oblivion.esm": {
       "Name": "Flesh Atronach Citrine",
       "PowerTier": 6
+    },
+    "002368:Oblivion.esm": {
+      "Name": "Daedroth",
+      "PowerTier": 4
+    },
+    "028F5D:Oblivion.esm": {
+      "Name": "Daedroth",
+      "PowerTier": 4
+    },
+    "01C642:Oblivion.esm": {
+      "Name": "Daedroth",
+      "PowerTier": 4
+    },
+    "009ADA:Oblivion.esm": {
+      "Name": "Marauder Warlord",
+      "PowerTier": 4
+    },
+    "009ADB:Oblivion.esm": {
+      "Name": "Marauder Warlord",
+      "PowerTier": 4
+    },
+    "009ADC:Oblivion.esm": {
+      "Name": "Marauder Warlord",
+      "PowerTier": 4
+    },
+    "009AD7:Oblivion.esm": {
+      "Name": "Conjurer Adept",
+      "PowerTier": 3
+    },
+    "009AD8:Oblivion.esm": {
+      "Name": "Conjurer Adept",
+      "PowerTier": 3
+    },
+    "009AD9:Oblivion.esm": {
+      "Name": "Conjurer Adept",
+      "PowerTier": 3
     }
   }
 }

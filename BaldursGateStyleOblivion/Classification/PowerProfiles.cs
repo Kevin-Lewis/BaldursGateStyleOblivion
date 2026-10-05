@@ -75,8 +75,11 @@ public class PowerProfile
     }
 }
 
+public enum LocationCategory { Civilized, Safe, LowDanger, Moderate, Dangerous, Severe, Extreme, Special }
+
 public sealed class LocationValues : PowerValues
 {
+    public LocationCategory? Category { get; set; }
     public PowerTierRange? EnemyTierRange { get; set; }
     public PowerTierRange? LootTierRange { get; set; }
 }

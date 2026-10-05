@@ -30,7 +30,8 @@ internal static class Program
             {
                 await Editor.Run(actors, config, int.Parse(Get("--port", "5078")), !options.ContainsKey("--no-open"),
                     Path.GetFullPath(Get("--reports", "artifacts/phase0-data/Reports")),
-                    Path.GetFullPath(Get("--list-config", Path.Combine(Path.GetDirectoryName(config)!, "creature-lists.json"))));
+                    Path.GetFullPath(Get("--list-config", Path.Combine(Path.GetDirectoryName(config)!, "creature-lists.json"))),
+                    Path.GetFullPath(Get("--geography-config", Path.Combine(Path.GetDirectoryName(config)!, "geography.json"))));
                 return 0;
             }
             if (args[0] == "research")

@@ -11,6 +11,8 @@
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorProfile.cs" Link="ActorProfile.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorConfiguration.cs" Link="ActorConfiguration.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Modules/CreatureListConfiguration.cs" Link="CreatureListConfiguration.cs" />
+    <Compile Include="../../BaldursGateStyleOblivion/Modules/GeographicConfiguration.cs" Link="GeographicConfiguration.cs" />
+    <None Update="geography.html" CopyToOutputDirectory="PreserveNewest" />
     <None Update="lists.html" CopyToOutputDirectory="PreserveNewest" />
     <None Update="catalog.html" CopyToOutputDirectory="PreserveNewest" />
       <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorLevelPolicy.cs" Link="ActorLevelPolicy.cs" />

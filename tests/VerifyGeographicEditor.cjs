@@ -1,0 +1,45 @@
+const fs=require('node:fs'),path=require('node:path'),{spawn}=require('node:child_process'),net=require('node:net'),vm=require('node:vm');
+const check=(value,message)=>{if(!value)throw Error(message)};
+(async()=>{
+ const directory=fs.mkdtempSync(path.resolve('artifacts/geographic-editor-test-')),config=path.join(directory,'geography.json');
+ fs.copyFileSync('BaldursGateStyleOblivion/geography.json',config);const before=JSON.parse(fs.readFileSync(config));
+ const probe=net.createServer();await new Promise(resolve=>probe.listen(0,'127.0.0.1',resolve));const port=probe.address().port;await new Promise(resolve=>probe.close(resolve));const url=`http://127.0.0.1:${port}`;
+ const server=spawn('dotnet',['tools/ActorResearch/bin/Debug/net10.0/ActorResearch.dll','edit','--geography-config',config,'--port',String(port),'--no-open'],{stdio:'ignore'});
+ try{
+  let html;for(let attempt=0;attempt<100&&!html;attempt++){try{const response=await fetch(url+'/geography');if(response.ok)html=await response.text()}catch{}if(!html)await new Promise(resolve=>setTimeout(resolve,100))}
+  check(html,'Server failed to start');const token=html.match(/const token="([A-F0-9]+)"/)[1];
+  new Function(html.match(/<script>([\s\S]*?)<\/script>/)[1]);
+  let response=await fetch(url+'/api/geography?encounters=only');let data=await response.json();check(response.ok,JSON.stringify(data));check(data.Locations.length===50&&data.Total>3000,'Server must page real encounter locations');
+  const first=data.Locations[0].FormKey;
+  data=await(await fetch(url+'/api/geography?encounters=only&page=1')).json();check(data.Locations.length===50&&data.Locations[0].FormKey!==first,'Page two must contain different locations');
+  data=await(await fetch(url+'/api/geography?search=Vindasel')).json();const location=data.Locations.find(row=>row.EditorID==='Vindasel');check(location&&location.Category==='Special','Search must find handcrafted guardian proposal');
+  const detail=await(await fetch(url+'/api/geography/details?formkey='+encodeURIComponent(location.FormKey))).json();check(detail.Actors.some(actor=>actor.EditorID==='Umbra')&&detail.OriginalPools.length>0,'Evidence must include named guardian and original pools');
+  const post=(route,body,validToken=token)=>fetch(url+route,{method:'POST',headers:{'Content-Type':'application/json',Origin:url,'X-Actor-Editor-Token':validToken},body:JSON.stringify(body)});
+  response=await post('/api/geography',{FormKey:location.FormKey,Definition:{Category:'Extreme',MinimumTier:6,MaximumTier:8,Reason:'Personal test decision'}});check(response.ok&& (await response.json()).Saved,'Save must return parseable success');
+  let saved=JSON.parse(fs.readFileSync(config));check(saved.FormKeyOverrides[location.FormKey].Category==='Extreme','Location override must persist');check(JSON.stringify(saved.Groups)===JSON.stringify(before.Groups),'Individual edit must preserve groups');
+  data=await(await fetch(url+'/api/geography?overrides=only')).json();check(data.Total===1&&data.Locations[0].Category==='Extreme','Saved override must resolve immediately');
+  const prior=fs.readFileSync(config,'utf8');response=await post('/api/geography',{FormKey:location.FormKey,Definition:{Category:'Safe',MinimumTier:8,MaximumTier:2,Reason:'Invalid'}});check(response.status===400&&fs.readFileSync(config,'utf8')===prior,'Invalid tier ranges must not change config');
+  response=await post('/api/geography',{FormKey:'FFFFFF:Unknown.esp',Definition:{Category:'Safe',Reason:'Unknown'}});check(response.status===400,'Unknown locations must be rejected');
+  response=await post('/api/geography/delete',{FormKey:location.FormKey},'expired');check(response.status===403,'Expired session must not delete data');
+  response=await post('/api/geography/delete',{FormKey:location.FormKey});check(response.ok&&(await response.json()).Saved,'Delete must return parseable success');check(!JSON.parse(fs.readFileSync(config)).FormKeyOverrides[location.FormKey],'Deleting must remove the individual override');
+  data=await(await fetch(url+'/api/geography?search=Vindasel')).json();check(data.Locations.find(row=>row.FormKey===location.FormKey).Category==='Special','Deleting must restore the group proposal');
+  response=await post('/api/geography/group',{Index:0,Rule:{...before.Groups[0],Category:'Extreme',MinimumTier:6,MaximumTier:8}});check(response.ok,'Group change failed');data=await(await fetch(url+'/api/geography?search=Vindasel')).json();check(data.Locations.find(row=>row.FormKey===location.FormKey).Category==='Extreme','Group edit must affect its matching locations');
+  const defaults=data.CategoryDefaults;defaults.Severe={MinimumTier:5,MaximumTier:8};
+  response=await post('/api/geography/defaults',{Defaults:defaults});check(response.ok,'Defaults must save');
+  const severeData=await(await fetch(url+'/api/geography?category=Severe')).json();const severe=severeData.Locations.find(row=>!row.CustomRange);check(severe&&severe.MinimumTier===5&&severe.MaximumTier===8,'Inherited groups must follow changed category defaults');
+  response=await post('/api/geography',{FormKey:severe.FormKey,Definition:{Category:'Severe',MinimumTier:2,MaximumTier:6,Reason:'Custom limits'}});check(response.ok,'Custom range must save');
+  const customData=await(await fetch(url+'/api/geography?search='+encodeURIComponent(severe.FormKey))).json();check(customData.Locations[0].CustomRange&&customData.Locations[0].MinimumTier===2,'Custom ranges must persist independently of category defaults');
+  response=await post('/api/geography',{FormKey:severe.FormKey,Definition:{Category:'Severe',MinimumTier:null,MaximumTier:null,Reason:'Back to category range'}});check(response.ok,'Restoring inheritance must save');
+  const restored=await(await fetch(url+'/api/geography?search='+encodeURIComponent(severe.FormKey))).json();check(!restored.Locations[0].CustomRange&&restored.Locations[0].MinimumTier===5,'Null limits must restore inherited ranges');
+  const controls={'.category':{value:'Severe'},'.custom-range':{checked:false},'.min':{value:''},'.max':{value:''},'.reason':{value:'Test'}};
+  const elements=new Map();const element=id=>{if(!elements.has(id))elements.set(id,{value:'',innerHTML:''});return elements.get(id)};
+  const context=vm.createContext({document:{getElementById:element},URLSearchParams,setTimeout,clearTimeout});
+  vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1].replace(/load\(\);\s*$/,''),context);context.container={querySelector:key=>controls[key]};context.defaults=defaults;
+  vm.runInContext('data={CategoryDefaults:defaults};wireRange(container)',context);check(controls['.min'].value===5&&controls['.min'].disabled,'Category range must display and lock inherited limits');
+  controls['.category'].value='Safe';controls['.category'].onchange();check(controls['.max'].value===1,'Changing category must update displayed limits');
+  controls['.custom-range'].checked=true;controls['.custom-range'].onchange();controls['.min'].value='2';controls['.max'].value='4';
+  const edited=vm.runInContext('definition(container)',context);check(edited.MinimumTier===2&&!controls['.min'].disabled,'Custom range must unlock and save explicit limits');
+  controls['.custom-range'].checked=false;controls['.custom-range'].onchange();check(vm.runInContext('definition(container)',context).MinimumTier===null,'Unchecked custom mode must save inheritance');
+  console.log('Geographic editor checks passed: real paging/search/evidence, live and persisted override/group edits, deletion, validation and session protection.');
+ }finally{server.kill()}
+})().catch(error=>{console.error(error);process.exitCode=1});

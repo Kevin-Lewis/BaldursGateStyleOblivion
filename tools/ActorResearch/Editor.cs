@@ -22,7 +22,7 @@ internal static class Editor
     private static readonly JsonSerializerOptions ResponseJson = new(ActorConfiguration.JsonOptions)
     { DefaultIgnoreCondition = JsonIgnoreCondition.Never };
 
-    public static async Task Run(Actor[] actors, string config, int port, bool open, string reports, string listConfig)
+    public static async Task Run(Actor[] actors, string config, int port, bool open, string reports, string listConfig, string geographicConfig)
     {
         if (port is < 1024 or > 65535) throw new ArgumentException("Choose a port between 1024 and 65535.");
         var url = $"http://127.0.0.1:{port}";
@@ -76,6 +76,7 @@ internal static class Editor
             { return Results.BadRequest(new { error = exception.Message }); }
         });
         ListEditor.Map(app, actors, listConfig, reports, token);
+        GeographicEditor.Map(app, geographicConfig, reports, token);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");
         if (open) Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });

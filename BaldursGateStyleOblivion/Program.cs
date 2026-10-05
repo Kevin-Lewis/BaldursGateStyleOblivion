@@ -59,6 +59,8 @@ public class Program
             {
                 foreach (var change in CreatureListDeleveling.Run(state, profiles, run)) changes.Add(change.Key, change.Value);
             });
+            run.Module("Geographic discovery", run.Settings.EnableGeographicDiscovery, false,
+                () => { foreach (var change in GeographicDiscovery.Run(state, profiles, run)) changes[change.Key] = change.Value; });
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);
