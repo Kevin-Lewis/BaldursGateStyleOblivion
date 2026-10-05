@@ -59,6 +59,14 @@ internal static class GeographicDiscovery
         var connections = MapConnections(records, cells, placementCells);
         var sites = MapInteriorSites(cells, connections);
         var entranceMarkers = FindEntranceMarkers(records, cells, placementCells, placements, sites);
+        var dungeonConfig = string.IsNullOrWhiteSpace(run.Settings.DungeonConfigurationFile)
+            ? Path.Combine(AppContext.BaseDirectory, "dungeons.json")
+            : Path.GetFullPath(run.Settings.DungeonConfigurationFile, run.DataDirectory);
+        var dungeonSites = run.Settings.EnableDungeonDifficulty
+            ? DungeonProfiles.BuildSites(DungeonConfiguration.Load(dungeonConfig), sites, cells, entranceMarkers, placements.ToDictionary(pair => pair.Key, pair =>
+                string.Join(" ", pair.Value.Select(placed => records.GetValueOrDefault(Base(placed, records))?.EditorID))))
+            : new Dictionary<FormKey, DungeonSite>();
+        var dungeonRows = new List<object>();
         var questUses = new Dictionary<FormKey, HashSet<FormKey>>();
         foreach (var quest in records.Values.OfType<IQuestGetter>())
             foreach (var key in quest.EnumerateFormLinks().Select(link => link.FormKey).Distinct())
@@ -125,7 +133,16 @@ internal static class GeographicDiscovery
                 if ((text + " " + poolText).Contains(keyword, StringComparison.OrdinalIgnoreCase)) signals.Add(keyword);
             // Resolve location identity separately from its observed occupants.
             var (definition, rule) = GeographicConfiguration.Select(settings, cell.FormKey.ToString(), cell.FormKey.ModKey.ToString(), text, worldText, regionText, signals);
-            if (run.Settings.EnableGeographicEncounters)
+            var dungeon = dungeonSites.GetValueOrDefault(cell.FormKey);
+            var individualLocation = settings.FormKeyOverrides.ContainsKey(cell.FormKey.ToString());
+            var dungeonApplies = dungeon is not null && dungeon.Profile.Enabled && !individualLocation;
+            var dungeonProfile = dungeon?.Profile;
+            var dungeonRange = dungeonProfile?.EnemyTierRange ?? (dungeonProfile is null ? null : new GeographicTierRange(Math.Max(0, dungeonProfile.BasePowerTier - 2), dungeonProfile.BasePowerTier));
+            if (dungeon is not null) dungeonRows.Add(new { Cell = cell.FormKey.ToString(), Site = dungeon, Applied = dungeonApplies,
+                Reason = individualLocation ? "Individual geographic cell override takes priority." : dungeon.Profile.Reason,
+                EnemyTierRange = dungeonRange, Factions = factionKeys.Select(Identity).ToArray(),
+                CreatureFamilies = actors.Select(key => Category(profiles.GetValueOrDefault(key))).Where(category => category is not null).Distinct().Order().ToArray() });
+            if (run.Settings.EnableGeographicEncounters || dungeonApplies)
                 foreach (var placed in local.OfType<IPlacedObjectGetter>().Where(placed => effective.GetValueOrDefault(placed.Base.FormKey) is ILeveledCreatureGetter))
                 {
                     var reason = "Typical geographic range favors matching actors; original encounter identity and counts retained.";
@@ -135,16 +152,31 @@ internal static class GeographicDiscovery
                         if (!run.Includes(placed.FormKey.ModKey)) throw new InvalidDataException("Placement plugin is excluded.");
                         if (quests.Count > 0 || placed.EnumerateFormLinks().Any(link => records.GetValueOrDefault(link.FormKey) is IScriptGetter))
                             throw new InvalidDataException("Quest-associated or scripted placement preserved.");
-                        if (definition.Category == LocationCategory.Special || definition.MinimumTier is not { } minimum || definition.MaximumTier is not { } maximum)
+                        var minimum = dungeonApplies ? dungeonRange!.MinimumTier : definition.MinimumTier;
+                        var maximum = dungeonApplies ? dungeonRange!.MaximumTier : definition.MaximumTier;
+                        if ((definition.Category == LocationCategory.Special && dungeon?.Rule != "Individual dungeon override") || minimum is null || maximum is null)
                             throw new InvalidDataException("Handcrafted or unclassified location requires a typical range.");
-                        target = geographicPools.Build(placed.Base.FormKey, minimum, maximum);
+                        if (dungeonApplies)
+                        {
+                            var boss = (effective[placed.Base.FormKey].EditorID + " " + placed.EditorID).Contains("Boss", StringComparison.OrdinalIgnoreCase);
+                            var cap = dungeonProfile!.BasePowerTier;
+                            target = !boss && dungeonProfile.SpecialEncounterChance is { } chance
+                                ? geographicPools.BuildSpecial(placed.Base.FormKey, dungeonRange!.MinimumTier, cap, chance)
+                                : geographicPools.Build(placed.Base.FormKey, boss ? cap : dungeonRange!.MinimumTier,
+                                    boss ? cap + dungeonProfile.BossTierModifier : dungeonRange!.MaximumTier, cap, boss);
+                            reason = boss ? "Existing boss pool; no actor tier or level increase. " + dungeonProfile.Reason
+                                : "Dungeon cap weighting: favor common enemies below the cap. " + dungeonProfile.Reason;
+                        }
+                        else target = geographicPools.Build(placed.Base.FormKey, minimum.Value, maximum.Value);
                         if (target == placed.Base.FormKey) reason = "Existing pool probabilities already match this weighting (uniform or single-kind pool).";
                         else redirects[placed.FormKey] = target;
                     }
                     catch (InvalidDataException exception) { reason = exception.Message; }
                     var encounterPlan = new { Location = cell.FormKey.ToString(), Placement = placed.FormKey.ToString(),
-                        OriginalPool = placed.Base.FormKey.ToString(), PlannedPool = target.ToString(), Rule = rule,
-                        definition.MinimumTier, definition.MaximumTier, Reason = reason,
+                        OriginalPool = placed.Base.FormKey.ToString(), PlannedPool = target.ToString(), Rule = dungeonApplies ? dungeon!.Rule : rule,
+                        Dungeon = dungeon?.FormKey, BasePowerTier = dungeonApplies ? dungeonProfile!.BasePowerTier : (int?)null,
+                        MinimumTier = dungeonApplies ? dungeonRange!.MinimumTier : definition.MinimumTier,
+                        MaximumTier = dungeonApplies ? dungeonRange!.MaximumTier : definition.MaximumTier, Reason = reason,
                         Status = target == placed.Base.FormKey ? "Preserved" : run.Settings.ReportOnly ? "WouldModify" : "Modified" };
                     encounterPlans.Add(encounterPlan); localEncounterPlans.Add(encounterPlan);
                 }
@@ -176,6 +208,7 @@ internal static class GeographicDiscovery
                 Markers = markerRows, ConnectedCells = doors.Select(Identity).ToArray(),
                 Proposal = new { definition.Category, definition.MinimumTier, definition.MaximumTier, Rule = rule, definition.Reason, Confidence = confidence,
                     HasOverride = settings.FormKeyOverrides.ContainsKey(cell.FormKey.ToString()), Status = "ProposalOnly" },
+                Dungeon = dungeon,
                 GeographicEncounters = localEncounterPlans,
                 Signals = signals.Order(StringComparer.Ordinal).ToArray(), ReviewSignals = issues.ToArray(), Profile = profile,
                 EncounterPlacements = local.Where(record => !Base(record, records).IsNull).Select(record => new { Reference = record.FormKey.ToString(), Base = Base(record, records).ToString(), record.EditorID,
@@ -202,6 +235,14 @@ internal static class GeographicDiscovery
         }, GeographicConfiguration.JsonOptions);
         run.WriteReport(".geographic-shared-pools.json", new { Pools = shared.OrderBy(pair => pair.Key.ToString(), StringComparer.Ordinal)
             .Select(pair => new { Pool = Identity(pair.Key), Shared = pair.Value.Count > 1, Locations = pair.Value.OrderBy(key => key.ToString(), StringComparer.Ordinal).Select(Identity).ToArray() }).ToArray() }, GeographicConfiguration.JsonOptions);
+        run.WriteReport(".dungeons.json", new { Enabled = run.Settings.EnableDungeonDifficulty, Configuration = dungeonConfig,
+            InteriorCells = cells.Values.Where(cell => cell.Flags?.HasFlag(Cell.Flag.IsInteriorCell) == true).Select(cell => cell.FormKey.ToString()).Order().ToArray(),
+            Sites = dungeonSites.Values.DistinctBy(site => site.FormKey).OrderBy(site => site.FormKey).ToArray(), Rooms = dungeonRows,
+            Limitations = new[] { "BasePowerTier is the usual upper tier, not an average. Strong named actors retain their assigned power.",
+                "Boss weighting applies only to existing Boss-identified pools; no automatic boss increase or new creatures.",
+                "Faction and creature family are descriptive identity fields; original pool membership remains authoritative. Loot tiers are stored for the later loot phase.",
+                "SpecialEncounterChance is optional, rounded to whole percentages among non-empty results; only count-one pools without nested ChanceNone support it.",
+                "Automatic grouping uses door-connected interiors; manual Cells can split or merge sites. Dungeon profiles never bypass quest or script guards." } }, GeographicConfiguration.JsonOptions);
         var changes = ApplyEncounterPlans(state, run, geographicPools, redirects);
         run.WriteReport(".geographic-encounters.json", new { Enabled = run.Settings.EnableGeographicEncounters,
             run.Settings.ReportOnly, RedirectedPlacements = redirects.Count, GeneratedPools = geographicPools.Patch.LeveledCreatures.Count,

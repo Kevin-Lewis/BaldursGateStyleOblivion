@@ -1,0 +1,80 @@
+{
+  "Groups": [
+    {
+      "Match": "Vampire",
+      "SourcePlugin": null,
+      "Enabled": true,
+      "Name": "Vampire dungeons",
+      "Cells": [],
+      "BasePowerTier": 5,
+      "EnemyTierRange": null,
+      "BossTierModifier": 0,
+      "LootTierRange": null,
+      "Faction": null,
+      "CreatureFamily": null,
+      "SpecialEncounterChance": null,
+      "Reason": "Usual upper tier; favor lower-tier common enemies and preserve existing encounter families."
+    },
+    {
+      "Match": "Necromancer|Necro|Conjurer",
+      "SourcePlugin": null,
+      "Enabled": true,
+      "Name": "Necromancer and conjurer dungeons",
+      "Cells": [],
+      "BasePowerTier": 5,
+      "EnemyTierRange": null,
+      "BossTierModifier": 0,
+      "LootTierRange": null,
+      "Faction": null,
+      "CreatureFamily": null,
+      "SpecialEncounterChance": null,
+      "Reason": "Usual upper tier; favor lower-tier common enemies and preserve existing encounter families."
+    },
+    {
+      "Match": "Marauder",
+      "SourcePlugin": null,
+      "Enabled": true,
+      "Name": "Marauder forts",
+      "Cells": [],
+      "BasePowerTier": 4,
+      "EnemyTierRange": null,
+      "BossTierModifier": 0,
+      "LootTierRange": null,
+      "Faction": null,
+      "CreatureFamily": null,
+      "SpecialEncounterChance": null,
+      "Reason": "Usual upper tier; favor lower-tier common enemies and preserve existing encounter families."
+    },
+    {
+      "Match": "Ruin|Ayleid|Elven",
+      "SourcePlugin": null,
+      "Enabled": true,
+      "Name": "Ancient ruins",
+      "Cells": [],
+      "BasePowerTier": 5,
+      "EnemyTierRange": null,
+      "BossTierModifier": 0,
+      "LootTierRange": null,
+      "Faction": null,
+      "CreatureFamily": null,
+      "SpecialEncounterChance": null,
+      "Reason": "Usual upper tier; favor lower-tier common enemies and preserve existing encounter families."
+    },
+    {
+      "Match": "Cave|Mine|Goblin|Bandit|Fort",
+      "SourcePlugin": null,
+      "Enabled": true,
+      "Name": "Ordinary caves and mines",
+      "Cells": [],
+      "BasePowerTier": 4,
+      "EnemyTierRange": null,
+      "BossTierModifier": 0,
+      "LootTierRange": null,
+      "Faction": null,
+      "CreatureFamily": null,
+      "SpecialEncounterChance": null,
+      "Reason": "Usual upper tier; favor lower-tier common enemies and preserve existing encounter families."
+    }
+  ],
+  "FormKeyOverrides": {}
+}

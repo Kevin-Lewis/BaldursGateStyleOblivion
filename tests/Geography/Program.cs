@@ -95,7 +95,7 @@ if (args.Length >= 3)
         var plannedKey = FormKey.Factory(plan.GetProperty("PlannedPool").GetString()!); var target = new FormKey(patch.ModKey, plannedKey.ID);
         Check(placed[key].Base.FormKey == target && patch.LeveledCreatures.ContainsKey(target), "Written placement must reference its generated pool");
     }
-    var originalLists = baseline.LeveledCreatures.ToDictionary(list => list.FormKey);
+    var originalLists = baseline.LeveledCreatures.Where(list => !(list.EditorID ?? "").StartsWith("BGSO_Geo_", StringComparison.Ordinal)).ToDictionary(list => list.FormKey);
     foreach (var pair in originalLists)
         Check(patch.LeveledCreatures.TryGetValue(pair.Key, out var current) && CreaturePoolBuilder.SameEntries(pair.Value.Entries ?? [], current.Entries ?? []) && pair.Value.Flags == current.Flags, "Existing Phase 4 pools must remain unchanged");
     Check(patch.Npcs.Count == baseline.Npcs.Count && patch.Creatures.Count == baseline.Creatures.Count, "Geography must not add or remove actor overrides");
@@ -125,3 +125,31 @@ if (args.Length == 2)
     Check(!patch.EnumerateMajorRecords().Any(), "Report-only pipeline ESP must contain no gameplay records");
     Console.WriteLine("Report-only binary checked: planned encounters with zero applied records.");
 }
+
+var dungeons = DungeonConfiguration.Load("BaldursGateStyleOblivion/dungeons.json");
+Check(dungeons.Groups.All(group => group.BossTierModifier == 0 && group.SpecialEncounterChance is null), "No automatic boss boost or rare injection");
+var dungeonPool = new LeveledCreature(native.GetNextFormKey(), OblivionRelease.Oblivion) { Entries = new([Entry(low.FormKey), Entry(high.FormKey)]), ChanceNone = new Percent(0.25) };
+records[dungeonPool.FormKey] = dungeonPool;
+var dungeonBuilder = new GeographicEncounterPools(records, actorProfiles, _ => true, [], ModKey.FromNameAndExtension("DungeonPatch.esp"), 0x800);
+var capped = dungeonBuilder.Build(dungeonPool.FormKey, 1, 3, 3);
+Check(dungeonBuilder.Patch.LeveledCreatures[capped].Entries!.Count(entry => entry.Reference.FormKey == low.FormKey) == 4 && dungeonBuilder.Patch.LeveledCreatures[capped].Entries!.Count(entry => entry.Reference.FormKey == high.FormKey) == 1, "Dungeon ordinary weighting must favor actors below the cap");
+var large = new LeveledCreature(native.GetNextFormKey(), OblivionRelease.Oblivion) { Entries = new(Enumerable.Range(0,100).Select(index => {var entry=Entry(index<80?low.FormKey:high.FormKey);entry.Count=1;return entry;})), ChanceNone = new Percent(0.25) };
+records[large.FormKey] = large;
+var compressed = dungeonBuilder.Build(large.FormKey, 1, 3, 3);
+ILeveledCreatureGetter? Lookup(FormKey key) => dungeonBuilder.Patch.LeveledCreatures.TryGetValue(key, out var list) ? list : records.GetValueOrDefault(key) as ILeveledCreatureGetter;
+var probabilities = CreatureListDeleveling.Probabilities(compressed, 1, Lookup, [])!;
+Check(probabilities[low.FormKey.ToString()]/0.75 > 0.9 && probabilities[high.FormKey.ToString()] > 0 && dungeonBuilder.Patch.LeveledCreatures.All(list=>list.Entries!.Count<=255), "Large tapered pools must retain weaker dominance and exceptions within engine limits");
+var rarePool = dungeonBuilder.BuildSpecial(large.FormKey, 1, 3, 0.05);
+var rareOdds = CreatureListDeleveling.Probabilities(rarePool, 40, Lookup, [])!;
+Check(Math.Abs(rareOdds[high.FormKey.ToString()]/0.75-0.05)<1e-8 && Math.Abs(rareOdds["None"]-0.25)<1e-8, "Explicit rare chance must be 5% among non-empty outcomes and preserve native no-spawn chance");
+Check(dungeonBuilder.BuildSpecial(large.FormKey,1,3,0.05)==rarePool,"Repeated dungeon rare policy must reuse its pools");
+var roomA = new Cell(native.GetNextFormKey(), OblivionRelease.Oblivion) { EditorID="ExampleCave01",Flags=Cell.Flag.IsInteriorCell };
+var roomB = new Cell(native.GetNextFormKey(), OblivionRelease.Oblivion) { EditorID="ExampleCave02",Flags=Cell.Flag.IsInteriorCell };
+var rooms = new Dictionary<FormKey,ICellGetter>{{roomA.FormKey,roomA},{roomB.FormKey,roomB}};
+var connections = new Dictionary<FormKey,FormKey[]> {{roomA.FormKey,[roomA.FormKey,roomB.FormKey]},{roomB.FormKey,[roomA.FormKey,roomB.FormKey]}};
+var inferred = DungeonProfiles.BuildSites(dungeons,connections,rooms,new Dictionary<FormKey,List<IPlacedObjectGetter>>());
+Check(inferred[roomA.FormKey]==inferred[roomB.FormKey]&&inferred[roomA.FormKey].Profile.BasePowerTier==3,"Connected cave rooms must share the cap-3 profile");
+dungeons.FormKeyOverrides[roomB.FormKey.ToString()]=new(){Cells=[roomB.FormKey.ToString()],BasePowerTier=2};
+var split = DungeonProfiles.BuildSites(dungeons,connections,rooms,new Dictionary<FormKey,List<IPlacedObjectGetter>>());
+Check(split[roomA.FormKey]!=split[roomB.FormKey]&&split[roomB.FormKey].Profile.BasePowerTier==2,"Manual room membership must split an inferred site");
+Console.WriteLine("Dungeon checks passed: conservative defaults, tapered common enemies, large pools, explicit rare odds and manual grouping.");

@@ -6,6 +6,8 @@ public sealed class PatcherSettings
     public bool EnableRecordDiscovery { get; set; } = true;
     public bool EnableDiagnostics { get; set; } = true;
     public bool EnableActorDeleveling { get; set; } = true;
+    public bool EnableDungeonDifficulty { get; set; } = true;
+    public string DungeonConfigurationFile { get; set; } = "";
     public bool EnableGeographicEncounters { get; set; } = true;
     public bool EnableGeographicDiscovery { get; set; } = true;
     public string GeographicConfigurationFile { get; set; } = "";

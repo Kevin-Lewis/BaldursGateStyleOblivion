@@ -60,6 +60,7 @@ internal static class GeographicEditor
                     HasOverride = settings.FormKeyOverrides.ContainsKey(row.GetProperty("FormKey").GetString()!),
                     CustomRange = customRange, definition.Category, definition.MinimumTier, definition.MaximumTier, definition.Reason, Rule = rule,
                     Confidence = rule == "Individual override" ? "Manual" : rule == "Unclassified" || rule.Contains("wilderness", StringComparison.OrdinalIgnoreCase) ? "Low" : "Medium",
+                    Dungeon = row.TryGetProperty("Dungeon", out var dungeon) ? (JsonElement?)dungeon : null,
                     Observed = row.GetProperty("ObservedThreatTierRange"), PossibleActors = row.GetProperty("PossibleActorCount").GetInt32(),
                     ReviewSignals = row.GetProperty("ReviewSignals")
                 };

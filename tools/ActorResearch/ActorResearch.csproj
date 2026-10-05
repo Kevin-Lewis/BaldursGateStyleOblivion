@@ -17,4 +17,5 @@
     <None Update="catalog.html" CopyToOutputDirectory="PreserveNewest" />
       <Compile Include="../../BaldursGateStyleOblivion/Classification/ActorLevelPolicy.cs" Link="ActorLevelPolicy.cs" />
   </ItemGroup>
+<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/DungeonConfiguration.cs" Link="Modules/DungeonConfiguration.cs" /></ItemGroup>
 </Project>
