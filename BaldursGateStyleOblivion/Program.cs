@@ -61,6 +61,9 @@ public class Program
             });
             run.Module("Geographic discovery", run.Settings.EnableGeographicDiscovery, false,
                 () => { foreach (var change in GeographicDiscovery.Run(state, profiles, run)) changes[change.Key] = change.Value; });
+            run.Module("Equipment distribution", run.Settings.EnableEquipmentDistribution, false,
+                () => { foreach (var change in EquipmentDistributionModule.Run(state, profiles, run))
+                    changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);

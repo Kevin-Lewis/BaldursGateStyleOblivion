@@ -134,3 +134,33 @@ The plugin is enabled in this machine's load order. Close the game before rebuil
 ## Creature list editor
 
 The same local editor now has a **Creature list editor** link. Encounter policies and weights save to `BaldursGateStyleOblivion/creature-lists.json`. See [CreatureLists.md](CreatureLists.md) for the Phase 4 rollout, overrides, and diagnostics.
+
+
+## Equipment distribution (Phase 9)
+
+`equipment.json` is the single equipment configuration. The editor's **Equipment** link opens a paged actor table with profile overrides and delete buttons. Expand **Edit profiles, group rules, and list/item overrides** to edit the same JSON directly. Rerun the patcher after saving; inventory details show the last patcher run.
+
+- `Profiles`: relative quality weights and `EnchantedPercent`. Missing materials are not added to ordinary pools. Each quality band gets its own share, so having many enchanted variants does not inflate that band's total weight.
+- `EbonyPerThousand`: separate material chance, normally **1/1000** for `HighQuality` and `Elite`, **0** elsewhere. Glass stays in the `Elite` quality band; Ebony rarity is independent of Glass.
+- `DaedricPerThousand`: **750/1000** for `HighDremora`, **0** for mortal and lower-rank profiles. Markynaz, Valkynaz, and named story Dremora Kathutet, Orthe, and Ranyu select this profile when their existing equipment lists offer Daedric items. Named characters' fixed gear is preserved.
+- `Groups`: first matching rule wins, with plugin-specific rules considered before general rules. Matches inspect actor ID, faction, class, classification, and observed directly placed NPC locations. Wealth/occupation rules take priority over the actor-tier fallback.
+- `TierProfiles`: fallback profile by `EquipmentTier`, or `PowerTier` when no equipment tier is assigned.
+- `ActorOverrides`: FormKey entries with `Profile` and/or `Preserve`. These win over automatic actor rules. Delete an entry to resume automatic rules.
+- `ListOverrides`: FormKey entries selecting a profile or preserving a list; preservation also protects nested dependencies. List-specific profiles win for that inventory slot.
+- `ItemOverrides`: explicit quality classification by item FormKey, particularly useful for mod-added materials. `Artifact` protects the item rather than putting it into automatic pools.
+
+Example actor override:
+
+```json
+"ActorOverrides": {
+  "012345:Example.esp": { "Name": "Example captain", "Profile": "HighQuality" }
+}
+```
+
+Automatic distribution changes pure equipment lists carried by actors, using private LVLI copies and actor inventory redirects. Original lists remain available unchanged to merchants, containers, and quest rewards. Chance None, item counts, entry metadata, and per-count flags are retained. Precious-only pools receive compatible mundane gear for their ordinary outcomes, preventing a restricted Daedric-only pool from defeating the rarity policy. No weapon damage, armor ratings, enchantments, or item values are edited.
+
+Mixed loot/consumable lists, test actors, quest-item equipment, scripted items, quest/test lists, UseAll bundles, and equipment branches referenced by inventory-managing scripts are retained with a reason. Scripts that manipulate whole inventories or unresolved dynamic operands retain all equipment; scripts touching only unrelated fixed tokens or other loot do not block equipment changes. Fixed unique equipment and faction uniforms remain intact. The equipment report records every actor-held list, the chosen rule/profile, planned references, fixed equipment, and preserved exceptions. Existing saved inventories need a fresh spawn or inventory reset.
+
+The engine's recursive list selection and Chance None behavior are documented in the [OBSE leveled-list reference](https://obse.silverlock.org/obse_command_doc.html#CalcLeveledItem). All generated eligibility levels are 1; weapon/armor types and native count behavior are preserved while the distribution becomes independent of player level.
+
+Race preferences are a strong bias within an already selected `HighQuality` band: Orcs favor Orcish, and High Elves favor Elven equipment. Matching options get eight times their normal selection weight within their existing branch (`RaceMaterialWeight: 8`, editable from 1–16). The preference is capped when necessary to stay within the native 255-entry limit. `RaceMaterials` maps race EditorIDs to material names; `PreferRaceMaterial: false` disables this for a profile (military and high Dremora defaults). Individual list definitions take precedence. No new equipment types are added, and quality, enchantment, Ebony, and Daedric rates do not increase. Orcish is explicitly classified as `HighQuality`.

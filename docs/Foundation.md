@@ -42,3 +42,5 @@ The Synthesis supplemental-data API and settings registration were verified thro
 
 After building, run `tests/VerifyFoundation.ps1` with DataFolder and LoadOrder paths. It checks native configuration loading, inclusion/exclusion precedence, full reference context, module switches, report-only gating, deterministic summary output, persistent logs, and empty standalone ESPs.
 
+
+Equipment distribution is enabled by `EnableEquipmentDistribution`; `EquipmentConfigurationFile` can select a different `equipment.json`. Report-only mode plans equipment changes and writes `.equipment-distribution.json` without adding inventory overrides or private lists to the patch. See [Actor configuration](ActorConfiguration.md#equipment-distribution-phase-9) for profiles and material rarity.

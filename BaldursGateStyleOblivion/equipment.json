@@ -1,0 +1,175 @@
+{
+  "Profiles": {
+    "Poor": {
+      "Weights": {
+        "Improvised": 50,
+        "Poor": 800,
+        "Common": 140,
+        "Professional": 10
+      },
+      "EnchantedPercent": 2,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0
+    },
+    "Common": {
+      "Weights": {
+        "Improvised": 10,
+        "Poor": 500,
+        "Common": 400,
+        "Professional": 70,
+        "Military": 20
+      },
+      "EnchantedPercent": 5,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0
+    },
+    "Professional": {
+      "Weights": {
+        "Poor": 100,
+        "Common": 600,
+        "Professional": 230,
+        "Military": 60,
+        "HighQuality": 10
+      },
+      "EnchantedPercent": 8,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0
+    },
+    "Military": {
+      "Weights": {
+        "Poor": 50,
+        "Common": 650,
+        "Professional": 230,
+        "Military": 60,
+        "HighQuality": 10
+      },
+      "EnchantedPercent": 5,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 0,
+      "PreferRaceMaterial": false
+    },
+    "HighQuality": {
+      "Weights": {
+        "Poor": 50,
+        "Common": 500,
+        "Professional": 280,
+        "Military": 120,
+        "HighQuality": 45,
+        "Elite": 5
+      },
+      "EnchantedPercent": 12,
+      "EbonyPerThousand": 1,
+      "DaedricPerThousand": 0
+    },
+    "Elite": {
+      "Weights": {
+        "Common": 300,
+        "Professional": 350,
+        "Military": 230,
+        "HighQuality": 100,
+        "Elite": 19
+      },
+      "EnchantedPercent": 20,
+      "EbonyPerThousand": 1,
+      "DaedricPerThousand": 0
+    },
+    "HighDremora": {
+      "Weights": {
+        "Common": 100,
+        "Professional": 100,
+        "Military": 700,
+        "HighQuality": 90,
+        "Elite": 10
+      },
+      "EnchantedPercent": 20,
+      "EbonyPerThousand": 0,
+      "DaedricPerThousand": 750,
+      "PreferRaceMaterial": false
+    }
+  },
+  "TierProfiles": {
+    "0": "Poor",
+    "1": "Poor",
+    "2": "Common",
+    "3": "Common",
+    "4": "Professional",
+    "5": "Professional",
+    "6": "HighQuality",
+    "7": "Elite",
+    "8": "Elite",
+    "9": "Elite",
+    "10": "Elite"
+  },
+  "Groups": [
+    {
+      "Name": "High-ranking Dremora",
+      "Match": "^(?:[^|]*(?:Markynaz|Valkynaz)[^|]*|MQ15(?:Kathutet|Orthe|Ranyu))(?= \\||$)",
+      "Profile": "HighDremora",
+      "Reason": "High-ranking and named story Dremora can commonly carry Daedric equipment; ordinary mortal pools exclude it."
+    },
+    {
+      "Name": "Established bandits",
+      "Match": "(?=.*(?:ActorCategory=Bandit|BanditFaction))(?=.*PowerTier=[4-9])",
+      "Profile": "Professional",
+      "Reason": "Experienced outlaws have more serviceable equipment, without precious-material guarantees."
+    },
+    {
+      "Name": "Poor bandits",
+      "Match": "ActorCategory=Bandit|BanditFaction",
+      "Profile": "Poor",
+      "Reason": "Poor outlaw equipment; skill alone does not imply wealth."
+    },
+    {
+      "Name": "Military and guards",
+      "Match": "ActorCategory=(Guard|Soldier)|Legion|GuardFaction|BladesFaction",
+      "Profile": "Military",
+      "Reason": "Established faction kit; fixed uniforms remain intact."
+    },
+    {
+      "Name": "Marauders",
+      "Match": "ActorCategory=Marauder|MarauderFaction",
+      "Profile": "Professional",
+      "Reason": "Professional armor, with high materials uncommon."
+    },
+    {
+      "Name": "Upper class",
+      "Match": "UpperClass|Noble|Countess|Count[^a-z]",
+      "Profile": "HighQuality",
+      "Reason": "Status permits better equipment without raising combat tier."
+    },
+    {
+      "Name": "Lower class",
+      "Match": "LowerClass|Beggar|Farmer|Laborer|Peasant",
+      "Profile": "Poor",
+      "Reason": "Limited means."
+    },
+    {
+      "Name": "Merchants and middle class",
+      "Match": "MiddleClass|Merchant|Trader",
+      "Profile": "Common",
+      "Reason": "Modest civilian equipment."
+    },
+    {
+      "Name": "Mages",
+      "Match": "ActorCategory=(Mage|Necromancer)|CombatRole=(Mage|Support|Controller)",
+      "Profile": "Professional",
+      "Reason": "Modest physical equipment; magic does not guarantee precious armor."
+    },
+    {
+      "Name": "Veteran adventurers",
+      "Match": "ActorCategory=Adventurer|FactionRole=Leader|BossStatus=(Minor|Major)",
+      "Profile": "HighQuality",
+      "Reason": "Accomplished opponents may have a few superior pieces."
+    }
+  ],
+  "ActorOverrides": {},
+  "ListOverrides": {},
+  "ItemOverrides": {},
+  "RaceMaterials": {
+    "Orc": "Orcish",
+    "HighElf": "Elven",
+    "OrcVampire": "Orcish",
+    "HighElfVampire": "Elven"
+  },
+  "RaceMaterialWeight": 8
+}

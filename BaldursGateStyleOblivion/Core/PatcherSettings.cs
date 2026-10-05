@@ -5,6 +5,8 @@ public sealed class PatcherSettings
     public bool ReportOnly { get; set; } = true;
     public bool EnableRecordDiscovery { get; set; } = true;
     public bool EnableDiagnostics { get; set; } = true;
+    public bool EnableEquipmentDistribution { get; set; } = true;
+    public string EquipmentConfigurationFile { get; set; } = "";
     public bool EnableActorDeleveling { get; set; } = true;
     public bool EnableDungeonDifficulty { get; set; } = true;
     public string DungeonConfigurationFile { get; set; } = "";

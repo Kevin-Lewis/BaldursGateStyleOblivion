@@ -78,6 +78,7 @@ internal static class Editor
         ListEditor.Map(app, actors, listConfig, reports, token);
         GeographicEditor.Map(app, geographicConfig, reports, token);
         DungeonEditor.Map(app, Path.Combine(Path.GetDirectoryName(geographicConfig)!, "dungeons.json"), reports);
+        EquipmentEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "equipment.json"), reports, token);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");
         if (open) Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
