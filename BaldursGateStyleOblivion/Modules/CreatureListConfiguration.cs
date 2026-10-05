@@ -12,6 +12,7 @@ public sealed class CreatureListSettings
     public CreatureListPolicy Fallback { get; set; } = CreatureListPolicy.Preserve;
     public Dictionary<string, string> ReviewedScripts { get; set; } = new(StringComparer.OrdinalIgnoreCase);
     public PoolWeights Weights { get; set; } = new();
+    public Dictionary<string, PoolWeights> RealmWeights { get; set; } = new(StringComparer.OrdinalIgnoreCase);
     public List<CreatureListRule> Groups { get; set; } = [];
     public List<CreatureListRule> PluginRules { get; set; } = [];
     public Dictionary<string, CreatureListDefinition> FormKeyOverrides { get; set; } = new(StringComparer.OrdinalIgnoreCase);
@@ -72,6 +73,8 @@ public static class CreatureListConfiguration
                 throw new ArgumentException($"Reviewed script {review.Key} needs a SHA256 fingerprint.");
         }
         ValidateWeights(settings.Weights);
+        settings.RealmWeights = new(settings.RealmWeights, StringComparer.OrdinalIgnoreCase);
+        foreach (var weights in settings.RealmWeights.Values) ValidateWeights(weights);
         if (settings.Fallback == CreatureListPolicy.CuratedPool)
             throw new ArgumentException("CuratedPool requires an individual list definition.");
         foreach (var rule in settings.Groups.Concat(settings.PluginRules))

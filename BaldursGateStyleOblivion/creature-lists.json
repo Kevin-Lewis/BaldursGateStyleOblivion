@@ -7,6 +7,36 @@
     "Strong": 25,
     "Rare": 5
   },
+  "RealmWeights": {
+    "Kvatch early invasion": {
+      "CommonMaxTier": 4,
+      "StrongMaxTier": 5,
+      "Common": 90,
+      "Strong": 9,
+      "Rare": 1
+    },
+    "Kvatch guardian": {
+      "CommonMaxTier": 3,
+      "StrongMaxTier": 5,
+      "Common": 10,
+      "Strong": 85,
+      "Rare": 5
+    },
+    "Ordinary Oblivion realm": {
+      "CommonMaxTier": 2,
+      "StrongMaxTier": 5,
+      "Common": 15,
+      "Strong": 80,
+      "Rare": 5
+    },
+    "Late Main Quest invasion": {
+      "CommonMaxTier": 3,
+      "StrongMaxTier": 5,
+      "Common": 10,
+      "Strong": 70,
+      "Rare": 20
+    }
+  },
   "Groups": [
     {
       "Name": "Wildlife",

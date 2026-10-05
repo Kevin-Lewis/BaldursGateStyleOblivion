@@ -11053,7 +11053,7 @@
     },
     "03CD19:Oblivion.esm": {
       "Name": "Amkaos",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "QuestRelated",
       "Description": "Amkaos is a hostile Dremora torturer in Mankar Camoran\u2019s Paradise who carries a longsword and joins an attack on Eldamil.",
       "Reason": "His armed role and participation in a fight support a competent combatant rating, but the article establishes no exceptional feats or mastery.",
@@ -17853,7 +17853,7 @@
     },
     "018DBE:Oblivion.esm": {
       "Name": "Chuna",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "QuestRelated",
       "Description": "Chuna is a Golden Saint Aurig who guards Cylarne and joins the Aureal attack or defense during the battle there.",
       "Reason": "Her Golden Saint form and participation in organized combat establish a capable supernatural fighter. The article provides no personal feats or demonstrated mastery to support an exceptional tier.",
@@ -20992,11 +20992,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:NPC_Classes"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 3
     },
     "000FCE:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21008,7 +21009,7 @@
     },
     "000FCF:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21020,7 +21021,7 @@
     },
     "000FD0:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21032,7 +21033,7 @@
     },
     "014696:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21044,7 +21045,7 @@
     },
     "014697:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21056,7 +21057,7 @@
     },
     "014698:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21068,7 +21069,7 @@
     },
     "03EE70:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21080,7 +21081,7 @@
     },
     "03EE71:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21092,7 +21093,7 @@
     },
     "047389:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21104,7 +21105,7 @@
     },
     "092D9A:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21116,7 +21117,7 @@
     },
     "0C8C6C:Oblivion.esm": {
       "Name": "Dremora Caitiff",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dremora Caitiff mage: a low-ranking shock trooper among Mehrunes Dagon\u2019s forces, from a species known for capable warriors and mages and natural resistance to magic.",
       "Reason": "Its role as a shock trooper and the Dremora\u2019s established martial and magical capability support a seasoned rating. The article provides no individual feats or evidence of exceptional mastery.",
@@ -21128,7 +21129,7 @@
     },
     "03ABAD:Oblivion.esm": {
       "Name": "Dremora Captain",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora Captain encounter variant; Dremora are intelligent Daedra described as capable warriors, but this actor\u2019s specific rank or individual deeds are unconfirmed.",
       "Reason": "Dremora\u2019s warrior culture and established fighting capability support a competent combatant baseline. The display title alone does not establish exceptional mastery or unique feats.",
@@ -21140,7 +21141,7 @@
     },
     "03ABB4:Oblivion.esm": {
       "Name": "Dremora Captain",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora Captain encounter variant; Dremora are intelligent Daedra described as capable warriors, but this actor\u2019s specific rank or individual deeds are unconfirmed.",
       "Reason": "Dremora\u2019s warrior culture and established fighting capability support a competent combatant baseline. The display title alone does not establish exceptional mastery or unique feats.",
@@ -21152,7 +21153,7 @@
     },
     "03ABB5:Oblivion.esm": {
       "Name": "Dremora Captain",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora Captain encounter variant; Dremora are intelligent Daedra described as capable warriors, but this actor\u2019s specific rank or individual deeds are unconfirmed.",
       "Reason": "Dremora\u2019s warrior culture and established fighting capability support a competent combatant baseline. The display title alone does not establish exceptional mastery or unique feats.",
@@ -21464,7 +21465,7 @@
     },
     "000FD5:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21476,7 +21477,7 @@
     },
     "000FD6:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21488,7 +21489,7 @@
     },
     "000FD7:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21500,7 +21501,7 @@
     },
     "0146B8:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21512,7 +21513,7 @@
     },
     "0146B9:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21524,7 +21525,7 @@
     },
     "0146BC:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21536,7 +21537,7 @@
     },
     "03EE7F:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21548,7 +21549,7 @@
     },
     "03EE80:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21560,7 +21561,7 @@
     },
     "04738B:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21572,7 +21573,7 @@
     },
     "092D9C:Oblivion.esm": {
       "Name": "Dremora Kynreeve",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "Generic",
       "Description": "A Dremora mage serving as a Kynreeve, the lowest Dremora officer rank; Dremora are capable warriors and mages.",
       "Reason": "Its Daedric form and established capacity as a capable mage support a competent-combatant baseline; the lowest officer rank does not establish elite mastery.",
@@ -21932,7 +21933,7 @@
     },
     "000FC8:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -21944,7 +21945,7 @@
     },
     "000FC9:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -21956,7 +21957,7 @@
     },
     "000FDF:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -21968,7 +21969,7 @@
     },
     "0146C9:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -21980,7 +21981,7 @@
     },
     "0146CB:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -21992,7 +21993,7 @@
     },
     "0146CC:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -22004,7 +22005,7 @@
     },
     "03E9CA:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -22016,7 +22017,7 @@
     },
     "03EE7B:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -22028,7 +22029,7 @@
     },
     "04738E:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -22040,7 +22041,7 @@
     },
     "092D9F:Oblivion.esm": {
       "Name": "Dremora Valkynaz",
-      "PowerTier": 5,
+      "PowerTier": 6,
       "Handling": "Generic",
       "Description": "A melee Dremora Valkynaz, the highest Dremora rank: a battle-trained Daedra serving as an army commander and member of Mehrunes Dagon\u2019s personal guard.",
       "Reason": "Dremora are described as capable warriors, and Valkynaz occupy the pinnacle of their war-focused society as commanders and personal guards. This supports an elite rating, but not a legendary one without exceptional individual feats.",
@@ -41055,7 +41056,7 @@
     },
     "002967:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41067,7 +41068,7 @@
     },
     "02D802:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41079,7 +41080,7 @@
     },
     "03AB89:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41091,7 +41092,7 @@
     },
     "03AB8E:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41103,7 +41104,7 @@
     },
     "03AB9A:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41115,7 +41116,7 @@
     },
     "048953:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41127,7 +41128,7 @@
     },
     "0C8924:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -41139,7 +41140,7 @@
     },
     "0CD4D4:Oblivion.esm": {
       "Name": "Scamp",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A scamp, the weakest Daedra described in the source, capable of attacking with fire magic or melee.",
       "Reason": "Its Daedric nature and use of both magic and melee make it a meaningful combat threat, but the source identifies scamps as the weakest Daedra and supplies no exceptional feats for this encounter.",
@@ -43071,39 +43072,36 @@
     },
     "036627:Oblivion.esm": {
       "Name": "Starving Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 2,
       "Handling": "Generic",
-      "Description": "A starving mountain lion, an intrinsically dangerous, rapid and vicious physical predator.",
-      "Reason": "The UESP article identifies starving mountain lions as a distinct variant and characterizes mountain lions as rapid, vicious, and particularly dangerous predators. This supports a seasoned natural threat, without assuming starvation makes it weaker.",
+      "Description": "A weakened mountain lion used in the introductory Fighters Guild contract A Rat Problem.",
+      "Reason": "Storyline audit: starving quest variant assigned basic threat for an introductory contract; ordinary mountain lions keep their existing tier.",
       "Uncertainty": "",
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
-      ],
-      "Model": "gpt-6-luna"
+      ]
     },
     "03662D:Oblivion.esm": {
       "Name": "Starving Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 2,
       "Handling": "Generic",
-      "Description": "A starving mountain lion, an intrinsically dangerous, rapid and vicious physical predator.",
-      "Reason": "The UESP article identifies starving mountain lions as a distinct variant and characterizes mountain lions as rapid, vicious, and particularly dangerous predators. This supports a seasoned natural threat, without assuming starvation makes it weaker.",
-      "Uncertainty": "Shared assessment from FGC01MountainLion; individual specialization may differ.",
+      "Description": "A weakened mountain lion used in the introductory Fighters Guild contract A Rat Problem.",
+      "Reason": "Storyline audit: starving quest variant assigned basic threat for an introductory contract; ordinary mountain lions keep their existing tier.",
+      "Uncertainty": "",
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
-      ],
-      "Model": "gpt-6-luna"
+      ]
     },
     "036635:Oblivion.esm": {
       "Name": "Starving Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 2,
       "Handling": "Generic",
-      "Description": "A starving mountain lion, an intrinsically dangerous, rapid and vicious physical predator.",
-      "Reason": "The UESP article identifies starving mountain lions as a distinct variant and characterizes mountain lions as rapid, vicious, and particularly dangerous predators. This supports a seasoned natural threat, without assuming starvation makes it weaker.",
-      "Uncertainty": "Shared assessment from FGC01MountainLion; individual specialization may differ.",
+      "Description": "A weakened mountain lion used in the introductory Fighters Guild contract A Rat Problem.",
+      "Reason": "Storyline audit: starving quest variant assigned basic threat for an introductory contract; ordinary mountain lions keep their existing tier.",
+      "Uncertainty": "",
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
-      ],
-      "Model": "gpt-6-luna"
+      ]
     },
     "08FF94:Oblivion.esm": {
       "Name": "Steel Fang",
@@ -48571,6 +48569,10 @@
     },
     "009AD9:Oblivion.esm": {
       "Name": "Conjurer Adept",
+      "PowerTier": 3
+    },
+    "014686:Oblivion.esm": {
+      "Name": "Dremora Archer",
       "PowerTier": 3
     }
   }

@@ -20,6 +20,8 @@ internal sealed class GeographicEncounterPools
     private readonly HashSet<(FormKey Key, int Min, int Max, int Cap, bool Boss)> validatedWeights = [];
     private readonly Dictionary<(FormKey Key, int Min, int Max, int Cap, bool Boss), int> weightsByRange = [];
     private readonly Dictionary<(FormKey Key, int Min, int Cap, double Chance), FormKey> specialPools = [];
+    private FormKey? leyawiinPool;
+    private readonly Dictionary<(FormKey Key, string Realm), FormKey> realmPools = [];
     public OblivionMod Patch { get; }
 
     public GeographicEncounterPools(IReadOnlyDictionary<FormKey, IMajorRecordGetter> records,
@@ -29,6 +31,78 @@ internal sealed class GeographicEncounterPools
         this.records = records; this.profiles = profiles; this.included = included; this.curated = curated;
         Patch = new(patchKey, OblivionRelease.Oblivion);
         Patch.ModHeader.Stats.NextFormID = nextId;
+    }
+
+    // Only the two admission-quest spawns change; the shared mythic pool stays intact.
+    public bool TryBuildLeyawiinPool(FormKey cell, IPlacedObjectGetter placed, out FormKey target)
+    {
+        target = placed.Base.FormKey;
+        if (cell != FormKey.Factory("03379A:Oblivion.esm") ||
+            (placed.FormKey != FormKey.Factory("03CD6C:Oblivion.esm") && placed.FormKey != FormKey.Factory("03EE88:Oblivion.esm")) ||
+            target != FormKey.Factory("0340B1:Oblivion.esm")) return false;
+        if (leyawiinPool is { } cached) { target = cached; return true; }
+        if (!included(target) || curated.Contains(target))
+            throw new InvalidDataException("Leyawiin quest exception preserves excluded or manually configured pools.");
+        var source = (ILeveledCreatureGetter)records[target];
+        if (source.Script.FormKeyNullable is not null || source.Template.FormKeyNullable is not null ||
+            source.Flags?.HasFlag(LeveledFlag.UseAll) == true)
+            throw new InvalidDataException("Leyawiin quest exception preserves scripted, template or UseAll pools.");
+        var imp = FormKey.Factory("01E649:Oblivion.esm");
+        var troll = FormKey.Factory("002DBC:Oblivion.esm");
+        var entries = source.Entries?.Where(entry => entry.Reference.FormKey == imp || entry.Reference.FormKey == troll).ToArray() ?? [];
+        if (!entries.Any(entry => entry.Reference.FormKey == imp) || !entries.Any(entry => entry.Reference.FormKey == troll) ||
+            entries.Any(entry => entry.Count != 1))
+            throw new InvalidDataException("Leyawiin quest exception requires the original count-one imp and troll entries.");
+        Validate(imp, []); Validate(troll, []);
+        var pool = Patch.LeveledCreatures.AddNew(); pool.DeepCopyIn(source);
+        pool.EditorID = "BGSO_LeyawiinRecommendation";
+        pool.Entries!.Clear();
+        // Nine imp entries and one troll entry: 90% / 10%, independent of player level.
+        foreach (var (key, weight) in new[] { (imp, 9), (troll, 1) })
+            for (var index = 0; index < weight; index++)
+            {
+                var entry = entries.First(entry => entry.Reference.FormKey == key).DeepCopy();
+                entry.Level = 1; pool.Entries.Add(entry);
+            }
+        leyawiinPool = target = pool.FormKey;
+        return true;
+    }
+
+    public FormKey BuildRealm(FormKey key, RealmEncounter realm, CreatureListSettings settings)
+    {
+        if (realmPools.TryGetValue((key, realm.Name), out var cached)) return cached;
+        void CheckBranch(FormKey reference, HashSet<FormKey> path)
+        {
+            if (!included(reference) || curated.Contains(reference)) throw new InvalidDataException("Realm dependency is excluded or manually curated.");
+            if (!path.Add(reference)) throw new InvalidDataException("Cyclic realm pool preserved.");
+            if (records.GetValueOrDefault(reference) is ILeveledCreatureGetter list)
+            {
+                if (list.Entries is null || list.Entries.Count == 0 || list.Entries.Any(entry => entry.Level > 1))
+                    throw new InvalidDataException("Realm pool requires the static Phase 4 plan.");
+                foreach (var entry in list.Entries) CheckBranch(entry.Reference.FormKey, path);
+            }
+            else if (records.GetValueOrDefault(reference) is not (INpcGetter or ICreatureGetter))
+                throw new InvalidDataException("Missing realm dependency.");
+            path.Remove(reference);
+        }
+        CheckBranch(key, []);
+        var lists = records.Values.OfType<ILeveledCreatureGetter>().ToArray();
+        var local = new CreatureListSettings { ReviewedScripts = settings.ReviewedScripts };
+        foreach (var list in lists)
+            local.FormKeyOverrides[list.FormKey.ToString()] = new()
+            { Policy = CreatureListPolicy.WeightedPool, AllowSpecial = true, Weights = realm.Weights, Reason = realm.Name };
+        var builder = new CreaturePoolBuilder(records, profiles, local, Patch.ModKey, Patch.ModHeader.Stats.NextFormID,
+            lists.Where(list => included(list.FormKey)).Select(list => list.FormKey).ToHashSet());
+        var target = builder.BuildPrivate(key);
+        foreach (var change in builder.ReachableChanges.OrderBy(value => value.ToString(), StringComparer.Ordinal))
+        {
+            var copy = builder.PlannedPatch.LeveledCreatures[change];
+            copy.EditorID = $"BGSO_Realm_{change.ID:X6}";
+            Patch.LeveledCreatures.Add(copy);
+        }
+        Patch.ModHeader.Stats.NextFormID = builder.PlannedPatch.ModHeader.Stats.NextFormID;
+        realmPools[(key, realm.Name)] = target;
+        return target;
     }
 
     public FormKey Build(FormKey key, int min, int max, int cap = -1, bool boss = false)

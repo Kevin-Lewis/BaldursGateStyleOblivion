@@ -16,6 +16,7 @@ internal sealed class CreaturePoolBuilder
     private readonly HashSet<FormKey> included;
     private readonly Dictionary<FormKey, (CreatureListDefinition Definition, string Rule)> decisions;
     private readonly HashSet<FormKey> shared = [];
+    private bool privatePools;
     private readonly Dictionary<FormKey, ILeveledCreatureGetter> built = [];
     public OblivionMod PlannedPatch { get; }
     public Dictionary<FormKey, string> Reasons { get; } = [];
@@ -46,6 +47,15 @@ internal sealed class CreaturePoolBuilder
                 found.Add(entry.Reference.FormKey);
                 MarkDescendants(entry.Reference.FormKey, found, path);
             }
+    }
+
+    // Realm branches change selection locally without overriding their shared source lists.
+    public FormKey BuildPrivate(FormKey key)
+    {
+        privatePools = true;
+        var result = Build(key, decisions[key].Definition, []);
+        CollectChanges(result.FormKey, []);
+        return result.FormKey;
     }
 
     public void Plan()
@@ -153,7 +163,7 @@ internal sealed class CreaturePoolBuilder
             // Equal level-one entries are static with either value of CalculateFromAllLevels. Avoid needless overrides.
             if (SameEntries(source.Entries!, entries)) { built[key] = source; return source; }
             LeveledCreature target;
-            if (shared.Contains(key))
+            if (privatePools || shared.Contains(key))
             {
                 target = PlannedPatch.LeveledCreatures.AddNew();
                 target.DeepCopyIn(source);

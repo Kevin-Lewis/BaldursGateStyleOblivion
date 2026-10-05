@@ -66,3 +66,12 @@ node tests/VerifyCreatureListEditor.cjs
 The expanded local run changes 425 original lists and generates 206 helper pools. Of 701 incoming lists, 499 were flagged as directly/nested level-dependent or cyclic; 497 now have verified player-independent selection. The two preserved exceptions are `025E8B:Oblivion.esm` (unused TestZombieLeveled) and `079C90:Oblivion.esm` (self-referencing SE14GSEscortList, flagged conservatively because its cycle cannot be evaluated). 198 selected lists already have static selection and need no override. Counts describe this load order.
 
 Written patch checks compare planned entries, counts, scripts, templates, flags and spawn chance with the ESP. All accepted pool distributions match at levels 1, 10, 25 and 40. Fresh-spawn gameplay testing should cover wildlife, dungeon factions, Oblivion gates/Kvatch, Knights of the Nine and Isles quest encounters. Existing spawned actors do not establish fresh list behavior.
+
+
+## Oblivion realm weighting
+
+`RealmWeights` in `BaldursGateStyleOblivion/creature-lists.json` controls Kvatch ordinary enemies, Kvatch guardians, ordinary realms, and late Main Quest invasions. `CommonMaxTier` and `StrongMaxTier` define the three bands; `Common`, `Strong`, and `Rare` divide selection weight between bands present in each pool. Nested pools and missing bands mean these are not guaranteed percentages for an entire dungeon.
+
+Realm selection uses private copies of existing static pools. Shared source lists, actor tiers, scripts, templates, Chance None and native actor counts remain intact. Existing script fingerprints must match; changed scripts, UseAll, excluded dependencies and manually curated pools remain guarded. Individual geographic or dungeon overrides take priority. Paradise retains its existing dedicated encounter identity; Sigil Stone rewards are deferred.
+
+Each geographic encounter report includes the applied realm rule and `RealmWeights`. These changes require regenerating the patch and testing fresh encounters.

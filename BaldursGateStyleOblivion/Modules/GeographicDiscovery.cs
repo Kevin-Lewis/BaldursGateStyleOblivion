@@ -147,33 +147,55 @@ internal static class GeographicDiscovery
                 {
                     var reason = "Typical geographic range favors matching actors; original encounter identity and counts retained.";
                     var target = placed.Base.FormKey;
+                    var encounterRule = dungeonApplies ? dungeon!.Rule : rule;
+                    PoolWeights? realmWeights = null;
                     try
                     {
                         if (!run.Includes(placed.FormKey.ModKey)) throw new InvalidDataException("Placement plugin is excluded.");
-                        if (quests.Count > 0 || placed.EnumerateFormLinks().Any(link => records.GetValueOrDefault(link.FormKey) is IScriptGetter))
-                            throw new InvalidDataException("Quest-associated or scripted placement preserved.");
-                        var minimum = dungeonApplies ? dungeonRange!.MinimumTier : definition.MinimumTier;
-                        var maximum = dungeonApplies ? dungeonRange!.MaximumTier : definition.MaximumTier;
-                        if ((definition.Category == LocationCategory.Special && dungeon?.Rule != "Individual dungeon override") || minimum is null || maximum is null)
-                            throw new InvalidDataException("Handcrafted or unclassified location requires a typical range.");
-                        if (dungeonApplies)
+                        if (placed.EnumerateFormLinks().Any(link => records.GetValueOrDefault(link.FormKey) is IScriptGetter))
+                            throw new InvalidDataException("Scripted placement preserved.");
+                        if (geographicPools.TryBuildLeyawiinPool(cell.FormKey, placed, out target))
                         {
-                            var boss = (effective[placed.Base.FormKey].EditorID + " " + placed.EditorID).Contains("Boss", StringComparison.OrdinalIgnoreCase);
-                            var cap = dungeonProfile!.BasePowerTier;
-                            target = !boss && dungeonProfile.SpecialEncounterChance is { } chance
-                                ? geographicPools.BuildSpecial(placed.Base.FormKey, dungeonRange!.MinimumTier, cap, chance)
-                                : geographicPools.Build(placed.Base.FormKey, boss ? cap : dungeonRange!.MinimumTier,
-                                    boss ? cap + dungeonProfile.BossTierModifier : dungeonRange!.MaximumTier, cap, boss);
-                            reason = boss ? "Existing boss pool; no actor tier or level increase. " + dungeonProfile.Reason
-                                : "Dungeon cap weighting: favor common enemies below the cap. " + dungeonProfile.Reason;
+                            encounterRule = "Leyawiin recommendation exception";
+                            reason = "Introductory quest pool: 90% imps, 10% trolls; other mythic enemies excluded.";
+                            redirects[placed.FormKey] = target;
                         }
-                        else target = geographicPools.Build(placed.Base.FormKey, minimum.Value, maximum.Value);
-                        if (target == placed.Base.FormKey) reason = "Existing pool probabilities already match this weighting (uniform or single-kind pool).";
-                        else redirects[placed.FormKey] = target;
+                        else if (run.Settings.EnableGeographicEncounters && !individualLocation && dungeon?.Rule != "Individual dungeon override" &&
+                            RealmEncounters.Select(cell.EditorID, world?.EditorID, effective[placed.Base.FormKey].EditorID) is { } realm)
+                        {
+                            realm = realm with { Weights = creatureSettings.RealmWeights.GetValueOrDefault(realm.Name, realm.Weights) };
+                            target = geographicPools.BuildRealm(placed.Base.FormKey, realm, creatureSettings);
+                            encounterRule = realm.Name;
+                            realmWeights = realm.Weights;
+                            reason = "Reviewed static realm weighting; scripts, templates, spawn counts and Chance None retained.";
+                            if (target != placed.Base.FormKey) redirects[placed.FormKey] = target;
+                        }
+                        else
+                        {
+                            if (quests.Count > 0) throw new InvalidDataException("Quest-associated or scripted placement preserved.");
+                            var minimum = dungeonApplies ? dungeonRange!.MinimumTier : definition.MinimumTier;
+                            var maximum = dungeonApplies ? dungeonRange!.MaximumTier : definition.MaximumTier;
+                            if ((definition.Category == LocationCategory.Special && dungeon?.Rule != "Individual dungeon override") || minimum is null || maximum is null)
+                                throw new InvalidDataException("Handcrafted or unclassified location requires a typical range.");
+                            if (dungeonApplies)
+                            {
+                                var boss = (effective[placed.Base.FormKey].EditorID + " " + placed.EditorID).Contains("Boss", StringComparison.OrdinalIgnoreCase);
+                                var cap = dungeonProfile!.BasePowerTier;
+                                target = !boss && dungeonProfile.SpecialEncounterChance is { } chance
+                                    ? geographicPools.BuildSpecial(placed.Base.FormKey, dungeonRange!.MinimumTier, cap, chance)
+                                    : geographicPools.Build(placed.Base.FormKey, boss ? cap : dungeonRange!.MinimumTier,
+                                        boss ? cap + dungeonProfile.BossTierModifier : dungeonRange!.MaximumTier, cap, boss);
+                                reason = boss ? "Existing boss pool; no actor tier or level increase. " + dungeonProfile.Reason
+                                    : "Dungeon cap weighting: favor common enemies below the cap. " + dungeonProfile.Reason;
+                            }
+                            else target = geographicPools.Build(placed.Base.FormKey, minimum.Value, maximum.Value);
+                            if (target == placed.Base.FormKey) reason = "Existing pool probabilities already match this weighting (uniform or single-kind pool).";
+                            else redirects[placed.FormKey] = target;
+                        }
                     }
                     catch (InvalidDataException exception) { reason = exception.Message; }
                     var encounterPlan = new { Location = cell.FormKey.ToString(), Placement = placed.FormKey.ToString(),
-                        OriginalPool = placed.Base.FormKey.ToString(), PlannedPool = target.ToString(), Rule = dungeonApplies ? dungeon!.Rule : rule,
+                        OriginalPool = placed.Base.FormKey.ToString(), PlannedPool = target.ToString(), Rule = encounterRule, RealmWeights = realmWeights,
                         Dungeon = dungeon?.FormKey, BasePowerTier = dungeonApplies ? dungeonProfile!.BasePowerTier : (int?)null,
                         MinimumTier = dungeonApplies ? dungeonRange!.MinimumTier : definition.MinimumTier,
                         MaximumTier = dungeonApplies ? dungeonRange!.MaximumTier : definition.MaximumTier, Reason = reason,
