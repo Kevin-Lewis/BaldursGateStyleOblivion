@@ -11,7 +11,7 @@ internal static class Program
         {
             if (args.Length == 0 || args[0] is "help" or "--help")
             {
-                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--source-page <UESP-title>] [--port <port>] [--parallelism <1-8>] [--no-open] [--refresh]");
+                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--list-config <creature-lists.json>] [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--source-page <UESP-title>] [--port <port>] [--parallelism <1-8>] [--no-open] [--refresh]");
                 return 0;
             }
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -28,7 +28,9 @@ internal static class Program
             var actors = Catalog.Read(Path.GetFullPath(Get("--reports", "artifacts/phase0-data/Reports")));
             if (args[0] == "edit")
             {
-                await Editor.Run(actors, config, int.Parse(Get("--port", "5078")), !options.ContainsKey("--no-open"));
+                await Editor.Run(actors, config, int.Parse(Get("--port", "5078")), !options.ContainsKey("--no-open"),
+                    Path.GetFullPath(Get("--reports", "artifacts/phase0-data/Reports")),
+                    Path.GetFullPath(Get("--list-config", Path.Combine(Path.GetDirectoryName(config)!, "creature-lists.json"))));
                 return 0;
             }
             if (args[0] == "research")

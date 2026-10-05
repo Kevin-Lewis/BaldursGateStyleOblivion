@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ActorResearch;
 
@@ -21,12 +22,13 @@ internal static class Editor
     private static readonly JsonSerializerOptions ResponseJson = new(ActorConfiguration.JsonOptions)
     { DefaultIgnoreCondition = JsonIgnoreCondition.Never };
 
-    public static async Task Run(Actor[] actors, string config, int port, bool open)
+    public static async Task Run(Actor[] actors, string config, int port, bool open, string reports, string listConfig)
     {
         if (port is < 1024 or > 65535) throw new ArgumentException("Choose a port between 1024 and 65535.");
         var url = $"http://127.0.0.1:{port}";
         var token = Convert.ToHexString(RandomNumberGenerator.GetBytes(32));
         var builder = WebApplication.CreateBuilder();
+        builder.Services.ConfigureHttpJsonOptions(options => options.SerializerOptions.Converters.Add(new JsonStringEnumConverter(allowIntegerValues: false)));
         builder.Logging.SetMinimumLevel(LogLevel.Warning);
         builder.WebHost.UseUrls(url);
         var app = builder.Build();
@@ -73,6 +75,7 @@ internal static class Editor
             catch (Exception exception) when (exception is ArgumentException or IOException or UnauthorizedAccessException or InvalidDataException or JsonException)
             { return Results.BadRequest(new { error = exception.Message }); }
         });
+        ListEditor.Map(app, actors, listConfig, reports, token);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");
         if (open) Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });

@@ -55,6 +55,10 @@ public class Program
             var changes = new Dictionary<FormKey, string[]>();
             run.Module("Actor deleveling", run.Settings.EnableActorDeleveling && run.Settings.EnableActorClassification, false,
                 () => changes = ActorDeleveling.Run(state, profiles, actorSettings, run));
+            run.Module("Creature list deleveling", run.Settings.EnableCreatureListDeleveling, false, () =>
+            {
+                foreach (var change in CreatureListDeleveling.Run(state, profiles, run)) changes.Add(change.Key, change.Value);
+            });
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);
@@ -62,7 +66,7 @@ public class Program
             });
             run.Module("Record discovery", run.Settings.EnableRecordDiscovery && run.Settings.EnableDiagnostics, false,
                 () => Discovery.RecordDiscovery.Write(state, run));
-            run.Log($"Completed. {changes.Count} actor records modified; ReportOnly={run.Settings.ReportOnly}.");
+            run.Log($"Completed. {changes.Count} records modified; ReportOnly={run.Settings.ReportOnly}.");
         }
         catch (Exception exception)
         {

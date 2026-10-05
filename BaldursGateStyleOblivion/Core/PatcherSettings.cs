@@ -6,6 +6,8 @@ public sealed class PatcherSettings
     public bool EnableRecordDiscovery { get; set; } = true;
     public bool EnableDiagnostics { get; set; } = true;
     public bool EnableActorDeleveling { get; set; } = true;
+    public bool EnableCreatureListDeleveling { get; set; } = true;
+    public string CreatureListConfigurationFile { get; set; } = "";
     public bool EnableActorClassification { get; set; } = true;
     public List<string> IncludedPlugins { get; set; } = new();
     public List<string> ExcludedPlugins { get; set; } = new();

@@ -1,0 +1,1455 @@
+{
+  "Fallback": "Preserve",
+  "Weights": {
+    "CommonMaxTier": 3,
+    "StrongMaxTier": 5,
+    "Common": 70,
+    "Strong": 25,
+    "Rare": 5
+  },
+  "Groups": [
+    {
+      "Name": "Wildlife",
+      "Match": "^LL[012](?:Wilderness|Road|Deer|Rat|Boar|Wolf|Bear|MountainLion|MudCrab)",
+      "Policy": "WeightedPool",
+      "Reason": "Static habitat pool; common wildlife outweighs stronger predators. Existing spawn chance is retained."
+    },
+    {
+      "Name": "Bandits",
+      "Match": "^LL[012]Bandit(?!.*BlackBow)",
+      "Policy": "WeightedPool",
+      "Reason": "Static bandit role pool; race and cosmetic variants share their role and tier weight."
+    },
+    {
+      "Name": "Undead",
+      "Match": "^LL[012](?:Undead|Skeleton|Zombie|Wraith|Ghost|Lich)",
+      "Policy": "WeightedPool",
+      "Reason": "Static undead pool; ordinary undead are common, stronger forms less frequent."
+    },
+    {
+      "Name": "Shivering Isles wildlife",
+      "Match": "^SELL[012](?:Baliwog|Elytra|Gnarl|Hunger|Shambles|Grummite|AtronachFlesh)",
+      "Policy": "WeightedPool",
+      "Reason": "Static species pool within its existing Mania/Dementia or boss identity."
+    },
+    {
+      "Name": "Dungeon factions",
+      "Match": "^LL[012](?:Marauder|Necromancer|Conjurer|Vampire|Goblin)",
+      "Policy": "WeightedPool",
+      "Reason": "Static faction and role pools; stronger variants remain less frequent."
+    },
+    {
+      "Name": "Mythic creatures and Daedra",
+      "Match": "^LL[012](?:Beast|Mythic|Daedra|Daedric|Dremora|Minotaur|Ogre|Troll|Atronach)",
+      "Policy": "WeightedPool",
+      "Reason": "Static creature family pools; retain the original habitat and encounter identity."
+    },
+    {
+      "Name": "Mixed dungeon pools",
+      "Match": "^LL2(?:Tomb|Undercroft)",
+      "Policy": "WeightedPool",
+      "Reason": "Static dungeon pool with its original creature families."
+    },
+    {
+      "Name": "Isles habitats and factions",
+      "Match": "^SELL[012](?:Scalon|SkinnedHound|Skeleton|KnightOfOrder|Zealot|Heretic|Wilderness|Water|Natural|Shoreline|Undead)",
+      "Policy": "WeightedPool",
+      "Reason": "Static Mania/Dementia habitat or faction pool; existing chance of no spawn is retained."
+    }
+  ],
+  "PluginRules": [],
+  "FormKeyOverrides": {
+    "000FB6:Knights.esp": {
+      "Name": "ND10LLAuroranLieutenant",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FB7:Knights.esp": {
+      "Name": "ND10LLAuroranOrbStay",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FB8:Knights.esp": {
+      "Name": "ND10LLAuroranOrbRun",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FB9:Knights.esp": {
+      "Name": "ND10LLAuroranBattle",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FBA:Knights.esp": {
+      "Name": "ND08LL1AuroranLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FBB:Knights.esp": {
+      "Name": "ND04LL1AuroranLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FBD:Knights.esp": {
+      "Name": "NDLL1AuroranLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FBE:Knights.esp": {
+      "Name": "NDLL1Auroran100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "002968:Oblivion.esm": {
+      "Name": "MQ16PalaceDaedraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "002969:Oblivion.esm": {
+      "Name": "MQ16PalaceDremoraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "008BFD:Oblivion.esm": {
+      "Name": "KvatchExteriorCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "009EF4:Oblivion.esm": {
+      "Name": "SQ07SunkenOneLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "00A0C4:Oblivion.esm": {
+      "Name": "SQ09RumareSlaughterfish1",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "00A3BC:Oblivion.esm": {
+      "Name": "DAHircineMinotaurLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "014BB3:Oblivion.esm": {
+      "Name": "MG10UndeadBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "014BB4:Oblivion.esm": {
+      "Name": "MG10UndeadLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "015B26:Oblivion.esm": {
+      "Name": "TrollLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "01B5B8:Oblivion.esm": {
+      "Name": "SE10LLKnightOfOrder100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "01E415:Oblivion.esm": {
+      "Name": "SE04FelldewElytra",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "01F137:Oblivion.esm": {
+      "Name": "OblivionGateEasy",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "01F138:Oblivion.esm": {
+      "Name": "OblivionGateMedium",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "01F139:Oblivion.esm": {
+      "Name": "OblivionGateHard",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "027446:Oblivion.esm": {
+      "Name": "TG11LL2Tomb100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "027447:Oblivion.esm": {
+      "Name": "TG11LL2Tomb25",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "027448:Oblivion.esm": {
+      "Name": "TG11LL2Tomb50",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "027474:Oblivion.esm": {
+      "Name": "TG11LL2Tomb75",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "027475:Oblivion.esm": {
+      "Name": "TG11LL1Undead100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "031D3E:Oblivion.esm": {
+      "Name": "KvatchCastleCourtyardCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "032DA2:Oblivion.esm": {
+      "Name": "KvatchCountsChamberCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "032DA4:Oblivion.esm": {
+      "Name": "KvatchCastleCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "035A35:Oblivion.esm": {
+      "Name": "MG14LeveledUndead",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "03AB93:Oblivion.esm": {
+      "Name": "MQ13OblivionGate1Creature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "03AB94:Oblivion.esm": {
+      "Name": "MQ13OblivionGate2Creature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "03ABA0:Oblivion.esm": {
+      "Name": "MQ13OblivionGate3Creature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "03E2A0:Oblivion.esm": {
+      "Name": "MQ15CavesDaedra100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "04404D:Oblivion.esm": {
+      "Name": "SE09LLCreatures100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0442E1:Oblivion.esm": {
+      "Name": "SE09LL1AtronachFlesh100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "04669A:Oblivion.esm": {
+      "Name": "MQ15EternalGardenDaedra100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "046918:Oblivion.esm": {
+      "Name": "SELL1BlackrootLairGrummiteLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0471C4:Oblivion.esm": {
+      "Name": "SE10LLBrellach04aKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "047504:Oblivion.esm": {
+      "Name": "MG01Zombie",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "04A15F:Oblivion.esm": {
+      "Name": "SELL1BlackrootLairLvlBoss100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "04D440:Oblivion.esm": {
+      "Name": "MG10UndeadEthereal100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "04F83A:Oblivion.esm": {
+      "Name": "MG15DaedraLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05571F:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "055721:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "055723:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol05a",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "055725:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol06",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "055727:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol05b",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "055729:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol07a",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05572B:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol07b",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0560F2:Oblivion.esm": {
+      "Name": "SE32ShamblesLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B28:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B29:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol01b",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2A:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2B:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2C:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2D:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol05",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2E:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol06",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B2F:Oblivion.esm": {
+      "Name": "SEFetidGroveGrummiteLvl100Patrol07",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B43:Oblivion.esm": {
+      "Name": "SERottenDen02LLBoss01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059B44:Oblivion.esm": {
+      "Name": "SERottenDen03LLBoss01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "059D1B:Oblivion.esm": {
+      "Name": "SE09LL1AtronachFleshBOSS100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05A01B:Oblivion.esm": {
+      "Name": "MS94LL1DaedricBeast100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05A01C:Oblivion.esm": {
+      "Name": "MS94LL1DaedricBeastLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05A01D:Oblivion.esm": {
+      "Name": "MS94LL1DremoraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05AA71:Oblivion.esm": {
+      "Name": "SELLCorpserotArenaMonster100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05AB41:Oblivion.esm": {
+      "Name": "SELLCorpserotBoss100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05AB42:Oblivion.esm": {
+      "Name": "SELLCorpserotGrummite01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05AB4C:Oblivion.esm": {
+      "Name": "SELLCorpserotArenaGuard01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05C00B:Oblivion.esm": {
+      "Name": "MQ13OblivionGate1Dremora",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05C00C:Oblivion.esm": {
+      "Name": "MQ13OblivionGate2Dremora",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05C00D:Oblivion.esm": {
+      "Name": "MQ13OblivionGate3Dremora",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05C017:Oblivion.esm": {
+      "Name": "MQ13OblivionGate4Dremora",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05C06D:Oblivion.esm": {
+      "Name": "MQ15CavesDremora100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05EC45:Oblivion.esm": {
+      "Name": "SEAichanLL1GrummiteManiaLvlBoss100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24A:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24B:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24C:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24D:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24E:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol05",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F24F:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol06",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F250:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol07",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F251:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol08",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F252:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol09",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F25A:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol10",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F25C:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol11",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F25D:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol12",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F27B:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1Lvl100Patrol13",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F47C:Oblivion.esm": {
+      "Name": "MS27LL1Undead100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "05F47D:Oblivion.esm": {
+      "Name": "MS27LL1UndeadBones100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "06670A:Oblivion.esm": {
+      "Name": "FGC08MythicNatureLairDry100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "068B20:Oblivion.esm": {
+      "Name": "MS18GoblinWave1",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "068B21:Oblivion.esm": {
+      "Name": "MS18GoblinBossLevelList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "068BC7:Oblivion.esm": {
+      "Name": "MS18GoblinWave2",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "068BC8:Oblivion.esm": {
+      "Name": "MS18GoblinWave3",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0696D0:Oblivion.esm": {
+      "Name": "SE03GrummiteShaman100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0698C1:Oblivion.esm": {
+      "Name": "SELL1EntranceGrummiteMania100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "071319:Oblivion.esm": {
+      "Name": "MS06UndeadEtheralCrewLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "073292:Oblivion.esm": {
+      "Name": "KvatchTownBossCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "073905:Oblivion.esm": {
+      "Name": "MQ15CavesDaedra50",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "073ADF:Oblivion.esm": {
+      "Name": "MQ15EternalGardenDaedra50",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0769B0:Oblivion.esm": {
+      "Name": "SEebroccaSpecialList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "077B4A:Oblivion.esm": {
+      "Name": "SELL1BlackrootLairGnarlPrisonerLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078552:Oblivion.esm": {
+      "Name": "SELL2KnotbonePatrol01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078553:Oblivion.esm": {
+      "Name": "SELL2KnotbonePatrol02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078554:Oblivion.esm": {
+      "Name": "SELL2KnotbonePatrol03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078555:Oblivion.esm": {
+      "Name": "SELL2KnotbonePatrol04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0786ED:Oblivion.esm": {
+      "Name": "SEXPxiditteSELL2Zealot100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078C09:Oblivion.esm": {
+      "Name": "SE08WalkToPassWallList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "078C70:Oblivion.esm": {
+      "Name": "SE03LLGrummiteList01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07906B:Oblivion.esm": {
+      "Name": "SE03GrummiteShamanNoCrystal100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07906C:Oblivion.esm": {
+      "Name": "SE03LLGrummiteList02Resonator",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "079122:Oblivion.esm": {
+      "Name": "SE03LLGrummiteList03GnarlRoom",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "079294:Oblivion.esm": {
+      "Name": "SE03LL1KnightOfOrder100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "079C90:Oblivion.esm": {
+      "Name": "SE14GSEscortList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07B21C:Oblivion.esm": {
+      "Name": "SE37Wilderness100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07B7D8:Oblivion.esm": {
+      "Name": "MS12PalePassOgreLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07BE65:Oblivion.esm": {
+      "Name": "MS37FrostfireGladeAtronachLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07CF31:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07CF3F:Oblivion.esm": {
+      "Name": "SELL1BlackrootLairArcherGrummiteLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07D15B:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07D15C:Oblivion.esm": {
+      "Name": "SERottenDenLL1Patrol04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07DB3E:Oblivion.esm": {
+      "Name": "SE45mLackey",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07DB46:Oblivion.esm": {
+      "Name": "SEXPXavaraPatrolList01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07DB74:Oblivion.esm": {
+      "Name": "SEXPXavaraPatrolList02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07DD78:Oblivion.esm": {
+      "Name": "SE45zLackey",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07E9C4:Oblivion.esm": {
+      "Name": "SEMilchar02cPatrolTList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07E9CB:Oblivion.esm": {
+      "Name": "SEMilchar02cPatrolTList02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "07E9CC:Oblivion.esm": {
+      "Name": "SEMilchar02cPatrolTList03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08032F:Oblivion.esm": {
+      "Name": "SEXedPatrolList01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "080330:Oblivion.esm": {
+      "Name": "SEXedPatrolList02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0807FC:Oblivion.esm": {
+      "Name": "SE08LL1KnightOfOrderBattle",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "080D29:Oblivion.esm": {
+      "Name": "XPEbroccaCrematorList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "081B16:Oblivion.esm": {
+      "Name": "SE10LLBrellach05bKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "081B84:Oblivion.esm": {
+      "Name": "SE10LLBrellach04bKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "081B85:Oblivion.esm": {
+      "Name": "SE10LLKnightSentry100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "081C58:Oblivion.esm": {
+      "Name": "SEKnottyBramGrummiteEggDefLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "082366:Oblivion.esm": {
+      "Name": "SEKnottyBramGrummiteSentry100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "082367:Oblivion.esm": {
+      "Name": "SEKnottyBramGrummitePatrolA100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "082368:Oblivion.esm": {
+      "Name": "SEKnottyBramGrummitePatrolB100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "084A44:Oblivion.esm": {
+      "Name": "DANocturnalTrollLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "088B56:Oblivion.esm": {
+      "Name": "MQ14LL1DremoraArcherLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "088B57:Oblivion.esm": {
+      "Name": "MQ14LL1DremoraMageLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "089536:Oblivion.esm": {
+      "Name": "SE10LLPinnacle04aKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "089537:Oblivion.esm": {
+      "Name": "SE10LLPinnacle04bKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "089538:Oblivion.esm": {
+      "Name": "SE10LLPinnacle05bKnight100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0895FB:Oblivion.esm": {
+      "Name": "SE14HungerAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0895FC:Oblivion.esm": {
+      "Name": "SE14ElytraAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0895FD:Oblivion.esm": {
+      "Name": "SE14GrummiteAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0895FE:Oblivion.esm": {
+      "Name": "SE14ScalonAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08ADC6:Oblivion.esm": {
+      "Name": "DAVaerminaClannfear",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08DB13:Oblivion.esm": {
+      "Name": "SELLCorpserotGrummite02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08DD66:Oblivion.esm": {
+      "Name": "MQ16DremoraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08DD67:Oblivion.esm": {
+      "Name": "MQ16DaedraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08DD68:Oblivion.esm": {
+      "Name": "MQ16DaedricBeast100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08DD69:Oblivion.esm": {
+      "Name": "MQ16Dremora100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08EFE5:Oblivion.esm": {
+      "Name": "XPKnotCustomSELL1GrummiteMagusDementia100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08EFEA:Oblivion.esm": {
+      "Name": "XPKnotCustomSELL1GrummiteDementia100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08EFEB:Oblivion.esm": {
+      "Name": "XPKnotCustomSELL1ElytraMania100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08EFEC:Oblivion.esm": {
+      "Name": "XPKnotCustomSELL1ElytraManiaLvlBoss100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "08F116:Oblivion.esm": {
+      "Name": "SE03LLGrummiteList01Group",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "090AB6:Oblivion.esm": {
+      "Name": "MS48RespawningCreatureLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "09133A:Oblivion.esm": {
+      "Name": "TG03LlathasasGhostLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "09226C:Oblivion.esm": {
+      "Name": "KvatchTownCreature",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "09407A:Oblivion.esm": {
+      "Name": "MS16WeatherleahOgresLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "09407D:Oblivion.esm": {
+      "Name": "MS16RedguardValleyOgresLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "098266:Oblivion.esm": {
+      "Name": "DAHircineUnicornCompanion",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "098267:Oblivion.esm": {
+      "Name": "DAHircineUnicornToughCompanion",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0A9340:Oblivion.esm": {
+      "Name": "MS27AyleidBonesLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C5755:Oblivion.esm": {
+      "Name": "MQ12MiscarSkeletonAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C5757:Oblivion.esm": {
+      "Name": "MQ12MiscarGoblinBossAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C5758:Oblivion.esm": {
+      "Name": "MQ12MiscarGoblinAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C575B:Oblivion.esm": {
+      "Name": "MQ12MiscarZombieAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58AF:Oblivion.esm": {
+      "Name": "MQ12MiscarZombie",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B0:Oblivion.esm": {
+      "Name": "MQ12MiscarSkeletonBossAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B1:Oblivion.esm": {
+      "Name": "MQ12MiscarSkeletonBoss",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B2:Oblivion.esm": {
+      "Name": "MQ12MiscarSkeletonEndBossAttack",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B3:Oblivion.esm": {
+      "Name": "MQ12MiscarGoblin",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B4:Oblivion.esm": {
+      "Name": "MQ12MiscarGoblinBoss",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C58B5:Oblivion.esm": {
+      "Name": "MQ12MiscarSkeleton",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C5B71:Oblivion.esm": {
+      "Name": "MQ12MiscarGoblinExterior50",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C891B:Oblivion.esm": {
+      "Name": "MS48FinalBattleCreature100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C891C:Oblivion.esm": {
+      "Name": "MS48FinalBattleCreatureLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "0C9FFF:Oblivion.esm": {
+      "Name": "MS47LL1Beast100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "181C6F:Oblivion.esm": {
+      "Name": "SQ03LL1GoblinBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "185414:Oblivion.esm": {
+      "Name": "MS47LL2BeastLairDry50",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "185415:Oblivion.esm": {
+      "Name": "MS47LL2BeastLairDry100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "1896B0:Oblivion.esm": {
+      "Name": "MS48RespawningCreature75",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "1896B1:Oblivion.esm": {
+      "Name": "MS48FinalBattleDremoraBossLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "1896B2:Oblivion.esm": {
+      "Name": "MS48RespawningCreature100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "18AE3C:Oblivion.esm": {
+      "Name": "SQ06WestWealdBearLeveled",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed fixed encounter identity; retain entry multiplicities, spawn counts, templates, scripts and quest conditions; remove only level gates."
+    },
+    "000FB5:Knights.esp": {
+      "Name": "NDLL1UmarilSpiritLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "000FBC:Knights.esp": {
+      "Name": "NDLL1UmarilRealLvl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "011AE0:DLCThievesDen.esp": {
+      "Name": "DLC06UndeadPirate100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "0134DF:Oblivion.esm": {
+      "Name": "SELL1KnightOfOrderRespawn100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A190:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A191:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A194:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A195:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A196:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl01Ordered",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A198:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl02Ordered",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A19B:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl03Ordered",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A19C:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl04Follower",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A19D:Oblivion.esm": {
+      "Name": "SE12LL1Gnarl04Ordered",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "01A7EE:Oblivion.esm": {
+      "Name": "SE13LL1KnightOfOrderRespawn100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "029230:Oblivion.esm": {
+      "Name": "ArenaMonsters1",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "046828:Oblivion.esm": {
+      "Name": "SE14GnarlAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "04DBF8:Oblivion.esm": {
+      "Name": "SELL1WabbaSummon",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "04DC0C:Oblivion.esm": {
+      "Name": "SELL0SheogorathBaliwog100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "04DC0D:Oblivion.esm": {
+      "Name": "SELL0SheogorathElytra100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "04DC0E:Oblivion.esm": {
+      "Name": "SELL0SheogorathGnarl100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "04DC10:Oblivion.esm": {
+      "Name": "SELL0SheogorathScalon100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2BA:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner01",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2D6:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner02",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2DA:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner03",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2DB:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner04",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2DC:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner05",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "05F2DE:Oblivion.esm": {
+      "Name": "SEBlackrootLairLL1GnarlLvl100Prisoner06",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "079FF2:Oblivion.esm": {
+      "Name": "SEXedc2GrummitePatrol100",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "080DD6:Oblivion.esm": {
+      "Name": "SE08LL1KnightOfOrderInitial",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    },
+    "0895FF:Oblivion.esm": {
+      "Name": "SE14CreatureAttackList",
+      "Policy": "StaticPool",
+      "AllowSpecial": true,
+      "Reason": "Reviewed special encounter: retain original actor variants, multiplicities, counts and callbacks; remove entry-level gates. Actor-level effects and quest conditions remain unchanged."
+    }
+  },
+  "ReviewedScripts": {
+    "00A8EE:Oblivion.esm": "9F661442F09F7CE6B6624216BD5C48147F22D34416F921639F5467B6AC23FADE",
+    "002966:Oblivion.esm": "20D00DE129603CF6C8C32B7EB667EA50E44514CC01B38479F0DF78CAC9A55C3E",
+    "005073:Oblivion.esm": "671600E2068E052427BB384C02984C0B85B945D43E05B1C950C1282FE27F8F36",
+    "005074:Oblivion.esm": "57DB10CCA135CF1A91058B3847A5A10F1D90A6DBB2B41D147CE9CB698F6A21E5",
+    "005075:Oblivion.esm": "845295E03781698F9FA3F5D894022A33F01A8A23DC9FAA2BA3EBE51B24FF1061",
+    "00C73B:Oblivion.esm": "1575D3A901B257384FC2073C77007B8E01BEF748E23598E492250A88EDC6D5BB",
+    "00C73C:Oblivion.esm": "67B52001644F41EE514021A8E692E58F0000400B4B45CB655FD81BC1BC0A4E1D",
+    "00C73D:Oblivion.esm": "5C3E0205DD7E72C35CD6F11F9E18701CF614D2EA622AF294637F13E4F4CF16A6",
+    "0179F0:Oblivion.esm": "FB64BE345398DCA92E1A1FDEFB80318C04BA0A6B85FE1F83D248E8C18B52D413",
+    "01984C:Oblivion.esm": "DE3892E60F5615D4FF0D1EBC7F48EB5100636B410BED8E6C348078CDD74F09B5",
+    "01B5B7:Oblivion.esm": "EFB43C2A7E10DBE23DA8021BA846B516E8217821ABA80FFE6978CE9B1C0FCE64",
+    "036675:Oblivion.esm": "8FF9A10A86A4965DDF7E2B821C0BB9FDF737A0DF470446AF181204E88D1FDEC6",
+    "041EC9:Oblivion.esm": "1CD0B01068A5089F0D6C63360A338E9CD1945912FF4FB095C33768C45D416170",
+    "045648:Oblivion.esm": "CF6D09284ACB9D4278A59F60A8E0357B9E6696DD3FB3AF9A021C8203668C4B1C",
+    "04668E:Oblivion.esm": "1BFDEBCE3F02B31CC77150049FF11B66270099B267C3CDEE014F7560C5771762",
+    "04894E:Oblivion.esm": "F3C069DCFE5674BB3A09E0251361C310921F84AB242485C6F402923449DAF736",
+    "050ECB:Oblivion.esm": "EAABC8DBC05B4109C9CBAECF5B12C21DAF6477985D85E647520D7BB52B5A5FB4",
+    "050ECC:Oblivion.esm": "063FEED6D4B605812139571C5DC160B50EE04C57617AC3DDA49E6DACAC9C4498",
+    "05A017:Oblivion.esm": "B9F2C3B6A79AEF39B6E309BD25C43A9453A371E8A692190212BF81E510D1A6F1",
+    "05A94C:Oblivion.esm": "E5617F06F1FCAB319CCA765BAA61E4C713AE34A7D179D1A21146772BB6C03119",
+    "05C00E:Oblivion.esm": "96C8F31160B5B9B2391553C78583FF27FF5E19FDBDD1DE7F8BA64056D40A934B",
+    "05C00F:Oblivion.esm": "D18770CAF5EE190CCC76B1575FF98F332584F788DB1EE166E3D52DAE6FFAEC5E",
+    "05C010:Oblivion.esm": "F48AF485E25E0D3EE5534C1ED2A3E8F6CF8CE85CB09FC20635DE28D61732D523",
+    "05C018:Oblivion.esm": "69A993F94F14C30B68E41954F4E2E4B9DC4A9F006434A12C0C1C89EC677262CD",
+    "0637E4:Oblivion.esm": "C7843BB396CAB8FB4D5178EE5B35C2101781D9F57040CB0DCA61CC2A6A8AFBC9",
+    "068BC4:Oblivion.esm": "E2A6ECE4818B4E1500B424C2F470888A15A605EF31266EA21814A95F04797B18",
+    "068BC5:Oblivion.esm": "17EF057CDA8529F92EC519AFBA5922FC2DD7EC8D58E00C1C56DF3A39277CAC57",
+    "068BC6:Oblivion.esm": "C2B7AF04BA95F157F25A5E56E0FBC62D193DD735680648DF0F73C53D72C77A7D",
+    "078C6D:Oblivion.esm": "1E290DF8FC2AB597A363F68F0A81ECD06C4696FF79FD6246A84F6C7C8C4D3A43",
+    "078C6E:Oblivion.esm": "732443213756A08D311697C9EB125E5AF2B0726EF1455A98782931CB274D154F",
+    "07911A:Oblivion.esm": "480DFD1EB94E5E7B5F881B0FA26D9090E3AB77F25BAC6AB90F8106CF7A8F15A4",
+    "07911D:Oblivion.esm": "50AC4886FD0F0F8592BEB18811179EDC98DFFEBD89E6E0F97BCA7B3BCE7C0E9C",
+    "07BAD4:Oblivion.esm": "9ECBEE49740120657B8338FC25828AB1DFAC2AE698888766707EC2600FA3192E",
+    "0897A3:Oblivion.esm": "66403E8B81A2AD6B8337199FCBB579CBD7CEC56EE322AB70CD8779D0EACBF957",
+    "090ABE:Oblivion.esm": "E7D6E6C1DA7AB4FF89A77DF963782E3F604D9FE81DCD707911E8FA418F514600",
+    "09122B:Oblivion.esm": "6FCA89340921B67F60A41FBE80D8961323417A3C26880E5EF8B5DE36E1BE4542",
+    "09407B:Oblivion.esm": "8E4CB1F2F67BD00C29D33E3FED5E0B60CBA1FCED874CCC9E73F8C2D8E5497063",
+    "097C75:Oblivion.esm": "8C35816995D20B63D709282458E4C13A6C7DD4F8F7C8F82DDFE9E2985AE9D28D",
+    "0C5B3A:Oblivion.esm": "4F6FBC15AC011C8AC4F2504E84B502BB62461245B792B249CE880387BC76115B",
+    "0C5B3B:Oblivion.esm": "7C82AB7E0829B95A8BBF1522A557927E41AE637BC5AE27025B39DD03DFDF9F6E",
+    "0C87DF:Oblivion.esm": "313FE88E79778A73A585E3FE3BBF1B1A9AA81B221825BAA7BBA1C9DD0C7009DF",
+    "0C8919:Oblivion.esm": "2519070B82519D1F62F10EFF349333BF0A81AE37606D6D09E3C33378D77C7611",
+    "185403:Oblivion.esm": "DC95337D063B4F5D86D759C3D5D0B088EB2A2B12D01AB653F10E474C93E9BAD5",
+    "000D2C:Knights.esp": "FE6B9EBDE764E1CC260ED330E478401FAC9713E9AAF041B9425C2D5B3CE1C273",
+    "000D3B:Knights.esp": "A058530D2E48CA5BC7E250095F2BB955EB9792D764F58A94769015164026AF44",
+    "000D3D:Knights.esp": "1E9E1D1B0A27CE7F261D913E7DE391817BEB73D346FA59EE8597E7F0CD0C5D57",
+    "000D4C:Knights.esp": "FFF8EB17047CC04CE0E7E11835CE83785E57757F91F4968093E414A13433114B",
+    "000D85:Knights.esp": "B721F5524DDCD5F077B5810A987AEA5C6D47ACCE9A6D236EAC7B61150C1F3DE5",
+    "0134D7:Oblivion.esm": "A77B628B6B1D71DDD836897E17B52C4F3350902F486762D69B8C7D0E98DA4365",
+    "01A7EA:Oblivion.esm": "C17EC4CB64D137E056032D6C58A5965717F0E48331BB847E3EAD686D261E2C6D",
+    "017DA5:Oblivion.esm": "2EF7B1761944374EDE737B5A10C845D5FEB441470C5C0C3AF1CAD680B2A5DFE7",
+    "01A36C:Oblivion.esm": "C1E9C207FEA9E6B8E323BFFD4CD6E20391597197CC83E46D5CE7E1068208A5DA",
+    "01A36D:Oblivion.esm": "381902653A817F1C427A4263F25AE2F239A9189B40740501394AC018006B5DD1",
+    "041D83:Oblivion.esm": "A0493BC44A061188F6DBE9B4F7191FD55567D848816933F5BA005DE9F03710ED",
+    "041F3D:Oblivion.esm": "BCACD3A5A4D1BA0B36A465DFFD82E5A87FCE36EADBF0CB8D139C8E6500DD9DD8",
+    "04682F:Oblivion.esm": "7379E9A5DB2FA346A6CF863BE5CE562539A2D75B07E832828E3C2C342252D073",
+    "000DA6:Knights.esp": "D433C59FBC0435669D2FD3627837751EE74BE867297C6773B576B3CA0F156752",
+    "000DA7:Knights.esp": "45C4FCBED025B1F8ABC6A3FF7CD900B8F68EBB367C43D0652F65AFC08BCF5CAA"
+  }
+}

@@ -245,7 +245,7 @@ internal static class ActorDeleveling
         return changes;
     }
 
-    // Encounter selection stays unchanged. Report indirect scaling through nested lists.
+    // Report incoming encounter selection; Phase 4 reports its separate planned and applied changes.
     private static void WriteScalingPaths(IMajorRecordGetter[] records, List<object> scriptRows, PatcherRun run)
     {
         var leveledLists = records.OfType<ILeveledCreatureGetter>().ToDictionary(list => list.FormKey);
@@ -273,7 +273,7 @@ internal static class ActorDeleveling
             NestedLists = list.Entries?.Where(entry => leveledLists.ContainsKey(entry.Reference.FormKey)).Select(entry => entry.Reference.FormKey.ToString()).Distinct().ToArray()
         }).ToArray();
         run.WriteReport(".actor-scaling-paths.json", new { LeveledCreatureLists = lists, Scripts = scriptRows,
-            Limitations = new[] { "Leveled creature list selection is unchanged; nested lists may still depend on player level.",
+            Limitations = new[] { "This report describes incoming leveled lists. See creature-list-deleveling.json for Phase 4 changes and remaining gates.",
                 "Script signals are conservative review candidates, not proof of runtime behavior. Indirect calls and compiled-only scripts cannot be fully analyzed.",
                 "Already-spawned actors and quest behavior require in-game validation." } }, Options);
     }

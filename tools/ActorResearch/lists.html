@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Creature List Editor</title>
+<style>
+:root{color-scheme:dark;font:14px system-ui;background:#171a1f;color:#e4e6eb}body{margin:20px auto;max-width:1700px;padding:0 16px}h1{margin:0 0 8px}p,small{color:#aeb7c4}small{display:block;margin-top:3px}a,summary{color:#b4cfff}input,select,button{padding:6px;border-radius:4px}input,select{background:#252b33;color:inherit;border:1px solid #4b5563}button{background:#415c80;color:white;border:0;cursor:pointer}.delete{background:#663c42}button:disabled{opacity:.4;cursor:default}table{border-collapse:collapse;width:100%}td,th{padding:7px 9px;border-bottom:1px solid #343b45;text-align:left;vertical-align:top}th{color:#aeb7c4}nav,.weights,.pager,.actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0}.weights input,.entry-weight,.entry-count{width:58px}#search{width:280px}.reason{width:min(600px,85%)}details{margin-top:5px}summary{cursor:pointer}.reference{width:220px}.detail-body{padding:8px;background:#20252d;margin:8px 0}pre{white-space:pre-wrap;font-size:12px}#message{color:#ffd68e}.tag{color:#ffd68e}.muted{color:#aeb7c4}.detail-body table{max-width:1100px}.group{padding:8px 0;border-bottom:1px solid #343b45}
+</style>
+<h1>Creature List Editor</h1><a href="/">Actor tier editor</a>
+<p>Edits save directly to creature-lists.json. Run the patcher afterward to apply them. “Last run” describes the previous patch, and updates when you rerun it and reload this page.</p>
+<details id="global"><summary>Automatic weights and encounter groups</summary><div class="weights" id="weights"></div><div id="groups"></div></details>
+<nav><input id="search" placeholder="Search list, plugin, or FormKey" aria-label="Search lists"><select id="purpose" aria-label="Encounter purpose"><option value="">All purposes</option></select><select id="overrides" aria-label="Overrides"><option value="">All lists</option><option value="only">Overrides only</option><option value="none">No override</option></select><select id="state" aria-label="Last-run status"><option value="">All last-run states</option><option>Modified</option><option>AlreadyStatic</option><option>Preserved</option><option>WouldModify</option></select><select id="sort" aria-label="Sort"><option value="name">Name</option><option value="dependent">Remaining level gates first</option><option value="status">Last-run state</option></select><button id="reload">Reload</button></nav>
+<p id="message" role="status"></p><div class="pager"><button id="previous">Previous</button><span id="page-info"></span><button id="next">Next</button><select id="size" aria-label="Rows per page"><option>25</option><option selected>50</option><option>100</option></select></div>
+<table><thead><tr><th>Encounter list</th><th>Policy / override</th><th>Last run</th><th>Notes / pool editor</th></tr></thead><tbody id="rows"></tbody></table>
+<script>
+let data=__LIST_DATA__;
+const token="__EDITOR_TOKEN__";
+let page=0;
+const $=id=>document.getElementById(id);
+const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const policies=['Preserve','StaticPool','WeightedPool','CuratedPool'];
+function entryRow(entry){
+ return `<tr><td><span>${escape(entry.Name||entry.Reference)}</span><small><input class="reference" value="${escape(entry.Reference)}" aria-label="Entry FormKey"></small></td><td><input class="entry-weight" type="number" min="1" max="255" value="${entry.Weight}" aria-label="Entry weight"></td><td><input class="entry-count" type="number" min="1" max="32767" value="${entry.Count}" aria-label="Actor count"></td><td><button class="remove-entry">Remove</button></td></tr>`;
+}
+function details(row,list){
+ const body=row.querySelector('.detail-body');
+ if(body.dataset.loaded)return;
+ body.dataset.loaded='true';
+ body.innerHTML=`<small>${escape(list.FormKey)} · ${escape(list.SourcePlugin)}</small><p>StaticPool: original entries with level gates removed. WeightedPool: automatic tier bands. CuratedPool: use the entries below. Weight controls selection chance; Count controls actor quantity.</p><label><input class="allow-special" type="checkbox" ${list.AllowSpecial?'checked':''}> Individually reviewed quest/template list (script fingerprints must match; UseAll remains guarded)</label><p><input class="reason" value="${escape(list.Reason)}" placeholder="Reason / notes" aria-label="Override reason"></p><table><thead><tr><th>Actor / nested list</th><th>Weight</th><th>Count</th><th></th></tr></thead><tbody class="entries">${list.Entries.map(entryRow).join('')}</tbody></table><button class="add-entry">Add entry</button><small>These entry edits apply when the policy is CuratedPool. Selecting Preserve keeps the original list.</small><details><summary>Original records and last planned pool</summary><pre>${escape(JSON.stringify({Original:list.Original,LastPlanned:list.Planned},null,2))}</pre></details><details><summary>Direct uses and cells</summary><pre>${escape(JSON.stringify({Cells:list.Cells,Uses:list.Uses},null,2))}</pre></details>`;
+ body.querySelector('.add-entry').onclick=()=>body.querySelector('.entries').insertAdjacentHTML('beforeend',entryRow({Reference:'',Weight:1,Count:1}));
+ body.onclick=event=>{if(event.target.classList.contains('remove-entry'))event.target.closest('tr').remove()};
+}
+function render(){
+ const query=$('search').value.toLowerCase();
+ const rows=data.Lists.filter(list=>(!query||`${list.EditorID} ${list.FormKey} ${list.SourcePlugin}`.toLowerCase().includes(query))&&(!$('purpose').value||list.Purpose===$('purpose').value)&&(!$('state').value||list.LastStatus===$('state').value)&&(!$('overrides').value||($('overrides').value==='only'?list.HasOverride:!list.HasOverride)));
+ rows.sort((a,b)=>($('sort').value==='dependent'?Number(b.PlannedDependsOnPlayerLevel)-Number(a.PlannedDependsOnPlayerLevel):$('sort').value==='status'?a.LastStatus.localeCompare(b.LastStatus):0)||(a.EditorID??a.FormKey).localeCompare(b.EditorID??b.FormKey));
+ const size=Number($('size').value),pages=Math.max(1,Math.ceil(rows.length/size));
+ page=Math.min(page,pages-1);
+ $('previous').disabled=page===0;$('next').disabled=page===pages-1;
+ $('page-info').textContent=`Page ${page+1} of ${pages} · ${rows.length} of ${data.Lists.length} lists`;
+ const visible=rows.slice(page*size,(page+1)*size);
+ $('rows').innerHTML=visible.map(list=>`<tr data-key="${escape(list.FormKey)}"><td><strong>${escape(list.EditorID||list.FormKey)}</strong><small>${escape(list.Purpose)}</small></td><td><select class="policy" aria-label="List policy">${policies.map(policy=>`<option ${policy===list.Policy?'selected':''}>${policy}</option>`).join('')}</select><div class="actions"><button class="save">Save</button>${list.HasOverride?'<button class="delete">Delete override</button>':''}</div><small>${list.HasOverride?'Individual override':escape(list.Rule)}</small></td><td>${escape(list.LastStatus)}<small>${list.PlannedDependsOnPlayerLevel?'Level gates remain':'Static selection'}</small><small>${list.Original.Entries.length} original entries → ${list.Planned.Entries.length} planned entries</small></td><td>${escape(list.LastReason)}<details class="pool-details"><summary>Pool entries / details</summary><div class="detail-body"></div></details></td></tr>`).join('');
+ for(const row of $('rows').querySelectorAll('[data-key]')){
+  const list=data.Lists.find(list=>list.FormKey===row.dataset.key);
+  row.querySelector('.pool-details').ontoggle=event=>{if(event.target.open)details(row,list)};
+  row.querySelector('.save').onclick=()=>save(row,list);
+  const remove=row.querySelector('.delete');if(remove)remove.onclick=()=>send('/api/list/delete',{FormKey:list.FormKey},remove);
+ }
+}
+async function send(path,body,button){
+ button.disabled=true;
+ try{
+  const response=await fetch(path,{method:'POST',headers:{'Content-Type':'application/json','X-Actor-Editor-Token':token},body:JSON.stringify(body)});
+  let result;try{result=await response.json()}catch{throw Error('Editor session expired or response failed. Reload this page.')}
+  if(!response.ok)throw Error(result.error||'Save failed. Reload the page and try again.');
+  data=result;render();renderWeights();$('message').textContent='Saved to creature-lists.json. Run the patcher to apply this change.';
+ }catch(error){$('message').textContent=error.message}
+ finally{button.disabled=false}
+}
+function save(row,list){
+ const body=row.querySelector('.detail-body'),loaded=body.dataset.loaded;
+ const policy=row.querySelector('.policy').value;
+ const entries=loaded?Array.from(body.querySelectorAll('.entries tr'),entry=>({Reference:entry.querySelector('.reference').value.trim(),Weight:Number(entry.querySelector('.entry-weight').value),Count:Number(entry.querySelector('.entry-count').value)})):list.Entries.map(({Reference,Weight,Count})=>({Reference,Weight,Count}));
+ send('/api/list',{FormKey:list.FormKey,Definition:{Name:list.EditorID,Policy:policy,Reason:loaded?body.querySelector('.reason').value:list.Reason,AllowSpecial:loaded?body.querySelector('.allow-special').checked:list.AllowSpecial,Weights:list.Weights,Entries:policy==='CuratedPool'?entries:[]}},row.querySelector('.save'));
+}
+function renderWeights(){
+ const fields=['CommonMaxTier','StrongMaxTier','Common','Strong','Rare'];
+ const labels={CommonMaxTier:'Common through tier',StrongMaxTier:'Strong through tier',Common:'Common weight',Strong:'Strong weight',Rare:'Rare weight'};
+ $('weights').innerHTML=fields.map(name=>`<label>${labels[name]} <input type="number" data-weight="${name}" value="${data.Weights[name]}" min="${name.endsWith('Tier')?0:1}" max="${name.endsWith('Tier')?10:10000}" aria-label="${name}"></label>`).join('')+'<button id="save-weights">Save automatic weights</button>';
+ $('save-weights').onclick=()=>send('/api/list/weights',Object.fromEntries(Array.from($('weights').querySelectorAll('[data-weight]'),input=>[input.dataset.weight,Number(input.value)])),$('save-weights'));
+ $('groups').innerHTML='<p>Weights apply within nonempty tier bands; absent bands are renormalized. Variants share a family weight. Group matching rules and plugin rules can be edited in the configuration file.</p>'+data.Groups.map(group=>`<div class="group"><strong>${escape(group.Name)}</strong> · ${escape(group.Policy)}<small>${escape(group.Reason)}</small><code>${escape(group.Match)}</code></div>`).join('')+`<small>Configuration: ${escape(data.Configuration)}</small>`;
+}
+for(const purpose of [...new Set(data.Lists.map(list=>list.Purpose))].sort())$('purpose').insertAdjacentHTML('beforeend',`<option>${escape(purpose)}</option>`);
+for(const id of ['search','purpose','state','overrides','sort','size'])$(id).addEventListener(id==='search'?'input':'change',()=>{page=0;render()});
+$('previous').onclick=()=>{page--;render()};$('next').onclick=()=>{page++;render()};
+$('reload').onclick=()=>location.reload();
+renderWeights();render();
+</script></html>

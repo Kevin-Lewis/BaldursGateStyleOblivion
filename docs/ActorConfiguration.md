@@ -130,3 +130,7 @@ Reference: [Construction Set creature flags](https://cs.uesp.net/wiki/Category:C
 Select the **BaldursGateStyleOblivion** startup project and the **Oblivion - Install patch** launch profile. Press F5 or Ctrl+F5. It reads the active Oblivion load order and the development settings, and writes `BaldursGateStyleOblivion.esp` directly into the configured game Data folder. The previous output is excluded from input, so repeated runs rebuild from original winning records. Reports remain in `artifacts/phase0-data/Reports`.
 
 The plugin is enabled in this machine's load order. Close the game before rebuilding; restart the game afterward to load the new patch. The launch profile contains this development machine's local paths.
+
+## Creature list editor
+
+The same local editor now has a **Creature list editor** link. Encounter policies and weights save to `BaldursGateStyleOblivion/creature-lists.json`. See [CreatureLists.md](CreatureLists.md) for the Phase 4 rollout, overrides, and diagnostics.
