@@ -7,6 +7,8 @@ public sealed class PatcherSettings
     public bool EnableDiagnostics { get; set; } = true;
     public bool EnableQuestRewards { get; set; } = true;
     public string RewardConfigurationFile { get; set; } = "";
+    public bool EnableMerchantStock { get; set; } = true;
+    public string MerchantConfigurationFile { get; set; } = "";
     public bool EnableWorldLoot { get; set; } = true;
     public string LootConfigurationFile { get; set; } = "";
     public bool EnableEquipmentDistribution { get; set; } = true;
@@ -27,5 +29,3 @@ public sealed class PatcherSettings
 
     public bool AllowsModule(bool enabled, bool modifiesGameplay) => enabled && (!ReportOnly || !modifiesGameplay);
 }
-
-

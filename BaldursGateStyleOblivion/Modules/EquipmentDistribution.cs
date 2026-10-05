@@ -54,6 +54,9 @@ internal static class EquipmentDistributionModule
                 try
                 {
                     var guard = Guard(actor, key, records);
+                    if (run.Settings.EnableMerchantStock && actor is INpcGetter merchant &&
+                        MerchantStock.InventoryLeaves(records, key, []).Any(item => MerchantStock.CanSell(item, (merchant.AIData?.BuySellServices ?? 0).ToString())))
+                        guard = "Merchant sale stock belongs to the merchant module.";
                     if (selected.Preserve || guard is not null) throw new InvalidDataException(guard ?? "Individual actor preservation override.");
                     var built = builder.Build(key, selected.Profile, preferredMaterial); target = built.Key; reason = built.Reason;
                     processedRoots++;

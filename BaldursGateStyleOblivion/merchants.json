@@ -1,0 +1,229 @@
+{
+  "Profiles": {
+    "General Store": {
+      "SelectionLevel": 10,
+      "MaxEquipmentQuality": "Common",
+      "GlassPercent": 0
+    },
+    "Poor Blacksmith": {
+      "SelectionLevel": 10,
+      "MaxEquipmentQuality": "Common",
+      "GlassPercent": 0
+    },
+    "Professional Blacksmith": {
+      "SelectionLevel": 20,
+      "MaxEquipmentQuality": "Military",
+      "GlassPercent": 0
+    },
+    "Luxury Merchant": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Professional",
+      "GlassPercent": 0
+    },
+    "Alchemist": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Common",
+      "GlassPercent": 0
+    },
+    "Expert Alchemist": {
+      "SelectionLevel": 25,
+      "MaxEquipmentQuality": "Common",
+      "GlassPercent": 0
+    },
+    "Mage Vendor": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Military",
+      "GlassPercent": 0
+    },
+    "Jeweler": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Professional",
+      "GlassPercent": 0
+    },
+    "Guild Vendor": {
+      "SelectionLevel": 20,
+      "MaxEquipmentQuality": "Military",
+      "GlassPercent": 0
+    },
+    "Specialist": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Military",
+      "GlassPercent": 0
+    },
+    "Expert Specialist": {
+      "SelectionLevel": 20,
+      "MaxEquipmentQuality": "HighQuality",
+      "GlassPercent": 1
+    },
+    "Fence": {
+      "SelectionLevel": 15,
+      "MaxEquipmentQuality": "Military",
+      "GlassPercent": 0
+    },
+    "RareGoods": {
+      "SelectionLevel": 20,
+      "MaxEquipmentQuality": "HighQuality",
+      "GlassPercent": 0
+    }
+  },
+  "Groups": [
+    {
+      "Name": "Food and drink",
+      "Match": "Publican|ChestVendorSam",
+      "Profile": "Specialist"
+    },
+    {
+      "Name": "Archery suppliers",
+      "Match": "ArchersParadox|FletcherChest",
+      "Profile": "Specialist"
+    },
+    {
+      "Name": "Staff specialist",
+      "Match": "RindirsStaffs",
+      "Profile": "Mage Vendor"
+    },
+    {
+      "Name": "Fences",
+      "Match": "MerchFence|ChestFence",
+      "Profile": "Fence"
+    },
+    {
+      "Name": "Brotherhood supplier",
+      "Match": "DarkSellChest",
+      "Profile": "Guild Vendor"
+    },
+    {
+      "Name": "Guild smith",
+      "Match": "VendorSmithGuild",
+      "Profile": "Guild Vendor"
+    },
+    {
+      "Name": "Expert alchemy stock",
+      "Match": "AlchemyPotionsHigh|AlchemyIngredRare|Sinderion",
+      "Profile": "Expert Alchemist"
+    },
+    {
+      "Name": "Alchemy stock",
+      "Match": "MerchAlchemist|VendorAlchemy",
+      "Profile": "Alchemist"
+    },
+    {
+      "Name": "Magical supplies",
+      "Match": "MerchEnchanter|VendorEnchanter|MysticEmporium",
+      "Profile": "Mage Vendor"
+    },
+    {
+      "Name": "Jewelry",
+      "Match": "Jeweler|Jewelry",
+      "Profile": "Jeweler"
+    },
+    {
+      "Name": "Luxury clothing",
+      "Match": "VendorClothesUpper",
+      "Profile": "Luxury Merchant"
+    },
+    {
+      "Name": "General traders",
+      "Match": "VendorTrader|MerchTrader|Pawnbroker",
+      "Profile": "General Store"
+    },
+    {
+      "Name": "Smith stock",
+      "Match": "MerchSmith|VendorSmith",
+      "Profile": "Professional Blacksmith"
+    },
+    {
+      "Name": "Books and clothing",
+      "Match": "Bookseller|Clothier|VendorBooks",
+      "Profile": "Specialist"
+    },
+    {
+      "Name": "Spell service fallback",
+      "Match": "Services:.*\\bSpells\\b",
+      "Profile": "Mage Vendor"
+    }
+  ],
+  "Overrides": {
+    "00A089:Oblivion.esm": {
+      "Name": "Daenlin",
+      "Profile": "Expert Specialist",
+      "Preserve": false,
+      "Reason": "Archery specialist: one plain Glass bow opportunity at 1% per stock refresh; no recurring Ebony or Daedric equipment.",
+      "GlassItems": [
+        "035E7A:Oblivion.esm"
+      ]
+    },
+    "0034C5:Oblivion.esm": {
+      "Name": "Tertia Viducia",
+      "Profile": "Expert Specialist",
+      "Preserve": false,
+      "Reason": "Light armor specialist: one Glass gauntlets-or-boots opportunity at 1% per stock refresh; no recurring Ebony or Daedric equipment.",
+      "GlassItems": [
+        "036340:Oblivion.esm",
+        "036341:Oblivion.esm"
+      ]
+    },
+    "015EAD:Oblivion.esm": {
+      "Name": "Varnado",
+      "Profile": "Professional Blacksmith",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "015E9C:Oblivion.esm": {
+      "Name": "Rindir",
+      "Profile": "Mage Vendor",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "0234B8:Oblivion.esm": {
+      "Name": "Seed-Neeus",
+      "Profile": "General Store",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "015EA8:Oblivion.esm": {
+      "Name": "Palonirya",
+      "Profile": "Luxury Merchant",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "002F9F:DLCThievesDen.esp": {
+      "Name": "Melliwin",
+      "Profile": "Specialist",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "00348F:DLCThievesDen.esp": {
+      "Name": "Khafiz",
+      "Profile": "Fence",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "023E35:Oblivion.esm": {
+      "Name": "M'raaj-Dar",
+      "Profile": "Guild Vendor",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "086754:Oblivion.esm": {
+      "Name": "Dark Brotherhood Murderer",
+      "Profile": "Guild Vendor",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    },
+    "034EAF:Oblivion.esm": {
+      "Name": "Julienne Fanis",
+      "Profile": "Expert Alchemist",
+      "Preserve": false,
+      "Reason": "Stock specialization takes precedence over broad service flags; no recurring Ebony or Daedric stock."
+    }
+  },
+  "PreservedLists": [
+    "03AB65:Oblivion.esm"
+  ],
+  "RaceMaterials": {
+    "Orc": "Orcish",
+    "HighElf": "Elven"
+  },
+  "MaterialWeight": 8
+}

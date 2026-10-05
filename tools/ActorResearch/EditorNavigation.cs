@@ -10,6 +10,7 @@ internal static class EditorNavigation
             ("lists.html", "/lists", "Creature lists"),
             ("geography.html", "/geography", "Geography & dungeons"),
             ("equipment.html", "/equipment", "Equipment"),
+            ("merchants.html", "/merchants", "Merchants"),
             ("loot.html", "/loot", "World loot"),
             ("rewards.html", "/rewards", "Rewards & artifacts")
         };

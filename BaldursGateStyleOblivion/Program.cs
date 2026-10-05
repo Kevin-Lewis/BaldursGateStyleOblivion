@@ -67,6 +67,9 @@ public class Program
             run.Module("World loot", run.Settings.EnableWorldLoot, false,
                 () => { foreach (var change in WorldLoot.Run(state, profiles, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
+            run.Module("Merchant stock", run.Settings.EnableMerchantStock, false,
+                () => { foreach (var change in MerchantStock.Run(state, run))
+                    changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
             run.Module("Quest rewards and artifacts", run.Settings.EnableQuestRewards, false,
                 () => { foreach (var change in QuestRewards.Run(state, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
@@ -86,5 +89,3 @@ public class Program
         }
     }
 }
-
-

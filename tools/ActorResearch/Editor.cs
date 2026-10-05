@@ -80,6 +80,7 @@ internal static class Editor
         DungeonEditor.Map(app, Path.Combine(Path.GetDirectoryName(geographicConfig)!, "dungeons.json"), reports);
         EquipmentEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "equipment.json"), reports, token);
         LootEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "loot.json"), reports, token);
+        MerchantEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "merchants.json"), reports, token);
         RewardEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "rewards.json"), reports, token);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");

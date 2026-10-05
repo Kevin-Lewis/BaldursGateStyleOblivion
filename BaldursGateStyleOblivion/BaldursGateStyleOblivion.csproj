@@ -18,5 +18,5 @@
   <ItemGroup><None Update="equipment.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
   <ItemGroup><None Update="loot.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
   <ItemGroup><None Update="rewards.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><None Update="merchants.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 </Project>
-

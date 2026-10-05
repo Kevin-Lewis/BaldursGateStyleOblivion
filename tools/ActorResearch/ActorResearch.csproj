@@ -21,4 +21,5 @@
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/EquipmentConfiguration.cs" Link="Modules/EquipmentConfiguration.cs" /><None Update="equipment.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/LootConfiguration.cs" Link="Modules/LootConfiguration.cs" /><None Update="loot.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/RewardConfiguration.cs" Link="Modules/RewardConfiguration.cs" /><None Update="rewards.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/MerchantConfiguration.cs" Link="Modules/MerchantConfiguration.cs" /><None Update="merchants.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 </Project>
