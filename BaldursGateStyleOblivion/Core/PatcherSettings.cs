@@ -3,7 +3,7 @@ namespace BaldursGateStyleOblivion.Core;
 public sealed class PatcherSettings
 {
     public bool EnablePhysicalCombatAnalysis { get; set; } = true;
-    public bool EnablePhysicalCombatBalance { get; set; } = false;
+    public bool EnablePhysicalCombatBalance { get; set; } = true;
     public string CombatConfigurationFile { get; set; } = "";
     public bool ReportOnly { get; set; } = true;
     public bool EnableRecordDiscovery { get; set; } = true;

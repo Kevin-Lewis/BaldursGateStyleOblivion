@@ -79,6 +79,8 @@ internal static class PhysicalCombatModule
             : Path.GetFullPath(run.Settings.CombatConfigurationFile, run.DataDirectory);
         if (!File.Exists(path) && string.IsNullOrWhiteSpace(run.Settings.CombatConfigurationFile)) path = Path.Combine(AppContext.BaseDirectory, "combat.json");
         var settings = CombatConfiguration.Load(path);
+        if (!run.Settings.EnablePhysicalCombatBalance || run.Settings.ReportOnly)
+            run.Log($"Combat writes disabled: EnablePhysicalCombatBalance={run.Settings.EnablePhysicalCombatBalance}, ReportOnly={run.Settings.ReportOnly}.");
         var artifacts = RewardRecords.Protected(RewardConfiguration.Load(RewardRecords.PathFor(run)));
         var records = new Dictionary<FormKey, IMajorRecordGetter>();
         foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)))

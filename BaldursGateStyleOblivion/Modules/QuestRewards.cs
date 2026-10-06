@@ -59,6 +59,14 @@ internal static class QuestRewards
                         var fixedScript = RewardScriptEditor.FixLevel(context.Fields, choice.SelectionLevel, choice.Fingerprint);
                         if (!run.Settings.ReportOnly)
                         {
+                            if (context.Owner is IQuestGetter originalQuest)
+                            {
+                                var source = state.LoadOrder.PriorityOrder.First(listing => listing.Enabled && listing.Mod is not null
+                                    && run.IsInputPlugin(listing.ModKey) && listing.Mod.Quests.ContainsKey(originalQuest.FormKey)).Mod!;
+                                QuestConditionRepair.Remember(originalQuest, source);
+                                // Leave the repaired quest uncompressed so only its raw condition parameters need byte updates.
+                                state.PatchMod.Quests.GetOrAddAsOverride(originalQuest).MajorRecordFlagsRaw &= ~0x40000;
+                            }
                             var target = context.Owner switch
                             {
                                 IScriptGetter script => state.PatchMod.Scripts.GetOrAddAsOverride(script).Fields,
