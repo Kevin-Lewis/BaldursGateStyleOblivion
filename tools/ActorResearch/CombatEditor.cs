@@ -9,7 +9,7 @@ namespace ActorResearch;
 
 internal sealed record CombatSave(string Json, string Revision);
 internal sealed record CombatPreview(CombatSettings Settings, CombatScenario Scenario);
-internal sealed record CombatBuildRequest(CombatSettings Settings, string Build, int Tier, double Level);
+internal sealed record CombatBuildRequest(CombatSettings Settings, string Build, int Tier, double Level, bool Player = false, string? Race = null, bool Female = false, string? Birthsign = null);
 
 internal static class CombatEditor
 {
@@ -40,7 +40,13 @@ internal static class CombatEditor
         {
             try { CombatConfiguration.Validate(request.Settings); CombatConfiguration.Range(request.Tier,0,10,"Tier"); CombatConfiguration.Range(request.Level,1,100,"Level");
                 if(!request.Settings.Gameplay.ActorBuilds.ContainsKey(request.Build)) throw new ArgumentException("Unknown actor build.");
-                return Results.Json(CombatBuilds.AtLevel(request.Settings.Gameplay,request.Build,request.Tier,request.Level,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping)); }
+                if(request.Player)
+                {
+                    var catalog=Catalog();
+                    if(!catalog.TryGetProperty("CharacterCreation",out var creation))throw new InvalidDataException("Rebuild the combat report to load character creation records.");
+                    return Results.Json(PlayerBuilds.AtLevel(request.Settings.Gameplay,creation.Deserialize<CreationCatalog>()!,request.Build,request.Race??"",request.Female,request.Birthsign,request.Level),CombatConfiguration.Options);
+                }
+                return Results.Json(new PlayerBuildResult(CombatBuilds.AtLevel(request.Settings.Gameplay,request.Build,request.Tier,request.Level,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping),["NPC tier training budget; class specialties, supporting skills and untrained skills."]),CombatConfiguration.Options); }
             catch(Exception error) when(error is ArgumentException or JsonException or InvalidDataException or IOException){return Error(error);}
         });
         app.MapPost("/api/combat/preview", (CombatPreview request) =>

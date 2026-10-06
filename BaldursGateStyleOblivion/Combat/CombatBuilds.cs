@@ -2,6 +2,7 @@ namespace BaldursGateStyleOblivion.Combat;
 
 public static class CombatBuilds
 {
+    public static readonly string[] Skills = ["Armorer","Athletics","Blade","Block","Blunt","HandToHand","HeavyArmor","Alchemy","Alteration","Conjuration","Destruction","Illusion","Mysticism","Restoration","Acrobatics","LightArmor","Marksman","Mercantile","Security","Sneak","Speechcraft"];
     public static Dictionary<string, double> AtLevel(GameplaySettings settings, string build, int tier, double level, IReadOnlyDictionary<int,int?> levels)
     {
         var lower=levels.GetValueOrDefault(tier); var upper=levels.GetValueOrDefault(tier+1);
@@ -16,8 +17,8 @@ public static class CombatBuilds
             ["Endurance"]=Attribute(profile.Endurance),["Agility"]=Attribute(profile.Agility),["Willpower"]=Attribute(profile.Willpower),
             ["Speed"]=Attribute(profile.Speed),["Luck"]=50,["Intelligence"]=Attribute(build is "Mage" or "Battlemage" or "Spellsword" ? 1.2:.8)
         };
-        foreach(var skill in new[]{"Blade","Blunt","Block","HeavyArmor","LightArmor","Marksman","HandToHand","Destruction","Conjuration","Restoration","Alteration","Illusion","Mysticism","Sneak"})
-            stats[skill]=Math.Round(Mix(profile.Skills.Contains(skill)?t=>t.Specialty:t=>t.Secondary));
+        foreach(var skill in Skills)
+            stats[skill]=Math.Clamp(Math.Round(Mix(profile.Skills.Contains(skill)?t=>t.Specialty:profile.SupportingSkills.Contains(skill)?t=>t.Secondary:t=>t.Untrained)*profile.SkillMultiplier),0,100);
         stats["Fatigue"]=stats["Strength"]+stats["Endurance"]+stats["Agility"]+stats["Willpower"];
         stats["FatigueRegen"]=settings.GameSettings.GetValueOrDefault("fFatigueReturnBase",10)+stats["Endurance"]*settings.GameSettings.GetValueOrDefault("fFatigueReturnMult",0);
         return stats;

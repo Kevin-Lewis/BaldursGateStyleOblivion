@@ -2,7 +2,7 @@
 
 The first pass writes equipment, explicit NPC and creature stats, combat-style variants, and engine settings into the candidate plugin. Its design target is that fighting two tiers above is only reasonably possible with extreme preparation and excellent execution; a four-tier gap should remain formidable even with allies. These are gameplay targets awaiting playtesting, not guarantees inferred from simulated win rates.
 
-Open http://127.0.0.1:5078/combat. Tier sets a typical level; level remains adjustable. Class and equipment presets fill a build through the same backend method used to assign NPC stats. Specialty skills reach 100 at tier 5 / level 20. A player's actual progression depends on skill use, training, race, and attribute choices; presets do not force player skills to match level.
+Open http://127.0.0.1:5078/combat. Tier sets a typical level; level remains adjustable. Player presets read loaded race, sex, playable class and passive birthsign bonuses. Enemy presets use the patched NPC training budgets. Specialty skills reach 100 at tier 5 / level 20. A player's actual progression depends on skill use, training, race, and attribute choices; presets do not force player skills to match level.
 
 ## Building and playing
 
@@ -68,3 +68,17 @@ Use native fatigue coefficients is enabled by default; disabling it permits expl
 Level and class presets are reproducible build assumptions. They cannot uniquely reconstruct an actual player. OBSE's [actor-value and equipment commands](https://obse.silverlock.org/obse_command_doc.html) can support controlled engine measurements; [xOBSE actor wrappers](https://github.com/llde/xOBSE/blob/master/obse/obse/Commands_Actor.cpp) distinguish current actor values from base records. The existing damage relationship reference is [the documented damage formula](https://pt.uesp.net/wiki/Oblivion:The_Complete_Damage_Formula); its equations and this simulator still need comparison against this installed candidate.
 
 For calibration, start with unenchanted normal attacks, no active effects, fixed equipment condition and midpoint difficulty. Measure health loss and fatigue, varying one factor at a time. Test shields, weapon blocking, mastery thresholds and power attacks separately. Record executable version, load order, candidate hash, runtime plugins, actor values, equipment and measurement method. Then test repeated encounters and preparation against tier gaps. Do not use arbitrary health inflation to force matchup results.
+
+## Player and NPC training baselines
+
+Player level 1 is calculated from the winning creation records and native starting-bonus settings. The default male Imperial Warrior without a passive birthsign bonus has Strength 45, Blade 35 and Block 30. Race, sex and birthsign are quick selectors; individual scenario stats remain editable. Passive attribute and health abilities are included; active powers, equipment enchantments and scripted effects require manual scenario adjustments.
+
+Later player levels use `Gameplay.PlayerProgression`: major skills approach 100 at MasteryLevel (20), specialization-only skills approach SecondarySkillAtMastery (55), and other skills gain UntrainedSkillPerLevel (0.5). Favored attributes gain PrimaryAttributePerLevel (2.5), other attributes gain OtherAttributePerLevel (1), and Luck stays at its starting value. Player health estimates accumulate the configured Endurance-derived level gains. These are development assumptions, not changes to the game's advancement system or a guarantee that every player follows this path.
+
+NPC tier specialties now use 30, 40, 50, 65, 85, 100 through tiers 0–5. Supporting skills use 15, 20, 25, 35, 45, 55; untrained skills start at 5. The base attribute curve starts at 40. Each class lists primary and supporting skills, with SkillMultiplier available for weak civilian profiles. Humanoid health budgets are retained. Creature species modifiers and natural damage budgets are retained, but their shared attribute baseline also starts higher.
+
+Eligible balanced trainers receive a floor only in their taught skill: max(training budget, configured training ceiling). NPC training services take precedence over class defaults. Training ceilings, services, referral quests, and health are not increased by this safeguard. Protected/skipped actors keep their existing records and safeguards.
+
+The workbench shows stat provenance and separates Input baseline from Configured overhaul. Creation choices and material overrides are retained in exported experiments. Rebuild the patch for NPC changes, restart the game, and use a fresh test game to avoid old saved actor stats.
+
+Calibration: with neutral Luck and full condition/fatigue, Strength 45 / Blade 35 predicts iron sword 10.51 and Daedric sword 27.14 damage with approximately 3% target armor mitigation. Strength 55 / Blunt 55 predicts iron warhammer damage 35.97 against no armor, or 30.57 with weapon blocking at Block 30. These reproduce the reported 10.5 / 27.14 / 36 / 30.6 measurements; the target's 3% armor mitigation remains inferred. Attack contact, cadence, positioning and stagger still require gameplay calibration.

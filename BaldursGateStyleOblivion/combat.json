@@ -504,80 +504,91 @@
     "ActorTiers": {
       "0": {
         "Health": 65,
-        "Attribute": 20,
-        "Specialty": 5,
-        "Secondary": 5,
-        "NaturalDamage": 2
-      },
-      "1": {
-        "Health": 80,
-        "Attribute": 30,
-        "Specialty": 15,
-        "Secondary": 10,
-        "NaturalDamage": 4
-      },
-      "2": {
-        "Health": 100,
         "Attribute": 40,
         "Specialty": 30,
         "Secondary": 15,
-        "NaturalDamage": 7
+        "NaturalDamage": 2,
+        "Untrained": 5
+      },
+      "1": {
+        "Health": 80,
+        "Attribute": 45,
+        "Specialty": 40,
+        "Secondary": 20,
+        "NaturalDamage": 4,
+        "Untrained": 5
+      },
+      "2": {
+        "Health": 100,
+        "Attribute": 50,
+        "Specialty": 50,
+        "Secondary": 25,
+        "NaturalDamage": 7,
+        "Untrained": 5
       },
       "3": {
         "Health": 120,
         "Attribute": 55,
-        "Specialty": 55,
-        "Secondary": 25,
-        "NaturalDamage": 13
+        "Specialty": 65,
+        "Secondary": 35,
+        "NaturalDamage": 13,
+        "Untrained": 5
       },
       "4": {
         "Health": 145,
         "Attribute": 70,
-        "Specialty": 80,
-        "Secondary": 35,
-        "NaturalDamage": 22
+        "Specialty": 85,
+        "Secondary": 45,
+        "NaturalDamage": 22,
+        "Untrained": 5
       },
       "5": {
         "Health": 175,
         "Attribute": 85,
         "Specialty": 100,
-        "Secondary": 45,
-        "NaturalDamage": 35
+        "Secondary": 55,
+        "NaturalDamage": 35,
+        "Untrained": 5
       },
       "6": {
         "Health": 195,
         "Attribute": 95,
         "Specialty": 100,
-        "Secondary": 50,
-        "NaturalDamage": 48
+        "Secondary": 60,
+        "NaturalDamage": 48,
+        "Untrained": 5
       },
       "7": {
         "Health": 220,
         "Attribute": 100,
         "Specialty": 100,
-        "Secondary": 55,
-        "NaturalDamage": 75
+        "Secondary": 65,
+        "NaturalDamage": 75,
+        "Untrained": 5
       },
       "8": {
         "Health": 245,
         "Attribute": 100,
         "Specialty": 100,
-        "Secondary": 60,
-        "NaturalDamage": 110
+        "Secondary": 70,
+        "NaturalDamage": 110,
+        "Untrained": 5
       },
       "9": {
         "Health": 270,
         "Attribute": 100,
         "Specialty": 100,
-        "Secondary": 65,
-        "NaturalDamage": 160
+        "Secondary": 75,
+        "NaturalDamage": 160,
+        "Untrained": 5
       },
       "10": {
         "Health": 300,
         "Attribute": 100,
         "Specialty": 100,
-        "Secondary": 70,
-        "NaturalDamage": 230
+        "Secondary": 80,
+        "NaturalDamage": 230,
+        "Untrained": 5
       }
     },
     "ActorBuilds": {
@@ -593,7 +604,17 @@
           "Blade",
           "Blunt",
           "HeavyArmor"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Knight": {
         "Health": 1,
@@ -607,7 +628,17 @@
           "Blade",
           "Block",
           "HeavyArmor"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Barbarian": {
         "Health": 1,
@@ -621,7 +652,17 @@
           "Blade",
           "Blunt",
           "LightArmor"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Rogue": {
         "Health": 1,
@@ -635,7 +676,17 @@
           "Blade",
           "LightArmor",
           "Sneak"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Scout": {
         "Health": 1,
@@ -649,7 +700,17 @@
           "Marksman",
           "LightArmor",
           "Blade"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Spellsword": {
         "Health": 1,
@@ -664,7 +725,17 @@
           "Destruction",
           "Restoration",
           "HeavyArmor"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Battlemage": {
         "Health": 1,
@@ -679,7 +750,17 @@
           "Destruction",
           "Conjuration",
           "HeavyArmor"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Mage": {
         "Health": 1,
@@ -696,7 +777,17 @@
           "Alteration",
           "Illusion",
           "Mysticism"
-        ]
+        ],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 1
       },
       "Civilian": {
         "Health": 1,
@@ -706,7 +797,17 @@
         "Willpower": 0.9,
         "Speed": 1,
         "Style": "Defensive Fighter",
-        "Skills": []
+        "Skills": [],
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "SkillMultiplier": 0.25
       }
     },
     "CreatureBuilds": {
@@ -860,6 +961,13 @@
       "fFatigueBlockMult": 0,
       "fFatigueBlockSkillBase": 8,
       "fFatigueBlockSkillMult": 0
+    },
+    "PlayerProgression": {
+      "MasteryLevel": 20,
+      "PrimaryAttributePerLevel": 2.5,
+      "OtherAttributePerLevel": 1,
+      "SecondarySkillAtMastery": 55,
+      "UntrainedSkillPerLevel": 0.5
     }
   }
 }

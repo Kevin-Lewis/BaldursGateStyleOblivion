@@ -14,6 +14,7 @@ public sealed class ActorTierStats
     public double Attribute { get; set; }
     public double Specialty { get; set; }
     public double Secondary { get; set; }
+    public double Untrained { get; set; } = 5;
     public double NaturalDamage { get; set; }
 }
 public sealed class ActorBuild
@@ -25,6 +26,8 @@ public sealed class ActorBuild
     public double Willpower { get; set; } = 1;
     public double Speed { get; set; } = 1;
     public string Style { get; set; } = "Aggressive Fighter";
+    public double SkillMultiplier { get; set; } = 1;
+    public string[] SupportingSkills { get; set; } = ["Block", "LightArmor", "Restoration"];
     public string[] Skills { get; set; } = ["Blade", "Blunt", "HeavyArmor"];
 }
 public sealed class CreatureBuild
@@ -56,6 +59,7 @@ public sealed class GameplaySettings
     public bool BalanceEnchantedPhysicalStats { get; set; }
     public bool BalanceActors { get; set; }
     public bool BalanceGameSettings { get; set; }
+    public PlayerProgression PlayerProgression { get; set; } = new();
     public double RareWeaponGrowth { get; set; } = 1.5;
     public Dictionary<string, WeaponBaseline> WeaponBaselines { get; set; } = new();
     public Dictionary<string, double> ArmorSlots { get; set; } = new();
@@ -82,6 +86,12 @@ public sealed class GameplaySettings
     };
     public void Validate()
     {
+        var progression=PlayerProgression ?? throw new ArgumentException("Player progression settings missing.");
+        CombatConfiguration.Range(progression.MasteryLevel,2,100,"Player mastery level");
+        CombatConfiguration.Range(progression.PrimaryAttributePerLevel,0,10,"Primary attribute growth");
+        CombatConfiguration.Range(progression.OtherAttributePerLevel,0,10,"Other attribute growth");
+        CombatConfiguration.Range(progression.SecondarySkillAtMastery,0,100,"Supporting skill target");
+        CombatConfiguration.Range(progression.UntrainedSkillPerLevel,0,10,"Untrained skill growth");
         if (WeaponBaselines is null || ArmorSlots is null || ActorTiers is null || ActorBuilds is null || CreatureBuilds is null
             || ActorOverrides is null || NativeStyles is null || GameSettings is null) throw new ArgumentException("Gameplay tables cannot be null.");
         CombatConfiguration.Range(RareWeaponGrowth, 1, 3, "Rare weapon growth");
@@ -104,16 +114,16 @@ public sealed class GameplaySettings
         {
             if (value is null) throw new ArgumentException("Actor tier missing.");
             CombatConfiguration.Range(value.Health, 1, 10000, "Tier health"); CombatConfiguration.Range(value.Attribute, 1, 100, "Tier attribute");
-            CombatConfiguration.Range(value.Specialty, 0, 100, "Specialty skill"); CombatConfiguration.Range(value.Secondary, 0, 100, "Secondary skill");
+            CombatConfiguration.Range(value.Untrained, 0, 100, "Untrained skill"); CombatConfiguration.Range(value.Specialty, 0, 100, "Specialty skill"); CombatConfiguration.Range(value.Secondary, 0, 100, "Secondary skill");
             CombatConfiguration.Range(value.NaturalDamage, 0, 1000, "Natural damage");
         }
         foreach (var value in ActorBuilds.Values)
         {
-            if (value is null || value.Skills is null || !NativeStyles.ContainsKey(value.Style)) throw new ArgumentException("Actor build/style missing.");
+            if (value is null || value.Skills is null || value.SupportingSkills is null || !NativeStyles.ContainsKey(value.Style)) throw new ArgumentException("Actor build/style missing.");
             foreach (var factor in new[] { value.Health, value.Strength, value.Endurance, value.Agility, value.Willpower, value.Speed })
                 CombatConfiguration.Range(factor, .25, 3, "Build factor");
-            string[] skills=["Blade","Blunt","Block","HeavyArmor","LightArmor","Marksman","HandToHand","Destruction","Conjuration","Restoration","Alteration","Illusion","Mysticism","Sneak"];
-            if(value.Skills.Any(skill=>!skills.Contains(skill))) throw new ArgumentException("Unsupported specialty skill.");
+            CombatConfiguration.Range(value.SkillMultiplier,0,2,"Class skill multiplier");
+            if(value.Skills.Concat(value.SupportingSkills).Any(skill=>!CombatBuilds.Skills.Contains(skill))) throw new ArgumentException("Unsupported specialty skill.");
         }
         foreach (var value in CreatureBuilds.Values)
         {

@@ -106,8 +106,11 @@ internal static class PhysicalCombatModule
                 records[key] = target.Kind == "Weapon" ? state.PatchMod.Weapons[key] : state.PatchMod.Armors[key];
             }
         }
+        var playableRaces=new Dictionary<FormKey,bool>();
+        foreach(var listing in state.LoadOrder.PriorityOrder.Where(l=>l.Enabled && l.Mod is not null && run.IsInputPlugin(l.ModKey)))
+            foreach(var pair in PlayableRaces.Read(Path.Combine(state.DataFolderPath.ToString(),listing.ModKey.ToString()),listing.Mod!))playableRaces.TryAdd(pair.Key,pair.Value);
         var originalGameSettings = records.Values.OfType<IGameSettingFloatGetter>().Where(r=>!r.IsDeleted && r.EditorID is not null && r.Data.HasValue).ToDictionary(r=>r.EditorID!,r=>(double)r.Data!.Value);
-        foreach(var setting in records.Values.OfType<IGameSettingIntGetter>().Where(r=>!r.IsDeleted && r.EditorID=="iActorLuckSkillBase" && r.Data.HasValue)) originalGameSettings[setting.EditorID!]=setting.Data!.Value;
+        foreach(var setting in records.Values.OfType<IGameSettingIntGetter>().Where(r=>!r.IsDeleted && r.EditorID is not null && r.Data.HasValue)) originalGameSettings[setting.EditorID!]=setting.Data!.Value;
         foreach(var change in GameplayCombatModule.Run(state, records, profiles, settings, run)) changes[change.Key]=change.Value;
         var actors = records.Values.Where(r => !r.IsDeleted && run.Includes(r.FormKey.ModKey) && r is INpcGetter or ICreatureGetter)
             .OrderBy(r => r.FormKey.ToString(), StringComparer.Ordinal).Select(r =>
@@ -133,7 +136,7 @@ internal static class PhysicalCombatModule
             .OrderBy(r => r.EditorID, StringComparer.Ordinal).ToDictionary(r => r.EditorID!, r => (double)r.Data!.Value);
         run.WriteReport(".physical-combat.json", new { Schema = 1, GeneratedUtc = DateTime.UtcNow, run.Settings.ReportOnly,
             Applied = run.Settings.EnablePhysicalCombatBalance && !run.Settings.ReportOnly, Items = items.Concat(records.Values.OfType<IWeaponGetter>().Where(r=>r.EditorID?.StartsWith("BGSOCombatTier",StringComparison.Ordinal)==true).Select(r=>ReadItem(r,artifacts)!)).ToArray(), Actors = actors, NativeStyles = styles,
-            ConfigurationHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)))), CandidateFile = Path.GetFullPath(state.OutputPath.ToString()), OriginalGameSettings = originalGameSettings, GameSettings = gameSettings, MechanicsFallbacks = CombatAnalysis.Defaults.Where(p => !gameSettings.ContainsKey(p.Key)).ToDictionary(), Plans = plans, ConfigurationFile = path,
+            ConfigurationHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)))), CandidateFile = Path.GetFullPath(state.OutputPath.ToString()), CharacterCreation = CharacterCreation.Read(records,originalGameSettings,playableRaces), OriginalGameSettings = originalGameSettings, GameSettings = gameSettings, MechanicsFallbacks = CombatAnalysis.Defaults.Where(p => !gameSettings.ContainsKey(p.Key)).ToDictionary(), Plans = plans, ConfigurationFile = path,
             Notes = new[] { "Items are the baseline before this module; earlier patch modules are included when writes are enabled.",
                 "Balanced actors have explicit base stats. Racial abilities, spells and runtime script bonuses may still modify them.",
                 "Gameplay configuration writes equipment, explicit actor stats, native combat styles and engine settings. Benchmark tier curves remain optional analysis targets." } }, CombatConfiguration.Options);

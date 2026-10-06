@@ -121,9 +121,10 @@ internal static class GameplayCombatModule
             {
                 var build=individual?.Build??Build(profiles.GetValueOrDefault(actor.FormKey),(records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter)?.EditorID);
                 var stats=CombatBuilds.AtLevel(gameplay,build,tier.Value,level,levels);if(individual?.Health is not null)stats["Health"]=individual.Health.Value;
+                var trainerFloor=CharacterCreation.TrainerFloor(npc,records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter,stats);
                 var style=gameplay.ActorBuilds[build].Style;
                 if(profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("BossStatus")?.Selected.Value?.ToString()=="Major" && build is not "Mage" and not "Scout") style="Boss";
-                plans.Add(new{Kind="NPC",FormKey=key,Tier=tier,Level=level,Build=build,Stats=stats,Style=style,WeaponPower=gameplay.WeaponPower(tier.Value)});
+                plans.Add(new{Kind="NPC",FormKey=key,Tier=tier,Level=level,Build=build,Stats=stats,TrainerFloor=trainerFloor,StatSource="NPC tier training budget",Style=style,WeaponPower=gameplay.WeaponPower(tier.Value)});
                 if(!write)continue;
                 var target=state.PatchMod.Npcs.GetOrAddAsOverride(npc);Stats(target,stats);target.CombatStyle.SetTo(Style(npc.CombatStyle.FormKey,style));
                 if(tier>6)foreach(var entry in target.Items)entry.Item.SetTo(Weapon(entry.Item.FormKey,tier.Value,new()));

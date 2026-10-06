@@ -188,10 +188,43 @@ var offensive=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Barbarian",5,20,ne
 Near(master["Health"],offensive["Health"],"Same-tier humanoid health starts neutral");
 Near(master["Endurance"],offensive["Endurance"],"No forced defensive health versus offensive Endurance tradeoff");
 var interpolated=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Knight",3,12,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
-Near(interpolated["Blade"],65,"Shared level interpolation");
+Near(interpolated["Blade"],73,"Shared level interpolation");
 var normalized=PhysicalBalance.Propose(sword,gameplaySettings);Near(normalized.Damage,12,"Absolute weapon baseline");
 Near(normalized.Weight,12,"Absolute weapon weight");
 var nativeStats=new Npc(FormKey.Factory("000010:Test.esp"),OblivionRelease.Oblivion){Stats=new NpcData(),Configuration=new NpcConfiguration()};
 GameplayCombatModule.Stats(nativeStats,master);Near(nativeStats.Stats!.Health,master["Health"],"Native explicit health");Near(nativeStats.Configuration!.Fatigue,master["Fatigue"],"Native fatigue reserves");
 Check(!nativeStats.Configuration!.Flags.HasFlag(Npc.NpcFlag.AutoCalcStats),"Native auto calculation should be disabled");
 Console.WriteLine("Combat formulas, normalization, shared builds, tier-5 mastery and native stat checks passed.");
+using(var vanilla=OblivionMod.CreateFromBinaryOverlay("F:/SteamLibrary/steamapps/common/Oblivion/Data/Oblivion.esm",OblivionRelease.Oblivion))
+{
+    var records=vanilla.EnumerateMajorRecords().ToDictionary(r=>r.FormKey,r=>(Mutagen.Bethesda.Plugins.Records.IMajorRecordGetter)r);
+    var gs=records.Values.OfType<IGameSettingFloatGetter>().Where(g=>g.EditorID is not null&&g.Data.HasValue).ToDictionary(g=>g.EditorID!,g=>(double)g.Data!.Value);
+    foreach(var setting in records.Values.OfType<IGameSettingIntGetter>().Where(g=>g.EditorID is not null&&g.Data.HasValue))gs[setting.EditorID!]=setting.Data!.Value;
+    var creation=CharacterCreation.Read(records,gs,PlayableRaces.Read("F:/SteamLibrary/steamapps/common/Oblivion/Data/Oblivion.esm",vanilla));
+    Check(creation.Races.Length==10,"Native playable race filter");
+    var imperial=creation.Races.Single(r=>r.Name=="Imperial");
+    var player=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,1).Stats;
+    Near(player["Strength"],45,"Native Imperial Warrior starting Strength");Near(player["Blade"],35,"Native Imperial Warrior starting Blade");Near(player["Block"],30,"Native Warrior starting Block");
+    var playerMaster=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,20).Stats;
+    Near(playerMaster["Blade"],100,"Player estimated major skill mastery at level 20");
+    var sign=creation.Birthsigns.Single(s=>s.Name=="The Warrior");
+    var signed=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,sign.Key,1).Stats;
+    Near(signed["Strength"],55,"Warrior birthsign passive attribute bonus");
+    var trained=0;
+    foreach(var npc in vanilla.Npcs)
+    {
+        var stats=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Civilian",0,1,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
+        if(CharacterCreation.TrainerFloor(npc,records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter,stats) is not null)
+        {
+            var ai=npc.AIData!;var skill=ai.Teaches!.Value.ToString().Replace("Speechraft","Speechcraft");
+            var written=new Npc(FormKey.Factory("000011:Test.esp"),OblivionRelease.Oblivion){Stats=new NpcData(),Configuration=new NpcConfiguration()};GameplayCombatModule.Stats(written,stats);
+            Near(Convert.ToDouble(typeof(NpcData).GetProperty(skill)!.GetValue(written.Stats)),stats[skill],"Native trainer skill write");
+            Check(stats[skill]>=ai.MaximumTrainingLevel,"Trainer floor below service cap");Near(stats["Health"],65,"Trainer floor must not boost health");trained++;
+        }
+    }
+    Check(trained>=100,"Native trainer coverage missing");
+    Console.WriteLine($"Native creation and trainer checks passed: {creation.Races.Length} races, {creation.Classes.Length} playable classes, {trained} trainers.");
+}Near(new CombatHitFactors(12,3,.725,.415,1,1,.97,1,1,1).Damage,10.506555,"Measured iron sword calibration");
+Near(new CombatHitFactors(31,3,.725,.415,1,1,.97,1,1,1).Damage,27.14193375,"Measured Daedric sword calibration");
+Near(new CombatHitFactors(26,3,.775,.595,1,1,1,1,1,1).Damage,35.96775,"Measured warhammer calibration");
+Near(35.96775*(1-.3*.5),30.5725875,"Measured weapon blocking calibration");
