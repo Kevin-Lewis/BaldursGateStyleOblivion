@@ -1,0 +1,865 @@
+{
+  "PowerAttackFatigueMult": 4,
+  "HealthTarget": {
+    "Knee": 6,
+    "LinearGain": 22,
+    "Base": 65,
+    "RareGrowth": 1.06
+  },
+  "AttackFatigueWeight": 0.45,
+  "ItemOverrides": {},
+  "ArmorClasses": {
+    "Heavy Armor": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Light Armor": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 0.85
+    },
+    "Heavy Shield": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Light Shield": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 0.9
+    }
+  },
+  "WeaponClasses": {
+    "Dagger": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Shortsword": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Longsword": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Claymore": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Waraxe": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Battleaxe": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Mace": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Warhammer": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "BladeOneHand": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "BladeTwoHand": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "BluntOneHand": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "BluntTwoHand": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Bow": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Unknown": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    }
+  },
+  "BlockFatigueWeight": 0.1,
+  "AttackFatigueBase": 6,
+  "PowerAttackDamageMult": 2,
+  "Styles": {
+    "Defensive Fighter": {
+      "PowerAttackShare": 0.1,
+      "BlockUptime": 0.6,
+      "ContactRate": 0.75,
+      "AttacksPerSecond": 0.65
+    },
+    "Aggressive Fighter": {
+      "PowerAttackShare": 0.2,
+      "BlockUptime": 0.15,
+      "ContactRate": 0.75,
+      "AttacksPerSecond": 0.95
+    },
+    "Berserker": {
+      "PowerAttackShare": 0.35,
+      "BlockUptime": 0.05,
+      "ContactRate": 0.8,
+      "AttacksPerSecond": 1.1
+    },
+    "Skirmisher": {
+      "PowerAttackShare": 0.1,
+      "BlockUptime": 0.25,
+      "ContactRate": 0.65,
+      "AttacksPerSecond": 0.7
+    },
+    "Battlemage": {
+      "PowerAttackShare": 0.1,
+      "BlockUptime": 0.25,
+      "ContactRate": 0.7,
+      "AttacksPerSecond": 0.55
+    },
+    "Boss": {
+      "PowerAttackShare": 0.3,
+      "BlockUptime": 0.35,
+      "ContactRate": 0.85,
+      "AttacksPerSecond": 0.85
+    }
+  },
+  "BlockFatigueBase": 3,
+  "Materials": {
+    "Iron": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    },
+    "Steel": {
+      "Damage": 1.12,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1.05,
+      "Durability": 1.25,
+      "Armor": 1.05
+    },
+    "Silver": {
+      "Damage": 1.1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 0.9,
+      "Armor": 1.05
+    },
+    "Dwarven": {
+      "Damage": 1.28,
+      "Speed": 0.98,
+      "Reach": 1,
+      "Weight": 1.25,
+      "Durability": 1.6,
+      "Armor": 1.22
+    },
+    "Elven": {
+      "Damage": 1.35,
+      "Speed": 1.05,
+      "Reach": 1,
+      "Weight": 0.75,
+      "Durability": 1.1,
+      "Armor": 1.18
+    },
+    "Orcish": {
+      "Damage": 1.4,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1.15,
+      "Durability": 1.7,
+      "Armor": 1.35
+    },
+    "Glass": {
+      "Damage": 1.75,
+      "Speed": 1.05,
+      "Reach": 1,
+      "Weight": 0.65,
+      "Durability": 0.85,
+      "Armor": 1.42
+    },
+    "Ebony": {
+      "Damage": 1.9,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1.3,
+      "Durability": 2,
+      "Armor": 1.6
+    },
+    "Daedric": {
+      "Damage": 2.6,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1.4,
+      "Durability": 2.5,
+      "Armor": 1.75
+    },
+    "Fur": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 0.7,
+      "Durability": 0.65,
+      "Armor": 0.55
+    },
+    "Leather": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 0.8,
+      "Durability": 0.9,
+      "Armor": 0.7
+    },
+    "Chainmail": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1.2,
+      "Armor": 1.1
+    },
+    "Mithril": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 0.75,
+      "Durability": 1.1,
+      "Armor": 1.25
+    },
+    "Amber": {
+      "Damage": 1.75,
+      "Speed": 1.05,
+      "Reach": 1,
+      "Weight": 0.8,
+      "Durability": 1.2,
+      "Armor": 1.42
+    },
+    "Madness": {
+      "Damage": 1.9,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1.3,
+      "Durability": 2,
+      "Armor": 1.6
+    },
+    "Unknown": {
+      "Damage": 1,
+      "Speed": 1,
+      "Reach": 1,
+      "Weight": 1,
+      "Durability": 1,
+      "Armor": 1
+    }
+  },
+  "OffenseTarget": {
+    "Knee": 6,
+    "LinearGain": 0.2,
+    "Base": 1,
+    "RareGrowth": 1.45
+  },
+  "QuickTiers": {
+    "0": {
+      "WeaponMaterial": "Iron",
+      "ArmorMaterial": "Fur",
+      "LightArmorMaterial": "Fur"
+    },
+    "1": {
+      "WeaponMaterial": "Iron",
+      "ArmorMaterial": "Iron",
+      "LightArmorMaterial": "Leather"
+    },
+    "2": {
+      "WeaponMaterial": "Iron",
+      "ArmorMaterial": "Iron",
+      "LightArmorMaterial": "Leather"
+    },
+    "3": {
+      "WeaponMaterial": "Steel",
+      "ArmorMaterial": "Steel",
+      "LightArmorMaterial": "Chainmail"
+    },
+    "4": {
+      "WeaponMaterial": "Steel",
+      "ArmorMaterial": "Steel",
+      "LightArmorMaterial": "Chainmail"
+    },
+    "5": {
+      "WeaponMaterial": "Dwarven",
+      "ArmorMaterial": "Dwarven",
+      "LightArmorMaterial": "Mithril"
+    },
+    "6": {
+      "WeaponMaterial": "Elven",
+      "ArmorMaterial": "Orcish",
+      "LightArmorMaterial": "Elven"
+    },
+    "7": {
+      "WeaponMaterial": "Glass",
+      "ArmorMaterial": "Ebony",
+      "LightArmorMaterial": "Glass"
+    },
+    "8": {
+      "WeaponMaterial": "Ebony",
+      "ArmorMaterial": "Daedric",
+      "LightArmorMaterial": "Glass"
+    },
+    "9": {
+      "WeaponMaterial": "Daedric",
+      "ArmorMaterial": "Daedric",
+      "LightArmorMaterial": "Glass"
+    },
+    "10": {
+      "WeaponMaterial": "Daedric",
+      "ArmorMaterial": "Daedric",
+      "LightArmorMaterial": "Glass"
+    }
+  },
+  "QuickClasses": {
+    "Warrior": {
+      "Build": "Balanced",
+      "Equipment": "Sword & shield"
+    },
+    "Knight": {
+      "Build": "Defensive",
+      "Equipment": "Sword & shield"
+    },
+    "Barbarian": {
+      "Build": "Berserker",
+      "Equipment": "Two-handed / light armor"
+    },
+    "Rogue": {
+      "Build": "Skirmisher",
+      "Equipment": "Dagger / light armor"
+    },
+    "Scout": {
+      "Build": "Skirmisher",
+      "Equipment": "Sword / light armor"
+    },
+    "Spellsword": {
+      "Build": "Balanced",
+      "Equipment": "Sword & shield"
+    },
+    "Battlemage": {
+      "Build": "Balanced",
+      "Equipment": "Two-handed / heavy armor"
+    }
+  },
+  "Gameplay": {
+    "NormalizeEquipment": true,
+    "BalanceEnchantedPhysicalStats": true,
+    "BalanceActors": true,
+    "BalanceGameSettings": true,
+    "RareWeaponGrowth": 1.5,
+    "WeaponBaselines": {
+      "Dagger": {
+        "Damage": 7,
+        "Speed": 1.45,
+        "Reach": 0.65,
+        "Weight": 3,
+        "Durability": 180
+      },
+      "Shortsword": {
+        "Damage": 10,
+        "Speed": 1.15,
+        "Reach": 0.85,
+        "Weight": 7,
+        "Durability": 250
+      },
+      "Longsword": {
+        "Damage": 12,
+        "Speed": 1,
+        "Reach": 1,
+        "Weight": 12,
+        "Durability": 300
+      },
+      "Claymore": {
+        "Damage": 20,
+        "Speed": 0.78,
+        "Reach": 1.3,
+        "Weight": 22,
+        "Durability": 420
+      },
+      "Waraxe": {
+        "Damage": 14,
+        "Speed": 0.9,
+        "Reach": 0.85,
+        "Weight": 14,
+        "Durability": 350
+      },
+      "Battleaxe": {
+        "Damage": 23,
+        "Speed": 0.7,
+        "Reach": 1.15,
+        "Weight": 26,
+        "Durability": 450
+      },
+      "Mace": {
+        "Damage": 15,
+        "Speed": 0.85,
+        "Reach": 0.8,
+        "Weight": 17,
+        "Durability": 400
+      },
+      "Warhammer": {
+        "Damage": 26,
+        "Speed": 0.62,
+        "Reach": 1.1,
+        "Weight": 30,
+        "Durability": 500
+      },
+      "Bow": {
+        "Damage": 12,
+        "Speed": 1,
+        "Reach": 1,
+        "Weight": 10,
+        "Durability": 250
+      }
+    },
+    "ArmorSlots": {
+      "Hair": 6,
+      "Head": 0,
+      "UpperBody": 13,
+      "LowerBody": 9,
+      "Hand": 5,
+      "Foot": 7,
+      "Shield": 13
+    },
+    "ActorTiers": {
+      "0": {
+        "Health": 65,
+        "Attribute": 20,
+        "Specialty": 5,
+        "Secondary": 5,
+        "NaturalDamage": 2
+      },
+      "1": {
+        "Health": 80,
+        "Attribute": 30,
+        "Specialty": 15,
+        "Secondary": 10,
+        "NaturalDamage": 4
+      },
+      "2": {
+        "Health": 100,
+        "Attribute": 40,
+        "Specialty": 30,
+        "Secondary": 15,
+        "NaturalDamage": 7
+      },
+      "3": {
+        "Health": 120,
+        "Attribute": 55,
+        "Specialty": 55,
+        "Secondary": 25,
+        "NaturalDamage": 13
+      },
+      "4": {
+        "Health": 145,
+        "Attribute": 70,
+        "Specialty": 80,
+        "Secondary": 35,
+        "NaturalDamage": 22
+      },
+      "5": {
+        "Health": 175,
+        "Attribute": 85,
+        "Specialty": 100,
+        "Secondary": 45,
+        "NaturalDamage": 35
+      },
+      "6": {
+        "Health": 195,
+        "Attribute": 95,
+        "Specialty": 100,
+        "Secondary": 50,
+        "NaturalDamage": 48
+      },
+      "7": {
+        "Health": 220,
+        "Attribute": 100,
+        "Specialty": 100,
+        "Secondary": 55,
+        "NaturalDamage": 75
+      },
+      "8": {
+        "Health": 245,
+        "Attribute": 100,
+        "Specialty": 100,
+        "Secondary": 60,
+        "NaturalDamage": 110
+      },
+      "9": {
+        "Health": 270,
+        "Attribute": 100,
+        "Specialty": 100,
+        "Secondary": 65,
+        "NaturalDamage": 160
+      },
+      "10": {
+        "Health": 300,
+        "Attribute": 100,
+        "Specialty": 100,
+        "Secondary": 70,
+        "NaturalDamage": 230
+      }
+    },
+    "ActorBuilds": {
+      "Warrior": {
+        "Health": 1,
+        "Strength": 1,
+        "Endurance": 1.15,
+        "Agility": 1,
+        "Willpower": 0.8,
+        "Speed": 1,
+        "Style": "Aggressive Fighter",
+        "Skills": [
+          "Blade",
+          "Blunt",
+          "HeavyArmor"
+        ]
+      },
+      "Knight": {
+        "Health": 1,
+        "Strength": 0.9,
+        "Endurance": 1.15,
+        "Agility": 0.9,
+        "Willpower": 0.8,
+        "Speed": 0.9,
+        "Style": "Defensive Fighter",
+        "Skills": [
+          "Blade",
+          "Block",
+          "HeavyArmor"
+        ]
+      },
+      "Barbarian": {
+        "Health": 1,
+        "Strength": 1.15,
+        "Endurance": 1.15,
+        "Agility": 0.9,
+        "Willpower": 0.8,
+        "Speed": 1.05,
+        "Style": "Berserker",
+        "Skills": [
+          "Blade",
+          "Blunt",
+          "LightArmor"
+        ]
+      },
+      "Rogue": {
+        "Health": 1,
+        "Strength": 0.9,
+        "Endurance": 1,
+        "Agility": 1.2,
+        "Willpower": 0.8,
+        "Speed": 1.2,
+        "Style": "Skirmisher",
+        "Skills": [
+          "Blade",
+          "LightArmor",
+          "Sneak"
+        ]
+      },
+      "Scout": {
+        "Health": 1,
+        "Strength": 0.9,
+        "Endurance": 1.1,
+        "Agility": 1.15,
+        "Willpower": 0.8,
+        "Speed": 1.15,
+        "Style": "Archer",
+        "Skills": [
+          "Marksman",
+          "LightArmor",
+          "Blade"
+        ]
+      },
+      "Spellsword": {
+        "Health": 1,
+        "Strength": 0.95,
+        "Endurance": 1,
+        "Agility": 0.9,
+        "Willpower": 1.15,
+        "Speed": 1,
+        "Style": "Battlemage",
+        "Skills": [
+          "Blade",
+          "Destruction",
+          "Restoration",
+          "HeavyArmor"
+        ]
+      },
+      "Battlemage": {
+        "Health": 1,
+        "Strength": 0.9,
+        "Endurance": 0.95,
+        "Agility": 0.85,
+        "Willpower": 1.2,
+        "Speed": 0.95,
+        "Style": "Battlemage",
+        "Skills": [
+          "Blunt",
+          "Destruction",
+          "Conjuration",
+          "HeavyArmor"
+        ]
+      },
+      "Mage": {
+        "Health": 1,
+        "Strength": 0.6,
+        "Endurance": 0.8,
+        "Agility": 0.85,
+        "Willpower": 1.3,
+        "Speed": 1,
+        "Style": "Mage",
+        "Skills": [
+          "Destruction",
+          "Conjuration",
+          "Restoration",
+          "Alteration",
+          "Illusion",
+          "Mysticism"
+        ]
+      },
+      "Civilian": {
+        "Health": 1,
+        "Strength": 0.8,
+        "Endurance": 0.8,
+        "Agility": 0.9,
+        "Willpower": 0.9,
+        "Speed": 1,
+        "Style": "Defensive Fighter",
+        "Skills": []
+      }
+    },
+    "CreatureBuilds": {
+      "Default": {
+        "Health": 1,
+        "Damage": 1,
+        "Speed": 1
+      },
+      "Large": {
+        "Health": 2,
+        "Damage": 1.3,
+        "Speed": 0.75
+      },
+      "Supernatural": {
+        "Health": 1.35,
+        "Damage": 1.15,
+        "Speed": 1
+      },
+      "Frail": {
+        "Health": 0.65,
+        "Damage": 0.8,
+        "Speed": 1.2
+      }
+    },
+    "ActorOverrides": {},
+    "NativeStyles": {
+      "Aggressive Fighter": {
+        "AttackChance": 75,
+        "BlockChance": 25,
+        "PowerAttackChance": 20,
+        "DodgeChance": 15,
+        "IdleMin": 0.15,
+        "IdleMax": 0.5,
+        "HoldMin": 0.2,
+        "HoldMax": 0.6
+      },
+      "Defensive Fighter": {
+        "AttackChance": 50,
+        "BlockChance": 80,
+        "PowerAttackChance": 10,
+        "DodgeChance": 10,
+        "IdleMin": 0.25,
+        "IdleMax": 0.7,
+        "HoldMin": 0.7,
+        "HoldMax": 1.4
+      },
+      "Berserker": {
+        "AttackChance": 90,
+        "BlockChance": 10,
+        "PowerAttackChance": 40,
+        "DodgeChance": 5,
+        "IdleMin": 0.05,
+        "IdleMax": 0.25,
+        "HoldMin": 0.1,
+        "HoldMax": 0.3
+      },
+      "Skirmisher": {
+        "AttackChance": 65,
+        "BlockChance": 25,
+        "PowerAttackChance": 15,
+        "DodgeChance": 65,
+        "IdleMin": 0.15,
+        "IdleMax": 0.5,
+        "HoldMin": 0.2,
+        "HoldMax": 0.5
+      },
+      "Archer": {
+        "AttackChance": 60,
+        "BlockChance": 20,
+        "PowerAttackChance": 10,
+        "DodgeChance": 45,
+        "IdleMin": 0.2,
+        "IdleMax": 0.7,
+        "HoldMin": 0.2,
+        "HoldMax": 0.5
+      },
+      "Mage": {
+        "AttackChance": 60,
+        "BlockChance": 10,
+        "PowerAttackChance": 5,
+        "DodgeChance": 40,
+        "IdleMin": 0.2,
+        "IdleMax": 0.7,
+        "HoldMin": 0.2,
+        "HoldMax": 0.5
+      },
+      "Battlemage": {
+        "AttackChance": 70,
+        "BlockChance": 35,
+        "PowerAttackChance": 15,
+        "DodgeChance": 25,
+        "IdleMin": 0.15,
+        "IdleMax": 0.5,
+        "HoldMin": 0.3,
+        "HoldMax": 0.7
+      },
+      "Boss": {
+        "AttackChance": 85,
+        "BlockChance": 55,
+        "PowerAttackChance": 30,
+        "DodgeChance": 30,
+        "IdleMin": 0.1,
+        "IdleMax": 0.4,
+        "HoldMin": 0.4,
+        "HoldMax": 0.9
+      }
+    },
+    "GameSettings": {
+      "fDamageWeaponMult": 3,
+      "fDamageStrengthBase": 0.5,
+      "fDamageStrengthMult": 0.5,
+      "fDamageSkillBase": 0.1,
+      "fDamageSkillMult": 0.9,
+      "fDamageWeaponConditionBase": 0.5,
+      "fDamageWeaponConditionMult": 0.5,
+      "fArmorRatingBase": 0.2,
+      "fArmorRatingMax": 1,
+      "fArmorRatingConditionBase": 0,
+      "fArmorRatingConditionMult": 1,
+      "fMaxArmorRating": 80,
+      "fBlockSkillBase": 0,
+      "fBlockSkillMult": 1,
+      "fBlockMax": 0.75,
+      "fBlockAmountWeaponMult": 0.5,
+      "fFatigueBase": 1,
+      "fFatigueMult": 0.65,
+      "fFatigueAttackWeaponBase": 6,
+      "fFatigueAttackWeaponMult": 0.45,
+      "fFatigueReturnBase": 3,
+      "fFatigueReturnMult": 0.07,
+      "fFatigueRunBase": 4,
+      "fFatigueRunMult": 0,
+      "fPowerAttackFatiguePenalty": 3,
+      "fDamagePowerAttackBonus": 2,
+      "fDamagePowerAttackStandBonus": 2,
+      "fDamagePowerAttackForwardBonus": 2,
+      "fDamagePowerAttackBackBonus": 2,
+      "fDamagePowerAttackSideBonus": 2,
+      "fDifficultyDamageMultiplier": 1,
+      "fPerkLightArmorMasterRatingMult": 1,
+      "fPerkHeavyArmorExpertSpeedMult": 1,
+      "fPerkHeavyArmorMasterSpeedMult": 1,
+      "fPerkLightArmorExpertSpeedMult": 1,
+      "fPerkAthleticsNoviceFatigueMult": 1,
+      "fPerkAthleticsApprenticeFatigueMult": 1,
+      "fPerkAthleticsJourneymanFatigueMult": 1,
+      "fPerkAthleticsExpertFatigueMult": 1,
+      "fPerkAthleticsMasterFatigueMult": 1,
+      "fPCBaseHealthMult": 1.5,
+      "fFatigueBlockBase": 1,
+      "fFatigueBlockMult": 0,
+      "fFatigueBlockSkillBase": 8,
+      "fFatigueBlockSkillMult": 0
+    }
+  }
+}

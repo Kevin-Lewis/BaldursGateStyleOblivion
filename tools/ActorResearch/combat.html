@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Physical combat workbench</title>
+<style>
+:root{color-scheme:dark;--bg:#141a21;--panel:#202833;--line:#364353;--text:#e6edf5;--muted:#a6b7c8;--blue:#79b8ff;--green:#73dab4;--amber:#efc37a}*{box-sizing:border-box}body{background:var(--bg);color:var(--text);font:15px/1.5 system-ui;margin:0;padding:24px;max-width:1680px;margin:auto}h1{font-size:28px;margin:0}h2{font-size:19px;margin:0 0 14px}h3{font-size:16px;margin:0 0 10px}p{margin:8px 0 16px}.muted,small{color:var(--muted)}.bar,.tabs,.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.bar{justify-content:space-between}.tabs{margin:22px 0}button,input,select,textarea{font:inherit;color:inherit;background:#151d27;border:1px solid var(--line);border-radius:6px;padding:8px}button{cursor:pointer}button:hover{border-color:var(--blue)}button.primary,.tabs button.active{background:#2f5277}button:disabled{opacity:.5;cursor:default}input[type=number]{width:110px}input[type=checkbox]{width:auto}.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px;margin-bottom:18px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.scenario-grid>div{min-width:0}.scenario-grid:not(.custom-open){grid-template-columns:1fr}.scenario-grid{display:grid;grid-template-columns:minmax(350px,1fr) minmax(430px,1.2fr);gap:20px}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields label{display:flex;flex-direction:column;gap:5px}.fields input,.fields select{width:100%}.wide{grid-column:1/-1}.note{border-left:3px solid var(--amber);padding:10px 14px;background:#292b2b;color:#dfd4b8}.success{color:var(--green)}.error{color:#ff9b9b}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px;border-bottom:1px solid var(--line);font-size:14px}th{color:var(--muted)}td input{max-width:85px;width:100%}table .name{min-width:130px}.scroll{overflow:auto;max-height:560px}canvas{display:block;width:100%;height:250px}.legend{font-size:13px;color:var(--muted)}.pill{padding:3px 8px;border-radius:4px;background:#303e4b;font-size:12px}.armor-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.armor-list button{font-size:12px}.metrics td{font-variant-numeric:tabular-nums}details{margin-top:14px}summary{cursor:pointer;color:var(--blue)}textarea{width:100%;height:400px;font:13px/1.5 monospace}#status{min-height:24px}a{color:var(--blue)}[hidden]{display:none!important}:focus-visible{outline:2px solid var(--blue);outline-offset:2px}@media(max-width:1100px){.scenario-grid{grid-template-columns:1fr}}@media(max-width:700px){body{padding:14px}.grid,.fields{grid-template-columns:1fr}.wide{grid-column:auto}}
+</style></head><body><!--EDITOR_NAV-->
+<div class="bar"><div><h1>Physical combat workbench</h1><p class="muted">Explore equipment tradeoffs, rare-tier progression, and combat pressure.</p></div><div class="row"><button id="reload">Reload saved</button><button id="save" class="primary">Save balance profiles</button><button id="export">Export scenario</button><label><input type="file" id="import" accept="application/json" hidden><button id="importButton">Import scenario</button></label></div></div>
+<div id="status" role="status" aria-live="polite">Loading combat catalog…</div>
+<div class="note">First-pass gameplay rebalance: saving config prepares the next candidate build. Proposed uses the configured equipment and engine coefficients; native actor budgets and styles are editable in Gameplay rebalance. Fight timing and active-block fatigue are estimates awaiting in-game measurements. Optional tier benchmarks remain disabled in quick builds.</div>
+<div class="tabs" role="tablist" aria-label="Combat sections"><button data-tab="scenarios" class="active">Scenarios</button><button data-tab="equipment">Equipment formulas</button><button data-tab="targets">Tier targets & fatigue</button><button data-tab="styles">Combat styles</button><button data-tab="gameplay">Gameplay rebalance</button><button data-tab="advanced">Individual exceptions & data</button></div>
+<div id="liveSummary" class="card" role="status" aria-live="polite" style="padding:12px 16px" hidden></div>
+<section id="scenarios"><div class="card"><h2>Quick combat matchup</h2><p class="muted">Typical levels follow the saved actor tier mapping; they are progression references, not player-level requirements. Choose tiers to set typical levels, then adjust level, class, or equipment as needed. Stats, equipment, fatigue, and behavior are filled automatically using illustrative melee builds. Level and class alone cannot determine actual player skills or health: race, training, skill use, and attribute choices also matter. Tier defaults use ordinary unenchanted equipment, with rare weapon variants above tier 6. Explicit weapon material choices use standard weapons. No armor also removes the preset shield; a shield can be selected separately.</p><div class="grid"><div><h3>Player</h3><div class="fields"><label>Player tier <select id="quickPlayerTier" aria-label="Player tier"></select></label><label>Player level <input id="quickPlayerLevel" aria-label="Player level" type="number" min="1" max="100" value="5"></label><label>Player class <select id="quickPlayerClass" aria-label="Player class"></select></label><label>Equipment <select id="quickPlayerEquipment" aria-label="Player equipment"></select></label><label>Weapon material <select id="quickPlayerWeaponMaterial" aria-label="Player weapon material"></select></label><label>Armor material <select id="quickPlayerArmorMaterial" aria-label="Player armor material"></select></label><label>Shield material <select id="quickPlayerShieldMaterial" aria-label="Player shield material"></select></label><label>Player behavior <select id="quickPlayerStyle"><option>Balanced</option><option>Defensive</option><option>Berserker</option><option>Skirmisher</option></select></label></div></div><div><h3>Enemy</h3><div class="fields"><label>Enemy tier <select id="quickEnemyTier" aria-label="Enemy tier"></select></label><label>Enemy level <input id="quickEnemyLevel" aria-label="Enemy level" type="number" min="1" max="100" value="15"></label><label>Enemy class <select id="quickEnemyClass" aria-label="Enemy class"></select></label><label>Equipment <select id="quickEnemyEquipment" aria-label="Enemy equipment"></select></label><label>Weapon material <select id="quickEnemyWeaponMaterial" aria-label="Enemy weapon material"></select></label><label>Armor material <select id="quickEnemyArmorMaterial" aria-label="Enemy armor material"></select></label><label>Shield material <select id="quickEnemyShieldMaterial" aria-label="Enemy shield material"></select></label><label>Enemy behavior <select id="quickEnemyStyle"><option>Balanced</option><option>Defensive</option><option>Berserker</option><option>Skirmisher</option></select></label></div></div></div><div class="row" style="margin-top:16px"><label><input id="nativeResources" type="checkbox" checked> Use native fatigue coefficients</label><button id="quickApply">Reset to tier builds</button></div><p id="quickSummary" class="muted"></p><div id="quickBuildSummary" class="row"></div><h3>Live skill calculations</h3><p class="muted">Level interpolates the base skill between typical tier levels. Class specialties and secondary skills use the shared gameplay budgets, capped at 100. Fatigue is the sum of Strength, Endurance, Agility, and Willpower.</p><div id="quickSkillCalcs" class="scroll"></div><p class="legend">Edit actor budgets in <button data-jump="gameplay">Gameplay rebalance</button>, gear templates in <button data-jump="targets">Tier targets & fatigue</button>, item stats in <button data-jump="equipment">Equipment formulas</button>, and behavior in <button data-jump="styles">Combat styles</button>.</p></div><div class="row" style="margin-bottom:16px"><label>Starting scenario <select id="preset"><option value="custom">Tier matchup / custom</option><option value="equal">Comparable fighters</option><option value="elite">Developing character vs elite</option><option value="group">Experienced character vs three enemies</option><option value="boss">Prepared character vs rare boss</option><option value="exhausted">Low-fatigue duel</option></select></label><label>Enemies <input id="enemyCount" type="number" min="1" max="12" value="1"></label><label>Duration (s) <input id="seconds" type="number" min="1" max="300" value="60"></label><button id="analyze">Recalculate</button></div>
+<div class="scenario-grid" id="scenarioGrid"><div><details id="customBuilds"><summary>Inspect or customize builds</summary><div class="grid" id="fighters"></div><div class="card"><h2>Model and source</h2><p id="provenance" class="muted"></p><p class="muted">Expected melee pressure, in 0.1-second steps. Damage uses loaded game settings and documented fallback coefficients, plus skills, luck, condition, fatigue, armor and an estimated active-block model. Attack cadence, contact rate, power attacks and fatigue costs are explicit assumptions.</p><p class="muted">Group scenarios focus enemies sequentially; all surviving enemies apply pressure. Other enemies retain their starting fatigue until engaged. Reach and durability are reported, but positioning, equipment wear, staggering, perks, enchantment effects, spells and runtime bonuses are not simulated. Difficulty is represented by each combatant’s outgoing damage multiplier.</p><details><summary>Loaded native settings and fallback coefficients</summary><pre id="nativeSettings" style="white-space:pre-wrap"></pre></details></div></details></div>
+<div><div class="card"><h2>Current vs proposed</h2><p class="legend">Both use your scenario assumptions. Proposed uses the editable equipment and engine settings, plus optional tier benchmarks. These are estimated outcomes, not win probabilities. Clean hits assume full fatigue and exclude power attacks and blocking.</p><table class="metrics"><thead><tr><th>Measure</th><th>Current</th><th>Proposed</th></tr></thead><tbody id="metrics"></tbody></table><h3>Single-hit formula breakdown</h3><p class="muted">Full fatigue, normal attack, before active blocking. Factors use the same code as the scenario calculation. This exposes the arithmetic; it is not an in-game validation result.</p><div id="hitFactors" class="scroll"></div></div><div class="card"><h2>Health over time</h2><canvas id="healthChart" aria-label="Current and proposed health over time"></canvas><p class="legend">Blue: player · Amber: enemies combined · Dashed: current · Solid: proposed</p></div><div class="card"><h2>Fatigue over time</h2><canvas id="fatigueChart" aria-label="Current and proposed fatigue over time"></canvas><p class="legend">Blue: player · Amber: engaged enemy · Dashed: current · Solid: proposed</p></div><div class="card"><h2>Selected equipment</h2><div class="scroll"><table><thead><tr><th>Item</th><th>Current → proposed</th></tr></thead><tbody id="selectedItems"></tbody></table></div></div></div></div></section>
+<section id="equipment" hidden><div class="card"><h2>Material modifiers</h2><p class="muted">Proposed stat = source stat × material modifier × class modifier × individual modifier. All equipment modifiers start at 1. Values and enchantments are retained. Unknown materials retain source stats unless explicitly assigned.</p><div id="materials" class="scroll"></div></div><div class="grid"><div class="card"><h2>Weapon classes</h2><div id="weaponClasses" class="scroll"></div></div><div class="card"><h2>Armor and shields</h2><p class="muted">Shield armor is passive protection. Active blocking is estimated separately using Block skill, shield presence, and native settings where supplied.</p><div id="armorClasses" class="scroll"></div></div></div><div class="card"><h2>Catalog analysis</h2><div class="row"><input id="itemFilter" placeholder="Search name, material, class…" aria-label="Filter equipment"><select id="itemKind"><option value="">All equipment</option><option>Weapon</option><option>Armor</option><option>Shield</option></select><span id="itemCount" class="muted"></span></div><div class="scroll"><table><thead><tr><th>Item</th><th>Material / class</th><th>Damage / armor</th><th>Speed / reach</th><th>Weight / durability</th><th>Preservation</th></tr></thead><tbody id="itemRows"></tbody></table></div></div></section>
+<section id="targets" hidden><div class="card"><h2>Quick build templates</h2><p class="muted">These templates choose scenario gear. Stats now come from Gameplay rebalance actor budgets. Availability and spawn rules are controlled separately.</p><div id="quickProfiles" class="scroll"></div><h3>Class templates</h3><p class="muted">Class templates below select gear and behavior. Native actor stats come from Gameplay rebalance profiles, with specialty skills reaching 100 at tier 5. Spell and ranged contributions are not modeled. Level interpolates stats between tier templates; equipment follows the derived tier.</p><div id="quickClasses" class="scroll"></div></div><div class="card"><h2>Linear progression, then rare-tier growth</h2><p class="muted">Target = (base + linear gain × min(tier, threshold)) × rare growth<sup>max(0, tier − threshold)</sup>. Offense is normalized to tier 3. These illustrative targets only affect combatants with “Use tier targets” checked; they do not assign stats to actors. Tier offense adds a preview multiplier on top of equipment and skill gains. Disable targets when testing observed actor builds.</p><div id="curves" class="grid"></div><canvas id="curveChart" aria-label="Offense and health target curves"></canvas><p class="legend">Blue: offense relative to tier 3 · Amber: health relative to tier 3</p><table><thead><tr><th>Tier</th><th>Typical level</th><th>Offense index</th><th>Health target</th></tr></thead><tbody id="curveRows"></tbody></table></div><div class="card"><h2>Fatigue and power-attack assumptions</h2><p class="muted">Estimated attack cost = base + weapon weight × weight cost; power attacks multiply that cost. Estimated block cost uses the attacking weapon’s weight. Regeneration is set per combatant. These inputs require in-game calibration and currently affect both comparison columns.</p><div id="resources" class="fields"></div></div></section>
+<section id="styles" hidden><div class="card"><h2>Behavioral archetypes</h2><p class="muted">Attack cadence is multiplied by weapon speed. Contact rate is the fraction of attacks that connect, not a native hit-chance roll. Blocking uptime is an assumption about defensive behavior. Native style percentages are decision weights, so they are not automatically converted into these rates. Rate inputs use fractions: 0.6 means 60%.</p><div id="styleRows" class="scroll"></div></div><div class="card"><h2>Native combat-style reference</h2><p class="muted">Loaded effective style records are available for inspection. This milestone does not write native styles. Archer and Mage simulation will arrive with ranged combat and magic.</p><select id="nativeStyle" aria-label="Inspect native combat style"></select><pre id="styleDetail" style="white-space:pre-wrap"></pre></div></section>
+<section id="gameplay" hidden><div class="card"><h2>Playable first-pass controls</h2><p class="muted">Save these controls, then rebuild the candidate. Equipment, NPC/creature stats, native combat styles, and these engine settings are written into the plugin. Level/class presets use these same actor budgets. They represent an equipped build; player progression still depends on actual skill use and attribute choices.</p><div id="gameplayFlags" class="row"></div></div><div class="card"><h2>Weapon class baselines</h2><p class="muted">Absolute Iron-class baselines × material modifiers × class modifiers × individual modifiers. Ordinary enchanted physical stats follow the same model; registered artifacts, scripted and quest equipment retain their exemptions.</p><div id="weaponBaselines" class="scroll"></div><h3>Armor slot coverage</h3><p class="muted">Slot rating × material × heavy/light class. Base weight is slot rating × 0.9 for heavy or 0.35 for light; durability is slot rating × 20 or × 10. Shields have an independent slot budget.</p><div id="armorSlots" class="fields"></div></div><div class="card"><h2>Actor tier budgets</h2><p class="muted">Specialty skills reach 100 at tier 5 / level 20. Secondary skills stay lower. Health grows slowly; natural creature attacks grow more sharply. Rare-tier weapon variants use the growth control above and can be acquired from defeated enemies.</p><div id="actorTiers" class="scroll"></div></div><div class="card"><h2>Class and creature profiles</h2><p class="muted">Health and attribute multipliers apply to tier budgets. Listed specialties use Specialty; other combat skills use Secondary. Fatigue = Strength + Endurance + Agility + Willpower. Humanoid health multipliers start neutral; there is no forced health/Endurance tradeoff. Large creatures exchange Speed for Health. These class profiles affect NPCs and quick test builds, not the player class creation screen.</p><div id="actorBuilds" class="scroll"></div><h3>Creature profiles</h3><div id="creatureBuilds" class="scroll"></div></div><div class="card"><h2>Native combat styles</h2><p class="muted">Decision chances and timers written into native style variants. Existing advanced behavior, casting/ranged distances and flags are retained. These are not the analyzer contact rates or measured block uptime.</p><div id="nativeStyleProfiles" class="scroll"></div></div><div class="card"><h2>Individual actor exception</h2><p class="muted">Preserve excludes an actor from combat normalization. Build and health override an eligible actor; existing script/quest/deleveling safeguards still apply.</p><div class="fields"><label class="wide">Actor <select id="combatActor"></select></label><label>Build <select id="combatActorBuild"></select></label><label>Health override <input id="combatActorHealth" type="number" min="1" max="100000" placeholder="Use tier budget"></label><label><span><input id="combatActorPreserve" type="checkbox"> Preserve native combat stats</span></label></div><div class="row"><button id="saveCombatActor">Set actor exception</button><button id="deleteCombatActor">Remove exception</button></div></div><div class="card"><h2>Engine coefficients</h2><p class="muted">The proposed analyzer uses these coefficients as well as the item proposals. Zeroing every coefficient can disable core mechanics; modify the stated factor instead. Difficulty is intended to stay at the middle position for baseline comparisons. Block timing and fight duration still require in-game calibration.</p><div id="engineSettings" class="scroll"></div></div></section>
+<section id="advanced" hidden><div class="card"><h2>Individual item exception</h2><div class="fields"><label class="wide">Item <select id="overrideItem"></select></label><label>Material <select id="overrideMaterial"></select></label><label>Class <select id="overrideClass"></select></label><label><span><input type="checkbox" id="preserve"> Preserve all source stats</span></label><label><span><input type="checkbox" id="normalizeProtected"> Explicitly balance protected item</span></label></div><div id="overrideModifiers" class="fields" style="margin:15px 0"></div><p id="overrideReason" class="muted"></p><div class="row"><button id="setOverride">Set exception</button><button id="deleteOverride">Remove exception</button></div></div><div class="card"><h2>Advanced configuration</h2><p class="muted">Profile saves use revision checking. Changes in this JSON editor must be applied to the preview before saving.</p><textarea id="jsonConfig" spellcheck="false" aria-label="Combat configuration JSON"></textarea><div class="row"><button id="refreshJson">Copy current controls to JSON</button><button id="applyJson">Apply JSON to preview</button></div></div></section>
+<script>
+const token=/*TOKEN*/"";
+let data,settings,scenario,result,timer,sequence=0,quickSequence=0,dirty=false,overrideDraft;
+const $=id=>document.getElementById(id),clone=x=>structuredClone(x),fields=['Damage','Speed','Reach','Weight','Durability','Armor'];
+const columnLabels={Damage:'Damage ×',Speed:'Speed ×',Reach:'Reach ×',Weight:'Weight ×',Durability:'Durability ×',Armor:'Armor ×',AttacksPerSecond:'Attacks / sec',ContactRate:'Contact rate',BlockUptime:'Block uptime',PowerAttackShare:'Power attacks'};
+const neutral=()=>Object.fromEntries(fields.map(k=>[k,1]));
+function status(text,error=false){
+  $('status').textContent=text;
+  $('status').className=error?'error':dirty?'':'success'
+}
+async function request(path,body){
+  const response=await fetch('/api/combat'+path,body?{
+    method:'POST',headers:{
+      'Content-Type':'application/json','Origin':location.origin,'X-Actor-Editor-Token':token
+    },body:JSON.stringify(body)
+  }
+  :{
+  });
+  const value=await response.json();
+  if(!response.ok)throw Error(value.error||response.statusText);
+  return value
+}
+function element(tag,text){
+  const node=document.createElement(tag);
+  if(text!==undefined)node.textContent=text;
+  return node
+}
+function options(select,rows,value){
+  select.replaceChildren();
+  for(const [key,label] of rows){
+    const option=element('option',label);
+    option.value=key;
+    select.append(option)
+  }
+  select.value=value
+}
+function searchSelect(select, rows, value, placeholder){
+  const search=element('input');
+  search.type='search';
+  search.placeholder=placeholder;
+  search.setAttribute('aria-label',placeholder);
+  search.addEventListener('input',()=>{
+    const filter=search.value.toLowerCase();
+    const selected=select.value;
+    options(select,rows.filter(([key,label])=>key===selected||label.toLowerCase().includes(filter)),selected);
+  });
+  options(select,rows,value);
+  return search;
+}
+function number(value,min,max,step,onchange){
+  const input=element('input');
+  input.type='number';
+  input.value=value;
+  input.min=min;
+  input.max=max;
+  input.step=step;
+  input.addEventListener('input',()=>{
+    if(input.checkValidity()){
+      onchange(Number(input.value));
+      queue()
+    }
+  });
+  return input
+}
+function label(name,input){
+  const node=element('label',name);
+  node.append(input);
+  return node
+}
+function queue(profile=false){
+  if(profile){
+    dirty=true;
+    status('Unsaved balance profile changes.')
+  }
+  clearTimeout(timer);
+  timer=setTimeout(preview,250)
+}
+function table(container,rows,columns,onchange){
+  const t=element('table'),head=element('tr');
+  head.append(element('th','Profile'));
+  for(const c of columns)head.append(element('th',columnLabels[c]||c));
+  const thead=element('thead');
+  thead.append(head);
+  t.append(thead);
+  const body=element('tbody');
+  for(const [name,values] of Object.entries(rows)){
+    const tr=element('tr'),cell=element('td',name);
+    cell.className='name';
+    tr.append(cell);
+    for(const c of columns){
+      const td=element('td');
+      const isRate=['ContactRate','BlockUptime','PowerAttackShare'].includes(c);
+      const minimum=isRate?0:.05;
+      const maximum=isRate?1:c==='AttacksPerSecond'?5:10;
+      td.append(number(values[c],minimum,maximum,.05,v=>{
+        values[c]=v;
+        onchange()
+      }));
+      tr.append(td)
+    }
+    body.append(tr)
+  }
+  t.append(body);
+  $(container).replaceChildren(t)
+}
+const equipmentPresets=['Class default','Sword & shield','Two-handed / heavy armor','Two-handed / light armor','Sword / light armor','Dagger / light armor','Mace & shield','Warhammer / heavy armor','Axe & shield'];
+function renderQuickClasses(){
+  const table=element('table'),head=element('tr');
+  for(const title of ['Class','Behavior','Equipment'])head.append(element('th',title));
+  table.append(head);
+  for(const [name,profile] of Object.entries(settings.QuickClasses)){
+    const row=element('tr');row.append(element('td',name));
+    for(const key of ['Build','Equipment']){
+      const cell=element('td'),select=element('select');
+      options(select,(key==='Build'?['Balanced','Defensive','Berserker','Skirmisher']:equipmentPresets.slice(1)).map(value=>[value,value]),profile[key]);
+      select.onchange=()=>{profile[key]=select.value;applyQuickMatchup(false);queue(true);};cell.append(select);row.append(cell);
+    }
+    table.append(row);
+  }
+  $('quickClasses').replaceChildren(table);
+  for(const side of ['Player','Enemy']){
+    const select=$('quick'+side+'Class');options(select,Object.keys(settings.QuickClasses).map(name=>[name,name]),select.value||'Warrior');
+  }
+}
+function renderQuickProfiles(){
+  renderQuickClasses();
+  const table=element('table'),head=element('tr');
+  for(const title of ['Tier','Typical level','Weapon material','Armor material','Light armor material'])head.append(element('th',title));
+  table.append(head);
+  for(const [tier,profile] of Object.entries(settings.QuickTiers)){
+    const row=element('tr');row.append(element('td',tier),element('td',typicalLevel(tier)));
+    for(const key of ['WeaponMaterial','ArmorMaterial','LightArmorMaterial']){
+      const cell=element('td'),select=element('select');
+      options(select,Object.keys(settings.Materials).map(name=>[name,name]),profile[key]);
+      select.onchange=()=>{profile[key]=select.value;applyQuickMatchup(false);queue(true);};
+      cell.append(select);row.append(cell);
+    }
+    table.append(row);
+  }
+  $('quickProfiles').replaceChildren(table);
+}
+function gameplayTable(id,values){
+  const table=element('table'),head=element('tr'),entries=Object.entries(values),columns=Object.keys(entries[0]?.[1]||{});
+  head.append(element('th','Profile'));for(const key of columns)head.append(element('th',key));table.append(head);
+  for(const [name,profile] of entries){
+    const row=element('tr');row.append(element('td',name));
+    for(const key of columns){
+      const cell=element('td'),value=profile[key];
+      if(typeof value==='number')cell.append(number(value,0,key.includes('Chance')?100:key==='RareWeaponGrowth'?3:10000,key.includes('Chance')||['Damage','Durability','Specialty','Secondary'].includes(key)?1:.05,v=>{profile[key]=v;applyQuickMatchup(false);queue(true);}));
+      else{
+        const input=element('input');input.value=Array.isArray(value)?value.join(', '):value;
+        input.onchange=()=>{profile[key]=Array.isArray(value)?input.value.split(',').map(v=>v.trim()).filter(Boolean):input.value;applyQuickMatchup(false);queue(true);};cell.append(input);
+      }
+      row.append(cell);
+    }
+    table.append(row);
+  }
+  $(id).replaceChildren(table);
+}
+const engineEffects={
+  fDamageWeaponMult:'Global physical weapon damage multiplier',fDamageStrengthBase:'Damage factor at zero Strength',fDamageStrengthMult:'Added damage factor at Strength 100',fDamageSkillBase:'Damage factor at skill zero',fDamageSkillMult:'Added damage factor at skill 100',
+  fMaxArmorRating:'Maximum armor mitigation (%)',fArmorRatingBase:'Armor skill factor at skill zero',fArmorRatingMax:'Armor skill factor at skill 100',fBlockMax:'Maximum active block fraction',fBlockSkillMult:'Block factor at skill 100, before cap',fBlockAmountWeaponMult:'Weapon block relative to shield block',
+  fFatigueBase:'Damage factor at full fatigue',fFatigueMult:'Damage factor lost at empty fatigue',fFatigueAttackWeaponBase:'Flat normal attack fatigue cost',fFatigueAttackWeaponMult:'Added attack cost per weapon weight',fFatigueReturnBase:'Flat fatigue recovered per second',fFatigueReturnMult:'Added recovery per Endurance',fPowerAttackFatiguePenalty:'Additional normal-attack cost fraction for a power attack',
+  fDifficultyDamageMultiplier:'Difficulty slider sensitivity; compare at midpoint',fPCBaseHealthMult:'Initial player health coefficient; applies when the engine initializes health',fPerkLightArmorMasterRatingMult:'Full-light mastery armor multiplier',fPerkHeavyArmorMasterSpeedMult:'Heavy armor mastery encumbrance factor (1 retains weight)',fPerkHeavyArmorExpertSpeedMult:'Heavy armor expert encumbrance factor',fPerkLightArmorExpertSpeedMult:'Light armor expert encumbrance factor'
+};
+function renderCombatActor(){
+  const rule=settings.Gameplay.ActorOverrides[$('combatActor').value]||{};
+  options($('combatActorBuild'),[['','Automatic'],...Object.keys(settings.Gameplay.ActorBuilds).map(name=>[name,name])],rule.Build||'');
+  $('combatActorHealth').value=rule.Health??'';$('combatActorPreserve').checked=!!rule.Preserve;
+}
+function renderGameplay(){
+  const gameplay=settings.Gameplay; $('gameplayFlags').replaceChildren();
+  for(const key of ['NormalizeEquipment','BalanceEnchantedPhysicalStats','BalanceActors','BalanceGameSettings']){
+    const input=element('input');input.type='checkbox';input.checked=gameplay[key];input.onchange=()=>{gameplay[key]=input.checked;queue(true);};$('gameplayFlags').append(label(key,input));
+  }
+  $('gameplayFlags').append(label('Rare weapon growth per tier above 6',number(gameplay.RareWeaponGrowth,1,3,.05,value=>{gameplay.RareWeaponGrowth=value;applyQuickMatchup(false);queue(true);} )));
+  for(const [id,key] of [['weaponBaselines','WeaponBaselines'],['actorTiers','ActorTiers'],['actorBuilds','ActorBuilds'],['creatureBuilds','CreatureBuilds'],['nativeStyleProfiles','NativeStyles']])gameplayTable(id,gameplay[key]);
+  $('armorSlots').replaceChildren();for(const [slot,value] of Object.entries(gameplay.ArmorSlots))$('armorSlots').append(label(slot,number(value,0,100,.5,v=>{gameplay.ArmorSlots[slot]=v;queue(true);} )));
+  const table=element('table');
+  for(const [key,value] of Object.entries(gameplay.GameSettings)){
+    const row=element('tr');row.append(element('td',key),element('td',engineEffects[key]||'Native coefficient; see formula/source notes'));
+    const cell=element('td');cell.append(number(value,0,100,.05,v=>{gameplay.GameSettings[key]=v;queue(true);}));row.append(cell);table.append(row);
+  }
+  $('engineSettings').replaceChildren(table);
+  options($('combatActor'),data.Catalog.Actors.map(actor=>[actor.FormKey,(actor.Name||actor.EditorID||actor.FormKey)+' · tier '+(actor.Tier??'?')]),$('combatActor').value);renderCombatActor();
+}
+function renderProfiles(){
+  renderGameplay();
+  renderQuickProfiles();
+  table('materials',settings.Materials,fields,()=>queue(true));
+  table('weaponClasses',settings.WeaponClasses,fields.slice(0,5),()=>queue(true));
+  table('armorClasses',settings.ArmorClasses,['Armor','Weight','Durability'],()=>queue(true));
+  table('styleRows',settings.Styles,['AttacksPerSecond','ContactRate','BlockUptime','PowerAttackShare'],()=>queue(true));
+  $('curves').replaceChildren();
+  for(const key of ['OffenseTarget','HealthTarget']){
+    const div=element('div');
+    div.append(element('h3',key==='OffenseTarget'?'Offense target':'Health target'));
+    const grid=element('div');
+    grid.className='fields';
+    for(const k of ['Knee','Base','LinearGain','RareGrowth'])grid.append(label({
+      Knee:'Rare-tier threshold',Base:'Base',LinearGain:'Linear gain per tier',RareGrowth:'Rare growth per tier'
+    }
+    [k],number(settings[key][k],k==='RareGrowth'?1:0,k==='Knee'?10:k==='RareGrowth'?3:1000,k==='Knee'?1:.05,v=>{
+      settings[key][k]=v;
+      queue(true)
+    })));
+    div.append(grid);
+    $('curves').append(div)
+  }
+  $('resources').replaceChildren();
+  for(const [key,title] of Object.entries({
+    AttackFatigueBase:'Attack base cost',AttackFatigueWeight:'Attack weight cost',BlockFatigueBase:'Block base cost',BlockFatigueWeight:'Block weight cost',PowerAttackFatigueMult:'Power attack cost multiplier',PowerAttackDamageMult:'Power attack damage multiplier'
+  }))$('resources').append(label(title,number(settings[key],0,100,.05,v=>{
+    settings[key]=v;
+    queue(true)
+  })));
+  $('jsonConfig').value=JSON.stringify(settings,null,2)
+}
+function curveAt(curve,tier){
+  return (curve.Base+curve.LinearGain*Math.min(tier,curve.Knee))*Math.pow(curve.RareGrowth,Math.max(0,tier-curve.Knee));
+}
+function weaponClassFor(equipment,build){
+  return equipment?.startsWith('Warhammer')?'Warhammer':equipment?.startsWith('Mace')?'Mace':equipment?.startsWith('Axe')?'Waraxe':equipment?.startsWith('Two-handed')?'Claymore':equipment?.startsWith('Dagger')?'Dagger':equipment?'Longsword':build==='Berserker'?'Claymore':build==='Skirmisher'?'Dagger':'Longsword';
+}
+function renderQuickMaterials(side){
+  const equipment=$('quick'+side+'Equipment').value;
+  const preset=equipment==='Class default'?settings.QuickClasses[$('quick'+side+'Class').value].Equipment:equipment;
+  const weaponClass=weaponClassFor(preset,$('quick'+side+'Style').value);
+  const available=data.Catalog.Items.filter(item=>!item.Protected&&!item.Enchanted&&settings.Materials[item.Material]);
+  for(const kind of ['Weapon','Armor','Shield']){
+    const select=$('quick'+side+kind+'Material');
+    const materials=[...new Set(available.filter(item=>kind==='Weapon'?item.Kind==='Weapon'&&item.Class===weaponClass:item.Kind===kind).map(item=>item.Material))].sort();
+    const profile=settings.QuickTiers[Number($('quick'+side+'Tier').value)];
+    const armorChoice=$('quick'+side+'ArmorMaterial').value;
+    const material=kind==='Weapon'?profile.WeaponMaterial:kind==='Shield'&&armorChoice!=='Tier default'?armorChoice:preset.includes('light armor')?profile.LightArmorMaterial:profile.ArmorMaterial;
+    const defaults=kind==='Shield'?'Preset default':'Tier default';
+    const noShield=kind==='Shield'&&(!preset.endsWith('& shield')||material==='None'||['Claymore','Battleaxe','Warhammer'].includes(weaponClass));
+    const entries=[[defaults,defaults+' · '+(noShield?'none':material)]];
+    if(kind!=='Weapon')entries.push(['None',kind==='Armor'?'No armor':'No shield']);
+    entries.push(...materials.map(value=>[value,value]));
+    options(select,entries,entries.some(([value])=>value===select.value)?select.value:defaults);
+    select.disabled=kind==='Shield'&&['Claymore','Battleaxe','Warhammer'].includes(weaponClass);
+  }
+}
+function tierFighter(name,tier,build,profile,equipment,gear){
+  const fighter=defaultFighter(name),weaponClass=weaponClassFor(equipment,build);
+  const standard=item=>Number(!new RegExp('^(?:SE)?(?:Armor|Weap)?'+item.Material,'i').test(item.EditorID||''));
+  const candidates=data.Catalog.Items.filter(item=>!item.Protected&&!item.Enchanted).sort((a,b)=>standard(a)-standard(b));
+  const weaponMaterial=gear.Weapon==='Tier default'?profile.WeaponMaterial:gear.Weapon;
+  const weapon=candidates.find(item=>item.Kind==='Weapon'&&item.Class===weaponClass&&item.Material===weaponMaterial)
+    ||(gear.Weapon==='Tier default'?candidates.find(item=>item.Kind==='Weapon'&&item.Class===weaponClass&&item.Material==='Iron'):null);
+  if(!weapon)throw Error('No ordinary '+weaponMaterial+' '+weaponClass+' is available in the catalog.');
+  fighter.Weapon=weapon.FormKey;
+  const armorMaterial=gear.Armor==='Tier default'?(equipment.includes('light armor')?profile.LightArmorMaterial:profile.ArmorMaterial):gear.Armor;
+  const shieldMaterial=['BladeTwoHand','BluntTwoHand'].includes(weapon.NativeType)?'None':gear.Shield==='Preset default'?(equipment.endsWith('& shield')&&armorMaterial!=='None'?armorMaterial:'None'):gear.Shield;
+  const occupied=new Set();
+  for(const slot of ['Hair','UpperBody','LowerBody','Hand','Foot','Shield']){
+    const material=slot==='Shield'?shieldMaterial:armorMaterial;
+    if(material==='None')continue;
+    const item=candidates.find(item=>(slot==='Shield'?item.Kind==='Shield':item.Kind==='Armor')&&item.Material===material
+      &&item.Slots.split(',').map(s=>s.trim()).includes(slot)&&item.Slots.split(',').every(s=>!occupied.has(s.trim())));
+    if(item){fighter.Armor.push(item.FormKey);for(const s of item.Slots.split(','))occupied.add(s.trim());}
+  }
+  fighter.Tier=tier;fighter.UseTierTargets=false;
+  const style={Balanced:'Aggressive Fighter',Defensive:'Defensive Fighter',Berserker:'Berserker',Skirmisher:'Skirmisher'}[build];
+  fighter.Style=settings.Styles[style]?style:Object.keys(settings.Styles)[0];
+  return fighter;
+}
+function tierForLevel(level){
+  return Object.entries(data.LevelMapping).filter(([tier,value])=>value!=null&&value<=level).sort((a,b)=>b[1]-a[1])[0]?.[0] ?? '0';
+}
+function renderSkillCalculations(){
+  const table=element('table'),head=element('tr');
+  for(const title of ['Build','Tier / level','Weapon skill','Heavy / light armor','Block','Fatigue / recovery'])head.append(element('th',title));table.append(head);
+  for(const side of ['Player','Enemy']){
+    const fighter=scenario[side],row=element('tr');
+    row.append(element('td',fighter.Name),element('td',fighter.Tier+' / '+$('quick'+side+'Level').value),element('td',fighter.WeaponSkill),element('td',fighter.HeavyArmorSkill+' / '+fighter.LightArmorSkill),element('td',fighter.BlockSkill),element('td',fighter.MaxFatigue+' / '+format(fighter.FatigueRegen,2)+' per sec'));table.append(row);
+  }
+  $('quickSkillCalcs').replaceChildren(table);
+}
+async function levelFighter(side,tier){
+  const level=Number($('quick'+side+'Level').value),className=$('quick'+side+'Class').value;
+  const template=settings.QuickClasses[className],equipment=$('quick'+side+'Equipment').value;
+  renderQuickMaterials(side);
+  const gear=Object.fromEntries(['Weapon','Armor','Shield'].map(kind=>[kind,$('quick'+side+kind+'Material').value]));
+  const fighter=tierFighter(side,tier,$('quick'+side+'Style').value,settings.QuickTiers[tier],equipment==='Class default'?template.Equipment:equipment,gear);
+  const stats=await request('/build',{Settings:settings,Build:className,Tier:tier,Level:level});fighter.Name=side+' · level '+level+' '+className;
+  fighter.Health=stats.Health;fighter.Strength=stats.Strength;fighter.Endurance=stats.Endurance;
+  const weapon=data.Catalog.Items.find(item=>item.FormKey===fighter.Weapon);
+  fighter.WeaponSkill=stats[weapon.NativeType?.startsWith('Blunt')?'Blunt':'Blade'];fighter.HeavyArmorSkill=stats.HeavyArmor;fighter.LightArmorSkill=stats.LightArmor;fighter.BlockSkill=stats.Block;
+  fighter.MaxFatigue=stats.Fatigue;fighter.FatigueRegen=stats.FatigueRegen;fighter.WeaponPower=gear.Weapon==='Tier default'?Math.pow(settings.Gameplay.RareWeaponGrowth,Math.max(0,tier-6)):1;
+  return fighter;
+}async function applyQuickMatchup(recalculate=true){
+  const id=++quickSequence;
+  try{
+    const playerTier=Number($('quickPlayerTier').value),enemyTier=Number($('quickEnemyTier').value);
+    $("preset").value="custom";
+    const [player,enemy]=await Promise.all([levelFighter('Player',playerTier),levelFighter('Enemy',enemyTier)]);
+    if(id!==quickSequence)return;
+    scenario.Player=player;scenario.Enemy=enemy;
+    renderFighters();
+    $('quickSummary').textContent=`Tier ${playerTier} player vs tier ${enemyTier} enemy · automatic melee builds. Open customization to inspect or change any assumption.`;
+    $('quickBuildSummary').replaceChildren();
+    for(const fighter of [scenario.Player,scenario.Enemy]){
+      const weapon=data.Catalog.Items.find(item=>item.FormKey===fighter.Weapon);
+      const armor=fighter.Armor.map(key=>data.Catalog.Items.find(item=>item.FormKey===key));
+      const body=armor.filter(item=>item.Kind==='Armor'),shield=armor.find(item=>item.Kind==='Shield');
+      const protection=body.length?[...new Set(body.map(item=>item.Material+' '+(item.Heavy?'heavy':'light')))].join(', '):'no armor';
+      $('quickBuildSummary').append(element('span',fighter.Name+': '+fighter.Health+' health · '+weapon.Material+' '+weapon.Class+(fighter.WeaponPower>1?' (rare variant ×'+format(fighter.WeaponPower,2)+')':'')+' · '+protection+' · '+(shield?shield.Material+' shield':'no shield')));
+    }
+    renderSkillCalculations();
+    queue();
+  }catch(error){status(error.message,true);}
+}
+function defaultFighter(name){
+  return {
+    Name:name,ActorKey:null,Tier:3,UseTierTargets:false,Weapon:'000C0C:Oblivion.esm',Armor:[],Style:'Aggressive Fighter',Health:140,Strength:50,Endurance:50,WeaponPower:1,WeaponSkill:50,LightArmorSkill:50,HeavyArmorSkill:50,BlockSkill:50,Luck:50,MaxFatigue:200,StartingFatiguePercent:100,FatigueRegen:5,ConditionPercent:100,DamageMultiplier:1,ResistNormalWeapons:0
+  }
+}
+function renderFighters(){
+  $('quickPlayerTier').value=String(scenario.Player.Tier);
+  $('quickEnemyTier').value=String(scenario.Enemy.Tier);
+  const host=$('fighters');
+  host.replaceChildren();
+  for(const side of ['Player','Enemy']){
+    const f=scenario[side],card=element('div');
+    card.className='card';
+    card.append(element('h2',side==='Player'?'Player build':'Enemy build'));
+    const form=element('div');
+    form.className='fields';
+    const actor=element('select');
+    options(actor,[['','Custom / observed build'],...data.Catalog.Actors.map(a=>[a.FormKey,`${a.Name||a.EditorID||a.FormKey} · tier ${a.Tier??'?'} · ${a.FormKey}`])],f.ActorKey||'');
+    const actorLabel=label('Actor reference',actor);
+    actorLabel.className='wide';
+    actorLabel.insertBefore(searchSelect(actor,[['','Custom / observed build'],...data.Catalog.Actors.map(a=>[a.FormKey,`${a.Name||a.EditorID||a.FormKey} · tier ${a.Tier??'?'} · ${a.FormKey}`])],f.ActorKey||'','Find actor by name or ID…'),actor);
+    form.append(actorLabel);
+    const actorNote=element('p');
+    actorNote.className='muted';
+    const updateNote=()=>{
+      const a=data.Catalog.Actors.find(a=>a.FormKey===f.ActorKey);
+      actorNote.textContent=a?`${a.StatsStatus}. Selecting this actor supplies identity and tier; equipment and combat stats remain your explicit inputs.`:'Enter a player build or measured actor stats. No player-level scaling is simulated.'
+    };
+    actor.onchange=()=>{
+      f.ActorKey=actor.value||null;
+      const a=data.Catalog.Actors.find(a=>a.FormKey===f.ActorKey);
+      if(a?.Tier!==null&&a?.Tier!==undefined)f.Tier=a.Tier;
+      renderFighters();
+      queue()
+    };
+    updateNote();
+    const weapon=element('select');
+    options(weapon,data.Catalog.Items.filter(i=>i.Kind==='Weapon'&&i.Class!=='Bow'&&!['Bow','Staff'].includes(i.NativeType)).map(i=>[i.FormKey,`${i.Name} (${i.Material})`]),f.Weapon);
+    weapon.onchange=()=>{
+      f.Weapon=weapon.value;
+      queue()
+    };
+    const wl=label('Melee weapon',weapon);
+    wl.className='wide';
+    wl.insertBefore(searchSelect(weapon,data.Catalog.Items.filter(i=>i.Kind==='Weapon'&&i.Class!=='Bow'&&!['Bow','Staff'].includes(i.NativeType)).map(i=>[i.FormKey,`${i.Name} (${i.Material}) · ${i.FormKey}`]),f.Weapon,'Find melee weapon…'),weapon);
+    form.append(wl);
+    const style=element('select');
+    options(style,Object.keys(settings.Styles).map(s=>[s,s]),f.Style);
+    style.onchange=()=>{
+      f.Style=style.value;
+      queue()
+    };
+    const sl=label('Behavior assumption',style);
+    sl.className='wide';
+    form.append(sl);
+    for(const [key,title,min,max,step] of [['Tier','World tier',0,10,1],['Health','Current health',1,100000,1],['Strength','Strength',0,200,1],['Endurance','Endurance',0,200,1],['WeaponPower','Rare weapon variant power',1,20,.05],['WeaponSkill','Weapon skill',0,200,1],['LightArmorSkill','Light armor skill',0,200,1],['HeavyArmorSkill','Heavy armor skill',0,200,1],['BlockSkill','Block skill',0,200,1],['Luck','Luck',0,200,1],['MaxFatigue','Maximum fatigue',1,10000,1],['StartingFatiguePercent','Starting fatigue %',0,100,1],['FatigueRegen','Fatigue recovery / sec',0,100,.1],['ConditionPercent','Equipment condition %',1,125,1],['DamageMultiplier','Outgoing damage ×',.01,20,.05],['ResistNormalWeapons','Normal weapon resistance %',0,100,1]])form.append(label(title,number(f[key],min,max,step,v=>{
+      f[key]=v
+    })));
+    const check=element('input');
+    check.type='checkbox';
+    check.checked=f.UseTierTargets;
+    check.onchange=()=>{
+      f.UseTierTargets=check.checked;
+      queue()
+    };
+    const cl=label('Use illustrative tier targets in proposed column',check);
+    cl.className='wide';
+    form.append(cl);
+    card.append(form,actorNote);
+    if(f.ActorKey){
+      const a=data.Catalog.Actors.find(a=>a.FormKey===f.ActorKey);
+      const detail=element('details'),summary=element('summary','Stored stats and inventory reference'),pre=element('pre');
+      pre.style.whiteSpace='pre-wrap';
+      pre.style.fontSize='12px';
+      pre.textContent=JSON.stringify({
+        Stats:a.Stats,Inventory:a.Inventory,CombatStyle:a.CombatStyle
+      },null,2);
+      detail.append(summary,pre);
+      const copy=element('button','Use stored base stats (estimate)');
+      copy.disabled=a.AutoCalculated;
+      copy.onclick=()=>{
+        const stats=a.Stats;
+        for(const key of ['Health','Strength','Endurance','Luck','BlockSkill','LightArmorSkill','HeavyArmorSkill']){
+          const native={
+            BlockSkill:'Block',LightArmorSkill:'LightArmor',HeavyArmorSkill:'HeavyArmor'
+          }
+          [key]||key;
+          if(Number.isFinite(stats[native]))f[key]=stats[native]
+        }
+        const weapon=data.Catalog.Items.find(i=>i.FormKey===f.Weapon);
+        f.WeaponSkill=stats[weapon?.NativeType?.startsWith('Blunt')?'Blunt':'Blade']??stats.CombatSkill??f.WeaponSkill;
+        const fatigue=['Strength','Willpower','Agility','Endurance'].map(k=>stats[k]);
+        if(fatigue.every(Number.isFinite))f.MaxFatigue=Math.max(1,fatigue.reduce((a,b)=>a+b,0));
+        f.UseTierTargets=false;f.WeaponPower=1;
+        renderFighters();
+        queue()
+      };
+      detail.append(copy);
+      card.append(detail)
+    }
+    card.append(element('h3','Armor loadout'));
+    const armorSelect=element('select');
+    options(armorSelect,[['','Add armor or shield…'],...data.Catalog.Items.filter(i=>i.Kind!=='Weapon').map(i=>[i.FormKey,`${i.Name} · ${i.Slots}`])],'');
+    armorSelect.style.width='100%';
+    armorSelect.onchange=()=>{
+      if(armorSelect.value&&!f.Armor.includes(armorSelect.value)){
+        f.Armor.push(armorSelect.value);
+        renderFighters();
+        queue()
+      }
+    };
+    const armorSearch=searchSelect(armorSelect,[['','Add armor or shield…'],...data.Catalog.Items.filter(i=>i.Kind!=='Weapon'&&i.Slots&&i.Slots!=='None').map(i=>[i.FormKey,`${i.Name} · ${i.Slots} · ${i.FormKey}`])],'','Find armor or shield…');
+    armorSearch.style.width='100%';
+    card.append(armorSearch,armorSelect);
+    const armorList=element('div');
+    armorList.className='armor-list';
+    for(const key of f.Armor){
+      const item=data.Catalog.Items.find(i=>i.FormKey===key),b=element('button',`${item?.Name||key} ×`);
+      b.onclick=()=>{
+        f.Armor=f.Armor.filter(k=>k!==key);
+        renderFighters();
+        queue()
+      };
+      armorList.append(b)
+    }
+    card.append(armorList);
+    host.append(card)
+  }
+}
+function format(value,digits=1){
+  return value===null?'Not reached':Number(value).toLocaleString(undefined,{
+    maximumFractionDigits:digits
+  })
+}
+function chart(id,series){
+  const canvas=$(id);
+  if(!canvas.getBoundingClientRect().width)return;
+  const width=canvas.clientWidth,height=250,dpr=devicePixelRatio||1;
+  canvas.width=width*dpr;
+  canvas.height=height*dpr;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const left=45,right=15,top=18,bottom=30;
+  const maxX=Math.max(1,...series.flatMap(s=>s.points.map(p=>p[0]))),maxY=Math.max(1,...series.flatMap(s=>s.points.map(p=>p[1])));
+  ctx.font='12px system-ui';
+  ctx.strokeStyle='#364353';
+  ctx.fillStyle='#a6b7c8';
+  for(let j=0;j<=4;j++){
+    const y=top+(height-top-bottom)*j/4;
+    ctx.beginPath();
+    ctx.moveTo(left,y);
+    ctx.lineTo(width-right,y);
+    ctx.stroke();
+    ctx.fillText(format(maxY*(1-j/4),0),2,y+4)
+  }
+  for(let j=0;j<=4;j++){
+    const x=left+(width-left-right)*j/4;
+    ctx.fillText(format(maxX*j/4),x-8,height-8)
+  }
+  for(const s of series){
+    ctx.strokeStyle=s.color;
+    ctx.lineWidth=2;
+    ctx.setLineDash(s.dash?[6,5]:[]);
+    ctx.beginPath();
+    s.points.forEach(([x,y],i)=>{
+      const px=left+x/maxX*(width-left-right),py=top+(1-y/maxY)*(height-top-bottom);
+      i?ctx.lineTo(px,py):ctx.moveTo(px,py)
+    });
+    ctx.stroke()
+  }
+  ctx.setLineDash([])
+}
+function drawResults(){
+  if(!result)return;
+  for(const [id,p,e] of [['healthChart','PlayerHealth','EnemyHealth'],['fatigueChart','PlayerFatigue','EnemyFatigue']])chart(id,['Current','Proposed'].flatMap(k=>[{
+    color:'#79b8ff',dash:k==='Current',points:result[k].Timeline.map(v=>[v.Seconds,v[p]])
+  },{
+    color:'#efc37a',dash:k==='Current',points:result[k].Timeline.map(v=>[v.Seconds,v[e]])
+  }]));
+  const base=result.Curves[3];
+  chart('curveChart',[{
+    color:'#79b8ff',points:result.Curves.map(c=>[c.Tier,c.Offense/base.Offense])
+  },{
+    color:'#efc37a',points:result.Curves.map(c=>[c.Tier,c.Health/base.Health])
+  }])
+}
+function renderResults(){
+  renderSkillCalculations();
+  const current=result.Current,proposed=result.Proposed;
+  $('liveSummary').hidden=false;
+  $('liveSummary').textContent=`Live scenario · Defeat enemies: ${format(current.EnemyTimeToDefeat)} → ${format(proposed.EnemyTimeToDefeat)} s · Player defeat: ${format(current.PlayerTimeToDefeat)} → ${format(proposed.PlayerTimeToDefeat)} s · Player clean hit: ${format(current.PlayerCleanHit)} → ${format(proposed.PlayerCleanHit)}`;
+  const body=$('metrics');
+  body.replaceChildren();
+  for(const [name,key,unit] of [['Player clean hit','PlayerCleanHit',''],['Enemy clean hit','EnemyCleanHit',''],['Player armor mitigation','PlayerArmor','%'],['Enemy armor mitigation','EnemyArmor','%'],['Player active block reduction','PlayerBlockReduction','ratio'],['Enemy active block reduction','EnemyBlockReduction','ratio'],['Time to defeat all enemies','EnemyTimeToDefeat',' s'],['Time to player defeat','PlayerTimeToDefeat',' s'],['Player health remaining','PlayerHealthRemaining',''],['Combined enemy health remaining','EnemyHealthRemaining',''],['Player fatigue remaining','PlayerFatigueRemaining',''],['Engaged enemy fatigue remaining','EnemyFatigueRemaining','']]){
+    const row=element('tr');
+    row.append(element('td',name));
+    for(const mode of ['Current','Proposed']){
+      let value=result[mode][key];
+      row.append(element('td',value===null?'Not reached':unit==='ratio'?format(value*100)+'%':format(value)+unit))
+    }
+    body.append(row)
+  }
+  const factors=element('table'),head=element('tr');
+  for(const title of ['Factor','Player current','Player proposed','Enemy current','Enemy proposed'])head.append(element('th',title));
+  factors.append(head);
+  for(const key of Object.keys(result.Current.PlayerHitFactors)){
+    const row=element('tr');row.append(element('td',key));
+    for(const values of [result.Current.PlayerHitFactors,result.Proposed.PlayerHitFactors,result.Current.EnemyHitFactors,result.Proposed.EnemyHitFactors])row.append(element('td',format(values[key],4)));
+    factors.append(row);
+  }
+  $('hitFactors').replaceChildren(factors);
+  $('curveRows').replaceChildren();
+  for(const c of result.Curves){
+    const tr=element('tr');
+    tr.append(element('td',c.Tier),element('td',typicalLevel(c.Tier)),element('td',format(c.Offense,2)),element('td',format(c.Health,2)));
+    $('curveRows').append(tr)
+  }
+  const keys=new Set([scenario.Player.Weapon,scenario.Enemy.Weapon,...scenario.Player.Armor,...scenario.Enemy.Armor]);
+  $('selectedItems').replaceChildren();
+  for(const pair of result.Items.filter(i=>keys.has(i.Before.FormKey))){
+    const a=pair.Before,b=pair.After,tr=element('tr');
+    tr.append(element('td',a.Name));
+    tr.append(element('td',`${a.Kind==='Weapon'?'Damage':'Armor'} ${format(a.Kind==='Weapon'?a.Damage:a.Armor)} → ${format(a.Kind==='Weapon'?b.Damage:b.Armor)}; weight ${format(a.Weight)} → ${format(b.Weight)}; durability ${a.Durability} → ${b.Durability}${a.Protected?' · '+a.PreservationReason:''}`));
+    $('selectedItems').append(tr)
+  }
+  renderItemRows();
+  drawResults()
+}
+async function preview(){
+  clearTimeout(timer);
+  const id=++sequence;
+  if(!settings||!scenario)return;
+  try{
+    const value=await request('/preview',{
+      Settings:settings,Scenario:scenario
+    });
+    if(id!==sequence)return;
+    result=value;
+    renderResults();
+    status(dirty?'Preview updated · unsaved balance profiles.':'Preview updated. Scenario assumptions are editable.')
+  }catch(error){
+    if(id===sequence){
+      result=null;
+        $("liveSummary").hidden=true;
+      $('metrics').replaceChildren();
+      $('hitFactors').replaceChildren();
+      for(const chartId of ['healthChart','fatigueChart']){
+        const c=$(chartId);
+        c.getContext('2d').clearRect(0,0,c.width,c.height)
+      }
+      status(error.message,true)
+    }
+  }
+}
+function renderItemRows(){
+  const filter=$('itemFilter').value.toLowerCase(),kind=$('itemKind').value,rows=(result?.Items||data.Catalog.Items.map(i=>({
+    Before:i,After:i
+  }))).filter(({
+    Before:i
+  })=>(!kind||i.Kind===kind)&&`${i.Name} ${i.FormKey} ${i.Material} ${i.Class}`.toLowerCase().includes(filter));
+  $('itemCount').textContent=`${rows.length} items · showing first 150`;
+  $('itemRows').replaceChildren();
+  for(const {
+    Before:a,After:b
+  }
+  of rows.slice(0,150)){
+    const tr=element('tr');
+    for(const text of [`${a.Name} · ${a.FormKey}`,`${b.Material} / ${b.Class}`,a.Kind==='Weapon'?`${a.Damage} → ${b.Damage}`:`${format(a.Armor)} → ${format(b.Armor)}`,a.Kind==='Weapon'?`${format(b.Speed,2)} / ${format(b.Reach,2)}`:'—',`${format(b.Weight)} / ${b.Durability}`,a.Protected?a.PreservationReason:'Ordinary item'])tr.append(element('td',text));
+    $('itemRows').append(tr)
+  }
+}
+function override(){
+  const item=data.Catalog.Items.find(i=>i.FormKey===$('overrideItem').value);
+  if(!item)return;
+  const rule=settings.ItemOverrides[item.FormKey]||{
+  };
+  overrideDraft=clone(rule.Modifiers||neutral());
+  options($('overrideMaterial'),[['','Inferred: '+item.Material],...Object.keys(settings.Materials).map(k=>[k,k])],rule.Material||'');
+  const classes=item.Kind==='Weapon'?settings.WeaponClasses:settings.ArmorClasses;
+  options($('overrideClass'),[['','Inferred: '+item.Class],...Object.keys(classes).map(k=>[k,k])],rule.Class||'');
+  $('preserve').checked=!!rule.Preserve;
+  $('normalizeProtected').checked=!!rule.NormalizeProtected;
+  $('overrideReason').textContent=item.PreservationReason||'Ordinary equipment; source values and enchantments remain unchanged.';
+  $('overrideModifiers').replaceChildren();
+  for(const key of fields)$('overrideModifiers').append(label(key+' ×',number(overrideDraft[key],.05,10,.05,v=>{
+    overrideDraft[key]=v
+  })));
+}
+async function load(){
+  try{
+    data=await request('');renderTierOptions();
+    settings=clone(data.Settings);
+    dirty=false;
+    const firstLoad=!scenario;
+    scenario??={
+      Player:defaultFighter('Player'),Enemy:defaultFighter('Enemy'),EnemyCount:1,Seconds:60,UseNativeResources:true
+    };
+    $('provenance').textContent=`Catalog generated ${new Date(data.Catalog.GeneratedUtc).toLocaleString()} · ${data.Catalog.Items.length} items · ${data.Catalog.Actors.length} actors · ${data.Catalog.NativeStyles.length} native styles. ${data.Catalog.ReportOnly?'Report-only run: earlier planned changes may not be applied.':'Effective records include preceding patch modules.'}`;
+    const engineNames=new Set([...Object.keys(data.Catalog.GameSettings),...Object.keys(data.Catalog.MechanicsFallbacks),'fActorLuckSkillMult','iActorLuckSkillBase']);
+    const incoming=Object.fromEntries(Object.entries(data.Catalog.OriginalGameSettings??data.Catalog.GameSettings).filter(([name])=>engineNames.has(name)));
+    $('nativeSettings').textContent=JSON.stringify({Incoming:incoming,BuiltCandidate:data.Catalog.GameSettings,Fallbacks:data.Catalog.MechanicsFallbacks},null,2);
+    $('provenance').append(element('br'),document.createTextNode('Editable configuration: '+data.ConfigurationFile));
+    $('provenance').style.overflowWrap='anywhere';
+    renderProfiles();
+    if(firstLoad)await applyQuickMatchup(false);
+    renderFighters();
+    options($('nativeStyle'),data.Catalog.NativeStyles.map(s=>[s.FormKey,s.EditorID||s.FormKey]),data.Catalog.NativeStyles[0]?.FormKey);
+    $('nativeStyle').onchange=()=>{
+      $('styleDetail').textContent=JSON.stringify(data.Catalog.NativeStyles.find(s=>s.FormKey===$('nativeStyle').value),null,2)
+    };
+    $('nativeStyle').onchange();
+    options($('overrideItem'),data.Catalog.Items.map(i=>[i.FormKey,`${i.Name} · ${i.FormKey}`]),data.Catalog.Items[0]?.FormKey);
+    override();
+    await preview()
+  }catch(error){
+    status(error.message,true)
+  }
+}
+$('save').onclick=async()=>{
+  try{
+    const saved=await request('/config',{
+      Json:JSON.stringify(settings),Revision:data.Revision
+    });
+    data.Revision=saved.Revision;
+    dirty=false;
+    status('Balance profiles saved. Rebuild and install the combat candidate to apply gameplay changes.')
+  }catch(error){
+    status(error.message,true)
+  }
+};
+$('reload').onclick=load;
+$('analyze').onclick=preview;
+$('enemyCount').oninput=()=>{
+  scenario.EnemyCount=Number($('enemyCount').value);
+  queue()
+};
+$('seconds').oninput=()=>{
+  scenario.Seconds=Number($('seconds').value);
+  queue()
+};
+$('preset').onchange=async()=>{
+  const preset=$('preset').value;
+  if(preset==='custom'){applyQuickMatchup();return;}
+  const tiers={equal:[3,3],elite:[3,5],group:[5,3],boss:[5,7],exhausted:[3,3]}[preset];
+  $('quickPlayerTier').value=String(tiers[0]);
+  $('quickEnemyTier').value=String(tiers[1]);
+  $('quickPlayerLevel').value=data.LevelMapping[tiers[0]] ?? 45;
+  $('quickEnemyLevel').value=data.LevelMapping[tiers[1]] ?? 45;
+  scenario.EnemyCount=preset==='group'?3:1;
+  $('enemyCount').value=scenario.EnemyCount;
+  await applyQuickMatchup(false);
+  $('preset').value=preset;
+  if(preset==='boss')scenario.Enemy.Style=settings.Styles.Boss?'Boss':scenario.Enemy.Style;
+  if(preset==='exhausted')scenario.Player.StartingFatiguePercent=20;
+  renderFighters();
+  queue();
+};for(const b of document.querySelectorAll('[data-tab]'))b.onclick=()=>{
+  for(const t of document.querySelectorAll('[data-tab]')){
+    t.classList.toggle('active',t===b);
+    $(t.dataset.tab).hidden=t!==b
+  }
+  drawResults()
+};
+$('itemFilter').oninput=renderItemRows;
+$('itemKind').onchange=renderItemRows;
+$('overrideItem').onchange=override;
+$('setOverride').onclick=()=>{
+  const key=$('overrideItem').value;
+  settings.ItemOverrides[key]={
+    Material:$('overrideMaterial').value||null,Class:$('overrideClass').value||null,Preserve:$('preserve').checked,NormalizeProtected:$('normalizeProtected').checked,Modifiers:clone(overrideDraft)
+  };
+  queue(true)
+};
+$('deleteOverride').onclick=()=>{
+  delete settings.ItemOverrides[$('overrideItem').value];
+  override();
+  queue(true)
+};
+$('refreshJson').onclick=()=>{
+  $('jsonConfig').value=JSON.stringify(settings,null,2)
+};
+$('applyJson').onclick=async()=>{
+  try{
+    const candidate=JSON.parse($('jsonConfig').value);
+    await request('/preview',{
+      Settings:candidate,Scenario:scenario
+    });
+    settings=candidate;
+    renderProfiles();
+
+    renderFighters();
+    override();
+    queue(true)
+  }catch(error){
+    status(error.message,true)
+  }
+};
+$('export').onclick=()=>{
+  const blob=new Blob([JSON.stringify({
+    Schema:1,Scenario:scenario,Settings:settings,
+    QuickBuilds:Object.fromEntries(['Player','Enemy'].map(side=>[side,Object.fromEntries(['Level','Class','Equipment','Style','WeaponMaterial','ArmorMaterial','ShieldMaterial'].map(key=>[key,$('quick'+side+key).value]))]))
+  },null,2)],{
+    type:'application/json'
+  }),a=element('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='combat-experiment.json';
+  a.click();
+  URL.revokeObjectURL(a.href)
+};
+$('importButton').onclick=()=>$('import').click();
+$('import').onchange=async()=>{
+  try{
+    const file=$('import').files[0];
+    if(!file)return;
+    const value=JSON.parse(await file.text());
+    if(value.Schema!==1)throw Error('Unsupported experiment format.');
+    await request('/preview',{
+      Settings:value.Settings,Scenario:value.Scenario
+    });
+    settings=value.Settings;
+    scenario=value.Scenario;
+    dirty=true;
+    renderProfiles();
+    for(const side of ['Player','Enemy']){
+      const saved=value.QuickBuilds?.[side];
+      $('quick'+side+'Tier').value=String(scenario[side].Tier);
+      if(saved){
+        for(const key of ['Level','Class','Equipment','Style']){
+          const control=$('quick'+side+key),value=saved[key];
+          if(key==='Level'?Number.isFinite(Number(value))&&Number(value)>=1&&Number(value)<=100:[...control.options].some(option=>option.value===value))control.value=value;
+        }
+        renderQuickMaterials(side);
+        for(const key of ['WeaponMaterial','ArmorMaterial','ShieldMaterial'])if([...$('quick'+side+key).options].some(option=>option.value===saved[key]))$('quick'+side+key).value=saved[key];
+      }
+    }
+    renderFighters();
+    $('enemyCount').value=scenario.EnemyCount;
+    $('seconds').value=scenario.Seconds;
+    override();
+    await preview()
+  }catch(error){
+    status(error.message,true)
+  }finally{
+    $('import').value=''
+  }
+};
+for(const button of document.querySelectorAll('[data-jump]'))button.onclick=()=>document.querySelector('[data-tab='+button.dataset.jump+']').click();
+window.addEventListener('resize',drawResults);
+function typicalLevel(tier){return data?.LevelMapping?.[tier] ?? 'Individual / apex';}
+function renderTierOptions(){
+  const entries=Array.from({length:11},(_,tier)=>[String(tier),'Tier '+tier+' · '+(data?.LevelMapping?.[tier] != null ? 'level '+typicalLevel(tier) : 'individual / apex')]);
+  for(const id of ['quickPlayerTier','quickEnemyTier'])options($(id),entries,$(id).value || (id==='quickPlayerTier'?'2':'4'));
+}
+const tierOptions=Array.from({length:11},(_,tier)=>[String(tier),'Tier '+tier]);
+options($('quickPlayerTier'),tierOptions,'2');
+options($('quickEnemyTier'),tierOptions,'4');
+for(const side of ['Player','Enemy']){
+  options($('quick'+side+'Equipment'),equipmentPresets.map(value=>[value,value]),'Class default');
+  $('quick'+side+'Level').oninput=()=>{
+    const level=Number($('quick'+side+'Level').value);if(!Number.isFinite(level)||level<1||level>100)return;
+    $('quick'+side+'Tier').value=tierForLevel(level);applyQuickMatchup();
+  };
+  $('quick'+side+'Tier').onchange=()=>{
+    $('quick'+side+'Level').value=data.LevelMapping[$('quick'+side+'Tier').value] ?? 45;applyQuickMatchup();
+  };
+  $('quick'+side+'Class').onchange=()=>{
+    $('quick'+side+'Style').value=settings.QuickClasses[$('quick'+side+'Class').value].Build;applyQuickMatchup();
+  };
+  for(const suffix of ['Equipment','Style','WeaponMaterial','ArmorMaterial','ShieldMaterial'])$('quick'+side+suffix).onchange=()=>applyQuickMatchup();
+}
+$('quickApply').onclick=()=>applyQuickMatchup();
+$('combatActor').onchange=renderCombatActor;
+$('saveCombatActor').onclick=()=>{
+  const rule={Preserve:$('combatActorPreserve').checked};
+  if($('combatActorBuild').value)rule.Build=$('combatActorBuild').value;
+  if($('combatActorHealth').value)rule.Health=Number($('combatActorHealth').value);
+  settings.Gameplay.ActorOverrides[$('combatActor').value]=rule;queue(true);
+};
+$('deleteCombatActor').onclick=()=>{delete settings.Gameplay.ActorOverrides[$('combatActor').value];renderCombatActor();queue(true);};
+$('nativeResources').onchange=()=>{scenario.UseNativeResources=$('nativeResources').checked;queue();};
+$('customBuilds').ontoggle=()=>{$('scenarioGrid').classList.toggle('custom-open',$('customBuilds').open);drawResults();};
+load();
+</script></body></html>

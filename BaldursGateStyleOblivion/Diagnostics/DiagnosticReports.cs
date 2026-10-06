@@ -101,7 +101,7 @@ internal static class DiagnosticReports
                 c.Record.Data?.ArmorValue, c.Record.Data?.Weight, c.Record.Data?.Health, c.Record.Data?.Value,
                 Slots = c.Record.ClothingFlags?.BipedFlags.ToString(), EquipmentFlags = c.Record.ClothingFlags?.GeneralFlags.ToString(),
                 ArmorType = c.Record.ClothingFlags is null ? null
-                    : c.Record.ClothingFlags.GeneralFlags.HasFlag(EquipmentFlag.HeavyArmor) ? "Heavy" : "Light",
+                    : ArmorFlags.IsHeavy(c.Record) ? "Heavy" : "Light",
                 Enchantment = c.Record.Enchantment.FormKeyNullable?.ToString(), c.Record.EnchantmentPoints
             })));
         Report("spells", state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)).Spell().WinningContextOverrides().Where(c => run.Includes(c.Record.FormKey.ModKey))

@@ -1,3 +1,4 @@
+using BaldursGateStyleOblivion.Core;
 using System.Text.RegularExpressions;
 using Mutagen.Bethesda;
 using Mutagen.Bethesda.Oblivion;
@@ -206,7 +207,7 @@ internal sealed class EquipmentPoolBuilder
             {
                 (IWeaponGetter a, IWeaponGetter b) => a.Data?.Type == b.Data?.Type,
                 (IArmorGetter a, IArmorGetter b) => a.ClothingFlags?.BipedFlags == b.ClothingFlags?.BipedFlags &&
-                    a.ClothingFlags?.GeneralFlags.HasFlag(EquipmentFlag.HeavyArmor) == b.ClothingFlags?.GeneralFlags.HasFlag(EquipmentFlag.HeavyArmor),
+                    ArmorFlags.IsHeavy(a) == ArmorFlags.IsHeavy(b),
                 (IAmmunitionGetter, IAmmunitionGetter) => true,
                 (IClothingGetter a, IClothingGetter b) => a.ClothingFlags?.BipedFlags == b.ClothingFlags?.BipedFlags,
                 _ => false
