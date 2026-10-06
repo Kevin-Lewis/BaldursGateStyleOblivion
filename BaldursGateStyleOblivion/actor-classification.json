@@ -10934,7 +10934,7 @@
     },
     "08595D:Oblivion.esm": {
       "Name": "Alonzo",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "QuestRelated",
       "Description": "Alonzo is a Redguard bandit boss who leads raids on travelers with members of the Black Bow Bandits.",
       "Reason": "His active role in bandit raids supports competent combat capability, but the article provides no evidence of veteran training or exceptional personal feats.",
@@ -13893,7 +13893,7 @@
     },
     "03DC24:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13905,7 +13905,7 @@
     },
     "03DC25:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13917,7 +13917,7 @@
     },
     "03DC26:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13929,7 +13929,7 @@
     },
     "03DC27:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13941,7 +13941,7 @@
     },
     "03DC28:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13953,7 +13953,7 @@
     },
     "03DC29:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
@@ -13965,7 +13965,7 @@
     },
     "06C35A:Oblivion.esm": {
       "Name": "Bandit Ringleader",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "MinorBoss",
       "Description": "A human bandit ringleader, one of the dungeon bandit-boss variants.",
       "Reason": "The article confirms the ringleader identity but provides no specific combat feats or established training. The ordinary adult mortal baseline is appropriate; boss status alone does not establish greater power.",
