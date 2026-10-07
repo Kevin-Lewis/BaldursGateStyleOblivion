@@ -4,6 +4,10 @@ namespace BaldursGateStyleOblivion.Combat;
 public sealed class Fighter
 {
     public string Name { get; set; } = "Combatant";
+    public bool IsCreature { get; set; }
+    public double? NaturalAttackDamage { get; set; }
+    public double CreaturePowerAttackMultiplier { get; set; } = 1;
+    public double NaturalAttackSpeed { get; set; } = 1;
     public string? ActorKey { get; set; }
     public int Tier { get; set; } = 3;
     public bool UseTierTargets { get; set; }
@@ -66,6 +70,9 @@ public static class CombatAnalysis
         CombatConfiguration.Range(scenario.EnemyCount, 1, 12, "Enemy count"); CombatConfiguration.Range(scenario.Seconds, 1, 300, "Scenario duration");
         foreach (var fighter in new[] { scenario.Player, scenario.Enemy })
         {
+            if(fighter.NaturalAttackDamage.HasValue) { if(!fighter.IsCreature)throw new ArgumentException("Natural attacks require a creature."); CombatConfiguration.Range(fighter.NaturalAttackDamage.Value,0,65535,"Natural attack damage"); }
+            CombatConfiguration.Range(fighter.CreaturePowerAttackMultiplier,1,10,"Creature power attack multiplier");
+            CombatConfiguration.Range(fighter.NaturalAttackSpeed,.1,5,"Creature attack speed assumption");
             CombatConfiguration.Range(fighter.Tier, 0, 10, "Tier"); CombatConfiguration.Range(fighter.Health, 1, 100000, "Health");
             CombatConfiguration.Range(fighter.MaxFatigue, 1, 10000, "Fatigue"); CombatConfiguration.Range(fighter.FatigueRegen, 0, 100, "Fatigue regeneration");
             foreach (var value in new[] { fighter.Strength, fighter.Endurance, fighter.WeaponSkill, fighter.LightArmorSkill, fighter.HeavyArmorSkill, fighter.BlockSkill, fighter.Luck }) CombatConfiguration.Range(value, 0, 200, "Attribute or skill");
@@ -115,6 +122,8 @@ public static class CombatAnalysis
         CombatHitFactors Factors(int i, double fatigueValue)
         {
             var f = fighters[i]; var weapon = weapons[i]; var defender = 1 - i;
+            if(f.NaturalAttackDamage is {} natural)
+                return new(natural,1,1,1,1,Math.Max(0,GS("fFatigueBase")-GS("fFatigueMult")*(1-fatigueValue/f.MaxFatigue)),1-armor[defender]/100,1-fighters[defender].ResistNormalWeapons/100,f.DamageMultiplier,1);
             var resistance = weapon.Enchanted || weapon.IgnoresNormalWeaponResistance ? 0 : fighters[defender].ResistNormalWeapons;
             var tierMult = proposed && f.UseTierTargets ? settings.OffenseTarget.At(f.Tier) / settings.OffenseTarget.At(3) : 1;
             return new(Math.Round(weapon.Damage * (proposed ? f.WeaponPower : 1), MidpointRounding.AwayFromZero), GS("fDamageWeaponMult"),
@@ -133,18 +142,18 @@ public static class CombatAnalysis
         for (var step = 1; step <= stepCount; step++)
         {
             var dt = Math.Min(.1, scenario.Seconds - (step - 1) * .1); var alive = scenario.EnemyCount - enemyIndex;
-            var attackRates = new[] { styles[0].AttacksPerSecond * weapons[0].Speed, styles[1].AttacksPerSecond * weapons[1].Speed * alive };
+            var attackRates = new[] { styles[0].AttacksPerSecond * (fighters[0].NaturalAttackDamage.HasValue?fighters[0].NaturalAttackSpeed:weapons[0].Speed), styles[1].AttacksPerSecond * (fighters[1].NaturalAttackDamage.HasValue?fighters[1].NaturalAttackSpeed:weapons[1].Speed) * alive };
             var damage = new double[2]; var spend = new double[2];
             for (var i = 0; i < 2; i++)
             {
                 var defender = 1 - i; var power = styles[i].PowerAttackShare;
                 damage[i] = Hit(i, fatigue[i]) * attackRates[i] * styles[i].ContactRate *
-                    (1 + power * ((scenario.UseNativeResources ? GS("fDamagePowerAttackBonus") : settings.PowerAttackDamageMult) - 1)) * (1 - styles[defender].BlockUptime * block[defender]) * dt;
-                var ownAttackRate = styles[i].AttacksPerSecond * weapons[i].Speed;
-                spend[i] = ownAttackRate * ((scenario.UseNativeResources ? GS("fFatigueAttackWeaponBase") : settings.AttackFatigueBase) + weapons[i].Weight * (scenario.UseNativeResources ? GS("fFatigueAttackWeaponMult") : settings.AttackFatigueWeight)) *
+                    (1 + power * ((fighters[i].IsCreature?fighters[i].CreaturePowerAttackMultiplier:scenario.UseNativeResources ? GS("fDamagePowerAttackBonus") : settings.PowerAttackDamageMult) - 1)) * (1 - styles[defender].BlockUptime * block[defender]) * dt;
+                var ownAttackRate = attackRates[i]/(i==1?alive:1);
+                spend[i] = ownAttackRate * ((scenario.UseNativeResources ? GS("fFatigueAttackWeaponBase") : settings.AttackFatigueBase) + (fighters[i].NaturalAttackDamage.HasValue?0:weapons[i].Weight) * (scenario.UseNativeResources ? GS("fFatigueAttackWeaponMult") : settings.AttackFatigueWeight)) *
                     (1 + power * (scenario.UseNativeResources ? GS("fPowerAttackFatiguePenalty") : settings.PowerAttackFatigueMult - 1));
                 var incomingRate = attackRates[defender] / (i == 1 ? alive : 1);
-                var blockCost=settings.BlockFatigueBase + weapons[defender].Weight * settings.BlockFatigueWeight;
+                var blockCost=settings.BlockFatigueBase + (fighters[defender].NaturalAttackDamage.HasValue?0:weapons[defender].Weight) * settings.BlockFatigueWeight;
                 // This first-pass GMST profile makes novice block cost constant. Mastery is engine behavior.
                 if(scenario.UseNativeResources && effectiveSettings.GetValueOrDefault("fFatigueBlockBase")==1
                     && effectiveSettings.GetValueOrDefault("fFatigueBlockMult")==0 && effectiveSettings.GetValueOrDefault("fFatigueBlockSkillMult")==0)

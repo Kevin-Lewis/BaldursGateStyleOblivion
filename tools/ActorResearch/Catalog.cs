@@ -1,11 +1,12 @@
 using System.Text.Json;
+using BaldursGateStyleOblivion.Combat;
 using BaldursGateStyleOblivion.Classification;
 
 namespace ActorResearch;
 
 internal sealed record Actor(string FormKey, string? EditorID, string? Name, string RecordType, string SourcePlugin,
     string WinningOverridePlugin, JsonElement Original, Dictionary<string, string[]> Evidence,
-    JsonElement? Scaling, JsonElement? Inventory, JsonElement? Usage);
+    JsonElement? Scaling, JsonElement? Inventory, JsonElement? Usage, JsonElement? Stats = null, string? StatsStatus = null, bool AutoCalculated = false);
 
 internal static class Catalog
 {
@@ -26,6 +27,7 @@ internal static class Catalog
         var scaling = Index("scaling-audit");
         var inventory = Index("actor-inventories");
         var usage = Index("reference-index");
+        var combat = Rows(directory,"physical-combat","Actors").ToDictionary(r=>r.GetProperty("FormKey").GetString()!,StringComparer.OrdinalIgnoreCase);
         return Rows(directory, "npcs", "Records", true).Concat(Rows(directory, "creatures", "Records", true)).Select(row =>
         {
             var key = row.GetProperty("FormKey").GetString()!;
@@ -34,12 +36,17 @@ internal static class Catalog
             JsonElement? Find(Dictionary<string, JsonElement> index) => index.TryGetValue(key, out var found) ? found : null;
             return new Actor(key, row.GetProperty("EditorID").GetString(), row.GetProperty("Name").GetString(), row.GetProperty("RecordType").GetString()!,
                 row.GetProperty("SourcePlugin").GetString()!, row.GetProperty("WinningOverridePlugin").GetString()!, row.GetProperty("Original").Clone(),
-                JsonSerializer.Deserialize<Dictionary<string, string[]>>(evidence)!, Find(scaling), Find(inventory), Find(usage));
+                JsonSerializer.Deserialize<Dictionary<string, string[]>>(evidence)!, Find(scaling), Find(inventory), Find(usage),
+                combat.TryGetValue(key,out var balanced)?balanced.GetProperty("Stats").Clone():null,
+                combat.TryGetValue(key,out balanced)?balanced.GetProperty("StatsStatus").GetString():null,
+                combat.TryGetValue(key,out balanced)&&balanced.GetProperty("AutoCalculated").GetBoolean());
         }).OrderBy(actor => actor.FormKey, StringComparer.Ordinal).ToArray();
     }
 
     public static object[] Rows(Actor[] actors, ClassificationSettings settings, string config)
     {
+        var combatPath=Path.Combine(Path.GetDirectoryName(config)!,"combat.json");
+        var healthOverrides=File.Exists(combatPath)?CombatConfiguration.Load(combatPath).Gameplay.ActorOverrides:new();
         var rows = actors.Select(actor =>
         {
             var profile = ActorConfiguration.Classify(settings, actor.FormKey, actor.SourcePlugin, actor.Evidence);
@@ -56,7 +63,7 @@ internal static class Catalog
                 Model = notes?.Model ?? "", Description = notes?.Description ?? "", Reason = notes?.Reason ?? assignment?.Reason ?? "",
                 Uncertainty = notes?.Uncertainty ?? "", Sources = notes?.Sources ?? [], Rule = assignment?.Rule ?? "",
                 EditFile = manual?.ConfigurationFile ?? (assignment is not null ? settings.Rules.FirstOrDefault(rule => rule.Id == assignment.Rule)?.ConfigurationFile : null) ?? config,
-                actor.Original, ReviewSignals = usedBy, Dimensions = profile.Dimensions };
+                actor.Original, actor.Stats, actor.StatsStatus, actor.AutoCalculated, HealthOverride=healthOverrides.GetValueOrDefault(actor.FormKey)?.Health, ReviewSignals = usedBy, Dimensions = profile.Dimensions };
         }).ToArray();
         return rows;
     }

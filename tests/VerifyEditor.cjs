@@ -13,13 +13,13 @@ const check=(ok,message)=>{if(!ok)throw new Error(message)};
   let html;
   for(let attempt=0;attempt<100&&!html;attempt++){try{const response=await fetch(url);if(response.ok)html=await response.text()}catch{}if(!html)await new Promise(resolve=>setTimeout(resolve,100))}
   check(html,'Editor did not start: '+log);
-  check(html.includes('<th>Level override</th>'),'Fixed level must have a visible table column');
+  check(html.includes('>Level override</th>'),'Fixed level must have a visible table column');
   check(!html.includes('special-handling\">Fixed level override'),'Fixed level must not remain hidden in details');
   const script=html.match(/<script>([\s\S]*?)<\/script>/)[1];
   const elements=new Map();
-  const element=id=>{if(!elements.has(id))elements.set(id,{value:id==='sort'?'group':id==='page-size'?'50':'',checked:false,textContent:'',innerHTML:'',listeners:{},append(){},addEventListener(type,handler){this.listeners[type]=handler}});return elements.get(id)};
+  const element=id=>{if(!elements.has(id))elements.set(id,{value:id==='sort'?'group':id==='page-size'?'50':'',checked:false,textContent:'',innerHTML:'',listeners:{},append(){},addEventListener(type,handler){const previous=this.listeners[type];this.listeners[type]=previous?async event=>{await previous(event);await handler(event)}:handler}});return elements.get(id)};
   const nativeFetch=fetch;
-  const context=vm.createContext({document:{getElementById:element,createElement:()=>({})},URL,setTimeout,clearTimeout,fetch:(route,options)=>nativeFetch(url+route,{...options,headers:{...options.headers,Origin:url}})});
+  const context=vm.createContext({document:{getElementById:element,querySelector:()=>({hidden:false}),createElement:()=>({dataset:{},append(){}})},URL,setTimeout,clearTimeout,fetch:(route,options)=>nativeFetch(url+route,{...options,headers:{...options.headers,Origin:url}})});
   vm.runInContext(script,context);
   check(vm.runInContext('config',context)===config,'Refusing to edit a different configuration');
   const actor=()=>vm.runInContext(`actors.find(a=>a.FormKey==='${key}')`,context);

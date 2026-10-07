@@ -24,9 +24,9 @@ internal static class CharacterCreation
         }
         var races=records.Values.OfType<IRaceGetter>().Where(r=>!r.IsDeleted && playable.GetValueOrDefault(r.FormKey) && r.RaceStats is not null)
             .Select(r=>new CreationRace(r.FormKey.ToString(),r.Name?.ToString()??r.EditorID!,Attributes(r.RaceStats!.Male),Attributes(r.RaceStats.Female),
-                typeof(IRaceDataGetter).GetProperties().Where(p=>p.Name.StartsWith("SkillBoost")).Select(p=>(ISkillBoostGetter)p.GetValue(r.Data!)!).GroupBy(s=>s.Skill.ToString()).ToDictionary(g=>g.Key,g=>g.Sum(s=>(double)s.Boost)),Bonuses(r.Spells.Select(s=>s.FormKey)))).ToArray();
+                typeof(IRaceDataGetter).GetProperties().Where(p=>p.Name.StartsWith("SkillBoost")).Select(p=>(ISkillBoostGetter)p.GetValue(r.Data!)!).GroupBy(s=>s.Skill.ToString().Replace("Speechraft","Speechcraft")).ToDictionary(g=>g.Key,g=>g.Sum(s=>(double)s.Boost)),Bonuses(r.Spells.Select(s=>s.FormKey)))).ToArray();
         var classes=records.Values.OfType<IClassGetter>().Where(c=>!c.IsDeleted && c.Data?.Flags.ToString().Contains("Playable")==true)
-            .Select(c=>new CreationClass(c.EditorID!,c.Data!.Specialization.ToString(),c.Data.PrimaryAttributes.Select(a=>a.ToString()).ToArray(),c.Data.SecondaryAttributes.Select(a=>a.ToString()).ToArray())).ToArray();
+            .Select(c=>new CreationClass(c.EditorID!,c.Data!.Specialization.ToString(),c.Data.PrimaryAttributes.Select(a=>a.ToString()).ToArray(),c.Data.SecondaryAttributes.Select(a=>a.ToString().Replace("Speechraft","Speechcraft")).ToArray())).ToArray();
         var signs=records.Values.OfType<IBirthsignGetter>().Where(s=>!s.IsDeleted).Select(s=>new CreationSign(s.FormKey.ToString(),s.Name?.ToString()??s.EditorID!,Bonuses(s.Spells.Select(s=>s.FormKey)))).ToArray();
         return new(races,classes,signs,settings);
     }

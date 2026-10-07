@@ -7,14 +7,15 @@ using Microsoft.AspNetCore.Http;
 
 namespace ActorResearch;
 
+internal sealed record ActorHealthEdit(string FormKey, int? Health);
 internal sealed record CombatSave(string Json, string Revision);
 internal sealed record CombatPreview(CombatSettings Settings, CombatScenario Scenario);
-internal sealed record CombatBuildRequest(CombatSettings Settings, string Build, int Tier, double Level, bool Player = false, string? Race = null, bool Female = false, string? Birthsign = null);
+internal sealed record CombatBuildRequest(CombatSettings Settings, string Build, int Tier, double Level, bool Player = false, string? Race = null, bool Female = false, string? Birthsign = null, string[]? Attributes = null, string? AlternateAttribute = null, string? PrimarySkill = null);
 
 internal static class CombatEditor
 {
     private static readonly object Gate = new();
-    public static void Map(WebApplication app, string config, string reports, string token, string actorConfig)
+    public static void Map(WebApplication app, string config, string reports, string token, string actorConfig, Actor[] actors)
     {
         JsonElement Catalog()
         {
@@ -29,6 +30,29 @@ internal static class CombatEditor
             return new { Settings = CombatConfiguration.Parse(text), Catalog = Catalog(), Revision = Revision(text), ConfigurationFile = config, LevelMapping = BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping };
         }
         IResult Error(Exception error) => Results.BadRequest(new { error = error.Message });
+        app.MapPost("/api/actor/health", (ActorHealthEdit edit) =>
+        {
+            try
+            {
+                var actor=actors.FirstOrDefault(a=>a.FormKey.Equals(edit.FormKey,StringComparison.OrdinalIgnoreCase))??throw new ArgumentException("Actor not found in the loaded reports.");
+                if(actor.FormKey.Equals("000007:Oblivion.esm",StringComparison.OrdinalIgnoreCase))throw new ArgumentException("Player base health cannot be edited here.");
+                if(edit.Health.HasValue){CombatConfiguration.Range(edit.Health.Value,1,100000,"Health");if(actor.AutoCalculated)throw new ArgumentException("This actor has engine-calculated health. Review its scaling before setting an absolute health override.");}
+                lock(Gate)
+                {
+                    var settings=CombatConfiguration.Load(config);
+                    settings.Gameplay.ActorOverrides.TryGetValue(actor.FormKey,out var rule);
+                    if(edit.Health.HasValue&&rule?.Preserve==true)throw new ArgumentException("This actor is marked Preserve in combat settings. Clear that exception before editing health.");
+                    rule??=new();rule.Health=edit.Health;
+                    if(rule.Health is null&&rule.Build is null&&!rule.Preserve)settings.Gameplay.ActorOverrides.Remove(actor.FormKey);
+                    else settings.Gameplay.ActorOverrides[actor.FormKey]=rule;
+                    var temporary=config+"."+Guid.NewGuid().ToString("N")+".tmp";
+                    try{File.WriteAllText(temporary,JsonSerializer.Serialize(settings,CombatConfiguration.Options)+Environment.NewLine);File.Move(temporary,config,true);}
+                    finally{if(File.Exists(temporary))File.Delete(temporary);}
+                }
+                return Results.Json(new { HealthOverride=edit.Health },new JsonSerializerOptions { DefaultIgnoreCondition=System.Text.Json.Serialization.JsonIgnoreCondition.Never });
+            }
+            catch(Exception error) when(error is ArgumentException or IOException or UnauthorizedAccessException or JsonException or InvalidDataException){return Error(error);}
+        });
         app.MapGet("/combat", () => Results.Content(EditorNavigation.ReadTemplate("combat.html")
             .Replace("/*TOKEN*/\"\"", JsonSerializer.Serialize(token)), "text/html"));
         app.MapGet("/api/combat", () =>
@@ -44,9 +68,9 @@ internal static class CombatEditor
                 {
                     var catalog=Catalog();
                     if(!catalog.TryGetProperty("CharacterCreation",out var creation))throw new InvalidDataException("Rebuild the combat report to load character creation records.");
-                    return Results.Json(PlayerBuilds.AtLevel(request.Settings.Gameplay,creation.Deserialize<CreationCatalog>()!,request.Build,request.Race??"",request.Female,request.Birthsign,request.Level),CombatConfiguration.Options);
+                    return Results.Json(PlayerBuilds.AtLevel(request.Settings.Gameplay,creation.Deserialize<CreationCatalog>()!,request.Build,request.Race??"",request.Female,request.Birthsign,request.Level,request.Attributes,request.AlternateAttribute,request.PrimarySkill),CombatConfiguration.Options);
                 }
-                return Results.Json(new PlayerBuildResult(CombatBuilds.AtLevel(request.Settings.Gameplay,request.Build,request.Tier,request.Level,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping),["NPC tier training budget; class specialties, supporting skills and untrained skills."]),CombatConfiguration.Options); }
+                return Results.Json(new PlayerBuildResult(CombatBuilds.ActorAtLevel(request.Settings.Gameplay,Catalog().GetProperty("CharacterCreation").Deserialize<CreationCatalog>()!,request.Build,request.Race??"",request.Female,request.Tier,request.Level,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping),["Shared class progression from race/sex starts, with primary and focused skills and capped-attribute redistribution. Nonplayable classes/races use tier budgets."]),CombatConfiguration.Options); }
             catch(Exception error) when(error is ArgumentException or JsonException or InvalidDataException or IOException){return Error(error);}
         });
         app.MapPost("/api/combat/preview", (CombatPreview request) =>
@@ -67,6 +91,7 @@ internal static class CombatEditor
                     Current = CombatAnalysis.Run(request.Scenario, request.Settings, items, gameSettings, false),
                     Proposed = CombatAnalysis.Run(request.Scenario, request.Settings, items, gameSettings, true),
                     Items = items.Values.Select(source => new { Before = source, After = PhysicalBalance.Propose(source, request.Settings) }),
+                    CreatureReferences = CreatureAttacks.References(request.Settings,catalog.GetProperty("CharacterCreation").Deserialize<CreationCatalog>()!,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping),
                     Curves = Enumerable.Range(0, 11).Select(tier => new { Tier = tier, Offense = request.Settings.OffenseTarget.At(tier), Health = request.Settings.HealthTarget.At(tier) })
                 }, CombatConfiguration.Options);
             }

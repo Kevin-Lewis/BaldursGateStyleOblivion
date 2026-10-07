@@ -83,6 +83,7 @@ public class Program
             run.Module("Physical combat", run.Settings.EnablePhysicalCombatAnalysis || run.Settings.EnablePhysicalCombatBalance, false,
                 () => { foreach (var change in Combat.PhysicalCombatModule.Run(state, profiles, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
+            run.Module("Magic analysis",run.Settings.EnableMagicAnalysis,false,()=>Magic.MagicAnalysisModule.Run(state,run));
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);

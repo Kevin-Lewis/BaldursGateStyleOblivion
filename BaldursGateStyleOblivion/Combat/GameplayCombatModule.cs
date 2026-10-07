@@ -43,24 +43,44 @@ internal static class GameplayCombatModule
         target.Configuration.BaseSpellPoints=(ushort)Math.Max(target.Configuration.BaseSpellPoints,stats["Intelligence"]*2);
         target.Configuration.Flags&=~Npc.NpcFlag.AutoCalcStats;
     }
+    internal static bool HasFixedHealth(IMajorRecordGetter actor) => actor.FormKey!=FormKey.Factory("000007:Oblivion.esm") && (actor is INpcGetter { Stats:not null,Configuration:not null } npc && !npc.Configuration.Flags.HasFlag(Npc.NpcFlag.AutoCalcStats) || actor is ICreatureGetter { Data:not null,Configuration:not null } creature && !creature.Configuration.Flags.HasFlag(Creature.CreatureFlag.PCLevelOffset));
+    internal static void SetHealth(IMajorRecord actor,uint health)
+    {
+        if(actor is Npc npc)npc.Stats!.Health=health;
+        else if(actor is Creature creature)creature.Data!.Health=health;
+    }
     public static Dictionary<FormKey,string[]> Run(IPatcherState<IOblivionMod,IOblivionModGetter> state,
         Dictionary<FormKey,IMajorRecordGetter> records,IReadOnlyDictionary<FormKey,ActorProfile> profiles,
-        CombatSettings settings,PatcherRun run)
+        CombatSettings settings,PatcherRun run, CreationCatalog creation)
     {
         var gameplay=settings.Gameplay;var write=run.Settings.EnablePhysicalCombatBalance&&!run.Settings.ReportOnly;
         var changes=new Dictionary<FormKey,string[]>();var plans=new List<object>();var skipped=new List<object>();
         if(gameplay.BalanceGameSettings)
             foreach(var pair in gameplay.GameSettings)
             {
-                var source=records.Values.OfType<IGameSettingFloatGetter>().FirstOrDefault(r=>r.EditorID==pair.Key&&!r.IsDeleted);
-                plans.Add(new{Kind="GameSetting",EditorID=pair.Key,Before=source?.Data,After=pair.Value});
+                var source=records.Values.OfType<IGameSettingGetter>().FirstOrDefault(r=>r.EditorID==pair.Key&&!r.IsDeleted);
+                double? before=source is IGameSettingFloatGetter f?f.Data:source is IGameSettingIntGetter n?n.Data:null;
+                plans.Add(new{Kind="GameSetting",EditorID=pair.Key,Before=before,After=pair.Value});
                 if(write)
                 {
-                    var target=source is null?state.PatchMod.GameSettings.AddNewFloat():(GameSettingFloat)state.PatchMod.GameSettings.GetOrAddAsOverride((IGameSettingGetter)source);
-                    target.EditorID=pair.Key;target.Data=(float)pair.Value;records[target.FormKey]=target;changes[target.FormKey]=["Data"];
+                    IGameSetting target;
+                    if(pair.Key.StartsWith("i"))
+                    {
+                        if(source is not null && source is not IGameSettingIntGetter)throw new InvalidDataException($"Incorrect native type for {pair.Key}.");
+                        var integer=source is null?state.PatchMod.GameSettings.AddNewInt():(GameSettingInt)state.PatchMod.GameSettings.GetOrAddAsOverride(source);
+                        integer.Data=(int)pair.Value;target=integer;
+                    }
+                    else
+                    {
+                        if(source is not null && source is not IGameSettingFloatGetter)throw new InvalidDataException($"Incorrect native type for {pair.Key}.");
+                        var floating=source is null?state.PatchMod.GameSettings.AddNewFloat():(GameSettingFloat)state.PatchMod.GameSettings.GetOrAddAsOverride(source);
+                        floating.Data=(float)pair.Value;target=floating;
+                    }
+                    target.EditorID=pair.Key;records[target.FormKey]=target;changes[target.FormKey]=["Data"];
                 }
             }
-        var styles=new Dictionary<(FormKey,string),FormKey>();var weapons=new Dictionary<(FormKey,int),FormKey>();
+        var levels=ActorClassification.LoadSettings(run).LevelMapping;
+        var styles=new Dictionary<(FormKey,string),FormKey>();var weapons=new Dictionary<(FormKey,int,double),FormKey>();
         if(!gameplay.BalanceActors){Finish();return changes;}
         // Reuse the current deleveling pass's script and quest safeguards. Never trust stale reports.
         var allowed=new Dictionary<string,int>(StringComparer.OrdinalIgnoreCase);
@@ -82,9 +102,9 @@ internal static class GameplayCombatModule
             data.IdleTimerMin=(float)profile.IdleMin;data.IdleTimerMax=(float)profile.IdleMax;data.HoldTimerMin=(float)profile.HoldMin;data.HoldTimerMax=(float)profile.HoldMax;
             styles[(original,name)]=target.FormKey;records[target.FormKey]=target;return target.FormKey;
         }
-        FormKey Weapon(FormKey original,int tier,HashSet<FormKey> path)
+        FormKey Weapon(FormKey original,int tier,HashSet<FormKey> path,double speciesDamage=1)
         {
-            if(weapons.TryGetValue((original,tier),out var cached))return cached;
+            if(weapons.TryGetValue((original,tier,speciesDamage),out var cached))return cached;
             if(!path.Add(original)||path.Count>32)return original;
             var result=original;
             if(records.GetValueOrDefault(original) is IWeaponGetter source && source.Data is not null && source.Data.Damage > 0 && source.Data.Type.ToString() != "Staff")
@@ -92,8 +112,8 @@ internal static class GameplayCombatModule
                 var item=PhysicalCombatModule.ReadItem(source,artifacts)!;
                 if(!item.Protected||item.PreservationReason=="Enchanted item: enchantment balance pending")
                 {
-                    var copy=state.PatchMod.Weapons.DuplicateInAsNewRecord(source);copy.EditorID=$"BGSOCombatTier{tier}_{source.FormKey.ID:X6}_{source.EditorID}";
-                    copy.Data!.Damage=(ushort)Math.Clamp(Math.Round(copy.Data.Damage*gameplay.WeaponPower(tier)),1,ushort.MaxValue);
+                    var copy=state.PatchMod.Weapons.DuplicateInAsNewRecord(source);copy.EditorID=$"BGSOCombatTier{tier}_{source.FormKey.ID:X6}_{speciesDamage:0.##}_{source.EditorID}";
+                    copy.Data!.Damage=(ushort)Math.Clamp(Math.Round(copy.Data.Damage*gameplay.WeaponPower(tier)*speciesDamage,MidpointRounding.AwayFromZero),1,ushort.MaxValue);
                     records[copy.FormKey]=copy;result=copy.FormKey;
                 }
             }
@@ -102,29 +122,39 @@ internal static class GameplayCombatModule
                 var copy=state.PatchMod.LeveledItems.DuplicateInAsNewRecord(list);var changed=false;
                 foreach(var entry in copy.Entries??[])
                 {
-                    var key=Weapon(entry.Reference.FormKey,tier,path);
+                    var key=Weapon(entry.Reference.FormKey,tier,path,speciesDamage);
                     if(key!=entry.Reference.FormKey){entry.Reference.SetTo(key);changed=true;}
                 }
                 if(changed){copy.EditorID=$"BGSOCombatTier{tier}_List{weapons.Count}";records[copy.FormKey]=copy;result=copy.FormKey;}
                 else state.PatchMod.LeveledItems.Remove(copy.FormKey);
             }
-            path.Remove(original);weapons[(original,tier)]=result;return result;
+            path.Remove(original);weapons[(original,tier,speciesDamage)]=result;return result;
         }
-        var levels=ActorClassification.LoadSettings(run).LevelMapping;
         foreach(var actor in records.Values.Where(r=>r is INpcGetter or ICreatureGetter).OrderBy(r=>r.FormKey.ToString(),StringComparer.Ordinal).ToArray())
         {
             var key=actor.FormKey.ToString();var tier=profiles.GetValueOrDefault(actor.FormKey)?.Tier?.Value;
             gameplay.ActorOverrides.TryGetValue(key,out var individual);
             if(actor.IsDeleted||!run.Includes(actor.FormKey.ModKey)||individual?.Preserve==true||tier is null||!allowed.TryGetValue(key,out var level))
-            {skipped.Add(new{FormKey=key,Reason="Unclassified, exempt, or deleveling safeguard"});continue;}
+            {
+                if(!actor.IsDeleted && run.Includes(actor.FormKey.ModKey) && individual?.Preserve!=true && individual?.Health is {} health && HasFixedHealth(actor))
+                {
+                    plans.Add(new { Kind="HealthOverride",FormKey=key,Health=health,Reason="Explicit health-only override; level, skills, scripts and other safeguards retained. Runtime scripts can still change health." });
+                    if(write)
+                    {
+                        IMajorRecord target=actor is INpcGetter npcHealth?state.PatchMod.Npcs.GetOrAddAsOverride(npcHealth):state.PatchMod.Creatures.GetOrAddAsOverride((ICreatureGetter)actor);
+                        SetHealth(target,(uint)health);records[target.FormKey]=target;changes[target.FormKey]=[actor is INpcGetter?"Stats.Health":"Data.Health"];
+                    }
+                }
+                skipped.Add(new{FormKey=key,Reason=individual?.Health is not null&&!HasFixedHealth(actor)?"Absolute health override not applied: engine-calculated health or player base":"Unclassified, exempt, or deleveling safeguard"});continue;
+            }
             if(actor is INpcGetter npc && npc.Stats is not null && npc.Configuration is not null)
             {
                 var build=individual?.Build??Build(profiles.GetValueOrDefault(actor.FormKey),(records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter)?.EditorID);
-                var stats=CombatBuilds.AtLevel(gameplay,build,tier.Value,level,levels);if(individual?.Health is not null)stats["Health"]=individual.Health.Value;
+                var stats=CombatBuilds.ActorAtLevel(gameplay,creation,build,npc.Race.FormKey.ToString(),npc.Configuration.Flags.HasFlag(Npc.NpcFlag.Female),tier.Value,level,levels);if(individual?.Health is not null)stats["Health"]=individual.Health.Value;
                 var trainerFloor=CharacterCreation.TrainerFloor(npc,records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter,stats);
                 var style=gameplay.ActorBuilds[build].Style;
                 if(profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("BossStatus")?.Selected.Value?.ToString()=="Major" && build is not "Mage" and not "Scout") style="Boss";
-                plans.Add(new{Kind="NPC",FormKey=key,Tier=tier,Level=level,Build=build,Stats=stats,TrainerFloor=trainerFloor,StatSource="NPC tier training budget",Style=style,WeaponPower=gameplay.WeaponPower(tier.Value)});
+                plans.Add(new{Kind="NPC",FormKey=key,Tier=tier,Level=level,Build=build,Stats=stats,TrainerFloor=trainerFloor,StatSource=individual?.Health is not null?"Explicit health override; shared class progression":"Health from Endurance; shared class progression (nonplayable races/classes use tier budgets)",Style=style,WeaponPower=gameplay.WeaponPower(tier.Value)});
                 if(!write)continue;
                 var target=state.PatchMod.Npcs.GetOrAddAsOverride(npc);Stats(target,stats);target.CombatStyle.SetTo(Style(npc.CombatStyle.FormKey,style));
                 if(tier>6)foreach(var entry in target.Items)entry.Item.SetTo(Weapon(entry.Item.FormKey,tier.Value,new()));
@@ -135,8 +165,8 @@ internal static class GameplayCombatModule
                 var name=creature.EditorID??"";var type=creature.Data.Type.ToString();
                 var build=Regex.IsMatch(name,"Ogre|Minotaur|Troll|Daedroth|Xivilai|Gatekeeper|Clannfear",RegexOptions.IgnoreCase)?"Large":type is "Daedra" or "Undead"?"Supernatural":Regex.IsMatch(name,"Rat|Deer|Imp",RegexOptions.IgnoreCase)?"Frail":"Default";
                 var budget=gameplay.ActorTiers[tier.Value];var factor=gameplay.CreatureBuilds[build];
-                var health=individual?.Health??Math.Round(budget.Health*factor.Health);var damage=Math.Round(budget.NaturalDamage*factor.Damage);var speed=Math.Clamp(budget.Attribute*factor.Speed,5,100);
-                plans.Add(new{Kind="Creature",FormKey=key,Tier=tier,Level=level,Build=build,Health=health,AttackDamage=damage,Speed=speed});
+                var health=individual?.Health??Math.Round(budget.Health*factor.Health);var damage=CreatureAttacks.NaturalDamage(settings,creation,tier.Value,level,build);var speed=Math.Clamp(budget.Attribute*factor.Speed,5,100);
+                plans.Add(new{Kind="Creature",FormKey=key,Tier=tier,Level=level,Build=build,Health=health,AttackDamage=damage,PreviousAttackDamage=creature.Data.AttackDamage,ReferenceWarriorHit=CreatureAttacks.ReferenceHit(settings,creation,tier.Value,level),CombatSkill=budget.Specialty,WeaponDamageMultiplier=gameplay.WeaponPower(tier.Value)*factor.Damage,PowerAttackMultiplier=1,AttackModel="Natural attacks use AttackDamage; armed attacks use weapon stats (vanilla). Spells and resistances retained.",Speed=speed});
                 if(!write)continue;
                 var target=state.PatchMod.Creatures.GetOrAddAsOverride(creature);target.Configuration!.Flags&=~Creature.CreatureFlag.PCLevelOffset;target.Configuration.LevelOffset=(short)level;target.Configuration.CalcMin=target.Configuration.CalcMax=0;
                 target.Data!.Health=(uint)health;target.Data.AttackDamage=(ushort)damage;target.Data.CombatSkill=(byte)budget.Specialty;target.Data.Speed=(byte)speed;
@@ -144,14 +174,14 @@ internal static class GameplayCombatModule
                 var role=profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("CombatRole")?.Selected.Value?.ToString();
                 var style=role is "Mage" or "Support" or "Controller"?"Mage":role=="Archer"?"Archer":build=="Large"?"Berserker":"Aggressive Fighter";
                 target.CombatStyle.SetTo(Style(creature.CombatStyle.FormKey,style));
-                if(tier>6)foreach(var entry in target.Items)entry.Item.SetTo(Weapon(entry.Item.FormKey,tier.Value,new()));
+                if(tier>6 || factor.Damage!=1)foreach(var entry in target.Items)entry.Item.SetTo(Weapon(entry.Item.FormKey,tier.Value,new(),factor.Damage));
                 records[target.FormKey]=target;changes[target.FormKey]=["Data.Health","Data.AttackDamage","Data.CombatSkill","Data.Speed","Data.Strength","Data.Endurance","Configuration","CombatStyle","Items"];
             }
         }
         Finish();return changes;
         void Finish()
         {
-            run.WriteReport(".combat-gameplay.json",new{Schema=1,Applied=write,Plans=plans,Skipped=skipped,Changes=changes.Select(p=>new{FormKey=p.Key.ToString(),Fields=p.Value}),RareWeaponVariants=weapons!.Where(p=>p.Key.Item1!=p.Value).Select(p=>p.Value).Distinct().Count(),NativeStyleVariants=styles!.Count},CombatConfiguration.Options);
+            run.WriteReport(".combat-gameplay.json",new{Schema=1,Applied=write,Plans=plans,Skipped=skipped,Changes=changes.Select(p=>new{FormKey=p.Key.ToString(),Fields=p.Value}),CreatureReferences=CreatureAttacks.References(settings,creation,levels),RareWeaponVariants=weapons!.Where(p=>p.Key.Item1!=p.Value).Select(p=>p.Value).Distinct().Count(),NativeStyleVariants=styles!.Count},CombatConfiguration.Options);
             run.Log($"Combat gameplay: {plans.Count} plans, {changes.Count} writes; {skipped.Count} safeguarded actors.");
         }
     }

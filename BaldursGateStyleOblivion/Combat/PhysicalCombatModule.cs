@@ -10,6 +10,7 @@ using Mutagen.Bethesda.Plugins.Records;
 using Mutagen.Bethesda.Synthesis;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Combat.Tests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Magic.Tests")]
 
 namespace BaldursGateStyleOblivion.Combat;
 
@@ -111,7 +112,8 @@ internal static class PhysicalCombatModule
             foreach(var pair in PlayableRaces.Read(Path.Combine(state.DataFolderPath.ToString(),listing.ModKey.ToString()),listing.Mod!))playableRaces.TryAdd(pair.Key,pair.Value);
         var originalGameSettings = records.Values.OfType<IGameSettingFloatGetter>().Where(r=>!r.IsDeleted && r.EditorID is not null && r.Data.HasValue).ToDictionary(r=>r.EditorID!,r=>(double)r.Data!.Value);
         foreach(var setting in records.Values.OfType<IGameSettingIntGetter>().Where(r=>!r.IsDeleted && r.EditorID is not null && r.Data.HasValue)) originalGameSettings[setting.EditorID!]=setting.Data!.Value;
-        foreach(var change in GameplayCombatModule.Run(state, records, profiles, settings, run)) changes[change.Key]=change.Value;
+        var creation=CharacterCreation.Read(records,originalGameSettings,playableRaces);
+        foreach(var change in GameplayCombatModule.Run(state, records, profiles, settings, run, creation)) changes[change.Key]=change.Value;
         var actors = records.Values.Where(r => !r.IsDeleted && run.Includes(r.FormKey.ModKey) && r is INpcGetter or ICreatureGetter)
             .OrderBy(r => r.FormKey.ToString(), StringComparer.Ordinal).Select(r =>
             {
@@ -120,6 +122,7 @@ internal static class PhysicalCombatModule
                 var scaledCreature = creature?.Configuration?.Flags.HasFlag(Creature.CreatureFlag.PCLevelOffset) == true;
                 var inventory = npc is not null ? npc.Items.Cast<IItemEntryGetter>() : creature!.Items.Cast<IItemEntryGetter>();
                 return new { FormKey = r.FormKey.ToString(), r.EditorID, Name = npc?.Name?.ToString() ?? creature?.Name?.ToString(),
+                    RecordType=npc is null?"Creature":"NPC",Fatigue=npc?.Configuration?.Fatigue??creature?.Configuration?.Fatigue,
                     Tier = profiles.GetValueOrDefault(r.FormKey)?.Tier?.Value,
                     Level = npc?.Configuration?.LevelOffset ?? creature?.Configuration?.LevelOffset,
                     AutoCalculated = auto || scaledCreature,
@@ -136,7 +139,7 @@ internal static class PhysicalCombatModule
             .OrderBy(r => r.EditorID, StringComparer.Ordinal).ToDictionary(r => r.EditorID!, r => (double)r.Data!.Value);
         run.WriteReport(".physical-combat.json", new { Schema = 1, GeneratedUtc = DateTime.UtcNow, run.Settings.ReportOnly,
             Applied = run.Settings.EnablePhysicalCombatBalance && !run.Settings.ReportOnly, Items = items.Concat(records.Values.OfType<IWeaponGetter>().Where(r=>r.EditorID?.StartsWith("BGSOCombatTier",StringComparison.Ordinal)==true).Select(r=>ReadItem(r,artifacts)!)).ToArray(), Actors = actors, NativeStyles = styles,
-            ConfigurationHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)))), CandidateFile = Path.GetFullPath(state.OutputPath.ToString()), CharacterCreation = CharacterCreation.Read(records,originalGameSettings,playableRaces), OriginalGameSettings = originalGameSettings, GameSettings = gameSettings, MechanicsFallbacks = CombatAnalysis.Defaults.Where(p => !gameSettings.ContainsKey(p.Key)).ToDictionary(), Plans = plans, ConfigurationFile = path,
+            ConfigurationHash = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)))), CandidateFile = Path.GetFullPath(state.OutputPath.ToString()), CharacterCreation = creation, OriginalGameSettings = originalGameSettings, GameSettings = gameSettings, MechanicsFallbacks = CombatAnalysis.Defaults.Where(p => !gameSettings.ContainsKey(p.Key)).ToDictionary(), Plans = plans, ConfigurationFile = path,
             Notes = new[] { "Items are the baseline before this module; earlier patch modules are included when writes are enabled.",
                 "Balanced actors have explicit base stats. Racial abilities, spells and runtime script bonuses may still modify them.",
                 "Gameplay configuration writes equipment, explicit actor stats, native combat styles and engine settings. Benchmark tier curves remain optional analysis targets." } }, CombatConfiguration.Options);

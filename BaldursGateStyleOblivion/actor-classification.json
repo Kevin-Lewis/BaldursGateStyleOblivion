@@ -44684,7 +44684,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Undead"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 4
     },
     "0364BA:Oblivion.esm": {
       "Name": "Undead Blade",
@@ -44695,7 +44696,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Undead"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 4
     },
     "0364BB:Oblivion.esm": {
       "Name": "Undead Blade",
@@ -44706,7 +44708,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Undead"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 4
     },
     "0364BC:Oblivion.esm": {
       "Name": "Undead Blade",
@@ -44717,7 +44720,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Undead"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "PowerTier": 4
     },
     "028E7D:Oblivion.esm": {
       "Name": "Undena Orethi",

@@ -29,6 +29,10 @@ if(-not $SkipBuild){
     if($LASTEXITCODE -ne 0){throw 'Candidate generation failed.'}
     $editorReports=Join-Path $root 'artifacts\phase0-data\Reports'
     New-Item -ItemType Directory -Path $editorReports -Force | Out-Null
+    foreach($suffix in @('magic-analysis.json','magic-analysis.md')){
+        $magicReport=Join-Path $folder ('Reports\BaldursGateStyleOblivion.'+$suffix)
+        if(Test-Path -LiteralPath $magicReport){Copy-Item -LiteralPath $magicReport -Destination $editorReports -Force}
+    }
     Copy-Item -LiteralPath (Join-Path $folder 'Reports\BaldursGateStyleOblivion.physical-combat.json') -Destination (Join-Path $editorReports 'BaldursGateStyleOblivion.physical-combat.json') -Force
 }
 if(-not (Test-Path -LiteralPath $candidate)){throw 'Candidate file is missing.'}

@@ -2,7 +2,7 @@ const fs=require('node:fs');const vm=require('node:vm');
 const html=fs.readFileSync(process.argv[2]||'artifacts/actor-catalog.html','utf8');
 const elements=new Map();
 const element=id=>{if(!elements.has(id))elements.set(id,{value:id==='sort'?'group':id==='page-size'?'50':'',checked:false,textContent:'',innerHTML:'',children:[],listeners:{},append(child){this.children.push(child)},addEventListener(type,handler){this.listeners[type]=handler}});return elements.get(id)};
-const document={getElementById:element,createElement(){return {value:'',textContent:''}}};
+const document={getElementById:element,querySelector:()=>({hidden:false}),createElement(){return {value:'',textContent:'',dataset:{},append(){}}}};
 const context=vm.createContext({document,URL,setTimeout,clearTimeout});
 vm.runInContext(html.match(/<script>([\s\S]*?)<\/script>/)[1],context);
 const check=(condition,message)=>{if(!condition)throw new Error(message)};
@@ -37,3 +37,7 @@ element('search').value='016487:Oblivion.esm';element('group').listeners.input()
 element('search').value='nonexistent-actor-xyz';element('group').listeners.input();check(visible()===0&&element('next').disabled&&element('previous').disabled,'Empty results navigation failed');
 element('search').value='';element('page-size').value='25';element('page-size').listeners.input();check(visible()===25,'Page size change failed');
 console.log('Pagination passed: page sizes, navigation, last page, full-list search, filter reset and empty results.');
+
+for(const direction of ['asc','desc'])check(vm.runInContext(`compare({Name:'A',FormKey:'a',Stats:{Blade:100}},{Name:'B',FormKey:'b',Stats:{Blade:35}},'stat:Blade:${direction}')${direction==='asc'?'>':'<'}0`,context),'Numeric skill sort');
+check(vm.runInContext("compare({Name:'A',FormKey:'a',Stats:{Blade:0}},{Name:'B',FormKey:'b'},'stat:Blade:asc')<0",context),'Missing stats must sort last');
+console.log('Actor stat groups and numeric ranking passed.');

@@ -22,7 +22,8 @@
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/LootConfiguration.cs" Link="Modules/LootConfiguration.cs" /><None Update="loot.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/RewardConfiguration.cs" Link="Modules/RewardConfiguration.cs" /><None Update="rewards.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Modules/MerchantConfiguration.cs" Link="Modules/MerchantConfiguration.cs" /><None Update="merchants.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
-<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Combat/PlayerBuilds.cs" Link="PlayerBuilds.cs" /><Compile Include="../../BaldursGateStyleOblivion/Combat/CombatBuilds.cs" Link="CombatBuilds.cs" />
+<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Combat/CreatureAttacks.cs" Link="CreatureAttacks.cs" /><Compile Include="../../BaldursGateStyleOblivion/Combat/PlayerBuilds.cs" Link="PlayerBuilds.cs" /><Compile Include="../../BaldursGateStyleOblivion/Combat/CombatBuilds.cs" Link="CombatBuilds.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Combat/GameplayConfiguration.cs" Link="GameplayConfiguration.cs" />
     <Compile Include="../../BaldursGateStyleOblivion/Combat/CombatConfiguration.cs" Link="Combat/CombatConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Combat/CombatAnalysis.cs" Link="Combat/CombatAnalysis.cs" /><None Update="combat.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><None Update="magic.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 </Project>

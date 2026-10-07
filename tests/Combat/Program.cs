@@ -34,10 +34,13 @@ if(args.Length==3)
     var catalogItems=report.RootElement.GetProperty("Items").Deserialize<PhysicalItem[]>(CombatConfiguration.Options)!;
     Check(catalogItems.Single(i=>i.EditorID=="IronCuirass").Heavy,"Native iron armor incorrectly classified as light");
     Check(!catalogItems.Single(i=>i.EditorID=="GlassCuirass").Heavy,"Native glass armor incorrectly classified as heavy");
-    var npcCount=0;var creatureCount=0;
+    var creation=report.RootElement.GetProperty("CharacterCreation").Deserialize<CreationCatalog>(CombatConfiguration.Options)!;
+    var candidateLevels=new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping;
+    var sharedCount=0;var npcCount=0;var creatureCount=0;
     foreach(var plan in gameplay.RootElement.GetProperty("Plans").EnumerateArray())
     {
         var kind=plan.GetProperty("Kind").GetString();
+        if(kind=="GameSetting"){var name=plan.GetProperty("EditorID").GetString();var record=candidate.GameSettings.SingleOrDefault(g=>g.EditorID==name) ?? throw new Exception("Missing native setting: "+name+"; saved settings: "+string.Join(",",candidate.GameSettings.Select(g=>g.EditorID)));Near(record is IGameSettingIntGetter integer?integer.Data!.Value:((IGameSettingFloatGetter)record).Data!.Value,plan.GetProperty("After").GetDouble(),"Native game setting value");Check(name!.StartsWith("i")==(record is IGameSettingIntGetter),"Native game setting type");}
         if(kind=="NPC")
         {
             var actor=candidate.Npcs[FormKey.Factory(plan.GetProperty("FormKey").GetString()!)];
@@ -48,18 +51,27 @@ if(args.Length==3)
                 if(property is not null)Near(Convert.ToDouble(property.GetValue(actor.Stats)),stat.Value.GetDouble(),"Native NPC "+stat.Name);
             }
             Near(actor.Configuration.Fatigue,plan.GetProperty("Stats").GetProperty("Fatigue").GetDouble(),"Native explicit fatigue");
+            var build=plan.GetProperty("Build").GetString()!;
+            if(creation.Classes.Any(c=>c.Name==build)&&creation.Races.Any(r=>r.Key==actor.Race.FormKey.ToString()))
+            {
+                var expected=CombatBuilds.ActorAtLevel(config.Gameplay,creation,build,actor.Race.FormKey.ToString(),actor.Configuration.Flags.HasFlag(Npc.NpcFlag.Female),plan.GetProperty("Tier").GetInt32(),plan.GetProperty("Level").GetDouble(),candidateLevels);
+                foreach(var stat in expected.Where(p=>p.Key!="Health"))
+                {
+                    var actual=plan.GetProperty("Stats").GetProperty(stat.Key).GetDouble();
+                    if(plan.TryGetProperty("TrainerFloor",out var floor)&&floor.ValueKind==JsonValueKind.String&&floor.GetString()!.StartsWith(stat.Key+" "))Check(actual>=stat.Value,"Trainer floor reduced skill");
+                    else Near(actual,stat.Value,"Generated actor shared progression "+stat.Key);
+                }
+                sharedCount++;
+            }
             Check(candidate.CombatStyles.ContainsKey(actor.CombatStyle.FormKey),"NPC assigned style missing");npcCount++;
         }
         else if(kind=="Creature")
         {
             var actor=candidate.Creatures[FormKey.Factory(plan.GetProperty("FormKey").GetString()!)];
             Near(actor.Data!.Health,plan.GetProperty("Health").GetDouble(),"Creature health");Near(actor.Data.AttackDamage,plan.GetProperty("AttackDamage").GetDouble(),"Creature natural damage");
-            Check(!actor.Configuration!.Flags.HasFlag(Creature.CreatureFlag.PCLevelOffset),"Creature autocalc retained");creatureCount++;
-        }
-        else if(kind=="GameSetting")
-        {
-            var setting=candidate.GameSettings.OfType<IGameSettingFloatGetter>().Single(g=>g.EditorID==plan.GetProperty("EditorID").GetString());
-            Near(setting.Data!.Value,plan.GetProperty("After").GetDouble(),"Native engine setting");
+            Check(!actor.Configuration!.Flags.HasFlag(Creature.CreatureFlag.PCLevelOffset),"Creature autocalc retained");
+            Near(actor.Data.CombatSkill,plan.GetProperty("CombatSkill").GetDouble(),"Creature combat skill");
+            Near(actor.Data.AttackDamage,CreatureAttacks.NaturalDamage(config,creation,plan.GetProperty("Tier").GetInt32(),plan.GetProperty("Level").GetDouble(),plan.GetProperty("Build").GetString()!),"Creature attack curve not applied");creatureCount++;
         }
     }
     foreach(var skipped in gameplay.RootElement.GetProperty("Skipped").EnumerateArray())
@@ -73,8 +85,8 @@ if(args.Length==3)
         Check(actor.FormKey!=FormKey.Factory("000007:Oblivion.esm"),"Player base actor was edited");
     }
     Check(!candidate.Weapons.Any(w=>w.EditorID?.StartsWith("BGSOCombatTier")==true && w.Data?.Type.ToString()=="Staff"),"Staff must not receive physical tier variants");
-    Check(npcCount>2000&&creatureCount>700,"Insufficient combat coverage");
-    Console.WriteLine($"Combined native candidate checks passed: {npcCount} NPCs, {creatureCount} creatures, equipment and engine settings.");return;
+    Check(npcCount>2000&&creatureCount>700&&sharedCount>1500,"Insufficient combat/shared progression coverage");
+    Console.WriteLine($"Combined native candidate checks passed: {npcCount} NPCs ({sharedCount} shared progression), {creatureCount} creatures, equipment and engine settings.");return;
 }
 if (args.Length == 2)
 {
@@ -144,6 +156,13 @@ Check(CombatAnalysis.Run(scenario, settings, items, constants, true).PlayerClean
 items[sword.FormKey] = sword; scenario.Enemy.ResistNormalWeapons = 0; settings.ItemOverrides.Clear();
 scenario.Player.Armor = []; scenario.Enemy.Armor = []; settings.Styles["Aggressive Fighter"].BlockUptime = 0;
 scenario.Player.Health = 10000; scenario.Enemy.Health = 1; scenario.EnemyCount = 3;
+var creatureScenario=new CombatScenario { Player=new Fighter { Weapon=sword.FormKey,Style="Aggressive Fighter",IsCreature=true,NaturalAttackDamage=20,Strength=1,WeaponSkill=1,ConditionPercent=1,Health=10000 },Enemy=new Fighter { Weapon=sword.FormKey,Style="Aggressive Fighter",Health=10000 },Seconds=1 };
+Near(CombatAnalysis.Run(creatureScenario,settings,items,constants,false).PlayerCleanHit,20,"Natural attack incorrectly uses weapon/strength/skill/condition");
+var savedPower=settings.Styles["Aggressive Fighter"].PowerAttackShare;settings.Styles["Aggressive Fighter"].PowerAttackShare=.5;
+var normalCreature=CombatAnalysis.Run(creatureScenario,settings,items,constants,false).EnemyHealthRemaining;
+creatureScenario.Player.CreaturePowerAttackMultiplier=2;
+Check(CombatAnalysis.Run(creatureScenario,settings,items,constants,false).EnemyHealthRemaining<normalCreature,"Creature external power attack multiplier ignored");
+settings.Styles["Aggressive Fighter"].PowerAttackShare=savedPower;
 var group = CombatAnalysis.Run(scenario, settings, items, constants, false);
 Check(group.EnemyHealthRemaining == 0 && group.Timeline[^1].EnemiesAlive == 0, "Group aggregate health must end at zero");
 Check(group.Timeline.All(p => p.EnemyHealth >= 0 && p.PlayerHealth >= 0), "Timeline health cannot be negative");
@@ -183,12 +202,12 @@ Check(PhysicalCombatModule.ReadItem(loaded.Armors.Single(),[])!.Heavy,"Native he
 Check(loaded.Weapons.Single().Data!.Value == 25 && loaded.Armors.Single().Data!.Value == 50, "Economy values changed");
 var gameplaySettings=CombatConfiguration.Load("BaldursGateStyleOblivion/combat.json");
 var master=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Knight",5,20,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
-Near(master["Blade"],100,"Tier 5 specialty mastery");Near(master["Block"],100,"Defensive mastery");
+Near(master["Blade"],76,"Tier 5 focused skill still develops");Near(master["Block"],100,"Defensive mastery");
 var offensive=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Barbarian",5,20,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
-Near(master["Health"],offensive["Health"],"Same-tier humanoid health starts neutral");
-Near(master["Endurance"],offensive["Endurance"],"No forced defensive health versus offensive Endurance tradeoff");
+Near(master["Health"],Math.Round(master["Endurance"]*2.5),"Knight health follows Endurance");
+Check(master["Endurance"]>offensive["Endurance"],"Knight Endurance specialization");
 var interpolated=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Knight",3,12,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
-Near(interpolated["Blade"],73,"Shared level interpolation");
+Near(interpolated["Blade"],57,"Shared level interpolation");
 var normalized=PhysicalBalance.Propose(sword,gameplaySettings);Near(normalized.Damage,12,"Absolute weapon baseline");
 Near(normalized.Weight,12,"Absolute weapon weight");
 var nativeStats=new Npc(FormKey.Factory("000010:Test.esp"),OblivionRelease.Oblivion){Stats=new NpcData(),Configuration=new NpcConfiguration()};
@@ -202,11 +221,51 @@ using(var vanilla=OblivionMod.CreateFromBinaryOverlay("F:/SteamLibrary/steamapps
     foreach(var setting in records.Values.OfType<IGameSettingIntGetter>().Where(g=>g.EditorID is not null&&g.Data.HasValue))gs[setting.EditorID!]=setting.Data!.Value;
     var creation=CharacterCreation.Read(records,gs,PlayableRaces.Read("F:/SteamLibrary/steamapps/common/Oblivion/Data/Oblivion.esm",vanilla));
     Check(creation.Races.Length==10,"Native playable race filter");
+    var baurus=vanilla.Npcs[FormKey.Factory("023F2A:Oblivion.esm")].DeepCopy();
+    var oldStrength=baurus.Stats!.Strength;var oldLevel=baurus.Configuration!.LevelOffset;var oldFlags=baurus.Configuration.Flags;
+    Check(GameplayCombatModule.HasFixedHealth(baurus),"Baurus fixed health override rejected");GameplayCombatModule.SetHealth(baurus,200);
+    Near(baurus.Stats.Health,200,"Health-only correction");Near(baurus.Stats.Strength,oldStrength,"Health-only edit changed attributes");Near(baurus.Configuration.LevelOffset,oldLevel,"Health-only edit changed level");Check(baurus.Configuration.Flags==oldFlags,"Health-only edit changed actor flags");
+    baurus.Configuration.Flags|=Npc.NpcFlag.AutoCalcStats;Check(!GameplayCombatModule.HasFixedHealth(baurus),"Engine-calculated health treated as absolute");
+    Check(!GameplayCombatModule.HasFixedHealth(vanilla.Npcs[FormKey.Factory("000007:Oblivion.esm")]),"Player base health editable");
     var imperial=creation.Races.Single(r=>r.Name=="Imperial");
     var player=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,1).Stats;
-    Near(player["Strength"],45,"Native Imperial Warrior starting Strength");Near(player["Blade"],35,"Native Imperial Warrior starting Blade");Near(player["Block"],30,"Native Warrior starting Block");
+    Near(player["Strength"],45,"Native Imperial Warrior starting Strength");Near(player["Blade"],35,"Native Imperial Warrior starting Blade");Near(player["Block"],30,"Native Warrior starting Block");Near(player["Health"],112.5,"Starting Warrior health = Endurance x2.5");
+    foreach(var row in new (int Level,double Strength,double Agility,double Speed)[]{(20,83d,50d,58d),(29,100d,58d,68d),(35,100d,70d,80d),(40,100d,80d,90d)})
+    {
+        var rotated=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,row.Level,["Strength","Endurance","Agility"],"Speed","Blade").Stats;
+        Near(rotated["Strength"],row.Strength,"Imperial rotating primary attributes");Near(rotated["Agility"],row.Agility,"Imperial rotating Agility");Near(rotated["Speed"],row.Speed,"Imperial rotating Speed");
+        Near(rotated["Health"],rotated["Endurance"]*2.5,"Shared player health scale");
+    }
+    foreach(var build in new[]{"Warrior","Knight","Barbarian","Rogue","Scout","Spellsword","Battlemage","Mage"})
+    foreach(var characterLevel in new[]{1,5,20,30,40})
+    {
+        var expected=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,build,imperial.Key,false,null,characterLevel).Stats;
+        var actual=CombatBuilds.ActorAtLevel(gameplaySettings.Gameplay,creation,build,imperial.Key,false,5,characterLevel,new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping);
+        foreach(var stat in CombatBuilds.Skills.Concat(new[]{"Strength","Endurance","Agility","Speed","Intelligence","Willpower","Personality","Fatigue"}))Near(actual[stat],expected[stat],build+" shared progression "+characterLevel+" "+stat);
+        Near(actual["Health"],Math.Round(expected["Health"]*gameplaySettings.Gameplay.ActorBuilds[build].Health),build+" actor health");
+    }
+    var previous=0d;
+    foreach(var tier in Enumerable.Range(0,11))
+    {
+        var level=new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping.GetValueOrDefault(tier)??40;
+        var reference=CreatureAttacks.ReferenceHit(gameplaySettings,creation,tier,level);
+        Check(reference>=previous,"Creature attack progression regressed");previous=reference;
+        Near(CreatureAttacks.NaturalDamage(gameplaySettings,creation,tier,level,"Default"),Math.Round(reference,MidpointRounding.AwayFromZero),"Creature default matches warrior reference");
+        Check(CreatureAttacks.NaturalDamage(gameplaySettings,creation,tier,level,"Large")>=reference,"Large creature lost heavy hit advantage");
+    }
+    var focused20=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,20).Stats;
+    var focused30=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,30).Stats;
+    Near(focused20["Blade"],100,"One primary mastery at 20");Check(focused20["Block"]<100&&focused20["Blunt"]<100,"Other focused skills prematurely mastered");Near(focused30["Block"],100,"Focused skill mastery at 30");
+    foreach(var characterLevel in new[]{5,10,20,30,40})
+    {
+        var estimate=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,characterLevel).Stats;
+        Near(creation.Classes.Single(c=>c.Name=="Warrior").Skills.Sum(skill=>estimate[skill]-player[skill]),10*(characterLevel-1),"Major skill gains match vanilla leveling budget");
+    }
+    var later=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,40).Stats;Check(later["LightArmor"]>focused30["LightArmor"],"Supporting skills stop after focused mastery");
     var playerMaster=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,20).Stats;
-    Near(playerMaster["Blade"],100,"Player estimated major skill mastery at level 20");
+    Near(playerMaster["Blade"],100,"Player estimated major skill mastery at level 20");Near(playerMaster["Health"],playerMaster["Endurance"]*2.5,"Player health uses current Endurance");Near(playerMaster["Strength"],83,"Selected Strength develops with two-point gains");
+    var noEndurance=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,20,["Strength","Agility","Speed"]).Stats;Near(noEndurance["Health"],112.5,"Level alone must not add health");
+    var luck=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,null,5,["Strength","Endurance","Luck"]).Stats;Near(luck["Luck"],54,"Selected Luck gains one point per level");
     var sign=creation.Birthsigns.Single(s=>s.Name=="The Warrior");
     var signed=PlayerBuilds.AtLevel(gameplaySettings.Gameplay,creation,"Warrior",imperial.Key,false,sign.Key,1).Stats;
     Near(signed["Strength"],55,"Warrior birthsign passive attribute bonus");
@@ -219,7 +278,7 @@ using(var vanilla=OblivionMod.CreateFromBinaryOverlay("F:/SteamLibrary/steamapps
             var ai=npc.AIData!;var skill=ai.Teaches!.Value.ToString().Replace("Speechraft","Speechcraft");
             var written=new Npc(FormKey.Factory("000011:Test.esp"),OblivionRelease.Oblivion){Stats=new NpcData(),Configuration=new NpcConfiguration()};GameplayCombatModule.Stats(written,stats);
             Near(Convert.ToDouble(typeof(NpcData).GetProperty(skill)!.GetValue(written.Stats)),stats[skill],"Native trainer skill write");
-            Check(stats[skill]>=ai.MaximumTrainingLevel,"Trainer floor below service cap");Near(stats["Health"],65,"Trainer floor must not boost health");trained++;
+            Check(stats[skill]>=ai.MaximumTrainingLevel,"Trainer floor below service cap");Near(stats["Health"],Math.Round(stats["Endurance"]*2.5),"Trainer floor must not boost health");trained++;
         }
     }
     Check(trained>=100,"Native trainer coverage missing");
@@ -228,3 +287,17 @@ using(var vanilla=OblivionMod.CreateFromBinaryOverlay("F:/SteamLibrary/steamapps
 Near(new CombatHitFactors(31,3,.725,.415,1,1,.97,1,1,1).Damage,27.14193375,"Measured Daedric sword calibration");
 Near(new CombatHitFactors(26,3,.775,.595,1,1,1,1,1,1).Damage,35.96775,"Measured warhammer calibration");
 Near(35.96775*(1-.3*.5),30.5725875,"Measured weapon blocking calibration");
+var levels=new BaldursGateStyleOblivion.Classification.ClassificationSettings().LevelMapping;
+var warrior6=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Warrior",6,levels[6]!.Value,levels);
+var mage6=CombatBuilds.AtLevel(gameplaySettings.Gameplay,"Mage",6,levels[6]!.Value,levels);
+Near(warrior6["Endurance"],93,"Warrior Endurance cap");Near(warrior6["Health"],232,"Tier 6 Warrior health");
+Near(mage6["Endurance"],47,"Tier 6 Mage Endurance");Near(mage6["Health"],118,"Tier 6 Mage health");
+Near(gameplaySettings.Gameplay.GameSettings["fStatsHealthLevelMult"],0,"No accumulated player level health");
+var fractional=CombatConfiguration.Load("BaldursGateStyleOblivion/combat.json");fractional.Gameplay.GameSettings["iLevelUp01Mult"]=2.5;
+Reject(()=>CombatConfiguration.Validate(fractional),"Fractional integer GMST accepted");
+foreach(var index in Enumerable.Range(1,10))Near(gameplaySettings.Gameplay.GameSettings[$"iLevelUp{index:D2}Mult"],2,"Used-attribute level bonus");
+var intFixture=new OblivionMod(ModKey.FromNameAndExtension("IntegerSettings.esp"),OblivionRelease.Oblivion);
+var intSetting=intFixture.GameSettings.AddNewInt();intSetting.EditorID="iLevelUp01Mult";intSetting.Data=3;
+intFixture.WriteToBinary("artifacts/progression-health/IntegerSettings.esp");
+using(var reread=OblivionMod.CreateFromBinaryOverlay("artifacts/progression-health/IntegerSettings.esp",OblivionRelease.Oblivion))
+    Check(reread.GameSettings.Single() is IGameSettingIntGetter {Data:3},"Integer attribute bonus native roundtrip");

@@ -13,6 +13,8 @@ public sealed class ActorTierStats
     public double Health { get; set; }
     public double Attribute { get; set; }
     public double Specialty { get; set; }
+    public double? Focused { get; set; }
+    public double? SupportingAttribute { get; set; }
     public double Secondary { get; set; }
     public double Untrained { get; set; } = 5;
     public double NaturalDamage { get; set; }
@@ -28,6 +30,12 @@ public sealed class ActorBuild
     public string Style { get; set; } = "Aggressive Fighter";
     public double SkillMultiplier { get; set; } = 1;
     public string[] SupportingSkills { get; set; } = ["Block", "LightArmor", "Restoration"];
+    public string[] PlayerFocusedSkills { get; set; } = ["Block","HeavyArmor"];
+    public string? PrimarySkill { get; set; }
+    public string[] RotatingAttributes { get; set; } = ["Agility", "Speed"];
+    public string[] FocusedAttributes { get; set; } = ["Strength", "Endurance"];
+    public double Intelligence { get; set; } = .9;
+    public double Personality { get; set; } = 1;
     public string[] Skills { get; set; } = ["Blade", "Blunt", "HeavyArmor"];
 }
 public sealed class CreatureBuild
@@ -57,6 +65,7 @@ public sealed class GameplaySettings
 {
     public bool NormalizeEquipment { get; set; }
     public bool BalanceEnchantedPhysicalStats { get; set; }
+    public bool MatchCreatureAttacksToWarrior { get; set; } = true;
     public bool BalanceActors { get; set; }
     public bool BalanceGameSettings { get; set; }
     public PlayerProgression PlayerProgression { get; set; } = new();
@@ -80,6 +89,9 @@ public sealed class GameplaySettings
         "fFatigueBlockBase", "fFatigueBlockMult", "fFatigueBlockSkillBase", "fFatigueBlockSkillMult",
         "fPowerAttackFatiguePenalty", "fDamagePowerAttackBonus", "fDamagePowerAttackStandBonus", "fDamagePowerAttackForwardBonus",
         "fDamagePowerAttackBackBonus", "fDamagePowerAttackSideBonus", "fDifficultyDamageMultiplier", "fPCBaseHealthMult",
+        "fStatsHealthStartMult", "fStatsHealthLevelMult",
+        "iLevelUp01Mult", "iLevelUp02Mult", "iLevelUp03Mult", "iLevelUp04Mult", "iLevelUp05Mult",
+        "iLevelUp06Mult", "iLevelUp07Mult", "iLevelUp08Mult", "iLevelUp09Mult", "iLevelUp10Mult",
         "fPerkLightArmorMasterRatingMult", "fPerkHeavyArmorExpertSpeedMult", "fPerkHeavyArmorMasterSpeedMult",
         "fPerkLightArmorExpertSpeedMult", "fPerkAthleticsNoviceFatigueMult", "fPerkAthleticsApprenticeFatigueMult",
         "fPerkAthleticsJourneymanFatigueMult", "fPerkAthleticsExpertFatigueMult", "fPerkAthleticsMasterFatigueMult"
@@ -88,8 +100,8 @@ public sealed class GameplaySettings
     {
         var progression=PlayerProgression ?? throw new ArgumentException("Player progression settings missing.");
         CombatConfiguration.Range(progression.MasteryLevel,2,100,"Player mastery level");
-        CombatConfiguration.Range(progression.PrimaryAttributePerLevel,0,10,"Primary attribute growth");
-        CombatConfiguration.Range(progression.OtherAttributePerLevel,0,10,"Other attribute growth");
+        CombatConfiguration.Range(progression.FocusedMasteryLevel,progression.MasteryLevel,100,"Focused mastery level");
+        CombatConfiguration.Range(progression.SupportingSkillPerLevelAfterMastery,0,10,"Later supporting skill growth");
         CombatConfiguration.Range(progression.SecondarySkillAtMastery,0,100,"Supporting skill target");
         CombatConfiguration.Range(progression.UntrainedSkillPerLevel,0,10,"Untrained skill growth");
         if (WeaponBaselines is null || ArmorSlots is null || ActorTiers is null || ActorBuilds is null || CreatureBuilds is null
@@ -99,6 +111,7 @@ public sealed class GameplaySettings
         {
             if (!AllowedGameSettings.Contains(pair.Key)) throw new ArgumentException($"Unsupported engine setting {pair.Key}.");
             CombatConfiguration.Range(pair.Value, 0, 100, pair.Key);
+            if(pair.Key.StartsWith("i") && pair.Value!=Math.Truncate(pair.Value))throw new ArgumentException($"Integer engine setting {pair.Key} requires a whole number.");
         }
         foreach (var value in WeaponBaselines.Values)
         {
@@ -114,14 +127,20 @@ public sealed class GameplaySettings
         {
             if (value is null) throw new ArgumentException("Actor tier missing.");
             CombatConfiguration.Range(value.Health, 1, 10000, "Tier health"); CombatConfiguration.Range(value.Attribute, 1, 100, "Tier attribute");
+            if(value.Focused.HasValue)CombatConfiguration.Range(value.Focused.Value,0,100,"Focused skill");
+            if(value.SupportingAttribute.HasValue)CombatConfiguration.Range(value.SupportingAttribute.Value,1,100,"Supporting attribute");
             CombatConfiguration.Range(value.Untrained, 0, 100, "Untrained skill"); CombatConfiguration.Range(value.Specialty, 0, 100, "Specialty skill"); CombatConfiguration.Range(value.Secondary, 0, 100, "Secondary skill");
             CombatConfiguration.Range(value.NaturalDamage, 0, 1000, "Natural damage");
         }
         foreach (var value in ActorBuilds.Values)
         {
-            if (value is null || value.Skills is null || value.SupportingSkills is null || !NativeStyles.ContainsKey(value.Style)) throw new ArgumentException("Actor build/style missing.");
-            foreach (var factor in new[] { value.Health, value.Strength, value.Endurance, value.Agility, value.Willpower, value.Speed })
+            if (value is null || value.PlayerFocusedSkills is null || value.RotatingAttributes is null || value.FocusedAttributes is null || value.Skills is null || value.SupportingSkills is null || !NativeStyles.ContainsKey(value.Style)) throw new ArgumentException("Actor build/style missing.");
+            foreach (var factor in new[] { value.Health, value.Strength, value.Endurance, value.Agility, value.Willpower, value.Speed, value.Intelligence, value.Personality })
                 CombatConfiguration.Range(factor, .25, 3, "Build factor");
+            if(value.PlayerFocusedSkills.Length>2 || value.PlayerFocusedSkills.Distinct().Count()!=value.PlayerFocusedSkills.Length || value.PlayerFocusedSkills.Any(s=>!CombatBuilds.Skills.Contains(s)))throw new ArgumentException("Choose up to two other heavily focused player skills.");
+            if(value.PrimarySkill is not null && !value.Skills.Contains(value.PrimarySkill))throw new ArgumentException("Primary skill must be a class specialty.");
+            if(value.RotatingAttributes.Length!=2 || value.RotatingAttributes.Concat(value.FocusedAttributes).Distinct().Count()!=4 || value.RotatingAttributes.Any(a=>!new[]{"Strength","Endurance","Agility","Willpower","Speed","Intelligence","Personality"}.Contains(a)))throw new ArgumentException("Choose two distinct rotating attributes outside the fixed pair.");
+            if(value.FocusedAttributes.Length!=2 || value.FocusedAttributes.Distinct().Count()!=2 || value.FocusedAttributes.Any(a=>!new[]{"Strength","Endurance","Agility","Willpower","Speed","Intelligence","Personality"}.Contains(a)))throw new ArgumentException("Choose two focused NPC attributes.");
             CombatConfiguration.Range(value.SkillMultiplier,0,2,"Class skill multiplier");
             if(value.Skills.Concat(value.SupportingSkills).Any(skill=>!CombatBuilds.Skills.Contains(skill))) throw new ArgumentException("Unsupported specialty skill.");
         }
