@@ -79,6 +79,7 @@ internal static class GameplayCombatModule
                     target.EditorID=pair.Key;records[target.FormKey]=target;changes[target.FormKey]=["Data"];
                 }
             }
+        var magic=BaldursGateStyleOblivion.Magic.MagicConfiguration.Load(BaldursGateStyleOblivion.Magic.MagicBalanceModule.PathFor(run));
         var levels=ActorClassification.LoadSettings(run).LevelMapping;
         var styles=new Dictionary<(FormKey,string),FormKey>();var weapons=new Dictionary<(FormKey,int,double),FormKey>();
         if(!gameplay.BalanceActors){Finish();return changes;}
@@ -150,10 +151,21 @@ internal static class GameplayCombatModule
             if(actor is INpcGetter npc && npc.Stats is not null && npc.Configuration is not null)
             {
                 var build=individual?.Build??Build(profiles.GetValueOrDefault(actor.FormKey),(records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter)?.EditorID);
-                var stats=CombatBuilds.ActorAtLevel(gameplay,creation,build,npc.Race.FormKey.ToString(),npc.Configuration.Flags.HasFlag(Npc.NpcFlag.Female),tier.Value,level,levels);if(individual?.Health is not null)stats["Health"]=individual.Health.Value;
+                if(run.Settings.EnableMagicBalance&&magic.Enabled&&individual?.Build is null)
+                {
+                    var classId=(records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter)?.EditorID??"";
+                    var role=profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("CombatRole")?.Selected.Value?.ToString();
+                    if(role=="Controller")build="Illusionist";
+                    else if(role=="Support")build="DefensiveCaster";
+                    var caster=BaldursGateStyleOblivion.Magic.CasterKits.Profile(magic,build,classId,key);
+                    if(caster is not null)build=magic.Profiles[caster].Build;
+                }
+                var nativeClass=(records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter)?.EditorID;
+                var creationClass=creation.Classes.Any(c=>c.Name==nativeClass&&c.Skills.Contains(gameplay.ActorBuilds[build].PrimarySkill??""))?nativeClass:null;
+                var stats=CombatBuilds.ActorAtLevel(gameplay,creation,build,npc.Race.FormKey.ToString(),npc.Configuration.Flags.HasFlag(Npc.NpcFlag.Female),tier.Value,level,levels,creationClass);if(individual?.Health is not null)stats["Health"]=individual.Health.Value;
                 var trainerFloor=CharacterCreation.TrainerFloor(npc,records.GetValueOrDefault(npc.Class.FormKey) as IClassGetter,stats);
                 var style=gameplay.ActorBuilds[build].Style;
-                if(profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("BossStatus")?.Selected.Value?.ToString()=="Major" && build is not "Mage" and not "Scout") style="Boss";
+                if(profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("BossStatus")?.Selected.Value?.ToString()=="Major" && gameplay.ActorBuilds[build].Style!="Mage" && build!="Scout") style="Boss";
                 plans.Add(new{Kind="NPC",FormKey=key,Tier=tier,Level=level,Build=build,Stats=stats,TrainerFloor=trainerFloor,StatSource=individual?.Health is not null?"Explicit health override; shared class progression":"Health from Endurance; shared class progression (nonplayable races/classes use tier budgets)",Style=style,WeaponPower=gameplay.WeaponPower(tier.Value)});
                 if(!write)continue;
                 var target=state.PatchMod.Npcs.GetOrAddAsOverride(npc);Stats(target,stats);target.CombatStyle.SetTo(Style(npc.CombatStyle.FormKey,style));

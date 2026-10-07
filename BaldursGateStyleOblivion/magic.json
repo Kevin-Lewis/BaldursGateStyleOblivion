@@ -1,0 +1,349 @@
+{
+  "Enabled": true,
+  "AddToSpellVendors": true,
+  "ReplaceOrdinaryCombatSpells": true,
+  "MaximumPoolFraction": 0.65,
+  "CastInterval": 1.5,
+  "Profiles": {
+    "Necromancer": {
+      "Build": "Necromancer",
+      "ClassNames": [
+        "Necromancer"
+      ],
+      "Slots": [
+        "Undead summon",
+        "Fire attack",
+        "Shield",
+        "Heal"
+      ],
+      "Description": "Undead summon specialist with protection and modest backup offense."
+    },
+    "Conjurer": {
+      "Build": "Conjurer",
+      "ClassNames": [
+        "Conjurer",
+        "Sorcerer",
+        "Witch"
+      ],
+      "Slots": [
+        "Daedric summon",
+        "Fire attack",
+        "Shield"
+      ],
+      "Description": "Summon specialist; the summoned actor supplies most of the threat."
+    },
+    "Illusionist": {
+      "Build": "Illusionist",
+      "ClassNames": [
+        "Illusionist"
+      ],
+      "Slots": [
+        "Paralyze",
+        "Silence",
+        "Concealment",
+        "Frost attack"
+      ],
+      "Description": "Player-relevant control and concealment with backup offense; no assumed tactical sequencing."
+    },
+    "Defensive caster": {
+      "Build": "DefensiveCaster",
+      "ClassNames": [
+        "Healer",
+        "Priest"
+      ],
+      "Slots": [
+        "Heal",
+        "Shield",
+        "Silence",
+        "Fire attack"
+      ],
+      "Description": "Self-sustaining defensive caster. Native AI is not assumed to heal allies."
+    },
+    "Battlemage": {
+      "Build": "Battlemage",
+      "ClassNames": [
+        "Battlemage"
+      ],
+      "Slots": [
+        "Fire attack",
+        "Shield",
+        "Heal"
+      ],
+      "Description": "Offensive magic and melee; supporting recovery and protection."
+    },
+    "Spellsword": {
+      "Build": "Spellsword",
+      "ClassNames": [
+        "Spellsword",
+        "Nightblade"
+      ],
+      "Slots": [
+        "Shock attack",
+        "Shield",
+        "Heal"
+      ],
+      "Description": "Weapon-led hybrid with supporting magic."
+    },
+    "Destruction specialist": {
+      "Build": "Mage",
+      "ClassNames": [
+        "Mage",
+        "Wizard"
+      ],
+      "Slots": [
+        "Fire attack",
+        "Shock attack",
+        "Heal",
+        "Shield"
+      ],
+      "Description": "Direct damage specialist with elemental alternatives and limited protection."
+    }
+  },
+  "Slots": {
+    "Fire attack": {
+      "School": "Destruction",
+      "Metric": "Damage",
+      "Range": "Target",
+      "EffectCodes": [
+        "FIDG",
+        "FIDG",
+        "FIDG",
+        "FIDG",
+        "FIDG",
+        "FIDG"
+      ],
+      "CostMultiplier": 1,
+      "MinimumSkill": 0
+    },
+    "Frost attack": {
+      "School": "Destruction",
+      "Metric": "Damage",
+      "Range": "Target",
+      "EffectCodes": [
+        "FRDG",
+        "FRDG",
+        "FRDG",
+        "FRDG",
+        "FRDG",
+        "FRDG"
+      ],
+      "CostMultiplier": 1,
+      "MinimumSkill": 0
+    },
+    "Shock attack": {
+      "School": "Destruction",
+      "Metric": "Damage",
+      "Range": "Target",
+      "EffectCodes": [
+        "SHDG",
+        "SHDG",
+        "SHDG",
+        "SHDG",
+        "SHDG",
+        "SHDG"
+      ],
+      "CostMultiplier": 1,
+      "MinimumSkill": 0
+    },
+    "Heal": {
+      "School": "Restoration",
+      "Metric": "Healing",
+      "Range": "Self",
+      "EffectCodes": [
+        "REHE",
+        "REHE",
+        "REHE",
+        "REHE",
+        "REHE",
+        "REHE"
+      ],
+      "CostMultiplier": 1.6,
+      "MinimumSkill": 0
+    },
+    "Shield": {
+      "School": "Alteration",
+      "Metric": "Shield",
+      "Range": "Self",
+      "EffectCodes": [
+        "SHLD",
+        "SHLD",
+        "SHLD",
+        "SHLD",
+        "SHLD",
+        "SHLD"
+      ],
+      "CostMultiplier": 1.3,
+      "MinimumSkill": 0
+    },
+    "Daedric summon": {
+      "School": "Conjuration",
+      "Metric": "Summon",
+      "Range": "Self",
+      "EffectCodes": [
+        "ZSCA",
+        "ZSCA",
+        "ZCLA",
+        "ZDAE",
+        "ZSTA",
+        "ZDRL"
+      ],
+      "CostMultiplier": 2.5,
+      "MinimumSkill": 0
+    },
+    "Undead summon": {
+      "School": "Conjuration",
+      "Metric": "Summon",
+      "Range": "Self",
+      "EffectCodes": [
+        "ZSKE",
+        "ZZOM",
+        "ZHDZ",
+        "ZWRA",
+        "ZLIC",
+        "ZLIC"
+      ],
+      "CostMultiplier": 2.5,
+      "MinimumSkill": 0
+    },
+    "Paralyze": {
+      "School": "Illusion",
+      "Metric": "Paralyze",
+      "Range": "Target",
+      "EffectCodes": [
+        "PARA",
+        "PARA",
+        "PARA",
+        "PARA",
+        "PARA",
+        "PARA"
+      ],
+      "CostMultiplier": 1.7,
+      "MinimumSkill": 50
+    },
+    "Silence": {
+      "School": "Illusion",
+      "Metric": "Silence",
+      "Range": "Target",
+      "EffectCodes": [
+        "SLNC",
+        "SLNC",
+        "SLNC",
+        "SLNC",
+        "SLNC",
+        "SLNC"
+      ],
+      "CostMultiplier": 1,
+      "MinimumSkill": 25
+    },
+    "Concealment": {
+      "School": "Illusion",
+      "Metric": "Invisibility",
+      "Range": "Self",
+      "EffectCodes": [
+        "INVI",
+        "INVI",
+        "INVI",
+        "INVI",
+        "INVI",
+        "INVI"
+      ],
+      "CostMultiplier": 1.3,
+      "MinimumSkill": 50
+    }
+  },
+  "Ranks": [
+    {
+      "Name": "Novice",
+      "RequiredSkill": 0,
+      "MinimumTier": 0,
+      "Damage": 12,
+      "Healing": 12,
+      "Shield": 8,
+      "Duration": 12,
+      "SummonDuration": 20,
+      "BaseCost": 8,
+      "ParalyzeDuration": 1,
+      "SilenceDuration": 3
+    },
+    {
+      "Name": "Apprentice",
+      "RequiredSkill": 25,
+      "MinimumTier": 0,
+      "Damage": 20,
+      "Healing": 24,
+      "Shield": 15,
+      "Duration": 15,
+      "SummonDuration": 30,
+      "BaseCost": 10,
+      "ParalyzeDuration": 2,
+      "SilenceDuration": 5
+    },
+    {
+      "Name": "Journeyman",
+      "RequiredSkill": 50,
+      "MinimumTier": 0,
+      "Damage": 36,
+      "Healing": 45,
+      "Shield": 25,
+      "Duration": 20,
+      "SummonDuration": 40,
+      "BaseCost": 28,
+      "ParalyzeDuration": 3,
+      "SilenceDuration": 7
+    },
+    {
+      "Name": "Expert",
+      "RequiredSkill": 75,
+      "MinimumTier": 0,
+      "Damage": 62,
+      "Healing": 75,
+      "Shield": 40,
+      "Duration": 25,
+      "SummonDuration": 50,
+      "BaseCost": 70,
+      "ParalyzeDuration": 4,
+      "SilenceDuration": 9
+    },
+    {
+      "Name": "Master",
+      "RequiredSkill": 100,
+      "MinimumTier": 0,
+      "Damage": 100,
+      "Healing": 110,
+      "Shield": 55,
+      "Duration": 30,
+      "SummonDuration": 60,
+      "BaseCost": 160,
+      "ParalyzeDuration": 5,
+      "SilenceDuration": 11
+    },
+    {
+      "Name": "Exceptional",
+      "RequiredSkill": 100,
+      "MinimumTier": 8,
+      "Damage": 145,
+      "Healing": 140,
+      "Shield": 65,
+      "Duration": 40,
+      "SummonDuration": 75,
+      "BaseCost": 240,
+      "ParalyzeDuration": 5,
+      "SilenceDuration": 13
+    }
+  ],
+  "ActorOverrides": {
+    "033908:Oblivion.esm": {
+      "Profile": "Destruction specialist",
+      "AllowRareSpells": true
+    }
+  },
+  "NPCMagickaPerIntelligence": 2,
+  "GameSettings": {
+    "fPCBaseMagickaMult": 1,
+    "fNPCBaseMagickaMult": 1.5,
+    "fMagickaReturnBase": 0.75,
+    "fMagickaReturnMult": 0.02,
+    "fMagicCasterSkillCostBase": 0.2,
+    "fMagicCasterSkillCostMult": 1.2
+  }
+}

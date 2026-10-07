@@ -3,14 +3,14 @@ namespace BaldursGateStyleOblivion.Combat;
 public static class CombatBuilds
 {
     public static readonly string[] Skills = ["Armorer","Athletics","Blade","Block","Blunt","HandToHand","HeavyArmor","Alchemy","Alteration","Conjuration","Destruction","Illusion","Mysticism","Restoration","Acrobatics","LightArmor","Marksman","Mercantile","Security","Sneak","Speechcraft"];
-    public static Dictionary<string,double> ActorAtLevel(GameplaySettings settings, CreationCatalog catalog, string build, string raceKey, bool female, int tier, double level, IReadOnlyDictionary<int,int?> levels)
+    public static Dictionary<string,double> ActorAtLevel(GameplaySettings settings, CreationCatalog catalog, string build, string raceKey, bool female, int tier, double level, IReadOnlyDictionary<int,int?> levels, string? creationClass = null)
     {
-        if(!catalog.Races.Any(r=>r.Key==raceKey) || !catalog.Classes.Any(c=>c.Name==build))
+        if(!catalog.Races.Any(r=>r.Key==raceKey) || !catalog.Classes.Any(c=>c.Name==(creationClass??settings.ActorBuilds.GetValueOrDefault(build)?.CreationClass??build)))
             return AtLevel(settings,build,tier,level,levels);
         // NPC racial abilities remain runtime effects; do not bake them into stored stats twice.
         var baseCatalog=catalog with { Races=catalog.Races.Select(r=>r with { Bonuses=new() }).ToArray() };
         var priorities=PlayerBuilds.AttributePriorities(settings,build);
-        var stats=PlayerBuilds.AtLevel(settings,baseCatalog,build,raceKey,female,null,level,priorities.Take(3).ToArray(),priorities[3]).Stats;
+        var stats=PlayerBuilds.AtLevel(settings,baseCatalog,build,raceKey,female,null,level,priorities.Take(3).ToArray(),priorities[3],creationClass:creationClass).Stats;
         stats["Health"]=Math.Round(stats["Health"]*settings.ActorBuilds[build].Health);
         return stats;
     }

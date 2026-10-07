@@ -116,6 +116,11 @@ if (args.Length == 2)
     return;
 }
 var settings = CombatConfiguration.Load("BaldursGateStyleOblivion/combat.json");
+var creationConfig = System.Text.Json.Nodes.JsonNode.Parse(JsonSerializer.Serialize(settings, CombatConfiguration.Options))!;
+creationConfig["Gameplay"]!["ActorBuilds"]!["Mage"]!["CreationClass"] = "Healer";
+Check(CombatConfiguration.Parse(creationConfig.ToJsonString()).Gameplay.ActorBuilds["Mage"].CreationClass == "Healer", "CreationClass configuration was not retained");
+creationConfig["Gameplay"]!["ActorBuilds"]!["Mage"]!["Unknown"] = true;
+Reject(() => CombatConfiguration.Parse(creationConfig.ToJsonString()), "Unknown actor-build property accepted");
 settings.Gameplay = new(); foreach(var entry in settings.Materials.Values){entry.Damage=entry.Armor=entry.Speed=entry.Reach=entry.Weight=entry.Durability=1;}
 var sword = new PhysicalItem("000001:Test.esp", "WeapIronLongsword", "Iron sword", "Weapon", "Longsword", "Iron", 20, 1, 1, 10, 100, 0, 25, "", false, false, false, null);
 var cuirass = new PhysicalItem("000002:Test.esp", "ArmorIronCuirass", "Iron cuirass", "Armor", "Heavy Armor", "Iron", 0, 0, 0, 20, 200, 20, 50, "UpperBody", true, false, false, null);

@@ -21,6 +21,7 @@ public sealed class ActorTierStats
 }
 public sealed class ActorBuild
 {
+    public string? CreationClass { get; set; }
     public double Health { get; set; } = 1;
     public double Strength { get; set; } = 1;
     public double Endurance { get; set; } = 1;

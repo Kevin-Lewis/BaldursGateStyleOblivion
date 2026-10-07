@@ -21,10 +21,10 @@ public static class PlayerBuilds
         var focused=settings.ActorBuilds[build].FocusedAttributes;
         return focused.Concat(settings.ActorBuilds[build].RotatingAttributes).ToArray();
     }
-    public static PlayerBuildResult AtLevel(GameplaySettings settings, CreationCatalog catalog, string build, string raceKey, bool female, string? signKey, double level, string[]? attributes = null, string? alternateAttribute = null, string? primarySkill = null)
+    public static PlayerBuildResult AtLevel(GameplaySettings settings, CreationCatalog catalog, string build, string raceKey, bool female, string? signKey, double level, string[]? attributes = null, string? alternateAttribute = null, string? primarySkill = null, string? creationClass = null)
     {
         var race=catalog.Races.SingleOrDefault(r=>r.Key==raceKey) ?? throw new ArgumentException("Choose a loaded playable race.");
-        var cls=catalog.Classes.SingleOrDefault(c=>c.Name==build) ?? throw new ArgumentException("Choose a loaded playable class.");
+        var cls=catalog.Classes.SingleOrDefault(c=>c.Name==(creationClass??settings.ActorBuilds.GetValueOrDefault(build)?.CreationClass??build)) ?? throw new ArgumentException("Choose a loaded playable class.");
         cls=cls with { Skills=cls.Skills.Select(s=>s.Replace("Speechraft","Speechcraft")).ToArray() };
         var sign=string.IsNullOrEmpty(signKey)?null:catalog.Birthsigns.SingleOrDefault(s=>s.Key==signKey) ?? throw new ArgumentException("Unknown birthsign.");
         var progression=settings.PlayerProgression;

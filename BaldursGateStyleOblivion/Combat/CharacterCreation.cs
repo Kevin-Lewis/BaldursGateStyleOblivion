@@ -15,10 +15,10 @@ internal static class CharacterCreation
             foreach(var key in spells)
                 if(records.GetValueOrDefault(key) is ISpellGetter spell && spell.Data?.Type.ToString()=="Ability")
                     foreach(var effect in spell.Effects)
-                        if(effect.Data is {} data && data.MagicEffect.ToString() is "FRAT" or "FOAT" or "FOHE")
+                        if(effect.Data is {} data && data.MagicEffect.ToString() is "FRAT" or "FOAT" or "FOHE" or "FOSP" or "STMA")
                         {
-                            var name=data.MagicEffect.ToString()=="FOHE"?"Health":data.ActorValue.ToString();
-                            result[name]=result.GetValueOrDefault(name)+data.Magnitude;
+                            var name=data.MagicEffect.ToString() switch{"FOHE"=>"Health","FOSP"=>"Magicka","STMA"=>"StuntedMagicka",_=>data.ActorValue.ToString()};
+                            result[name]=result.GetValueOrDefault(name)+(name=="StuntedMagicka"?1:data.Magnitude);
                         }
             return result;
         }

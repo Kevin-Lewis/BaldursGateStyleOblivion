@@ -83,7 +83,7 @@ internal static class Editor
         MerchantEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "merchants.json"), reports, token);
         RewardEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "rewards.json"), reports, token);
         CombatEditor.Map(app, Path.Combine(Path.GetDirectoryName(config)!, "combat.json"), reports, token, config, actors);
-        MagicEditor.Map(app, reports);
+        MagicEditor.Map(app, reports, Path.Combine(Path.GetDirectoryName(config)!, "magic.json"), token, config);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");
         if (open) Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });

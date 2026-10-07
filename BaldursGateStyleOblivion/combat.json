@@ -457,10 +457,10 @@
           "Sneak"
         ],
         "PlayerFocusedSkills": [
-          "Destruction",
+          "Blunt",
           "HeavyArmor"
         ],
-        "PrimarySkill": "Blunt",
+        "PrimarySkill": "Destruction",
         "RotatingAttributes": [
           "Endurance",
           "Strength"
@@ -497,7 +497,7 @@
           "Sneak"
         ],
         "PlayerFocusedSkills": [
-          "Conjuration",
+          "Alteration",
           "Restoration"
         ],
         "PrimarySkill": "Destruction",
@@ -551,6 +551,178 @@
         "Intelligence": 0.9,
         "Personality": 1,
         "Skills": []
+      },
+      "Conjurer": {
+        "Health": 1,
+        "Strength": 0.6,
+        "Endurance": 0.8,
+        "Agility": 0.85,
+        "Willpower": 1.05,
+        "Speed": 1,
+        "Style": "Mage",
+        "SkillMultiplier": 1,
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "PlayerFocusedSkills": [
+          "Alteration",
+          "Destruction"
+        ],
+        "PrimarySkill": "Conjuration",
+        "RotatingAttributes": [
+          "Endurance",
+          "Speed"
+        ],
+        "FocusedAttributes": [
+          "Intelligence",
+          "Willpower"
+        ],
+        "Intelligence": 1.05,
+        "Personality": 1,
+        "Skills": [
+          "Destruction",
+          "Conjuration",
+          "Restoration",
+          "Alteration",
+          "Illusion",
+          "Mysticism"
+        ],
+        "CreationClass": "Mage"
+      },
+      "Necromancer": {
+        "Health": 1,
+        "Strength": 0.6,
+        "Endurance": 0.8,
+        "Agility": 0.85,
+        "Willpower": 1.05,
+        "Speed": 1,
+        "Style": "Mage",
+        "SkillMultiplier": 1,
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "PlayerFocusedSkills": [
+          "Restoration",
+          "Alteration"
+        ],
+        "PrimarySkill": "Conjuration",
+        "RotatingAttributes": [
+          "Endurance",
+          "Speed"
+        ],
+        "FocusedAttributes": [
+          "Intelligence",
+          "Willpower"
+        ],
+        "Intelligence": 1.05,
+        "Personality": 1,
+        "Skills": [
+          "Destruction",
+          "Conjuration",
+          "Restoration",
+          "Alteration",
+          "Illusion",
+          "Mysticism"
+        ],
+        "CreationClass": "Mage"
+      },
+      "Illusionist": {
+        "Health": 1,
+        "Strength": 0.6,
+        "Endurance": 0.8,
+        "Agility": 0.85,
+        "Willpower": 1.05,
+        "Speed": 1,
+        "Style": "Mage",
+        "SkillMultiplier": 1,
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "PlayerFocusedSkills": [
+          "Destruction",
+          "Alteration"
+        ],
+        "PrimarySkill": "Illusion",
+        "RotatingAttributes": [
+          "Endurance",
+          "Speed"
+        ],
+        "FocusedAttributes": [
+          "Intelligence",
+          "Willpower"
+        ],
+        "Intelligence": 1.05,
+        "Personality": 1,
+        "Skills": [
+          "Destruction",
+          "Conjuration",
+          "Restoration",
+          "Alteration",
+          "Illusion",
+          "Mysticism"
+        ],
+        "CreationClass": "Mage"
+      },
+      "DefensiveCaster": {
+        "Health": 1,
+        "Strength": 0.6,
+        "Endurance": 0.8,
+        "Agility": 0.85,
+        "Willpower": 1.05,
+        "Speed": 1,
+        "Style": "Mage",
+        "SkillMultiplier": 1,
+        "SupportingSkills": [
+          "Block",
+          "LightArmor",
+          "HeavyArmor",
+          "Armorer",
+          "Athletics",
+          "Restoration",
+          "Sneak"
+        ],
+        "PlayerFocusedSkills": [
+          "Alteration",
+          "Illusion"
+        ],
+        "PrimarySkill": "Restoration",
+        "RotatingAttributes": [
+          "Endurance",
+          "Speed"
+        ],
+        "FocusedAttributes": [
+          "Intelligence",
+          "Willpower"
+        ],
+        "Intelligence": 1.05,
+        "Personality": 1,
+        "Skills": [
+          "Destruction",
+          "Conjuration",
+          "Restoration",
+          "Alteration",
+          "Illusion",
+          "Mysticism"
+        ],
+        "CreationClass": "Healer"
       }
     },
     "CreatureBuilds": {
@@ -700,6 +872,11 @@
         "Preserve": false,
         "Build": null,
         "Health": 500
+      },
+      "016487:Oblivion.esm": {
+        "Preserve": false,
+        "Build": null,
+        "Health": 200
       }
     },
     "NativeStyles": {
@@ -847,11 +1024,11 @@
   "QuickClasses": {
     "Warrior": {
       "Build": "Balanced",
-      "Equipment": "Sword \u0026 shield"
+      "Equipment": "Sword & shield"
     },
     "Knight": {
       "Build": "Defensive",
-      "Equipment": "Sword \u0026 shield"
+      "Equipment": "Sword & shield"
     },
     "Barbarian": {
       "Build": "Berserker",
@@ -867,7 +1044,7 @@
     },
     "Spellsword": {
       "Build": "Balanced",
-      "Equipment": "Sword \u0026 shield"
+      "Equipment": "Sword & shield"
     },
     "Battlemage": {
       "Build": "Balanced",

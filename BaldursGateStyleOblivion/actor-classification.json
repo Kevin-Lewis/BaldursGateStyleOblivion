@@ -32228,7 +32228,7 @@
         "https://en.uesp.net/wiki/Lore:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C0:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32242,7 +32242,7 @@
         "https://en.uesp.net/wiki/Lore:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C1:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32255,7 +32255,7 @@
         "https://en.uesp.net/wiki/Shivering:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C2:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32268,7 +32268,7 @@
         "https://en.uesp.net/wiki/Shivering:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C3:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32281,7 +32281,7 @@
         "https://en.uesp.net/wiki/Shivering:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C4:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32295,7 +32295,7 @@
         "https://en.uesp.net/wiki/Lore:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C5:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32309,7 +32309,7 @@
         "https://en.uesp.net/wiki/Lore:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "0825C6:Oblivion.esm": {
       "Name": "Jyggalag",
@@ -32322,7 +32322,7 @@
         "https://en.uesp.net/wiki/Shivering:Jyggalag"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 45
+      "FixedLevel": 50
     },
     "003946:Oblivion.esm": {
       "Name": "K\u0027Sharr",
@@ -34846,7 +34846,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mankar_Camoran"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 42
     },
     "016487:Oblivion.esm": {
       "Name": "Mannimarco",
@@ -44492,7 +44493,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000F9B:Knights.esp": {
       "Name": "Umaril",
@@ -44504,7 +44506,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000F9C:Knights.esp": {
       "Name": "Umaril",
@@ -44516,7 +44519,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000F9D:Knights.esp": {
       "Name": "Umaril",
@@ -44528,7 +44532,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000F9E:Knights.esp": {
       "Name": "Umaril",
@@ -44540,7 +44545,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000F9F:Knights.esp": {
       "Name": "Umaril",
@@ -44552,7 +44558,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000FA0:Knights.esp": {
       "Name": "Umaril",
@@ -44564,7 +44571,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000FA1:Knights.esp": {
       "Name": "Umaril",
@@ -44576,7 +44584,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000FB1:Knights.esp": {
       "Name": "Umaril the Unfeathered",
@@ -44588,7 +44597,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 38
     },
     "000FB4:Knights.esp": {
       "Name": "Umaril the Unfeathered",
