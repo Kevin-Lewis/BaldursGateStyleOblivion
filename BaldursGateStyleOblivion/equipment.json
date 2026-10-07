@@ -7,7 +7,7 @@
         "Common": 140,
         "Professional": 10
       },
-      "EnchantedPercent": 2,
+      "EnchantedPercent": 1,
       "EbonyPerThousand": 0,
       "DaedricPerThousand": 0
     },
@@ -19,7 +19,7 @@
         "Professional": 70,
         "Military": 20
       },
-      "EnchantedPercent": 5,
+      "EnchantedPercent": 2,
       "EbonyPerThousand": 0,
       "DaedricPerThousand": 0
     },
@@ -31,7 +31,7 @@
         "Military": 60,
         "HighQuality": 10
       },
-      "EnchantedPercent": 8,
+      "EnchantedPercent": 3,
       "EbonyPerThousand": 0,
       "DaedricPerThousand": 0
     },
@@ -43,7 +43,7 @@
         "Military": 60,
         "HighQuality": 10
       },
-      "EnchantedPercent": 5,
+      "EnchantedPercent": 2,
       "EbonyPerThousand": 0,
       "DaedricPerThousand": 0,
       "PreferRaceMaterial": false
@@ -57,7 +57,7 @@
         "HighQuality": 45,
         "Elite": 5
       },
-      "EnchantedPercent": 12,
+      "EnchantedPercent": 3,
       "EbonyPerThousand": 1,
       "DaedricPerThousand": 0
     },
@@ -69,7 +69,7 @@
         "HighQuality": 100,
         "Elite": 19
       },
-      "EnchantedPercent": 20,
+      "EnchantedPercent": 4,
       "EbonyPerThousand": 1,
       "DaedricPerThousand": 0
     },
@@ -81,7 +81,7 @@
         "HighQuality": 90,
         "Elite": 10
       },
-      "EnchantedPercent": 20,
+      "EnchantedPercent": 8,
       "EbonyPerThousand": 0,
       "DaedricPerThousand": 750,
       "PreferRaceMaterial": false

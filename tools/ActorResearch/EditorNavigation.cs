@@ -11,6 +11,7 @@ internal static class EditorNavigation
             ("geography.html", "/geography", "Geography & dungeons"),
             ("equipment.html", "/equipment", "Equipment"),
             ("combat.html", "/combat", "Combat workbench"),
+            ("enhancements.html", "/artifacts", "Artifacts / enchantments / alchemy"),
             ("magic.html", "/magic", "Magic analysis"),
             ("merchants.html", "/merchants", "Merchants"),
             ("loot.html", "/loot", "World loot"),

@@ -21,4 +21,5 @@
   <ItemGroup><None Update="merchants.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
   <ItemGroup><None Update="combat.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><None Update="magic.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><None Update="enchantments.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /><None Update="alchemy.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" /></ItemGroup>
 </Project>

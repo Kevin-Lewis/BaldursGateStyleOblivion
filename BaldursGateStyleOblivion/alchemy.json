@@ -1,0 +1,59 @@
+{
+  "Enabled": true,
+  "CraftedValueMultiplier": 0.12,
+  "MaximumActivePotions": 2,
+  "ApparatusQualities": [
+    10,
+    22,
+    38,
+    52,
+    65
+  ],
+  "RecoveryBudgets": [
+    40,
+    65,
+    100,
+    145,
+    190
+  ],
+  "PoisonBudgets": [
+    25,
+    40,
+    65,
+    95,
+    135
+  ],
+  "BuffCaps": [
+    8,
+    12,
+    16,
+    20,
+    25
+  ],
+  "MaximumDuration": 90,
+  "MaximumControlSeconds": 3,
+  "WeaknessCap": 20,
+  "CommonIngredientValueFloor": 5,
+  "RareIngredientValue": 30,
+  "MerchantIngredientCount": 8,
+  "MerchantRareIngredientCount": 2,
+  "MerchantPotionCount": 3,
+  "IngredientReplacements": {
+    "WKMA": "WKFI",
+    "CHML": "INVI",
+    "REDG": "SHLD",
+    "RFLC": "RSMA",
+    "SABS": "FOSP"
+  },
+  "IngredientValues": {},
+  "PotionValues": {},
+  "PotionRanks": {},
+  "PreserveItems": [],
+  "ResourceCaps": [
+    15,
+    25,
+    35,
+    50,
+    65
+  ]
+}

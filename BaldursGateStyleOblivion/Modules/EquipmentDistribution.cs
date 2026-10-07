@@ -20,6 +20,11 @@ internal static class EquipmentDistributionModule
             path = Path.GetFullPath(run.Settings.EquipmentConfigurationFile, run.DataDirectory);
         run.Log($"Equipment configuration: {path}");
         var settings = EquipmentConfiguration.Load(path);
+        if(run.Settings.EnableEnchantmentBalance)
+        {
+            var balance=Enhancements.EnhancementConfiguration.Load<Enhancements.EnchantmentSettings>(Enhancements.EnhancementModule.PathFor(run,"enchantments",run.Settings.EnchantmentConfigurationFile));
+            if(balance.Enabled)foreach(var pair in balance.EquipmentChances)if(settings.Profiles.TryGetValue(pair.Key,out var profile))profile.EnchantedPercent=pair.Value;
+        }
         var winners = new Dictionary<FormKey, (IMajorRecordGetter Record, ModKey Plugin)>();
         foreach (var listing in state.LoadOrder.PriorityOrder.Where(listing => run.IsInputPlugin(listing.ModKey)))
             if (listing.Enabled && listing.Mod is not null)

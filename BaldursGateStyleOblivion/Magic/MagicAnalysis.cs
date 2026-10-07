@@ -15,7 +15,7 @@ public static class MagicAnalysis
         "FIDG" or "FRDG" or "SHDG" or "DGHE" => "Damage",
         "ABHE" => "Absorb health",
         "REHE" => "Healing",
-        "SHLD" or "FISH" or "FRSH" or "SHSH" => "Defense",
+        "SHLD" or "FISH" or "FRSH" or "LISH" => "Defense",
         "PARA" or "SLNC" => "Control",
         "CALM" or "DEMO" or "FRNZ" or "COCR" or "COHU" => "Level-limited control",
         "DRHE" => "Temporary health drain",

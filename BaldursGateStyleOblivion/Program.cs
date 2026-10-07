@@ -88,6 +88,11 @@ public class Program
                 foreach(var change in Magic.MagicBalanceModule.Run(state,run))
                     changes[change.Key]=changes.GetValueOrDefault(change.Key,[]).Concat(change.Value).Distinct().ToArray();
             });
+            run.Module("Enchantments and alchemy",run.Settings.EnableEnchantmentBalance||run.Settings.EnableAlchemyBalance,false,()=>
+            {
+                foreach(var change in Enhancements.EnhancementModule.Run(state,run))
+                    changes[change.Key]=changes.GetValueOrDefault(change.Key,[]).Concat(change.Value).Distinct().ToArray();
+            });
             run.Module("Magic analysis",run.Settings.EnableMagicAnalysis,false,()=>Magic.MagicAnalysisModule.Run(state,run));
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {

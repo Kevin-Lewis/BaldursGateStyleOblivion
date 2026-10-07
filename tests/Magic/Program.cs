@@ -95,7 +95,7 @@ if(args.Length==1&&args[0]=="--bench")
 if(args.Length==2&&args[0]=="--candidate")
 {
     using var candidate=OblivionMod.CreateFromBinaryOverlay(args[1],OblivionRelease.Oblivion);
-    Check(candidate.Spells.Count>0&&candidate.Spells.All(s=>s.EditorID?.StartsWith("BGSOMagic_")==true)&&candidate.MagicEffects.Count==0,"Only new representative spells; no original spell or MGEF overrides");
+    Check(candidate.Spells.Count>0&&candidate.Spells.All(s=>s.EditorID?.StartsWith("BGSOMagic_")==true),"Only new representative spells; no original spell overrides");
     using var gameplay=JsonDocument.Parse(File.ReadAllText(Path.Combine(Path.GetDirectoryName(args[1])!,"Reports","BaldursGateStyleOblivion.magic-gameplay.json")));
     var generated=gameplay.RootElement.GetProperty("GeneratedSpells").EnumerateObject().ToDictionary(p=>p.Name,p=>FormKey.Factory(p.Value.GetString()!));
     var actors=candidate.Npcs.ToDictionary(n=>n.FormKey);

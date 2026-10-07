@@ -27,4 +27,5 @@
     <Compile Include="../../BaldursGateStyleOblivion/Combat/CombatConfiguration.cs" Link="Combat/CombatConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Combat/CombatAnalysis.cs" Link="Combat/CombatAnalysis.cs" /><None Update="combat.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><None Update="magic.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Magic/MagicConfiguration.cs" Link="Magic/MagicConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Magic/CasterKits.cs" Link="Magic/CasterKits.cs" /><Compile Include="../../BaldursGateStyleOblivion/Magic/MagicScenarios.cs" Link="Magic/MagicScenarios.cs" /></ItemGroup>
+<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Enhancements/EnhancementConfiguration.cs" Link="Enhancements/EnhancementConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Enhancements/EnhancementBalance.cs" Link="Enhancements/EnhancementBalance.cs" /><None Update="enhancements.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 </Project>
