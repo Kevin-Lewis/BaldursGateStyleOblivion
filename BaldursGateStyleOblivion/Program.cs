@@ -80,6 +80,7 @@ public class Program
             run.Module("Quest rewards and artifacts", run.Settings.EnableQuestRewards, false,
                 () => { foreach (var change in QuestRewards.Run(state, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });
+            run.Module("Character creation",run.Settings.EnableCreationBalance,false,()=>{foreach(var change in Creation.CreationModule.Run(state,run))changes[change.Key]=changes.GetValueOrDefault(change.Key,[]).Concat(change.Value).Distinct().ToArray();});
             run.Module("Physical combat", run.Settings.EnablePhysicalCombatAnalysis || run.Settings.EnablePhysicalCombatBalance, false,
                 () => { foreach (var change in Combat.PhysicalCombatModule.Run(state, profiles, run))
                     changes[change.Key] = changes.GetValueOrDefault(change.Key, []).Concat(change.Value).Distinct().ToArray(); });

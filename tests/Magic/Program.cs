@@ -47,7 +47,7 @@ foreach(var name in new[]{"Conjurer","Necromancer","Illusionist","DefensiveCaste
 Check(CasterKits.Profile(magic,"Illusionist","Mage")=="Illusionist","Assigned controller profile stays consistent with actor stats");
 var atronach=creation.Birthsigns.First(s=>s.Name.Contains("Atronach"));
 var signed=MagicScenarios.Run(magic,combat,creation,settings,new(){Profile="Destruction specialist",Race=imperial.Key,Birthsign=atronach.Key,Level=1,Tier=0});
-Check(signed.MagickaRegen==0&&signed.MagickaPool==240,"Atronach extra magicka and stunted regeneration");
+Check(signed.MagickaRegen==0&&signed.MagickaPool==90+atronach.Bonuses.GetValueOrDefault("Magicka"),"Atronach extra magicka and stunted regeneration");
 var sorcerer=PlayerBuilds.AtLevel(combat.Gameplay,creation,"Conjurer",imperial.Key,false,null,20,creationClass:"Sorcerer").Stats;
 var actorSorcerer=CombatBuilds.ActorAtLevel(combat.Gameplay,creation,"Conjurer",imperial.Key,false,5,20,new Dictionary<int,int?>(),"Sorcerer");
 Check(sorcerer["Conjuration"]==actorSorcerer["Conjuration"]&&sorcerer["HeavyArmor"]==actorSorcerer["HeavyArmor"],"Playable native Sorcerer class skill distribution retained");
@@ -95,7 +95,8 @@ if(args.Length==1&&args[0]=="--bench")
 if(args.Length==2&&args[0]=="--candidate")
 {
     using var candidate=OblivionMod.CreateFromBinaryOverlay(args[1],OblivionRelease.Oblivion);
-    Check(candidate.Spells.Count>0&&candidate.Spells.All(s=>s.EditorID?.StartsWith("BGSOMagic_")==true),"Only new representative spells; no original spell overrides");
+    var creationOverrides=BaldursGateStyleOblivion.Creation.CreationBalance.Load("BaldursGateStyleOblivion/creation.json").Spells.Keys.Select(key=>FormKey.Factory(key)).ToHashSet();
+    Check(candidate.Spells.Count>0&&candidate.Spells.All(s=>s.EditorID?.StartsWith("BGSOMagic_")==true||creationOverrides.Contains(s.FormKey)),"Only representative spells and configured character creation overrides");
     using var gameplay=JsonDocument.Parse(File.ReadAllText(Path.Combine(Path.GetDirectoryName(args[1])!,"Reports","BaldursGateStyleOblivion.magic-gameplay.json")));
     var generated=gameplay.RootElement.GetProperty("GeneratedSpells").EnumerateObject().ToDictionary(p=>p.Name,p=>FormKey.Factory(p.Value.GetString()!));
     var actors=candidate.Npcs.ToDictionary(n=>n.FormKey);
@@ -113,7 +114,7 @@ if(args.Length==2&&args[0]=="--candidate")
         }
         foreach(var retained in plan.GetProperty("Retained").EnumerateArray())Check(npc.Spells.Any(s=>s.FormKey==FormKey.Factory(retained.GetString()!)),"Preserved spell link: "+npc.EditorID);
     }
-    Check(candidate.Spells.All(s=>s.FormKey.ID>=0xF00000),"Candidate generated spell IDs use stable range");
+    Check(candidate.Spells.Where(s=>s.FormKey.ModKey==candidate.ModKey).All(s=>s.FormKey.ID>=0xF00000),"Candidate generated spell IDs use stable range");
     Console.WriteLine("Candidate verified: representative spells, NPC reserves, kit links, mastery, affordability and preserved inventories.");
     return;
 }

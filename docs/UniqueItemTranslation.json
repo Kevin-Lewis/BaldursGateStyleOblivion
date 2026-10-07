@@ -1,0 +1,2269 @@
+{
+  "Model": "gpt-6-luna",
+  "Families": [
+    {
+      "Name": "Amulet of Kings",
+      "Tier": 8,
+      "Material": "Silver",
+      "Records": [
+        "0250A0:Oblivion.esm"
+      ],
+      "References": [
+        "0250A0:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "A nearly four-millennia-old relic central to the Dragonfires and Martin’s final confrontation with Mehrunes Dagon. Its exceptional standing is historical and sacred, not evidence of superior physical craftsmanship or ordinary combat use.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Amulet_of_Kings"
+      ]
+    },
+    {
+      "Name": "Apron of Adroitness",
+      "Tier": 4,
+      "Material": "Leather",
+      "Records": [
+        "0C5B4A:Oblivion.esm",
+        "0C5B4B:Oblivion.esm",
+        "0C5B4C:Oblivion.esm",
+        "0C5B4D:Oblivion.esm",
+        "0C5B4E:Oblivion.esm",
+        "0C5B4F:Oblivion.esm"
+      ],
+      "References": [
+        "0C5B4F:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive named cuirass awarded for helping a famous painter in A Brush with Death. Its unusual origin and bespoke identity support a moderate named-reward tier, but the article gives no basis for exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Apron_of_Adroitness"
+      ]
+    },
+    {
+      "Name": "Ayleid Crown of Lindai",
+      "Tier": 4,
+      "Material": "Elven",
+      "Records": [
+        "0A55FA:Oblivion.esm",
+        "0BE5D1:Oblivion.esm",
+        "0BE5D2:Oblivion.esm",
+        "0BE5D3:Oblivion.esm",
+        "0BE5D4:Oblivion.esm",
+        "0BE5DA:Oblivion.esm"
+      ],
+      "References": [
+        "0BE5D4:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ayleid_Crown_of_Lindai"
+      ]
+    },
+    {
+      "Name": "Ayleid Crown of Nenalata",
+      "Tier": 4,
+      "Material": "Elven",
+      "Records": [
+        "0A55FB:Oblivion.esm",
+        "0BE5D5:Oblivion.esm",
+        "0BE5D6:Oblivion.esm",
+        "0BE5D7:Oblivion.esm",
+        "0BE5D8:Oblivion.esm",
+        "0BE5D9:Oblivion.esm"
+      ],
+      "References": [
+        "0BE5D9:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "An ancient Ayleid light helmet sought by a collector and held by a rival antiquities collector. Its age and provenance merit a moderate named-item tier, without evidence of exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ayleid_Crown_of_Nenalata"
+      ]
+    },
+    {
+      "Name": "Black Band",
+      "Tier": 3,
+      "Material": "Silver",
+      "Records": [
+        "02FDDB:Oblivion.esm",
+        "02FDDC:Oblivion.esm",
+        "02FDDD:Oblivion.esm",
+        "02FDF1:Oblivion.esm",
+        "02FDF8:Oblivion.esm",
+        "02FF33:Oblivion.esm",
+        "02FF34:Oblivion.esm"
+      ],
+      "References": [
+        "02FF34:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named ring received for completing an early Dark Brotherhood contract. The article describes an ordinary enchanted-ring appearance and provides no lore or craftsmanship evidence for an elite ranking.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Black_Band"
+      ]
+    },
+    {
+      "Name": "Blackwater Blade",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "00C201:Oblivion.esm",
+        "06B697:Oblivion.esm",
+        "06B698:Oblivion.esm",
+        "06B699:Oblivion.esm",
+        "06B69A:Oblivion.esm",
+        "06B69B:Oblivion.esm"
+      ],
+      "References": [
+        "06B69B:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named one-handed blade acquired from Selene during the brigand takeover aboard the Bloated Float. Its appearance resembles a fine steel longsword, with no described provenance or craftsmanship that warrants a higher tier.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Blackwater_Blade"
+      ]
+    },
+    {
+      "Name": "Blade of Woe",
+      "Tier": 8,
+      "Material": "Ebony",
+      "Records": [
+        "0918FF:Oblivion.esm",
+        "091900:Oblivion.esm",
+        "091901:Oblivion.esm",
+        "091902:Oblivion.esm",
+        "091903:Oblivion.esm",
+        "091904:Oblivion.esm",
+        "091905:Oblivion.esm"
+      ],
+      "References": [
+        "091905:Oblivion.esm",
+        "091901:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive Dark Brotherhood artifact that can harm ghosts even before its enchantment awakens; its late questline transformation and lasting lore identity support legendary status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Blade_of_Woe"
+      ]
+    },
+    {
+      "Name": "Bladeturn Hood",
+      "Tier": 5,
+      "Material": "Leather",
+      "Records": [
+        "005FD6:DLCMehrunesRazor.esp",
+        "005FD9:DLCMehrunesRazor.esp",
+        "005FDA:DLCMehrunesRazor.esp",
+        "005FDB:DLCMehrunesRazor.esp",
+        "005FDC:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "005FDC:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive defensive clothing reward worn by Frathen Drothan, but the available evidence supports specialist utility rather than extraordinary craftsmanship or artifact status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items",
+        "https://en.uesp.net/wiki/Oblivion:Unique_Items"
+      ]
+    },
+    {
+      "Name": "Bloodworm Helm",
+      "Tier": 3,
+      "Material": "Glass",
+      "Records": [
+        "014673:Oblivion.esm",
+        "07BE3F:Oblivion.esm",
+        "07BE40:Oblivion.esm",
+        "07BE41:Oblivion.esm",
+        "07BE42:Oblivion.esm",
+        "07BE43:Oblivion.esm"
+      ],
+      "References": [
+        "07BE43:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Mages Guild quest item with a limited, level-dependent Essence Drain ability; its quest role and described effect support a moderate specialist rating, not exceptional equipment.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Bloodworm_Helm"
+      ]
+    },
+    {
+      "Name": "Boots of Bloody Bounding",
+      "Tier": 2,
+      "Material": "Leather",
+      "Records": [
+        "0348A6:Oblivion.esm",
+        "0348A7:Oblivion.esm",
+        "0348A8:Oblivion.esm",
+        "0348A9:Oblivion.esm",
+        "0348AA:Oblivion.esm",
+        "0348AB:Oblivion.esm",
+        "0348AC:Oblivion.esm"
+      ],
+      "References": [
+        "0348AC:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "An optional quest reward that uses the appearance of unfinished Pit Armor; the entry specifically notes it would not qualify as an artifact if that armor were standard loot.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Boots_of_Bloody_Bounding"
+      ]
+    },
+    {
+      "Name": "Boots of Springheel Jak",
+      "Tier": 5,
+      "Material": "Glass",
+      "Records": [
+        "0148D4:Oblivion.esm"
+      ],
+      "References": [
+        "0148D4:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "The famed thief’s enchanted boots are recovered through a substantial Thieves Guild investigation, giving them notable provenance and context, but the supplied article does not establish exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Boots_of_Springheel_Jak"
+      ]
+    },
+    {
+      "Name": "Boots of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E97:Knights.esp",
+        "000E9D:Knights.esp",
+        "000EA3:Knights.esp",
+        "000EA9:Knights.esp",
+        "000EAF:Knights.esp",
+        "000EB5:Knights.esp",
+        "000EBB:Knights.esp",
+        "000EC1:Knights.esp",
+        "000EC7:Knights.esp",
+        "000ECF:Knights.esp"
+      ],
+      "References": [
+        "000EB5:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic whose Woodland Grace provides distinctive protection from natural creatures; ranked consistently with the other Crusader relics.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Charity of Madness",
+      "Tier": 2,
+      "Material": "Mithril",
+      "Records": [
+        "05574F:Oblivion.esm",
+        "055750:Oblivion.esm",
+        "055751:Oblivion.esm",
+        "055752:Oblivion.esm"
+      ],
+      "References": [
+        "055752:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named amulet received during Through the Fringe of Madness, but the supplied entry gives no exceptional provenance, craftsmanship, or lore-described abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Chillrend",
+      "Tier": 6,
+      "Material": "Glass",
+      "Records": [
+        "068BFC:Oblivion.esm",
+        "068BFD:Oblivion.esm",
+        "068BFE:Oblivion.esm",
+        "068BFF:Oblivion.esm",
+        "068C00:Oblivion.esm",
+        "068C01:Oblivion.esm"
+      ],
+      "References": [
+        "068C01:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive ice-based blade earned by saving both sons in a farm-defense quest. Its unusual appearance and artifact identity support a mid-high rank, not legendary status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Chillrend"
+      ]
+    },
+    {
+      "Name": "Circlet of Verdure",
+      "Tier": 3,
+      "Material": "Mithril",
+      "Records": [
+        "06EA54:Oblivion.esm",
+        "06EA5A:Oblivion.esm",
+        "06EA5B:Oblivion.esm",
+        "06EA6A:Oblivion.esm",
+        "06EA6D:Oblivion.esm",
+        "06EA70:Oblivion.esm"
+      ],
+      "References": [
+        "06EA70:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named ring awarded for A Liquid Solution, but the supplied entry describes no exceptional craftsmanship, provenance, or lore abilities to justify a higher tier.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Cruelty's Heart",
+      "Tier": 3,
+      "Material": "Mithril",
+      "Records": [
+        "0347DD:Oblivion.esm",
+        "0347DF:Oblivion.esm",
+        "0347E0:Oblivion.esm",
+        "0347E1:Oblivion.esm",
+        "0347E2:Oblivion.esm",
+        "0347E3:Oblivion.esm"
+      ],
+      "References": [
+        "0347E3:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Cruelty%27s_Heart"
+      ]
+    },
+    {
+      "Name": "Cuirass of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E96:Knights.esp",
+        "000E9C:Knights.esp",
+        "000EA2:Knights.esp",
+        "000EA8:Knights.esp",
+        "000EAE:Knights.esp",
+        "000EB4:Knights.esp",
+        "000EBA:Knights.esp",
+        "000EC0:Knights.esp",
+        "000EC6:Knights.esp",
+        "000ECE:Knights.esp"
+      ],
+      "References": [
+        "000EB4:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic; its legendary provenance supports the set-wide rank, without evidence of exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Dark Seducer Armor",
+      "Tier": 4,
+      "Material": "Glass",
+      "Records": [
+        "07EB09:Oblivion.esm",
+        "07EB0A:Oblivion.esm",
+        "07EB0B:Oblivion.esm",
+        "07EB0C:Oblivion.esm",
+        "07EB0D:Oblivion.esm",
+        "07EB0E:Oblivion.esm"
+      ],
+      "References": [
+        "07EB0E:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named faction-quest light-armor reward, but the supplied entry gives no special lore or craftsmanship to place it above a moderate rank. Acquisition is through Helpless Army as Duke/Duchess of Mania.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dark_Seducer_Armor",
+        "https://en.uesp.net/wiki/Shivering:Armor"
+      ]
+    },
+    {
+      "Name": "Dark Seducer Helmet",
+      "Tier": 4,
+      "Material": "Glass",
+      "Records": [
+        "07EB0F:Oblivion.esm",
+        "07EB10:Oblivion.esm",
+        "07EB11:Oblivion.esm",
+        "07EB12:Oblivion.esm",
+        "07EB13:Oblivion.esm",
+        "07EB14:Oblivion.esm"
+      ],
+      "References": [
+        "07EB14:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dark_Seducer_Armor",
+        "https://en.uesp.net/wiki/Shivering:Armor"
+      ]
+    },
+    {
+      "Name": "Dawnfang",
+      "Tier": 7,
+      "Material": "Daedric",
+      "Records": [
+        "079058:Oblivion.esm",
+        "079061:Oblivion.esm",
+        "079062:Oblivion.esm",
+        "079063:Oblivion.esm",
+        "079064:Oblivion.esm",
+        "079065:Oblivion.esm",
+        "079066:Oblivion.esm"
+      ],
+      "References": [
+        "079066:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A unique Akaviri sword that changes with day and night and carries fire enchantment; its distinctive magical identity merits a high specialist rank. Acquired at the end of Baiting the Trap.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dawnfang_and_Duskfang"
+      ]
+    },
+    {
+      "Name": "Dawnfang Superior",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "07D436:Oblivion.esm",
+        "07D437:Oblivion.esm",
+        "07D438:Oblivion.esm",
+        "07D439:Oblivion.esm",
+        "07D43A:Oblivion.esm",
+        "07D43B:Oblivion.esm",
+        "07D43C:Oblivion.esm"
+      ],
+      "References": [
+        "07D43C:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dawnfang_and_Duskfang"
+      ]
+    },
+    {
+      "Name": "Debaser",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "01D0B4:Oblivion.esm",
+        "06BD81:Oblivion.esm",
+        "06BD82:Oblivion.esm",
+        "06BD83:Oblivion.esm",
+        "06BD84:Oblivion.esm",
+        "06BD85:Oblivion.esm"
+      ],
+      "References": [
+        "06BD85:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A fine-steel-like, uniquely shaped blade obtained during a local investigation. Its distinctive design and quest context support a moderate named-item tier, not an elite one.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Debaser"
+      ]
+    },
+    {
+      "Name": "Diadem of Euphoria",
+      "Tier": 2,
+      "Material": "Glass",
+      "Records": [
+        "07B6AB:Oblivion.esm",
+        "07B6AC:Oblivion.esm",
+        "07B6AD:Oblivion.esm",
+        "07B6AE:Oblivion.esm",
+        "07B6AF:Oblivion.esm",
+        "07B6B0:Oblivion.esm",
+        "07B6B1:Oblivion.esm"
+      ],
+      "References": [
+        "07B6B1:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive jeweled crown worn by Thadon, but the supplied entries establish no exceptional craftsmanship or combat role; its name and wearer alone do not warrant an elite tier.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Diadem_of_Euphoria",
+        "https://en.uesp.net/wiki/Shivering:Armor"
+      ]
+    },
+    {
+      "Name": "Dragonsword of Lainlyn",
+      "Tier": 6,
+      "Material": "Daedric",
+      "Records": [
+        "012E13:DLCBattlehornCastle.esp",
+        "0147EC:DLCBattlehornCastle.esp",
+        "0147EE:DLCBattlehornCastle.esp",
+        "0147EF:DLCBattlehornCastle.esp",
+        "0147F0:DLCBattlehornCastle.esp",
+        "0147F1:DLCBattlehornCastle.esp"
+      ],
+      "References": [
+        "0147F1:DLCBattlehornCastle.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A uniquely designed one-handed blade taken from Lord Kain, with a Dragon Breath power. Its unusual acquisition and ability justify a strong specialist rating, without evidence of exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Dragonsword_of_Lainlyn"
+      ]
+    },
+    {
+      "Name": "Duskfang",
+      "Tier": 7,
+      "Material": "Daedric",
+      "Records": [
+        "079059:Oblivion.esm",
+        "07905A:Oblivion.esm",
+        "07905B:Oblivion.esm",
+        "07905C:Oblivion.esm",
+        "07905D:Oblivion.esm",
+        "07905E:Oblivion.esm",
+        "07905F:Oblivion.esm"
+      ],
+      "References": [
+        "07905E:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dawnfang_and_Duskfang"
+      ]
+    },
+    {
+      "Name": "Duskfang Superior",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "07D43D:Oblivion.esm",
+        "07D43E:Oblivion.esm",
+        "07D43F:Oblivion.esm",
+        "07D440:Oblivion.esm",
+        "07D441:Oblivion.esm",
+        "07D442:Oblivion.esm",
+        "07D443:Oblivion.esm"
+      ],
+      "References": [
+        "07D443:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Dawnfang_and_Duskfang"
+      ]
+    },
+    {
+      "Name": "Ebony Blade",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027109:Oblivion.esm"
+      ],
+      "References": [
+        "027109:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A Daedric artifact obtained through Mephala’s quest, supporting legendary-artifact status. The available entry identifies it as a katana but does not describe exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ebony_Blade"
+      ]
+    },
+    {
+      "Name": "Escutcheon of Chorrol",
+      "Tier": 4,
+      "Material": "Ebony",
+      "Records": [
+        "06BDFA:Oblivion.esm",
+        "06BDFB:Oblivion.esm",
+        "06BDFC:Oblivion.esm",
+        "06BDFD:Oblivion.esm",
+        "06BDFE:Oblivion.esm",
+        "08B07D:Oblivion.esm"
+      ],
+      "References": [
+        "06BDFE:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Escutcheon_of_Chorrol"
+      ]
+    },
+    {
+      "Name": "Forgemaster's Amulet",
+      "Tier": 1,
+      "Material": "Silver",
+      "Records": [
+        "002736:DLCMehrunesRazor.esp",
+        "002742:DLCMehrunesRazor.esp",
+        "002744:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "002744:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A jeweled gold amulet worn by the Forgemaster, but the available entry provides no exceptional craftsmanship or lore-described abilities to support a higher rank.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Forgemaster's Smock",
+      "Tier": 1,
+      "Material": "Leather",
+      "Records": [
+        "002738:DLCMehrunesRazor.esp",
+        "002745:DLCMehrunesRazor.esp",
+        "002746:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "002746:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A shirt worn by the Forgemaster; the available entry gives no exceptional craftsmanship or lore-described abilities. Its association with a named foe alone does not make it elite equipment.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Gauntlets of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E95:Knights.esp",
+        "000E9B:Knights.esp",
+        "000EA1:Knights.esp",
+        "000EA7:Knights.esp",
+        "000EAD:Knights.esp",
+        "000EB3:Knights.esp",
+        "000EB9:Knights.esp",
+        "000EBF:Knights.esp",
+        "000EC5:Knights.esp",
+        "000ECD:Knights.esp"
+      ],
+      "References": [
+        "000EB3:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic whose Merciful Touch grants a distinctive healing power; ranked consistently with the other Crusader relics.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Goldbrand",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027105:Oblivion.esm"
+      ],
+      "References": [
+        "027105:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A legendary Daedric artifact earned through Boethia’s tournament quest. Its established combat reputation supports an artifact-level tier, though the article does not describe exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Goldbrand"
+      ]
+    },
+    {
+      "Name": "Golden Saint Armor",
+      "Tier": 5,
+      "Material": "Ebony",
+      "Records": [
+        "07EB15:Oblivion.esm",
+        "07EB16:Oblivion.esm",
+        "07EB17:Oblivion.esm",
+        "07EB18:Oblivion.esm",
+        "07EB19:Oblivion.esm",
+        "07EB1A:Oblivion.esm"
+      ],
+      "References": [
+        "07EB1A:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named faction-quest heavy-armor reward, with no supplied lore establishing exceptional craftsmanship; ranked as a strong but non-legendary set. Acquired through Helpless Army as Duke/Duchess of Dementia.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Armor",
+        "https://en.uesp.net/wiki/Shivering:Golden_Saint_Armor"
+      ]
+    },
+    {
+      "Name": "Golden Saint Helmet",
+      "Tier": 5,
+      "Material": "Ebony",
+      "Records": [
+        "07EB1B:Oblivion.esm",
+        "07EB1C:Oblivion.esm",
+        "07EB1D:Oblivion.esm",
+        "07EB1E:Oblivion.esm",
+        "07EB1F:Oblivion.esm",
+        "07EB20:Oblivion.esm"
+      ],
+      "References": [
+        "07EB20:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Armor",
+        "https://en.uesp.net/wiki/Shivering:Golden_Saint_Armor"
+      ]
+    },
+    {
+      "Name": "Gray Cowl of Nocturnal",
+      "Tier": 6,
+      "Material": "Leather",
+      "Records": [
+        "022E81:Oblivion.esm"
+      ],
+      "References": [
+        "022E81:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A legendary, cursed hood with powerful stealth and identity-altering utility, acquired at the end of the Thieves Guild questline. Its importance is primarily noncombat, so it does not warrant a maximum combat tier.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Gray_Cowl_of_Nocturnal"
+      ]
+    },
+    {
+      "Name": "Greaves of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E94:Knights.esp",
+        "000E9A:Knights.esp",
+        "000EA0:Knights.esp",
+        "000EA6:Knights.esp",
+        "000EAC:Knights.esp",
+        "000EB2:Knights.esp",
+        "000EB8:Knights.esp",
+        "000EBE:Knights.esp",
+        "000EC4:Knights.esp",
+        "000ECC:Knights.esp"
+      ],
+      "References": [
+        "000EB2:Knights.esp",
+        "000E9A:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic whose Blessing of the Eight provides a distinctive protective power; ranked consistently with the other Crusader relics.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Helm of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E93:Knights.esp",
+        "000E99:Knights.esp",
+        "000E9F:Knights.esp",
+        "000EA5:Knights.esp",
+        "000EAB:Knights.esp",
+        "000EB1:Knights.esp",
+        "000EB7:Knights.esp",
+        "000EBD:Knights.esp",
+        "000EC3:Knights.esp",
+        "000ECB:Knights.esp"
+      ],
+      "References": [
+        "000EB1:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic whose Serene Beauty grants a distinctive calming power; ranked consistently with the other Crusader relics.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Knights of the Thorn Medallion",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "0335A9:Oblivion.esm",
+        "06B676:Oblivion.esm",
+        "06B677:Oblivion.esm"
+      ],
+      "References": [
+        "06B677:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A faction medallion awarded for completing The Wayward Knight; its Fortify Speechcraft utility and ordinary faction provenance support a moderate, not elite, rating.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Thorn_Medallion",
+        "https://en.uesp.net/wiki/Oblivion:The_Wayward_Knight"
+      ]
+    },
+    {
+      "Name": "Kvatch Cuirass",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "0C49BF:Oblivion.esm",
+        "0C49C0:Oblivion.esm",
+        "0C49C1:Oblivion.esm",
+        "0C49C2:Oblivion.esm",
+        "0C49C3:Oblivion.esm",
+        "0C49C4:Oblivion.esm"
+      ],
+      "References": [
+        "0C49C4:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named enchanted reward for the defense of Kvatch, but it shares its appearance with the ordinary cuirasses worn by Kvatch guards; no exceptional craftsmanship is described.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Kvatch_Cuirass"
+      ]
+    },
+    {
+      "Name": "Lord Kelvyn's Bulwark",
+      "Tier": 6,
+      "Material": "Daedric",
+      "Records": [
+        "011F17:DLCBattlehornCastle.esp",
+        "011F19:DLCBattlehornCastle.esp",
+        "011F1A:DLCBattlehornCastle.esp",
+        "011F1B:DLCBattlehornCastle.esp",
+        "011F1C:DLCBattlehornCastle.esp",
+        "011F1D:DLCBattlehornCastle.esp",
+        "011F1E:DLCBattlehornCastle.esp"
+      ],
+      "References": [
+        "011F1E:DLCBattlehornCastle.esp"
+      ],
+      "Preserved": false,
+      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Battlehorn_Castle_Items"
+      ]
+    },
+    {
+      "Name": "Mace of Molag Bal",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027117:Oblivion.esm"
+      ],
+      "References": [
+        "027117:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A legendary Daedric artifact obtained through Molag Bal's quest. Its artifact provenance supports a legendary tier, but the entry does not establish exceptional physical craftsmanship beyond the best ordinary material.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mace_of_Molag_Bal"
+      ]
+    },
+    {
+      "Name": "Mace of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000F32:Knights.esp",
+        "000F33:Knights.esp",
+        "000F40:Knights.esp",
+        "000F41:Knights.esp",
+        "000F42:Knights.esp",
+        "000F48:Knights.esp",
+        "000F4B:Knights.esp"
+      ],
+      "References": [
+        "000F4B:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader weapon with a distinctive constant Blunt-fortifying ability and a special role against Umaril; its provenance supports the shared relic rank.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Charm",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "01FE11:Oblivion.esm",
+        "0E9442:Oblivion.esm",
+        "0E9443:Oblivion.esm",
+        "0E9444:Oblivion.esm"
+      ],
+      "References": [
+        "0E9444:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage's Staff quest.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Dispel",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "01FE16:Oblivion.esm",
+        "0E9445:Oblivion.esm",
+        "0E9446:Oblivion.esm",
+        "0E9447:Oblivion.esm"
+      ],
+      "References": [
+        "0E9447:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Mysticism staff with a useful specialist role, but no lore-described exceptional craftsmanship or legendary provenance.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Fire",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "0E9448:Oblivion.esm",
+        "0E9449:Oblivion.esm",
+        "0E944A:Oblivion.esm",
+        "0E944B:Oblivion.esm"
+      ],
+      "References": [
+        "0E944B:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Frost",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "01FE0F:Oblivion.esm",
+        "0E944C:Oblivion.esm",
+        "0E944D:Oblivion.esm",
+        "0E944E:Oblivion.esm"
+      ],
+      "References": [
+        "0E944E:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Paralysis",
+      "Tier": 5,
+      "Material": "Steel",
+      "Records": [
+        "01FE12:Oblivion.esm",
+        "0E944F:Oblivion.esm",
+        "0E9450:Oblivion.esm",
+        "0E9451:Oblivion.esm"
+      ],
+      "References": [
+        "0E9451:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Illusion staff with a strong specialist disabling role, meriting a step above ordinary named rewards without evidence of legendary provenance or exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Shock",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "01FE10:Oblivion.esm",
+        "0E9452:Oblivion.esm",
+        "0E9453:Oblivion.esm",
+        "0E9454:Oblivion.esm"
+      ],
+      "References": [
+        "0E9454:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Silence",
+      "Tier": 4,
+      "Material": "Iron",
+      "Records": [
+        "01FE13:Oblivion.esm",
+        "0E9455:Oblivion.esm",
+        "0E9456:Oblivion.esm",
+        "0E9457:Oblivion.esm"
+      ],
+      "References": [
+        "0E9457:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Arcane University staff with a distinct specialist magical function, but the supplied source gives no evidence of exceptional physical craftsmanship. Iron is only a comparison baseline; staves are not physical weapons.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Soul Trap",
+      "Tier": 4,
+      "Material": "Iron",
+      "Records": [
+        "01FE14:Oblivion.esm",
+        "0E9458:Oblivion.esm",
+        "0E9459:Oblivion.esm",
+        "0E945A:Oblivion.esm"
+      ],
+      "References": [
+        "0E945A:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Arcane University staff selected for a specialist magical function. Its provenance supports a moderate named-equipment tier, but there is no evidence of exceptional physical craftsmanship. Iron is a comparison baseline, not a literal material claim.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Mage's Staff of Telekinesis",
+      "Tier": 4,
+      "Material": "Iron",
+      "Records": [
+        "01FE15:Oblivion.esm",
+        "0E945B:Oblivion.esm",
+        "0E945C:Oblivion.esm",
+        "0E945D:Oblivion.esm"
+      ],
+      "References": [
+        "0E945D:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A custom Arcane University staff with a distinctive utility function. The supplied source supports its crafted, specialist identity, but not exceptional physical workmanship. Iron is a comparison baseline; staves are not physical weapons.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staves"
+      ]
+    },
+    {
+      "Name": "Masque of Clavicus Vile",
+      "Tier": 5,
+      "Material": "Daedric",
+      "Records": [
+        "0228EE:Oblivion.esm"
+      ],
+      "References": [
+        "0228EE:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Daedric artifact and heavy helmet obtained through its associated quest, meriting a strong named-item tier. The supplied excerpt does not establish exceptional craftsmanship or describe a lore ability that would support a higher rank.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Masque_of_Clavicus_Vile"
+      ]
+    },
+    {
+      "Name": "Mehrunes Razor",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "001AB0:DLCMehrunesRazor.esp",
+        "005FB8:DLCMehrunesRazor.esp",
+        "005FB9:DLCMehrunesRazor.esp",
+        "005FBA:DLCMehrunesRazor.esp",
+        "005FBB:DLCMehrunesRazor.esp",
+        "005FBC:DLCMehrunesRazor.esp",
+        "005FBD:DLCMehrunesRazor.esp",
+        "005FBE:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "005FBE:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A Daedric artifact with a distinctive banishing power, recovered from a sealed, formidable ruin. Its legendary identity and lore-described ability support Tier 8; the source does not establish exceptional craftsmanship beyond the Daedric baseline.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes_Razor"
+      ]
+    },
+    {
+      "Name": "Mind and Body Ring",
+      "Tier": 3,
+      "Material": "Iron",
+      "Records": [
+        "0366BF:Oblivion.esm",
+        "0366C0:Oblivion.esm",
+        "0366C1:Oblivion.esm"
+      ],
+      "References": [
+        "0366C1:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Fighters Guild quest reward, but the supplied entry describes an appearance shared with ordinary enchanted brass rings and gives no evidence of exceptional craftsmanship or distinctive lore abilities. Iron is a comparison baseline, not its literal material.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mind_and_Body_Ring"
+      ]
+    },
+    {
+      "Name": "Morag Tong Boots",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "001B8C:DLCMehrunesRazor.esp",
+        "002088:DLCMehrunesRazor.esp",
+        "00208F:DLCMehrunesRazor.esp",
+        "002099:DLCMehrunesRazor.esp",
+        "0020A3:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "0020A3:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Morag Tong Cowl",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "001B42:DLCMehrunesRazor.esp",
+        "001B92:DLCMehrunesRazor.esp",
+        "00208E:DLCMehrunesRazor.esp",
+        "002098:DLCMehrunesRazor.esp",
+        "0020A2:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "0020A2:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Morag Tong Cuirass",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "001B89:DLCMehrunesRazor.esp",
+        "002085:DLCMehrunesRazor.esp",
+        "002090:DLCMehrunesRazor.esp",
+        "00209A:DLCMehrunesRazor.esp",
+        "0020A4:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "0020A4:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Morag Tong Gloves",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "001B8A:DLCMehrunesRazor.esp",
+        "002086:DLCMehrunesRazor.esp",
+        "002091:DLCMehrunesRazor.esp",
+        "00209B:DLCMehrunesRazor.esp",
+        "0020A5:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "0020A5:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Morag Tong Greaves",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "001B8B:DLCMehrunesRazor.esp",
+        "002087:DLCMehrunesRazor.esp",
+        "002092:DLCMehrunesRazor.esp",
+        "00209C:DLCMehrunesRazor.esp",
+        "0020A6:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "0020A6:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items"
+      ]
+    },
+    {
+      "Name": "Necromancer's Amulet",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "0146C6:Oblivion.esm",
+        "07BE27:Oblivion.esm",
+        "07BE28:Oblivion.esm",
+        "07BE29:Oblivion.esm",
+        "07BE2A:Oblivion.esm",
+        "07BE2B:Oblivion.esm"
+      ],
+      "References": [
+        "07BE2B:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Necromancer%27s_Amulet",
+        "https://en.uesp.net/wiki/Lore:Necromancer%27s_Amulet"
+      ]
+    },
+    {
+      "Name": "Nerveshatter",
+      "Tier": 7,
+      "Material": "Daedric",
+      "Records": [
+        "0171F7:Oblivion.esm",
+        "07E098:Oblivion.esm",
+        "07E099:Oblivion.esm",
+        "07E09A:Oblivion.esm",
+        "07E09B:Oblivion.esm",
+        "07E09C:Oblivion.esm",
+        "07E09D:Oblivion.esm"
+      ],
+      "References": [
+        "07E09D:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive hammer combining Amber and Madness Ore, recovered from Duchess Syl during a major quest climax. Its rare hybrid identity supports a high tier, but the article does not establish exceptional craftsmanship beyond the best ordinary weapons.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Nerveshatter"
+      ]
+    },
+    {
+      "Name": "Phylactery of Litheness",
+      "Tier": 5,
+      "Material": "Mithril",
+      "Records": [
+        "0385A0:Oblivion.esm",
+        "06B648:Oblivion.esm",
+        "06B649:Oblivion.esm",
+        "06B64A:Oblivion.esm",
+        "06B64B:Oblivion.esm",
+        "06B64C:Oblivion.esm"
+      ],
+      "References": [
+        "06B64C:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named amulet awarded for a Bruma quest and identified as the true nature of the Mundane Amulet. The supplied entry gives no lore-described abilities or craftsmanship details to support a higher classification.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Phylactery_of_Litheness"
+      ]
+    },
+    {
+      "Name": "Pyke's Medallion",
+      "Tier": 0,
+      "Material": "Mithril",
+      "Records": [
+        "066F29:Oblivion.esm",
+        "066F2D:Oblivion.esm",
+        "066FB6:Oblivion.esm"
+      ],
+      "References": [
+        "066FB6:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A quest medallion identical to the Knights of the Thorn Medallion, found during a task and meant to be returned to Pyke. The entry gives no evidence of unusual power or exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Raiment of Arden-Sul",
+      "Tier": 0,
+      "Material": "Fur",
+      "Records": [
+        "07FF50:Oblivion.esm",
+        "07FF51:Oblivion.esm",
+        "07FF52:Oblivion.esm",
+        "07FF53:Oblivion.esm",
+        "07FF54:Oblivion.esm",
+        "07FF55:Oblivion.esm",
+        "0895D8:Oblivion.esm"
+      ],
+      "References": [
+        "0895D8:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A finery reward for lighting the torch of Mania. The entry describes its appearance and clothing coverage, but provides no special abilities or exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Raiment of Intrigue",
+      "Tier": 0,
+      "Material": "Fur",
+      "Records": [
+        "07FF49:Oblivion.esm",
+        "07FF4A:Oblivion.esm",
+        "07FF4B:Oblivion.esm",
+        "07FF4C:Oblivion.esm",
+        "07FF4D:Oblivion.esm",
+        "07FF4E:Oblivion.esm",
+        "0895D7:Oblivion.esm"
+      ],
+      "References": [
+        "0895D7:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A finery reward for lighting the torch of Dementia. Its distinctive name and quest context are not accompanied by evidence of special abilities or exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Raiment of the Crimson Scar",
+      "Tier": 6,
+      "Material": "Glass",
+      "Records": [
+        "00BE65:DLCVileLair.esp",
+        "00BE66:DLCVileLair.esp",
+        "00BE67:DLCVileLair.esp",
+        "00BE68:DLCVileLair.esp",
+        "00BE6A:DLCVileLair.esp",
+        "00C35E:DLCVileLair.esp"
+      ],
+      "References": [
+        "00BE6A:DLCVileLair.esp"
+      ],
+      "Preserved": false,
+      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Deepscorn_Hollow_Items"
+      ]
+    },
+    {
+      "Name": "Redwave",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "095A39:Oblivion.esm",
+        "095A3A:Oblivion.esm",
+        "095A3B:Oblivion.esm",
+        "095A3C:Oblivion.esm",
+        "095A3D:Oblivion.esm",
+        "095A3E:Oblivion.esm",
+        "095A3F:Oblivion.esm"
+      ],
+      "References": [
+        "095A3F:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive cutlass with decorative detailing and a protective hand guard, but its personal history and quest-reward provenance do not establish exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Redwave"
+      ]
+    },
+    {
+      "Name": "Ring of Eidolon's Edge",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "04F9E5:Oblivion.esm",
+        "06BD6B:Oblivion.esm",
+        "06BD6C:Oblivion.esm",
+        "06BD6D:Oblivion.esm",
+        "06BD6E:Oblivion.esm",
+        "06BD6F:Oblivion.esm"
+      ],
+      "References": [
+        "06BD6F:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ring_of_Eidolon%27s_Edge"
+      ]
+    },
+    {
+      "Name": "Ring of Happiness",
+      "Tier": 2,
+      "Material": "Leather",
+      "Records": [
+        "0708B5:Oblivion.esm",
+        "0708B6:Oblivion.esm",
+        "0708B7:Oblivion.esm",
+        "0708B8:Oblivion.esm"
+      ],
+      "References": [
+        "0708B8:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A unique jewelry reward from a side quest; the available entry gives no exceptional provenance or craftsmanship to distinguish it as elite equipment.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Ring of Khajiiti",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027110:Oblivion.esm"
+      ],
+      "References": [
+        "027110:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A Daedric artifact with a recurring identity across several eras; its legendary provenance merits a high tier, though it is a ring rather than exceptional physical equipment.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ring_of_Khajiiti"
+      ]
+    },
+    {
+      "Name": "Ring of Lordship",
+      "Tier": 4,
+      "Material": "Leather",
+      "Records": [
+        "079D55:Oblivion.esm",
+        "079D56:Oblivion.esm",
+        "079D65:Oblivion.esm",
+        "079D66:Oblivion.esm",
+        "079D67:Oblivion.esm",
+        "079D68:Oblivion.esm",
+        "079D69:Oblivion.esm",
+        "079D6A:Oblivion.esm",
+        "079D6B:Oblivion.esm",
+        "079D6C:Oblivion.esm",
+        "079D6D:Oblivion.esm",
+        "079D6E:Oblivion.esm",
+        "0895D9:Oblivion.esm",
+        "0895DA:Oblivion.esm"
+      ],
+      "References": [
+        "0895D9:Oblivion.esm",
+        "0895DA:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A reward for completing a major Shivering Isles quest, but the available entry does not establish exceptional craftsmanship or legendary equipment status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Ring of Mind Shielding",
+      "Tier": 3,
+      "Material": "Leather",
+      "Records": [
+        "0781CC:Oblivion.esm",
+        "0781CD:Oblivion.esm",
+        "0781CE:Oblivion.esm",
+        "0781CF:Oblivion.esm"
+      ],
+      "References": [
+        "0781CD:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A unique reward from a Shivering Isles quest; the available entry establishes its acquisition, but not exceptional provenance or craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "Ring of Namira",
+      "Tier": 7,
+      "Material": "Ebony",
+      "Records": [
+        "01C10A:Oblivion.esm"
+      ],
+      "References": [
+        "01C10A:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A specifically identified Daedric artifact earned through its own quest supports a high artifact tier. Its exceptional status is magical and historical, not evidence of exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ring_of_Namira"
+      ]
+    },
+    {
+      "Name": "Ring of Sunfire",
+      "Tier": 3,
+      "Material": "Silver",
+      "Records": [
+        "01E0FA:Oblivion.esm",
+        "06B689:Oblivion.esm",
+        "06B68A:Oblivion.esm",
+        "06B68B:Oblivion.esm",
+        "06B68C:Oblivion.esm",
+        "06B68D:Oblivion.esm"
+      ],
+      "References": [
+        "06B68D:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named quest reward with protection against disease and spells merits a moderate rating, but the supplied evidence describes no exceptional provenance or craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ring_of_Sunfire"
+      ]
+    },
+    {
+      "Name": "Ring of the Gray",
+      "Tier": 3,
+      "Material": "Iron",
+      "Records": [
+        "00CCC8:Oblivion.esm"
+      ],
+      "References": [
+        "00CCC8:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named reward for solving Rosethorn Hall’s hidden-treasure riddle, but the supplied acquisition account gives no evidence of exceptional power or craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:The_Rosethorn_Cache"
+      ]
+    },
+    {
+      "Name": "Ring of the Vipereye",
+      "Tier": 5,
+      "Material": "Silver",
+      "Records": [
+        "01C4DA:Oblivion.esm",
+        "06B654:Oblivion.esm",
+        "06B655:Oblivion.esm",
+        "06B656:Oblivion.esm",
+        "06B657:Oblivion.esm",
+        "06B658:Oblivion.esm"
+      ],
+      "References": [
+        "06B658:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Ring_of_the_Vipereye"
+      ]
+    },
+    {
+      "Name": "Robe of the Apprentice",
+      "Tier": 3,
+      "Material": "Fur",
+      "Records": [
+        "0C8534:Oblivion.esm",
+        "0C8535:Oblivion.esm",
+        "0C8536:Oblivion.esm"
+      ],
+      "References": [
+        "0C8536:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "Awarded after completing the Mages Guild recommendations, it is a moderate milestone reward; its appearance is identical to standard green robes, with no exceptional craftsmanship described.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Robe_of_the_Apprentice"
+      ]
+    },
+    {
+      "Name": "Robe of the Conjurer",
+      "Tier": 3,
+      "Material": "Fur",
+      "Records": [
+        "0748A6:Oblivion.esm",
+        "0748A7:Oblivion.esm",
+        "0748A8:Oblivion.esm",
+        "0748A9:Oblivion.esm",
+        "0748AA:Oblivion.esm",
+        "0748AB:Oblivion.esm"
+      ],
+      "References": [
+        "0748A6:Oblivion.esm",
+        "0748AB:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Robe_of_the_Conjurer"
+      ]
+    },
+    {
+      "Name": "Rockshatter",
+      "Tier": 3,
+      "Material": "Dwarven",
+      "Records": [
+        "014EC2:Oblivion.esm",
+        "014EC3:Oblivion.esm",
+        "014EC4:Oblivion.esm",
+        "014EC5:Oblivion.esm",
+        "014EC6:Oblivion.esm",
+        "061421:Oblivion.esm"
+      ],
+      "References": [
+        "014EC6:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named reward from When The Vow Breaks, but its Dwarven appearance and acquisition context do not establish exceptional craftsmanship or legendary standing.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Rockshatter"
+      ]
+    },
+    {
+      "Name": "Sanguine Rose",
+      "Tier": 7,
+      "Material": "Daedric",
+      "Records": [
+        "0228EF:Oblivion.esm"
+      ],
+      "References": [
+        "0228EF:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "A distinctive Daedric artifact whose conjuration of a hostile Daedra makes it strong specialist equipment; its plain staff appearance offers no evidence of exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Sanguine_Rose"
+      ]
+    },
+    {
+      "Name": "Saviour's Hide",
+      "Tier": 7,
+      "Material": "Glass",
+      "Records": [
+        "027107:Oblivion.esm"
+      ],
+      "References": [
+        "027107:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "Hircine's artifact hide has notable provenance and a specialist protective role, but the supplied entry does not establish craftsmanship beyond the best ordinary light armor.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Saviour%27s_Hide"
+      ]
+    },
+    {
+      "Name": "Shadowhunt",
+      "Tier": 3,
+      "Material": "Steel",
+      "Records": [
+        "034897:Oblivion.esm",
+        "034898:Oblivion.esm",
+        "034899:Oblivion.esm",
+        "03489A:Oblivion.esm",
+        "03489B:Oblivion.esm",
+        "03489C:Oblivion.esm",
+        "03489D:Oblivion.esm"
+      ],
+      "References": [
+        "034897:Oblivion.esm",
+        "03489D:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A bonus for a particularly careful Dark Brotherhood assassination, but it retains an ordinary steel-bow appearance and its entry supplies no exceptional craftsmanship or lore distinction.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Shadowhunt"
+      ]
+    },
+    {
+      "Name": "Shadowrend",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "08078A:Oblivion.esm",
+        "08078B:Oblivion.esm",
+        "08078C:Oblivion.esm",
+        "08078D:Oblivion.esm",
+        "08078E:Oblivion.esm",
+        "08078F:Oblivion.esm",
+        "080790:Oblivion.esm",
+        "080791:Oblivion.esm",
+        "080792:Oblivion.esm",
+        "080793:Oblivion.esm",
+        "09535D:Oblivion.esm",
+        "09535E:Oblivion.esm",
+        "09535F:Oblivion.esm",
+        "095360:Oblivion.esm"
+      ],
+      "References": [
+        "095360:Oblivion.esm",
+        "09535E:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Shadowrend"
+      ]
+    },
+    {
+      "Name": "Shield of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000E92:Knights.esp",
+        "000E98:Knights.esp",
+        "000E9E:Knights.esp",
+        "000EA4:Knights.esp",
+        "000EAA:Knights.esp",
+        "000EB0:Knights.esp",
+        "000EB6:Knights.esp",
+        "000EBC:Knights.esp",
+        "000EC2:Knights.esp",
+        "000ECA:Knights.esp"
+      ],
+      "References": [
+        "000EB0:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader relic, ranked consistently with the other pieces on provenance rather than on slot size or unsupported claims of superior workmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Skull of Corruption",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027116:Oblivion.esm"
+      ],
+      "References": [
+        "027116:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "A Daedric artifact with a distinctive, powerful ability to create a temporary equipped clone of nearly any NPC. Its exceptional value is magical utility, not evidence of unusual physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Skull_of_Corruption"
+      ]
+    },
+    {
+      "Name": "Spell Breaker",
+      "Tier": 6,
+      "Material": "Orcish",
+      "Records": [
+        "0897C2:Oblivion.esm"
+      ],
+      "References": [
+        "0897C2:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A Peryite artifact and specialist defensive shield, notable for powerful spell reflection. Its described physical protection is close to Orcish rather than the highest ordinary shield standard.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Spell_Breaker"
+      ]
+    },
+    {
+      "Name": "Spellbreaker",
+      "Tier": 6,
+      "Material": "Orcish",
+      "Records": [
+        "027112:Oblivion.esm"
+      ],
+      "References": [
+        "027112:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "Same item as Spell Breaker: a Peryite artifact and specialist defensive shield, notable for powerful spell reflection. Its described physical protection is close to Orcish rather than the highest ordinary shield standard.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Spell_Breaker"
+      ]
+    },
+    {
+      "Name": "Spelldrinker Amulet",
+      "Tier": 5,
+      "Material": "Steel",
+      "Records": [
+        "095A6B:Oblivion.esm",
+        "095A6C:Oblivion.esm",
+        "095A6D:Oblivion.esm",
+        "095A6E:Oblivion.esm",
+        "095A6F:Oblivion.esm",
+        "095A70:Oblivion.esm",
+        "095A71:Oblivion.esm"
+      ],
+      "References": [
+        "095A70:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Mages Guild advancement reward with specialist magical utility, but the available evidence does not establish exceptional physical craftsmanship or legendary provenance.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Spelldrinker_Amulet"
+      ]
+    },
+    {
+      "Name": "Spellturn Cloak",
+      "Tier": 5,
+      "Material": "Leather",
+      "Records": [
+        "005FD8:DLCMehrunesRazor.esp",
+        "005FDD:DLCMehrunesRazor.esp",
+        "005FDE:DLCMehrunesRazor.esp",
+        "005FDF:DLCMehrunesRazor.esp",
+        "005FE0:DLCMehrunesRazor.esp"
+      ],
+      "References": [
+        "005FE0:DLCMehrunesRazor.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive defensive clothing item worn by Frathen Drothan. Its specialist role merits a strong moderate rating, without evidence of exceptional craftsmanship or artifact status.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Mehrunes%27_Razor_Items",
+        "https://en.uesp.net/wiki/Oblivion:Unique_Items"
+      ]
+    },
+    {
+      "Name": "Staff of Indarys",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "0335AF:Oblivion.esm",
+        "06B66D:Oblivion.esm",
+        "06B66E:Oblivion.esm",
+        "06B66F:Oblivion.esm",
+        "06B670:Oblivion.esm",
+        "06B671:Oblivion.esm"
+      ],
+      "References": [
+        "06B671:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named reward offered for completing The Wayward Knight, with shock damage and damage-strength enchantments. A meaningful moderate reward, but the available evidence does not support exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staff_of_Indarys",
+        "https://en.uesp.net/wiki/Oblivion:The_Wayward_Knight"
+      ]
+    },
+    {
+      "Name": "Staff of Sheogorath",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "04FD09:Oblivion.esm"
+      ],
+      "References": [
+        "04FD09:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "A uniquely crafted artifact with an unusual, wide-area incapacitating effect and a significant role in establishing Sheogorath’s rule. Its exceptional power is magical; no exceptional physical craftsmanship is described.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Staff_of_Sheogorath"
+      ]
+    },
+    {
+      "Name": "Staff of Worms",
+      "Tier": 5,
+      "Material": "Daedric",
+      "Records": [
+        "04A24E:Oblivion.esm"
+      ],
+      "References": [
+        "04A24E:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "Mannimarco’s distinctive necromantic staff and a major Mages Guild quest reward, valued for its specialized ability to turn a fallen NPC into an ally. The evidence supports strong specialist utility, not exceptional physical craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Staff_of_Worms"
+      ]
+    },
+    {
+      "Name": "Sufferthorn",
+      "Tier": 3,
+      "Material": "Elven",
+      "Records": [
+        "0347EB:Oblivion.esm",
+        "0347EC:Oblivion.esm",
+        "0347ED:Oblivion.esm",
+        "0347EE:Oblivion.esm",
+        "0347EF:Oblivion.esm",
+        "0347F0:Oblivion.esm",
+        "0347F1:Oblivion.esm"
+      ],
+      "References": [
+        "0347F1:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named Dark Brotherhood reward, but its appearance matches an ordinary elven dagger and the article provides no lore of exceptional making or capabilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Sufferthorn"
+      ]
+    },
+    {
+      "Name": "Sword of the Crusader",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "000F30:Knights.esp",
+        "000F31:Knights.esp",
+        "000F3D:Knights.esp",
+        "000F3E:Knights.esp",
+        "000F3F:Knights.esp",
+        "000F43:Knights.esp",
+        "000F4A:Knights.esp"
+      ],
+      "References": [
+        "000F4A:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "A divine Crusader weapon with a distinctive constant Blade-fortifying ability and a special role against Umaril; its provenance supports the shared relic rank.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Syndel's Boltcaster",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "07F3D5:Oblivion.esm",
+        "07F3D6:Oblivion.esm",
+        "07F3D7:Oblivion.esm",
+        "07F3D8:Oblivion.esm"
+      ],
+      "References": [
+        "07F3D8:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "An unused staff identity with a shock-damage area effect supports a moderate specialist-equipment rank. It is not obtainable in vanilla play; the cited page says a patch adds it as a quest reward.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Syndelius_Gatharian"
+      ]
+    },
+    {
+      "Name": "Talisman of Abetment",
+      "Tier": 3,
+      "Material": "Silver",
+      "Records": [
+        "01353D:Oblivion.esm",
+        "07F3D9:Oblivion.esm",
+        "07F3DA:Oblivion.esm",
+        "07F3DB:Oblivion.esm",
+        "07F3DC:Oblivion.esm",
+        "07F3DD:Oblivion.esm",
+        "07F3DE:Oblivion.esm"
+      ],
+      "References": [
+        "07F3DE:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A unique amulet recovered after Baiting the Trap, with a distinctive Tsaesci-like design and a possible connection to relics from Trumbe. Its provenance supports a modest named-item rank, but no exceptional ability is documented here.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Talisman_of_Abetment",
+        "https://en.uesp.net/wiki/Shivering:Unique_Clothing"
+      ]
+    },
+    {
+      "Name": "The Deceiver's Finery",
+      "Tier": 2,
+      "Material": "Leather",
+      "Records": [
+        "03489F:Oblivion.esm",
+        "0348A0:Oblivion.esm",
+        "0348A1:Oblivion.esm",
+        "0348A2:Oblivion.esm",
+        "0348A3:Oblivion.esm",
+        "0348A4:Oblivion.esm",
+        "0348A5:Oblivion.esm"
+      ],
+      "References": [
+        "0348A5:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:The_Deceiver%27s_Finery"
+      ]
+    },
+    {
+      "Name": "Thorn Shield",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "066FF2:Oblivion.esm",
+        "066FF3:Oblivion.esm",
+        "066FF4:Oblivion.esm",
+        "066FF5:Oblivion.esm",
+        "066FF6:Oblivion.esm",
+        "067000:Oblivion.esm",
+        "067003:Oblivion.esm"
+      ],
+      "References": [
+        "067003:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named heavy-shield reward for completing To Help A Hero. Its acquisition supports a moderate named-reward rank, but the supplied entry gives no evidence of exceptional craftsmanship.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Shivering:Armor"
+      ]
+    },
+    {
+      "Name": "Thornblade",
+      "Tier": 4,
+      "Material": "Steel",
+      "Records": [
+        "0335AE:Oblivion.esm",
+        "06B661:Oblivion.esm",
+        "06B662:Oblivion.esm",
+        "06B663:Oblivion.esm",
+        "06B664:Oblivion.esm",
+        "06B665:Oblivion.esm"
+      ],
+      "References": [
+        "06B665:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named reward choice for The Wayward Knight. The entry calls it an artifact, but provides no lore-described abilities or exceptional craftsmanship to justify a higher rank.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Thornblade"
+      ]
+    },
+    {
+      "Name": "Umaril's Sword",
+      "Tier": 4,
+      "Material": "Elven",
+      "Records": [
+        "000F20:Knights.esp",
+        "000F21:Knights.esp",
+        "000F22:Knights.esp",
+        "000F23:Knights.esp",
+        "000F24:Knights.esp",
+        "000F25:Knights.esp",
+        "000F26:Knights.esp",
+        "000F27:Knights.esp"
+      ],
+      "References": [
+        "000F23:Knights.esp",
+        "000F27:Knights.esp"
+      ],
+      "Preserved": false,
+      "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Knights_of_the_Nine_Items"
+      ]
+    },
+    {
+      "Name": "Umbra",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "026B22:Oblivion.esm"
+      ],
+      "References": [
+        "026B22:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A powerful sword tied to the Clavicus Vile quest and identified as an artifact, supporting a legendary-artifact tier. The supplied entry does not establish exceptional physical craftsmanship beyond the Daedric baseline.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Boots",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A307:Oblivion.esm",
+        "00A30D:Oblivion.esm"
+      ],
+      "References": [
+        "00A30D:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the boots mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Cuirass",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A308:Oblivion.esm",
+        "00A30E:Oblivion.esm"
+      ],
+      "References": [
+        "00A30E:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the cuirass mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Gauntlets",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A309:Oblivion.esm",
+        "00A30F:Oblivion.esm"
+      ],
+      "References": [
+        "00A30F:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the gauntlets mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Greaves",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A30A:Oblivion.esm",
+        "00A310:Oblivion.esm"
+      ],
+      "References": [
+        "00A310:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the greaves mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Helmet",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A30B:Oblivion.esm",
+        "00A311:Oblivion.esm"
+      ],
+      "References": [
+        "00A311:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the helmet mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Umbra's Ebony Shield",
+      "Tier": 6,
+      "Material": "Ebony",
+      "Records": [
+        "00A30C:Oblivion.esm",
+        "00A312:Oblivion.esm"
+      ],
+      "References": [
+        "00A312:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the shield mythic.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Umbra_(person)",
+        "https://en.uesp.net/wiki/Oblivion:Armor"
+      ]
+    },
+    {
+      "Name": "Volendrung",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "027108:Oblivion.esm",
+        "09DB4F:Oblivion.esm"
+      ],
+      "References": [
+        "027108:Oblivion.esm",
+        "09DB4F:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A powerful, gigantic Dwemer warhammer with a long historical legacy and distinctive artifact status; exceptional physical craftsmanship is not specifically established.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Volendrung"
+      ]
+    },
+    {
+      "Name": "Wabbajack",
+      "Tier": 8,
+      "Material": "Daedric",
+      "Records": [
+        "0228F0:Oblivion.esm"
+      ],
+      "References": [
+        "0228F0:Oblivion.esm"
+      ],
+      "Preserved": true,
+      "Reason": "A legendary Daedric artifact with a distinctive, unpredictable creature-transformation effect. Its value is chiefly utility rather than exceptional physical craftsmanship or reliable combat power.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Wabbajack"
+      ]
+    },
+    {
+      "Name": "Weatherward Circlet",
+      "Tier": 3,
+      "Material": "Silver",
+      "Records": [
+        "06BD71:Oblivion.esm",
+        "06BD73:Oblivion.esm",
+        "06BD74:Oblivion.esm",
+        "06BD75:Oblivion.esm",
+        "18A88D:Oblivion.esm"
+      ],
+      "References": [
+        "06BD75:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named ring given by Thoronir for completing Unfriendly Competition. Its verified ordinary quest-reward provenance supports a moderate rank; the supplied entry does not establish exceptional craftsmanship or a distinctive ability.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Weatherward_Circlet"
+      ]
+    },
+    {
+      "Name": "Witsplinter",
+      "Tier": 3,
+      "Material": "Elven",
+      "Records": [
+        "06B1B9:Oblivion.esm",
+        "06B1C0:Oblivion.esm",
+        "06B1C1:Oblivion.esm",
+        "06B1C2:Oblivion.esm",
+        "06B1C3:Oblivion.esm",
+        "06B1C4:Oblivion.esm"
+      ],
+      "References": [
+        "06B1C4:Oblivion.esm"
+      ],
+      "Preserved": false,
+      "Reason": "A named dagger with distinctive markings and handle details, but the supplied entry offers no lore-supported exceptional abilities or craftsmanship beyond its Elven appearance.",
+      "Sources": [
+        "https://en.uesp.net/wiki/Oblivion:Witsplinter"
+      ]
+    }
+  ],
+  "NonEquipment": [
+    {
+      "FormKey": "000193:Oblivion.esm",
+      "Name": "Azura's Star"
+    },
+    {
+      "FormKey": "0228F1:Oblivion.esm",
+      "Name": "Oghma Infinium"
+    },
+    {
+      "FormKey": "00000B:Oblivion.esm",
+      "Name": "Skeleton Key"
+    },
+    {
+      "FormKey": "043F75:Oblivion.esm",
+      "Name": "Wabbajack"
+    }
+  ]
+}

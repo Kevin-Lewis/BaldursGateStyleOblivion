@@ -21,9 +21,11 @@ public sealed class ArtifactRule
     public string Material { get; set; } = "Daedric";
     public string? Class { get; set; }
     public bool NormalizePhysical { get; set; } = true;
-    public double PhysicalPower { get; set; } = 1.15;
-    public double EnchantmentPower { get; set; } = 1.4;
+    public bool BalanceScriptedEquipment { get; set; }
+    public double PhysicalPower { get; set; } = 1;
+    public double EnchantmentPower { get; set; } = 1;
     public int ChargedHits { get; set; } = 60;
+    public uint? ChargeCapacity { get; set; }
     public double? Damage { get; set; }
     public double? Armor { get; set; }
     public double? Weight { get; set; }
@@ -32,6 +34,7 @@ public sealed class ArtifactRule
     public uint? Durability { get; set; }
     public uint? Value { get; set; }
     public EnhancementEffect[]? Effects { get; set; }
+    public string[] Sources { get; set; } = [];
     public string Reason { get; set; } = "Retain native effect identities; exceptional physical equipment and bounded enchantment.";
 }
 public sealed class EnchantmentSettings
@@ -40,7 +43,7 @@ public sealed class EnchantmentSettings
     public bool RestrictCustomEnchanting { get; set; } = true;
     public string[] ExcludedCustomEffects { get; set; } = ["WKMA","WKFI","WKFR","WKSH","WKPO","DRHE","PARA","CHML","REDG","RFLC","SABS","ABSP"];
     public Dictionary<string,double> CustomConstantCaps { get; set; } = new(){["FOAT"]=4,["FOSK"]=4,["FOSP"]=15,["FOHE"]=15,["SHLD"]=5,["FISH"]=5,["FRSH"]=5,["LISH"]=5,["RSMA"]=6,["RSFI"]=8,["RSFR"]=8,["RSSH"]=8};
-    public Dictionary<string,double> SlotWeights { get; set; } = new(){["UpperBody"]=1,["LowerBody"]=.7,["Head"]=.6,["Hand"]=.4,["Foot"]=.4,["Shield"]=.8,["LeftRing"]=.6,["RightRing"]=.6,["Amulet"]=.8};
+    public Dictionary<string,double> SlotWeights { get; set; } = new(){["UpperBody"]=1,["LowerBody"]=.7,["Head"]=.6,["Hair"]=.6,["Hand"]=.4,["Foot"]=.4,["Shield"]=.8,["LeftRing"]=.6,["RightRing"]=.6,["Amulet"]=.8};
     public EffectBudget[] Tiers { get; set; } = [];
     public double SigilArmorMultiplier { get; set; } = 1.25;
     public double[] StaffDamage { get; set; } = [12,20,20,36,62,100,100,100,145,200,280];
@@ -96,7 +99,7 @@ public static class EnhancementConfiguration
             foreach(var x in e.CustomConstantCaps)Range(x.Value,0,80,"Custom constant cap");foreach(var x in e.SlotWeights)Range(x.Value,.1,2,"Slot weight");foreach(var x in e.EquipmentChances)Range(x.Value,0,100,"Equipment chance");foreach(var x in e.ItemTiers)Range(x.Value,0,10,"Item tier");
             foreach(var pair in e.Artifacts)
             {
-                var a=pair.Value??throw new ArgumentException("Artifact rule missing.");Range(a.Tier,0,10,"Artifact tier");Range(a.PhysicalPower,.1,5,"Artifact physical power");Range(a.EnchantmentPower,.1,3,"Artifact enchantment power");Range(a.ChargedHits,1,1000,"Artifact charged hits");
+                var a=pair.Value??throw new ArgumentException("Artifact rule missing.");Range(a.Tier,0,10,"Artifact tier");Range(a.PhysicalPower,.1,1.15,"Artifact physical power");Range(a.EnchantmentPower,.1,3,"Artifact enchantment power");Range(a.ChargedHits,1,1000,"Artifact charged hits");if(a.ChargeCapacity.HasValue)Range(a.ChargeCapacity.Value,100,65535,"Artifact charge capacity");
                 foreach(var v in new[]{a.Damage,a.Armor,a.Weight,a.Speed,a.Reach})if(v.HasValue)Range(v.Value,0,655,"Artifact physical value");if(a.Armor>85)throw new ArgumentException("Artifact armor must be <=85.");
                 if(a.Effects is not null)foreach(var fx in a.Effects){if(fx is null||string.IsNullOrWhiteSpace(fx.Code))throw new ArgumentException("Artifact effect missing.");Range(fx.Magnitude,0,1000,"Effect magnitude");Range(fx.Duration,0,300,"Effect duration");}
             }

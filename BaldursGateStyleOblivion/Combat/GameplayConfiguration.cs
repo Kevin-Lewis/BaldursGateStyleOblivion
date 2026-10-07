@@ -70,7 +70,7 @@ public sealed class GameplaySettings
     public bool BalanceActors { get; set; }
     public bool BalanceGameSettings { get; set; }
     public PlayerProgression PlayerProgression { get; set; } = new();
-    public double RareWeaponGrowth { get; set; } = 1.5;
+    public double RareWeaponGrowth { get; set; } = 1;
     public Dictionary<string, WeaponBaseline> WeaponBaselines { get; set; } = new();
     public Dictionary<string, double> ArmorSlots { get; set; } = new();
     public Dictionary<int, ActorTierStats> ActorTiers { get; set; } = new();

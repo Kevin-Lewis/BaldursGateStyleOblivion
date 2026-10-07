@@ -16,7 +16,7 @@ internal static class MagicEditor
         JsonElement? Report(string suffix)
         {
             var files=Directory.GetFiles(reports,"*."+suffix+".json");if(files.Length!=1)return null;
-            using var document=JsonDocument.Parse(File.ReadAllText(files[0]));return document.RootElement.Clone();
+            using var document=JsonDocument.Parse(File.ReadAllText(files[0]));return suffix=="physical-combat"?CreationEditor.PatchCatalog(document.RootElement.Clone(),Path.GetDirectoryName(config)!,reports):document.RootElement.Clone();
         }
         string Revision(string text)=>Convert.ToHexString(SHA256.HashData(System.Text.Encoding.UTF8.GetBytes(text)));
         object Data()

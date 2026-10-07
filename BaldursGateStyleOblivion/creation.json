@@ -1,0 +1,188 @@
+{
+  "Enabled": true,
+  "Races": {},
+  "Classes": {},
+  "Spells": {
+    "047AD2:Oblivion.esm": {
+      "Reason": "Modest defensive mage reserve.",
+      "Effects": {
+        "0": {
+          "Code": "FOSP",
+          "ActorValue": "Magicka",
+          "Magnitude": 25
+        }
+      }
+    },
+    "047AD1:Oblivion.esm": {
+      "Reason": "Reduce broad passive protection and immunity stacking.",
+      "Effects": {
+        "0": {
+          "Code": "RSMA",
+          "ActorValue": "ResistMagic",
+          "Magnitude": 25
+        }
+      }
+    },
+    "047ADC:Oblivion.esm": {
+      "Reason": "Larger reserve with existing elemental vulnerabilities.",
+      "Effects": {
+        "0": {
+          "Code": "FOSP",
+          "ActorValue": "Magicka",
+          "Magnitude": 60
+        }
+      }
+    },
+    "022A31:Oblivion.esm": {
+      "Reason": "Safe modest casting reserve.",
+      "Effects": {
+        "0": {
+          "Code": "FOSP",
+          "ActorValue": "Magicka",
+          "Magnitude": 25
+        }
+      }
+    },
+    "022A3E:Oblivion.esm": {
+      "Reason": "Larger reserve with a manageable magic vulnerability.",
+      "Effects": {
+        "0": {
+          "Code": "FOSP",
+          "ActorValue": "Magicka",
+          "Magnitude": 50
+        },
+        "1": {
+          "Code": "WKMA",
+          "ActorValue": "ResistMagic",
+          "Magnitude": 25
+        }
+      }
+    },
+    "022A3D:Oblivion.esm": {
+      "Reason": "Retain stunted regeneration and absorption identity without oversized reserve/defense.",
+      "Effects": {
+        "0": {
+          "Code": "SABS",
+          "ActorValue": "SpellAbsorption",
+          "Magnitude": 25
+        },
+        "2": {
+          "Code": "FOSP",
+          "ActorValue": "Magicka",
+          "Magnitude": 75
+        }
+      }
+    },
+    "047AD0:Oblivion.esm": {
+      "Reason": "Strong short defensive daily power.",
+      "Effects": {
+        "0": {
+          "Code": "SHLD",
+          "ActorValue": "DefendBonus",
+          "Magnitude": 30,
+          "Duration": 30
+        }
+      }
+    },
+    "047AE3:Oblivion.esm": {
+      "Reason": "Brief defensive burst.",
+      "Effects": {
+        "0": {
+          "Code": "SHLD",
+          "ActorValue": "Health",
+          "Magnitude": 25,
+          "Duration": 30
+        }
+      }
+    },
+    "047AE7:Oblivion.esm": {
+      "Reason": "Short broad athletic combat burst rather than massive attribute inflation.",
+      "Effects": {
+        "0": {
+          "Code": "FOAT",
+          "ActorValue": "Agility",
+          "Magnitude": 15,
+          "Duration": 30
+        },
+        "1": {
+          "Code": "FOAT",
+          "ActorValue": "Strength",
+          "Magnitude": 15,
+          "Duration": 30
+        },
+        "2": {
+          "Code": "FOAT",
+          "ActorValue": "Speed",
+          "Magnitude": 15,
+          "Duration": 30
+        },
+        "3": {
+          "Code": "FOAT",
+          "ActorValue": "Endurance",
+          "Magnitude": 15,
+          "Duration": 30
+        },
+        "4": {
+          "Code": "FOHE",
+          "ActorValue": "Health",
+          "Magnitude": 20,
+          "Duration": 30
+        }
+      }
+    },
+    "047AD3:Oblivion.esm": {
+      "Reason": "Offensive reserve burst with reduced agility penalty.",
+      "Effects": {
+        "0": {
+          "Code": "FOHE",
+          "ActorValue": "Health",
+          "Magnitude": 20,
+          "Duration": 30
+        },
+        "1": {
+          "Code": "FOFA",
+          "ActorValue": "Fatigue",
+          "Magnitude": 60,
+          "Duration": 30
+        },
+        "2": {
+          "Code": "DRAT",
+          "ActorValue": "Agility",
+          "Magnitude": 30,
+          "Duration": 30
+        },
+        "3": {
+          "Code": "FOAT",
+          "ActorValue": "Strength",
+          "Magnitude": 20,
+          "Duration": 30
+        }
+      }
+    },
+    "022A43:Oblivion.esm": {
+      "Reason": "Useful brief control with a fatigue cost.",
+      "Effects": {
+        "0": {
+          "Code": "PARA",
+          "ActorValue": "Paralyze",
+          "Duration": 4
+        },
+        "1": {
+          "Code": "DGFA",
+          "ActorValue": "Fatigue",
+          "Magnitude": 60
+        }
+      }
+    },
+    "022A3A:Oblivion.esm": {
+      "Reason": "Meaningful daily recovery within the compressed health scale.",
+      "Effects": {
+        "0": {
+          "Code": "REHE",
+          "ActorValue": "Health",
+          "Magnitude": 100
+        }
+      }
+    }
+  }
+}

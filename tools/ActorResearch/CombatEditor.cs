@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using BaldursGateStyleOblivion.Combat;
+using BaldursGateStyleOblivion.Enhancements;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 
@@ -21,7 +22,7 @@ internal static class CombatEditor
         {
             var files = Directory.GetFiles(reports, "*.physical-combat.json");
             if (files.Length != 1) throw new InvalidDataException("Generate a physical combat report with EnablePhysicalCombatAnalysis enabled. Select a report folder containing one run.");
-            using var document = JsonDocument.Parse(File.ReadAllText(files[0])); return document.RootElement.Clone();
+            using var document = JsonDocument.Parse(File.ReadAllText(files[0])); return CreationEditor.PatchCatalog(document.RootElement.Clone(),Path.GetDirectoryName(config)!,reports);
         }
         string Revision(string text) => Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(text)));
         object Data()
@@ -81,6 +82,9 @@ internal static class CombatEditor
                 CombatConfiguration.Validate(request.Settings);
                 var catalog = Catalog();
                 var items = catalog.GetProperty("Items").Deserialize<PhysicalItem[]>(CombatConfiguration.Options)!.ToDictionary(i => i.FormKey);
+                var enchantments=EnhancementConfiguration.Load<EnchantmentSettings>(Path.Combine(Path.GetDirectoryName(config)!,"enchantments.json"));
+                var proposedItems=items.ToDictionary(p=>p.Key,p=>enchantments.Artifacts.TryGetValue(p.Key,out var rule)&&!rule.Preserve&&!enchantments.PreserveItems.Contains(p.Key)
+                    ?EnhancementBalance.ArtifactPhysical(p.Value,request.Settings,rule) with{Protected=true,PreservationReason="Protected unique or artifact"}:p.Value);
                 var gameSettings = (catalog.TryGetProperty("OriginalGameSettings",out var originals) ? originals : catalog.GetProperty("GameSettings")).Deserialize<Dictionary<string, double>>(CombatConfiguration.Options)!;
                 // A scenario references catalog actors only for provenance; observed stats remain explicit inputs.
                 foreach (var fighter in new[] { request.Scenario.Player, request.Scenario.Enemy })
@@ -89,8 +93,8 @@ internal static class CombatEditor
                 return Results.Json(new
                 {
                     Current = CombatAnalysis.Run(request.Scenario, request.Settings, items, gameSettings, false),
-                    Proposed = CombatAnalysis.Run(request.Scenario, request.Settings, items, gameSettings, true),
-                    Items = items.Values.Select(source => new { Before = source, After = PhysicalBalance.Propose(source, request.Settings) }),
+                    Proposed = CombatAnalysis.Run(request.Scenario, request.Settings, proposedItems, gameSettings, true),
+                    Items = items.Values.Select(source => new { Before = source, After = PhysicalBalance.Propose(proposedItems[source.FormKey], request.Settings) }),
                     CreatureReferences = CreatureAttacks.References(request.Settings,catalog.GetProperty("CharacterCreation").Deserialize<CreationCatalog>()!,BaldursGateStyleOblivion.Classification.ActorConfiguration.Load(actorConfig).LevelMapping),
                     Curves = Enumerable.Range(0, 11).Select(tier => new { Tier = tier, Offense = request.Settings.OffenseTarget.At(tier), Health = request.Settings.HealthTarget.At(tier) })
                 }, CombatConfiguration.Options);

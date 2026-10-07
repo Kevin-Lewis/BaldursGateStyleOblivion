@@ -39,7 +39,7 @@ internal static class EnhancementEditor
                 if(pair.Value.Class is not null&&!combat.Gameplay.WeaponBaselines.ContainsKey(pair.Value.Class))throw new ArgumentException("Unknown artifact weapon class.");
                 if(pair.Value.NormalizePhysical&&!combat.Materials.ContainsKey(pair.Value.Material))throw new ArgumentException("Unknown artifact comparison material.");
                 if(pair.Value.Effects is not {} effects)continue;var before=row.GetProperty("Before").Deserialize<EnhancementEffect[]>()!;
-                if(before.Length!=effects.Length||before.Zip(effects).Any(p=>p.First.Code!=p.Second.Code||p.First.ActorValue!=p.Second.ActorValue||p.First.Scripted))throw new ArgumentException("Preserve native artifact effect identities and scripts.");
+                if(before.Length!=effects.Length||before.Zip(effects).Any(p=>p.First.Code!=p.Second.Code||p.First.ActorValue!=p.Second.ActorValue||p.First.Scripted&&p.First!=p.Second))throw new ArgumentException("Preserve native artifact effect identities and scripts.");
             }
         }
         app.MapPost("/api/enhancements/config",(EnhancementSave request)=>Handle(()=>
@@ -54,12 +54,12 @@ internal static class EnhancementEditor
             var items=report.GetProperty("Items").EnumerateArray().Select(row=>
             {
                 var key=row.GetProperty("FormKey").GetString()!;request.Enchantments.Artifacts.TryGetValue(key,out var rule);var original=row.GetProperty("Before").Deserialize<EnhancementEffect[]>()!;var registered=row.GetProperty("Artifact").GetBoolean();var scripted=row.GetProperty("Scripted").GetBoolean();
-                var preserve=rule?.Preserve==true||request.Enchantments.PreserveItems.Contains(key)||registered&&rule is null||scripted&&rule is null||original.Any(e=>e.Scripted);
+                var preserve=rule?.Preserve==true||request.Enchantments.PreserveItems.Contains(key)||registered&&rule is null||scripted&&rule is null||original.Any(e=>e.Scripted)&&rule?.BalanceScriptedEquipment!=true;
                 var tier=rule?.Tier??request.Enchantments.ItemTiers.GetValueOrDefault(key,row.GetProperty("Tier").GetInt32());var constant=row.GetProperty("Activation").GetString()=="Apparel";
-                var effects=preserve?original:EnhancementBalance.Enchant(rule?.Effects??original,request.Enchantments,tier,row.GetProperty("Slots").GetString()!,constant,rule?.EnchantmentPower??1,row.GetProperty("Activation").GetString()=="Staff");
+                var effects=preserve?original:EnhancementBalance.Enchant(rule?.Effects??original,request.Enchantments,tier,row.GetProperty("Slots").GetString()!,constant,rule?.EnchantmentPower??1,row.GetProperty("Activation").GetString()=="Staff",rule?.BalanceScriptedEquipment==true);
                 var physical=!row.TryGetProperty("BeforePhysical",out var physicalElement)||physicalElement.ValueKind==JsonValueKind.Null?null:physicalElement.Deserialize<PhysicalItem>();
                 if(!preserve&&rule is not null&&physical is not null)physical=EnhancementBalance.ArtifactPhysical(physical,combat,rule);
-                var desired=rule?.ChargedHits??request.Enchantments.ChargedHits;var capacity=row.TryGetProperty("Charge",out var charge)?charge.GetUInt32():700u;
+                var desired=rule?.ChargedHits??request.Enchantments.ChargedHits;var capacity=rule?.ChargeCapacity??(row.TryGetProperty("Charge",out var charge)?charge.GetUInt32():700u);
                 var cost=preserve&&row.TryGetProperty("BeforeCost",out var beforeCost)?beforeCost.GetUInt32():(uint)Math.Max(1,Math.Ceiling(Math.Max(100u,capacity)/(double)desired));
                 return new{FormKey=key,Effects=effects,Physical=physical,Tier=tier,Preserved=preserve,Damage=EnhancementBalance.Damage(effects),ChargedHits=constant||row.GetProperty("Activation").GetString()=="None"?0:(int)(Math.Max(100u,capacity)/Math.Max(1u,cost)),Warnings=EnhancementBalance.Warnings(effects,constant)};
             }).ToArray();

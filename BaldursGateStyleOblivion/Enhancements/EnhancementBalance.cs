@@ -7,6 +7,7 @@ public static class EnhancementBalance
     {
         "FIDG" or "FRDG" or "SHDG" or "DGHE"=>"Damage",
         "ABHE"=>"Absorb health",
+        "DIAR" or "DIWE"=>"Equipment damage",
         "DGAT" or "DGSK"=>"Permanent stat damage",
         "REHE" or "RESP" or "REFA"=>"Recovery",
         "FOAT" or "FOSK" or "DRAT" or "ABAT" or "DRSK" or "ABSK"=>"Bonus",
@@ -30,14 +31,20 @@ public static class EnhancementBalance
         var duration=effect.Duration<=1?effect.Duration:Math.Max(1,Math.Floor(cap/magnitude));
         return effect with{Magnitude=magnitude,Duration=duration};
     }
-    public static EnhancementEffect[] Enchant(EnhancementEffect[] source,EnchantmentSettings settings,int tier,string slots,bool constant,double power=1,bool staff=false)
+    public static EnhancementEffect[] Enchant(EnhancementEffect[] source,EnchantmentSettings settings,int tier,string slots,bool constant,double power=1,bool staff=false,bool balanceScripted=false)
     {
-        if(source.Any(e=>e.Scripted))return source;
+        if(source.Any(e=>e.Scripted))
+        {
+            if(!balanceScripted)return source;
+            var normalized=Enchant(source.Where(e=>!e.Scripted).ToArray(),settings,tier,slots,constant,power,staff);var index=0;
+            return source.Select(e=>e.Scripted?e:normalized[index++]).ToArray();
+        }
         var budget=settings.Tiers[tier];var damageBudget=staff?settings.StaffDamage[tier]:budget.Damage;var weight=constant?Math.Min(1.5,slots.Split(',',StringSplitOptions.TrimEntries).Where(s=>s!="RightRing"||!slots.Contains("LeftRing",StringComparison.Ordinal)).Sum(s=>settings.SlotWeights.GetValueOrDefault(s,0))):1;
         if(weight==0)weight=1;
         double Cap(EnhancementEffect e)=>Family(e.Code) switch
         {
             "Damage"=>damageBudget,"Absorb health"=>damageBudget*.5,
+            "Equipment damage"=>damageBudget*3,
             "Bonus" or "Permanent stat damage"=>budget.Bonus*weight,"Resource"=>budget.Resource*weight,
             "Shield" or "Resistance"=>budget.Resistance*weight,
             "Reflection / absorption"=>budget.Resistance*.5*weight,
@@ -124,7 +131,7 @@ public static class EnhancementBalance
         {
             var itemClass=rule.Class??source.Class;if(rule.Class is null&&source.Kind=="Weapon"&&!combat.Gameplay.WeaponBaselines.ContainsKey(itemClass))itemClass=source.NativeType switch{"BladeOneHand"=>"Longsword","BladeTwoHand"=>"Claymore","BluntOneHand"=>"Mace","BluntTwoHand"=>"Warhammer",_=>itemClass};
             result=PhysicalBalance.Propose(source with{Material=rule.Material,Class=itemClass,Protected=false},combat);
-            result=result with{Damage=Math.Round(result.Damage*combat.Gameplay.WeaponPower(rule.Tier)*rule.PhysicalPower),Armor=Math.Min(85,result.Armor*rule.PhysicalPower),Speed=source.Speed,Reach=source.Reach};
+            result=result with{Damage=Math.Round(result.Damage*rule.PhysicalPower),Armor=Math.Min(85,result.Armor*rule.PhysicalPower),Speed=source.Speed,Reach=source.Reach};
         }
         return result with{Damage=rule.Damage??result.Damage,Armor=rule.Armor??result.Armor,Weight=rule.Weight??result.Weight,Speed=rule.Speed??result.Speed,Reach=rule.Reach??result.Reach,Durability=rule.Durability??result.Durability,Value=rule.Value??result.Value};
     }

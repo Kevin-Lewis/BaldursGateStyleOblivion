@@ -106,6 +106,7 @@ internal static class GameplayCombatModule
         FormKey Weapon(FormKey original,int tier,HashSet<FormKey> path,double speciesDamage=1)
         {
             if(weapons.TryGetValue((original,tier,speciesDamage),out var cached))return cached;
+            if(gameplay.WeaponPower(tier)*speciesDamage==1)return original;
             if(!path.Add(original)||path.Count>32)return original;
             var result=original;
             if(records.GetValueOrDefault(original) is IWeaponGetter source && source.Data is not null && source.Data.Damage > 0 && source.Data.Type.ToString() != "Staff")

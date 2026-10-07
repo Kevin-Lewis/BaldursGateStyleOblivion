@@ -8,9 +8,9 @@ public sealed class PlayerProgression
     public double SecondarySkillAtMastery { get; set; } = 55;
     public double UntrainedSkillPerLevel { get; set; } = .5;
 }
-public sealed record CreationRace(string Key, string Name, Dictionary<string,double> Male, Dictionary<string,double> Female, Dictionary<string,double> Skills, Dictionary<string,double> Bonuses);
+public sealed record CreationRace(string Key, string Name, Dictionary<string,double> Male, Dictionary<string,double> Female, Dictionary<string,double> Skills, Dictionary<string,double> Bonuses, BaldursGateStyleOblivion.Creation.CreationAbility[]? Abilities=null);
 public sealed record CreationClass(string Name, string Specialization, string[] Attributes, string[] Skills);
-public sealed record CreationSign(string Key, string Name, Dictionary<string,double> Bonuses);
+public sealed record CreationSign(string Key, string Name, Dictionary<string,double> Bonuses, BaldursGateStyleOblivion.Creation.CreationAbility[]? Abilities=null);
 public sealed record CreationCatalog(CreationRace[] Races, CreationClass[] Classes, CreationSign[] Birthsigns, Dictionary<string,double> Settings);
 public sealed record PlayerBuildResult(Dictionary<string,double> Stats, string[] Notes);
 
@@ -88,6 +88,7 @@ public static class PlayerBuilds
         var health=stats["Endurance"]*GS("fPCBaseHealthMult",2)*GS("fStatsHealthStartMult",1);
         health+=levelHealth;
         stats["Health"]=Math.Round(health+race.Bonuses.GetValueOrDefault("Health")+(sign?.Bonuses.GetValueOrDefault("Health")??0),2);
+        foreach(var key in race.Bonuses.Keys.Concat(sign?.Bonuses.Keys.AsEnumerable()??[]).Distinct().Where(k=>!stats.ContainsKey(k)))stats[key]=race.Bonuses.GetValueOrDefault(key)+(sign?.Bonuses.GetValueOrDefault(key)??0);
         stats["Fatigue"]=stats["Strength"]+stats["Endurance"]+stats["Agility"]+stats["Willpower"];
         stats["FatigueRegen"]=GS("fFatigueReturnBase",10)+stats["Endurance"]*GS("fFatigueReturnMult",0);
         return new(stats,["Level 1: loaded race, sex, class bonuses and passive attribute/health abilities.",$"Higher levels: two fixed attributes and the third selection optionally alternates; capped choices redirect to supporting attributes. Native +{GS("iLevelUp01Mult",2)} requires a related skill gain; untouched attributes and Luck stay +1. Skill mastery is estimated at {progression.MasteryLevel} for the primary and {progression.FocusedMasteryLevel} for the other heavily focused skills. Remaining major-skill growth fits the native leveling budget.","Active powers, equipment bonuses and runtime effects are not applied."]);

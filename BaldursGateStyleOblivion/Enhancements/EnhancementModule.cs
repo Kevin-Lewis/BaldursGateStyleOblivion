@@ -111,12 +111,12 @@ internal static class EnhancementModule
             var before=source is null?[]:Read(source.Effects,definitions);var constant=source?.Data?.Type==Enchantment.EnchantmentType.Apparel;
             var tier=rule?.Tier??enchant.ItemTiers.GetValueOrDefault(key,Tier(record.EditorID,physical?.Material??PhysicalCombatModule.Material(record.EditorID)));
             if(source?.Data?.Type==Enchantment.EnchantmentType.Staff&&rule is null&&!enchant.ItemTiers.ContainsKey(key)){var damage=EnhancementBalance.Damage(before);tier=Array.FindIndex(enchant.StaffDamage,v=>v>=damage);if(tier<0)tier=10;}
-            var preserve=(record.MajorRecordFlagsRaw&(int)OblivionMajorRecord.OblivionMajorRecordFlag.QuestItemPersistentReference)!=0&&rule is null||rule?.Preserve==true||enchant.PreserveItems.Contains(key)||registered&&rule is null||scripted&&rule is null||before.Any(e=>e.Scripted)||record.EditorID?.StartsWith("Test",StringComparison.OrdinalIgnoreCase)==true;
-            var after=preserve?before:EnhancementBalance.Enchant(before,enchant,tier,slots,constant,rule?.EnchantmentPower??1,source?.Data?.Type==Enchantment.EnchantmentType.Staff);
+            var preserve=(record.MajorRecordFlagsRaw&(int)OblivionMajorRecord.OblivionMajorRecordFlag.QuestItemPersistentReference)!=0&&rule is null||rule?.Preserve==true||enchant.PreserveItems.Contains(key)||registered&&rule is null||scripted&&rule is null||before.Any(e=>e.Scripted)&&rule?.BalanceScriptedEquipment!=true||record.EditorID?.StartsWith("Test",StringComparison.OrdinalIgnoreCase)==true;
+            var after=preserve?before:EnhancementBalance.Enchant(before,enchant,tier,slots,constant,rule?.EnchantmentPower??1,source?.Data?.Type==Enchantment.EnchantmentType.Staff,rule?.BalanceScriptedEquipment==true);
             if(rule?.Effects is {} explicitEffects)
             {
-                if(before.Length!=explicitEffects.Length||before.Zip(explicitEffects).Any(p=>p.First.Code!=p.Second.Code||p.First.ActorValue!=p.Second.ActorValue||p.First.Scripted))throw new InvalidDataException("Artifact effect identities must remain native: "+key);
-                after=preserve?before:EnhancementBalance.Enchant(explicitEffects,enchant,tier,slots,constant,rule.EnchantmentPower,source?.Data?.Type==Enchantment.EnchantmentType.Staff);
+                if(before.Length!=explicitEffects.Length||before.Zip(explicitEffects).Any(p=>p.First.Code!=p.Second.Code||p.First.ActorValue!=p.Second.ActorValue||p.First.Scripted&&p.First!=p.Second))throw new InvalidDataException("Artifact effect identities must remain native: "+key);
+                after=preserve?before:EnhancementBalance.Enchant(explicitEffects,enchant,tier,slots,constant,rule.EnchantmentPower,source?.Data?.Type==Enchantment.EnchantmentType.Staff,rule?.BalanceScriptedEquipment==true);
             }
             var proposedPhysical=physical;
             if(!preserve&&rule is not null&&physical is not null)proposedPhysical=EnhancementBalance.ArtifactPhysical(physical,combat,rule);
@@ -127,7 +127,7 @@ internal static class EnhancementModule
             var copy=record.DeepCopy();
             if(source?.Data is not null)
             {
-                var capacity=record is IWeaponGetter chargedWeapon?Math.Max(100u,chargedWeapon.EnchantmentPoints??700u):700u;
+                var capacity=rule?.ChargeCapacity??(record is IWeaponGetter chargedWeapon?Math.Max(100u,chargedWeapon.EnchantmentPoints??700u):700u);
                 var link=CloneEnchantment(source,key,after,hits,capacity);
                 switch(copy){case Weapon w:w.Enchantment.SetTo(link);w.EnchantmentPoints=(ushort)capacity;break;case Armor a:a.Enchantment.SetTo(link);break;case Clothing c:c.Enchantment.SetTo(link);break;case Ammunition a:a.Enchantment.SetTo(link);break;}
             }

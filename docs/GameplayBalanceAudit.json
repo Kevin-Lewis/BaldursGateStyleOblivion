@@ -1,0 +1,213 @@
+{
+  "Model": "gpt-6-luna",
+  "Families": 111,
+  "EquipmentRecords": 556,
+  "Preserved": [
+    "Amulet of Kings",
+    "Boots of Springheel Jak",
+    "Sanguine Rose",
+    "Skull of Corruption",
+    "Staff of Sheogorath",
+    "Staff of Worms",
+    "Wabbajack"
+  ],
+  "Comparisons": [
+    {
+      "Name": "Chillrend",
+      "Class": "Shortsword",
+      "Tier": 6,
+      "OldDamage": 45,
+      "Damage": 18,
+      "EnchantmentDamage": 15,
+      "Effects": [
+        {
+          "Code": "FRDG",
+          "ActorValue": "Health",
+          "Magnitude": 15,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "WKFR",
+          "ActorValue": "ResistFrost",
+          "Magnitude": 16,
+          "Duration": 20,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Nerveshatter",
+      "Class": "Warhammer",
+      "Tier": 7,
+      "OldDamage": 168,
+      "Damage": 68,
+      "EnchantmentDamage": 20,
+      "Effects": [
+        {
+          "Code": "WKSH",
+          "ActorValue": "ResistShock",
+          "Magnitude": 18,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "SHDG",
+          "ActorValue": "Health",
+          "Magnitude": 20,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Shadowrend",
+      "Class": "Claymore",
+      "Tier": 8,
+      "OldDamage": 129,
+      "Damage": 52,
+      "EnchantmentDamage": 28,
+      "Effects": [
+        {
+          "Code": "DGHE",
+          "ActorValue": "Health",
+          "Magnitude": 28,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "WKMA",
+          "ActorValue": "ResistMagic",
+          "Magnitude": 15,
+          "Duration": 30,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Shadowrend",
+      "Class": "Battleaxe",
+      "Tier": 8,
+      "OldDamage": 168,
+      "Damage": 60,
+      "EnchantmentDamage": 28,
+      "Effects": [
+        {
+          "Code": "DGHE",
+          "ActorValue": "Health",
+          "Magnitude": 28,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "WKMA",
+          "ActorValue": "ResistMagic",
+          "Magnitude": 15,
+          "Duration": 30,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Goldbrand",
+      "Class": "Longsword",
+      "Tier": 8,
+      "OldDamage": 115,
+      "Damage": 31,
+      "EnchantmentDamage": 22,
+      "Effects": [
+        {
+          "Code": "FIDG",
+          "ActorValue": "Health",
+          "Magnitude": 22,
+          "Duration": 0,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Umbra",
+      "Class": "Longsword",
+      "Tier": 8,
+      "OldDamage": 77,
+      "Damage": 31,
+      "EnchantmentDamage": 0,
+      "Effects": [
+        {
+          "Code": "STRP",
+          "ActorValue": "Health",
+          "Magnitude": 0,
+          "Duration": 120,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Volendrung",
+      "Class": "Warhammer",
+      "Tier": 8,
+      "OldDamage": 168,
+      "Damage": 68,
+      "EnchantmentDamage": 0,
+      "Effects": [
+        {
+          "Code": "PARA",
+          "ActorValue": "Paralyze",
+          "Magnitude": 0,
+          "Duration": 3,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "DRHE",
+          "ActorValue": "Health",
+          "Magnitude": 5,
+          "Duration": 5,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    },
+    {
+      "Name": "Mace of the Crusader",
+      "Class": "Mace",
+      "Tier": 8,
+      "OldDamage": 145,
+      "Damage": 39,
+      "EnchantmentDamage": 28,
+      "Effects": [
+        {
+          "Code": "FIDG",
+          "ActorValue": "Health",
+          "Magnitude": 14,
+          "Duration": 2,
+          "Hostile": true,
+          "Scripted": false
+        },
+        {
+          "Code": "TURN",
+          "ActorValue": "Health",
+          "Magnitude": 68,
+          "Duration": 5,
+          "Hostile": true,
+          "Scripted": false
+        }
+      ]
+    }
+  ],
+  "MaximumAdjustedNPCHealth": 250,
+  "MaximumAdjustedCreatureAttack": 93,
+  "MaximumNonPreservedStaffDamage": 99,
+  "WeaknessAmplificationIncluded": false,
+  "NativeGameplayTested": false
+}

@@ -12,7 +12,7 @@
       "SecondarySkillAtMastery": 55,
       "UntrainedSkillPerLevel": 0.5
     },
-    "RareWeaponGrowth": 1.5,
+    "RareWeaponGrowth": 1,
     "WeaponBaselines": {
       "Dagger": {
         "Damage": 7,
