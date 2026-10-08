@@ -13,7 +13,7 @@
       "Name": "ArenaLeveledGoldBeatGrand",
       "SelectionLevel": 20,
       "Variant": null,
-      "Count": null,
+      "Count": 1000,
       "Preserve": false,
       "Fingerprint": "71E90F3740CE7A4237FC7F52CA543AB1947084F07244F86320A90455EE0C5943",
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
@@ -22,25 +22,25 @@
       "Name": "ArenaLeveledGoldChamp",
       "SelectionLevel": 15,
       "Variant": null,
-      "Count": null,
+      "Count": 750,
       "Preserve": false,
       "Fingerprint": "71E90F3740CE7A4237FC7F52CA543AB1947084F07244F86320A90455EE0C5943",
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "047C7F:Oblivion.esm": {
-      "Name": "ArenaLeveledGoldGrandRecur",
+      "Name": "The Arena \u2014 weekly Grand Champion monster matches",
       "SelectionLevel": 15,
       "Variant": null,
-      "Count": null,
+      "Count": 500,
       "Preserve": false,
       "Fingerprint": "71E90F3740CE7A4237FC7F52CA543AB1947084F07244F86320A90455EE0C5943",
-      "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
+      "Reason": "Weekly Grand Champion spectacle, unlocked after completing the Arena ladder. Fixed 740 gold per opponent: 740/1480/2220 for one/two/three. Champion status and weekly scheduling justify premium pay; existing dialogue counts and cooldown remain unchanged."
     },
     "047C65:Oblivion.esm": {
       "Name": "ArenaLeveledGoldReward",
       "SelectionLevel": 10,
       "Variant": null,
-      "Count": null,
+      "Count": 300,
       "Preserve": false,
       "Fingerprint": "71E90F3740CE7A4237FC7F52CA543AB1947084F07244F86320A90455EE0C5943",
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
@@ -163,7 +163,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "02FBC5:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -190,13 +190,13 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "123015:DLCOrrery.esp": {
-      "Name": "DLCOrreryGoldReward",
+      "Name": "Repairing the Orrery \u2014 recovered Dwarven components",
       "SelectionLevel": 10,
       "Variant": null,
-      "Count": null,
+      "Count": 1000,
       "Preserve": false,
       "Fingerprint": "8AAB3348727DCDD4C969DC4518C45B080092593982DA643AD0DECF2CCE8D2A33",
-      "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
+      "Reason": "Recover five stolen Dwarven components from bandit camps for Bothiel and the Arcane University. A one-time 1000-gold institutional recovery payment is appropriate for rare components, travel and multiple encounters; Orrery access and powers remain unchanged."
     },
     "07EB08:Oblivion.esm": {
       "Name": "Dark Seducer Armor",
@@ -217,7 +217,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "0347D1:Oblivion.esm": {
-      "Name": "DarkGoldBonus",
+      "Name": "Dark Brotherhood contracts \u2014 bonus gold",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -316,7 +316,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "002747:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Amulet",
+      "Name": "Forgemaster\u0027s Amulet",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -325,7 +325,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "002748:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Smock",
+      "Name": "Forgemaster\u0027s Smock",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -433,7 +433,7 @@
       "Reason": "Static Transcendent Sigil Stone pool: surviving a gate earns a strong reward at any player level; effect randomness remains."
     },
     "007E63:DLCVileLair.esp": {
-      "Name": "LairVileRewardsGoldLeveledList",
+      "Name": "Deepscorn Hollow \u2014 minion gold return",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -442,7 +442,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "011F2D:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -460,7 +460,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "06D6EC:Oblivion.esm": {
-      "Name": "MS04RewardGoldBountyLeveled",
+      "Name": "The Siren\u2019s Deception \u2014 gold reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -469,7 +469,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "06B1C6:Oblivion.esm": {
-      "Name": "MS10RewardGoldBountyLeveled",
+      "Name": "Corruption and Conscience \u2014 primary reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -478,7 +478,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "0715D0:Oblivion.esm": {
-      "Name": "MS10RewardGoldBountyLeveledB",
+      "Name": "Corruption and Conscience \u2014 alternate reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -487,7 +487,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "06B65A:Oblivion.esm": {
-      "Name": "MS13RewardGoldLeveled",
+      "Name": "The Wayward Knight \u2014 gold outcome",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -496,7 +496,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "09407E:Oblivion.esm": {
-      "Name": "MS16ARewardGoldLeveled",
+      "Name": "Legacy Lost \u2014 gold reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -505,7 +505,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "06B68F:Oblivion.esm": {
-      "Name": "MS29RewardGoldBountyLeveled",
+      "Name": "Unfriendly Competition \u2014 gold reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -514,7 +514,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "06B690:Oblivion.esm": {
-      "Name": "MS31RewardGoldLeveled",
+      "Name": "An Unexpected Voyage \u2014 gold reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -523,22 +523,22 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "007F8A:Oblivion.esm": {
-      "Name": "MS37RewardGoldLeveled",
+      "Name": "Tears of the Savior \u2014 Garridan\u2019s Tears",
       "SelectionLevel": 15,
       "Variant": null,
-      "Count": null,
+      "Count": 1600,
       "Preserve": false,
       "Fingerprint": "21B077103889F2244798FA99BB9B57F538EADCB1B6FBA0F43035752962A3D6B5",
-      "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
+      "Reason": "S\u2019drassa commissions rare magical crystals recovered from dangerous Frostfire Glade. Preserve a substantial one-time collector\u2019s premium: 1600 gold for the completed five-tear recovery, not 1600 per tear. Fixed payout independent of player level."
     },
     "0A3DF3:Oblivion.esm": {
-      "Name": "MS40GoldReward",
+      "Name": "Vampire Cure \u2014 Count Hassildor\u2019s reward",
       "SelectionLevel": 10,
       "Variant": null,
-      "Count": null,
+      "Count": 1000,
       "Preserve": false,
       "Fingerprint": "445D676E5130EA8770B0A01DCA897C1171086C8C33E85B385C848BEBACFB424F",
-      "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
+      "Reason": "Count Hassildor rewards the extensive cure quest for his wife, requiring five empty grand soul gems, ingredients and the defeat of Hindaril. A wealthy noble\u2019s personal commission merits a substantial one-time 1000-gold payment. Quest scripts and outcomes remain unchanged."
     },
     "07B7F9:Oblivion.esm": {
       "Name": "MS51RewardGemsBountyLeveled",
@@ -550,7 +550,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "07B7F8:Oblivion.esm": {
-      "Name": "MS51RewardGoldBountyLeveledBad",
+      "Name": "Canvas the Castle \u2014 mistaken accusation",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -559,7 +559,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "07B7F7:Oblivion.esm": {
-      "Name": "MS51RewardGoldBountyLeveledGood",
+      "Name": "Canvas the Castle \u2014 correct accusation",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -568,7 +568,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "07B7FA:Oblivion.esm": {
-      "Name": "MS51RewardGoldBountyLeveledLie",
+      "Name": "Canvas the Castle \u2014 protecting the thief",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -586,7 +586,7 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "035634:Oblivion.esm": {
-      "Name": "Mage's Staff of Charm",
+      "Name": "Mage\u0027s Staff of Charm",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -595,7 +595,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035639:Oblivion.esm": {
-      "Name": "Mage's Staff of Dispel",
+      "Name": "Mage\u0027s Staff of Dispel",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -604,7 +604,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035631:Oblivion.esm": {
-      "Name": "Mage's Staff of Fire",
+      "Name": "Mage\u0027s Staff of Fire",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -613,7 +613,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035632:Oblivion.esm": {
-      "Name": "Mage's Staff of Frost",
+      "Name": "Mage\u0027s Staff of Frost",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -622,7 +622,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035635:Oblivion.esm": {
-      "Name": "Mage's Staff of Paralysis",
+      "Name": "Mage\u0027s Staff of Paralysis",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -631,7 +631,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035633:Oblivion.esm": {
-      "Name": "Mage's Staff of Shock",
+      "Name": "Mage\u0027s Staff of Shock",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -640,7 +640,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035636:Oblivion.esm": {
-      "Name": "Mage's Staff of Silence",
+      "Name": "Mage\u0027s Staff of Silence",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -649,7 +649,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035637:Oblivion.esm": {
-      "Name": "Mage's Staff of Soul Trap",
+      "Name": "Mage\u0027s Staff of Soul Trap",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -658,7 +658,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "035638:Oblivion.esm": {
-      "Name": "Mage's Staff of Telekinesis",
+      "Name": "Mage\u0027s Staff of Telekinesis",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -730,7 +730,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "07BE2C:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "SelectionLevel": 25,
       "Variant": null,
       "Count": null,
@@ -757,7 +757,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "066FB9:Oblivion.esm": {
-      "Name": "Pyke's Medallion",
+      "Name": "Pyke\u0027s Medallion",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -802,7 +802,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "06BD70:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -901,7 +901,7 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "08E949:Oblivion.esm": {
-      "Name": "SE35RewardGoldBonusLeveled",
+      "Name": "Brithaur \u2014 heart delivery reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -910,7 +910,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "08E948:Oblivion.esm": {
-      "Name": "SE35RewardGoldLeveled",
+      "Name": "Brithaur \u2014 standard reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -919,7 +919,7 @@
       "Reason": "Fixed modest reward budget; existing quest outcome differences and grant counts remain."
     },
     "08F9C7:Oblivion.esm": {
-      "Name": "SE41PostRewardGoldLeveled",
+      "Name": "A Liquid Solution \u2014 repeat Aquanostrum delivery",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -946,7 +946,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "18918E:Oblivion.esm": {
-      "Name": "SQ02RewardLeveled100",
+      "Name": "Raid on Greyland \u2014 gold reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -973,7 +973,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "18ABD7:Oblivion.esm": {
-      "Name": "SQ05MaleneRewardLeveledGold",
+      "Name": "The Gravefinder\u2019s Repose \u2014 Malene\u2019s reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -991,7 +991,7 @@
       "Reason": "Already static reward; preserve existing random choices and counts."
     },
     "061435:Oblivion.esm": {
-      "Name": "SQ10MaevaRewardLeveledGold",
+      "Name": "When the Vow Breaks \u2014 Maeva\u2019s reward",
       "SelectionLevel": 10,
       "Variant": null,
       "Count": null,
@@ -1090,7 +1090,7 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "07F3D0:Oblivion.esm": {
-      "Name": "Syndel's Boltcaster",
+      "Name": "Syndel\u0027s Boltcaster",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -1108,7 +1108,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "02FDA7:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "SelectionLevel": 20,
       "Variant": null,
       "Count": null,
@@ -1135,7 +1135,7 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "000FC3:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "SelectionLevel": 24,
       "Variant": null,
       "Count": null,
@@ -1144,7 +1144,7 @@
       "Reason": "Major unique relic: retain its strongest existing variant; no stat normalization."
     },
     "00A313:Oblivion.esm": {
-      "Name": "Umbra's Ebony Boots",
+      "Name": "Umbra\u0027s Ebony Boots",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1153,7 +1153,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "00A318:Oblivion.esm": {
-      "Name": "Umbra's Ebony Cuirass",
+      "Name": "Umbra\u0027s Ebony Cuirass",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1162,7 +1162,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "00A317:Oblivion.esm": {
-      "Name": "Umbra's Ebony Gauntlets",
+      "Name": "Umbra\u0027s Ebony Gauntlets",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1171,7 +1171,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "00A316:Oblivion.esm": {
-      "Name": "Umbra's Ebony Greaves",
+      "Name": "Umbra\u0027s Ebony Greaves",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1180,7 +1180,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "00A315:Oblivion.esm": {
-      "Name": "Umbra's Ebony Helmet",
+      "Name": "Umbra\u0027s Ebony Helmet",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1189,7 +1189,7 @@
       "Reason": "Fixed quest reward variant reflecting this quest or questline position; item stats preserved."
     },
     "00A314:Oblivion.esm": {
-      "Name": "Umbra's Ebony Shield",
+      "Name": "Umbra\u0027s Ebony Shield",
       "SelectionLevel": 15,
       "Variant": null,
       "Count": null,
@@ -1290,7 +1290,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A nearly four-millennia-old relic central to the Dragonfires and Martin’s final confrontation with Mehrunes Dagon. Its exceptional standing is historical and sacred, not evidence of superior physical craftsmanship or ordinary combat use. Preserved: A nearly four-millennia-old relic central to the Dragonfires and Martin’s final confrontation with Mehrunes Dagon. Its exceptional standing is historical and sacred, not evidence of superior physical craftsmanship or ordinary combat use."
+      "Reason": "A nearly four-millennia-old relic central to the Dragonfires and Martin\u2019s final confrontation with Mehrunes Dagon. Its exceptional standing is historical and sacred, not evidence of superior physical craftsmanship or ordinary combat use. Preserved: A nearly four-millennia-old relic central to the Dragonfires and Martin\u2019s final confrontation with Mehrunes Dagon. Its exceptional standing is historical and sacred, not evidence of superior physical craftsmanship or ordinary combat use."
     },
     "0C5B4A:Oblivion.esm": {
       "Name": "Apron of Adroitness",
@@ -1360,7 +1360,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0BE5D1:Oblivion.esm": {
       "Name": "Ayleid Crown of Lindai",
@@ -1370,7 +1370,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0BE5D2:Oblivion.esm": {
       "Name": "Ayleid Crown of Lindai",
@@ -1380,7 +1380,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0BE5D3:Oblivion.esm": {
       "Name": "Ayleid Crown of Lindai",
@@ -1390,7 +1390,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0BE5D4:Oblivion.esm": {
       "Name": "Ayleid Crown of Lindai",
@@ -1400,7 +1400,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0BE5DA:Oblivion.esm": {
       "Name": "Ayleid Crown of Lindai",
@@ -1410,7 +1410,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector’s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
+      "Reason": "An ancient Ayleid light helmet recovered from Lindai during a collector\u2019s quest. Its provenance makes it a notable named piece, but the available account does not establish exceptional craftsmanship beyond that identity. Standard physical baseline; tier-bounded native effects."
     },
     "0A55FB:Oblivion.esm": {
       "Name": "Ayleid Crown of Nenalata",
@@ -1473,7 +1473,7 @@
       "Reason": "An ancient Ayleid light helmet sought by a collector and held by a rival antiquities collector. Its age and provenance merit a moderate named-item tier, without evidence of exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "000193:Oblivion.esm": {
-      "Name": "Azura's Star",
+      "Name": "Azura\u0027s Star",
       "ArtifactTier": null,
       "Unique": true,
       "QuestRelated": true,
@@ -1870,7 +1870,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The famed thief’s enchanted boots are recovered through a substantial Thieves Guild investigation, giving them notable provenance and context, but the supplied article does not establish exceptional craftsmanship. Preserved: The famed thief’s enchanted boots are recovered through a substantial Thieves Guild investigation, giving them notable provenance and context, but the supplied article does not establish exceptional craftsmanship."
+      "Reason": "The famed thief\u2019s enchanted boots are recovered through a substantial Thieves Guild investigation, giving them notable provenance and context, but the supplied article does not establish exceptional craftsmanship. Preserved: The famed thief\u2019s enchanted boots are recovered through a substantial Thieves Guild investigation, giving them notable provenance and context, but the supplied article does not establish exceptional craftsmanship."
     },
     "000E97:Knights.esp": {
       "Name": "Boots of the Crusader",
@@ -2133,7 +2133,7 @@
       "Reason": "A named ring awarded for A Liquid Solution, but the supplied entry describes no exceptional craftsmanship, provenance, or lore abilities to justify a higher tier. Standard physical baseline; tier-bounded native effects."
     },
     "0347DD:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2143,7 +2143,7 @@
       "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance. Standard physical baseline; tier-bounded native effects."
     },
     "0347DF:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2153,7 +2153,7 @@
       "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance. Standard physical baseline; tier-bounded native effects."
     },
     "0347E0:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2163,7 +2163,7 @@
       "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance. Standard physical baseline; tier-bounded native effects."
     },
     "0347E1:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2173,7 +2173,7 @@
       "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance. Standard physical baseline; tier-bounded native effects."
     },
     "0347E2:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2183,7 +2183,7 @@
       "Reason": "A named amulet awarded for a Dark Brotherhood quest. Its documented identity and acquisition context support a moderate reward, without evidence of exceptional craftsmanship or lore significance. Standard physical baseline; tier-bounded native effects."
     },
     "0347E3:Oblivion.esm": {
-      "Name": "Cruelty's Heart",
+      "Name": "Cruelty\u0027s Heart",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -2360,7 +2360,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "07EB10:Oblivion.esm": {
       "Name": "Dark Seducer Helmet",
@@ -2370,7 +2370,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "07EB11:Oblivion.esm": {
       "Name": "Dark Seducer Helmet",
@@ -2380,7 +2380,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "07EB12:Oblivion.esm": {
       "Name": "Dark Seducer Helmet",
@@ -2390,7 +2390,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "07EB13:Oblivion.esm": {
       "Name": "Dark Seducer Helmet",
@@ -2400,7 +2400,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "07EB14:Oblivion.esm": {
       "Name": "Dark Seducer Helmet",
@@ -2410,7 +2410,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor in Helpless Army as Duke/Duchess of Mania. Standard physical baseline; tier-bounded native effects."
     },
     "079058:Oblivion.esm": {
       "Name": "Dawnfang",
@@ -2490,7 +2490,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D437:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2500,7 +2500,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D438:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2510,7 +2510,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D439:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2520,7 +2520,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D43A:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2530,7 +2530,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D43B:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2540,7 +2540,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D43C:Oblivion.esm": {
       "Name": "Dawnfang Superior",
@@ -2550,7 +2550,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior day-form retains Dawnfang’s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior day-form retains Dawnfang\u2019s identity and adds health absorption to its fire enchantment, supporting a rank above the shared base forms. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "01D0B4:Oblivion.esm": {
       "Name": "Debaser",
@@ -2750,7 +2750,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905A:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2760,7 +2760,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905B:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2770,7 +2770,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905C:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2780,7 +2780,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905D:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2790,7 +2790,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905E:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2800,7 +2800,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07905F:Oblivion.esm": {
       "Name": "Duskfang",
@@ -2810,7 +2810,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang’s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The night-form of the unique Akaviri sword, matching Dawnfang\u2019s tier and replacing its fire damage with frost damage. Acquired at the end of Baiting the Trap. Standard physical baseline; tier-bounded native effects."
     },
     "07D43D:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2820,7 +2820,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D43E:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2830,7 +2830,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D43F:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2840,7 +2840,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D440:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2850,7 +2850,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D441:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2860,7 +2860,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D442:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2870,7 +2870,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "07D443:Oblivion.esm": {
       "Name": "Duskfang Superior",
@@ -2880,7 +2880,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang’s frost enchantment. It arises through the blade’s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The superior night-form matches Dawnfang Superior and adds magicka absorption to Duskfang\u2019s frost enchantment. It arises through the blade\u2019s Nourish Blade transformation. Standard physical baseline; tier-bounded native effects."
     },
     "027109:Oblivion.esm": {
       "Name": "Ebony Blade",
@@ -2890,7 +2890,7 @@
       "Daedric": true,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A Daedric artifact obtained through Mephala’s quest, supporting legendary-artifact status. The available entry identifies it as a katana but does not describe exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A Daedric artifact obtained through Mephala\u2019s quest, supporting legendary-artifact status. The available entry identifies it as a katana but does not describe exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06BDFA:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2900,7 +2900,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "06BDFB:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2910,7 +2910,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "06BDFC:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2920,7 +2920,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "06BDFD:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2930,7 +2930,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "06BDFE:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2940,7 +2940,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "08B07D:Oblivion.esm": {
       "Name": "Escutcheon of Chorrol",
@@ -2950,10 +2950,10 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive shield bearing Chorrol’s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive shield bearing Chorrol\u2019s Great Oak, offered as a substantial named quest reward. Its entry establishes its appearance and provenance, but not extraordinary craftsmanship or legendary abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002736:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Amulet",
+      "Name": "Forgemaster\u0027s Amulet",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -2963,7 +2963,7 @@
       "Reason": "A jeweled gold amulet worn by the Forgemaster, but the available entry provides no exceptional craftsmanship or lore-described abilities to support a higher rank. Standard physical baseline; tier-bounded native effects."
     },
     "002742:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Amulet",
+      "Name": "Forgemaster\u0027s Amulet",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -2973,7 +2973,7 @@
       "Reason": "A jeweled gold amulet worn by the Forgemaster, but the available entry provides no exceptional craftsmanship or lore-described abilities to support a higher rank. Standard physical baseline; tier-bounded native effects."
     },
     "002744:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Amulet",
+      "Name": "Forgemaster\u0027s Amulet",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -2983,7 +2983,7 @@
       "Reason": "A jeweled gold amulet worn by the Forgemaster, but the available entry provides no exceptional craftsmanship or lore-described abilities to support a higher rank. Standard physical baseline; tier-bounded native effects."
     },
     "002738:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Smock",
+      "Name": "Forgemaster\u0027s Smock",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -2993,7 +2993,7 @@
       "Reason": "A shirt worn by the Forgemaster; the available entry gives no exceptional craftsmanship or lore-described abilities. Its association with a named foe alone does not make it elite equipment. Standard physical baseline; tier-bounded native effects."
     },
     "002745:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Smock",
+      "Name": "Forgemaster\u0027s Smock",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -3003,7 +3003,7 @@
       "Reason": "A shirt worn by the Forgemaster; the available entry gives no exceptional craftsmanship or lore-described abilities. Its association with a named foe alone does not make it elite equipment. Standard physical baseline; tier-bounded native effects."
     },
     "002746:DLCMehrunesRazor.esp": {
-      "Name": "Forgemaster's Smock",
+      "Name": "Forgemaster\u0027s Smock",
       "ArtifactTier": 1,
       "Unique": true,
       "QuestRelated": true,
@@ -3120,7 +3120,7 @@
       "Daedric": true,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A legendary Daedric artifact earned through Boethia’s tournament quest. Its established combat reputation supports an artifact-level tier, though the article does not describe exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A legendary Daedric artifact earned through Boethia\u2019s tournament quest. Its established combat reputation supports an artifact-level tier, though the article does not describe exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "07EB15:Oblivion.esm": {
       "Name": "Golden Saint Armor",
@@ -3190,7 +3190,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "07EB1C:Oblivion.esm": {
       "Name": "Golden Saint Helmet",
@@ -3200,7 +3200,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "07EB1D:Oblivion.esm": {
       "Name": "Golden Saint Helmet",
@@ -3210,7 +3210,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "07EB1E:Oblivion.esm": {
       "Name": "Golden Saint Helmet",
@@ -3220,7 +3220,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "07EB1F:Oblivion.esm": {
       "Name": "Golden Saint Helmet",
@@ -3230,7 +3230,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "07EB20:Oblivion.esm": {
       "Name": "Golden Saint Helmet",
@@ -3240,7 +3240,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The matching helmet reward from the same faction quest; kept at the armor’s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The matching helmet reward from the same faction quest; kept at the armor\u2019s tier because ordinary pieces in a set share craftsmanship rank. Acquired with the armor through Helpless Army as Duke/Duchess of Dementia. Standard physical baseline; tier-bounded native effects."
     },
     "022E81:Oblivion.esm": {
       "Name": "Gray Cowl of Nocturnal",
@@ -3543,74 +3543,74 @@
       "Reason": "A named enchanted reward for the defense of Kvatch, but it shares its appearance with the ordinary cuirasses worn by Kvatch guards; no exceptional craftsmanship is described. Standard physical baseline; tier-bounded native effects."
     },
     "011F17:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F19:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F1A:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F1B:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F1C:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F1D:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "011F1E:DLCBattlehornCastle.esp": {
-      "Name": "Lord Kelvyn's Bulwark",
+      "Name": "Lord Kelvyn\u0027s Bulwark",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Described as one of the game's best shields and found in Battlehorn Castle's private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Described as one of the game\u0027s best shields and found in Battlehorn Castle\u0027s private quarters; its strong defense supports a high specialist tier, but not exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "027117:Oblivion.esm": {
       "Name": "Mace of Molag Bal",
@@ -3620,7 +3620,7 @@
       "Daedric": true,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A legendary Daedric artifact obtained through Molag Bal's quest. Its artifact provenance supports a legendary tier, but the entry does not establish exceptional physical craftsmanship beyond the best ordinary material. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A legendary Daedric artifact obtained through Molag Bal\u0027s quest. Its artifact provenance supports a legendary tier, but the entry does not establish exceptional physical craftsmanship beyond the best ordinary material. Standard physical baseline; tier-bounded native effects."
     },
     "000F32:Knights.esp": {
       "Name": "Mace of the Crusader",
@@ -3693,47 +3693,47 @@
       "Reason": "A divine Crusader weapon with a distinctive constant Blunt-fortifying ability and a special role against Umaril; its provenance supports the shared relic rank. Standard physical baseline; tier-bounded native effects."
     },
     "01FE11:Oblivion.esm": {
-      "Name": "Mage's Staff of Charm",
+      "Name": "Mage\u0027s Staff of Charm",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage's Staff quest. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage\u0027s Staff quest. Standard physical baseline; tier-bounded native effects."
     },
     "0E9442:Oblivion.esm": {
-      "Name": "Mage's Staff of Charm",
+      "Name": "Mage\u0027s Staff of Charm",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage's Staff quest. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage\u0027s Staff quest. Standard physical baseline; tier-bounded native effects."
     },
     "0E9443:Oblivion.esm": {
-      "Name": "Mage's Staff of Charm",
+      "Name": "Mage\u0027s Staff of Charm",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage's Staff quest. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage\u0027s Staff quest. Standard physical baseline; tier-bounded native effects."
     },
     "0E9444:Oblivion.esm": {
-      "Name": "Mage's Staff of Charm",
+      "Name": "Mage\u0027s Staff of Charm",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage's Staff quest. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A custom Arcane University staff offering a focused Illusion effect, but the article gives it no exceptional provenance or craftsmanship beyond the ordinary Mage\u0027s Staff quest. Standard physical baseline; tier-bounded native effects."
     },
     "01FE16:Oblivion.esm": {
-      "Name": "Mage's Staff of Dispel",
+      "Name": "Mage\u0027s Staff of Dispel",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -3743,7 +3743,7 @@
       "Reason": "A custom Mysticism staff with a useful specialist role, but no lore-described exceptional craftsmanship or legendary provenance. Standard physical baseline; tier-bounded native effects."
     },
     "0E9445:Oblivion.esm": {
-      "Name": "Mage's Staff of Dispel",
+      "Name": "Mage\u0027s Staff of Dispel",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -3753,7 +3753,7 @@
       "Reason": "A custom Mysticism staff with a useful specialist role, but no lore-described exceptional craftsmanship or legendary provenance. Standard physical baseline; tier-bounded native effects."
     },
     "0E9446:Oblivion.esm": {
-      "Name": "Mage's Staff of Dispel",
+      "Name": "Mage\u0027s Staff of Dispel",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -3763,7 +3763,7 @@
       "Reason": "A custom Mysticism staff with a useful specialist role, but no lore-described exceptional craftsmanship or legendary provenance. Standard physical baseline; tier-bounded native effects."
     },
     "0E9447:Oblivion.esm": {
-      "Name": "Mage's Staff of Dispel",
+      "Name": "Mage\u0027s Staff of Dispel",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -3773,7 +3773,7 @@
       "Reason": "A custom Mysticism staff with a useful specialist role, but no lore-described exceptional craftsmanship or legendary provenance. Standard physical baseline; tier-bounded native effects."
     },
     "0E9448:Oblivion.esm": {
-      "Name": "Mage's Staff of Fire",
+      "Name": "Mage\u0027s Staff of Fire",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3783,7 +3783,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E9449:Oblivion.esm": {
-      "Name": "Mage's Staff of Fire",
+      "Name": "Mage\u0027s Staff of Fire",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3793,7 +3793,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E944A:Oblivion.esm": {
-      "Name": "Mage's Staff of Fire",
+      "Name": "Mage\u0027s Staff of Fire",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3803,7 +3803,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E944B:Oblivion.esm": {
-      "Name": "Mage's Staff of Fire",
+      "Name": "Mage\u0027s Staff of Fire",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3813,7 +3813,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "01FE0F:Oblivion.esm": {
-      "Name": "Mage's Staff of Frost",
+      "Name": "Mage\u0027s Staff of Frost",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3823,7 +3823,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E944C:Oblivion.esm": {
-      "Name": "Mage's Staff of Frost",
+      "Name": "Mage\u0027s Staff of Frost",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3833,7 +3833,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E944D:Oblivion.esm": {
-      "Name": "Mage's Staff of Frost",
+      "Name": "Mage\u0027s Staff of Frost",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3843,7 +3843,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E944E:Oblivion.esm": {
-      "Name": "Mage's Staff of Frost",
+      "Name": "Mage\u0027s Staff of Frost",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3853,7 +3853,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "01FE12:Oblivion.esm": {
-      "Name": "Mage's Staff of Paralysis",
+      "Name": "Mage\u0027s Staff of Paralysis",
       "ArtifactTier": 5,
       "Unique": true,
       "QuestRelated": true,
@@ -3863,7 +3863,7 @@
       "Reason": "A custom Illusion staff with a strong specialist disabling role, meriting a step above ordinary named rewards without evidence of legendary provenance or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0E944F:Oblivion.esm": {
-      "Name": "Mage's Staff of Paralysis",
+      "Name": "Mage\u0027s Staff of Paralysis",
       "ArtifactTier": 5,
       "Unique": true,
       "QuestRelated": true,
@@ -3873,7 +3873,7 @@
       "Reason": "A custom Illusion staff with a strong specialist disabling role, meriting a step above ordinary named rewards without evidence of legendary provenance or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0E9450:Oblivion.esm": {
-      "Name": "Mage's Staff of Paralysis",
+      "Name": "Mage\u0027s Staff of Paralysis",
       "ArtifactTier": 5,
       "Unique": true,
       "QuestRelated": true,
@@ -3883,7 +3883,7 @@
       "Reason": "A custom Illusion staff with a strong specialist disabling role, meriting a step above ordinary named rewards without evidence of legendary provenance or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0E9451:Oblivion.esm": {
-      "Name": "Mage's Staff of Paralysis",
+      "Name": "Mage\u0027s Staff of Paralysis",
       "ArtifactTier": 5,
       "Unique": true,
       "QuestRelated": true,
@@ -3893,7 +3893,7 @@
       "Reason": "A custom Illusion staff with a strong specialist disabling role, meriting a step above ordinary named rewards without evidence of legendary provenance or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "01FE10:Oblivion.esm": {
-      "Name": "Mage's Staff of Shock",
+      "Name": "Mage\u0027s Staff of Shock",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3903,7 +3903,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E9452:Oblivion.esm": {
-      "Name": "Mage's Staff of Shock",
+      "Name": "Mage\u0027s Staff of Shock",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3913,7 +3913,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E9453:Oblivion.esm": {
-      "Name": "Mage's Staff of Shock",
+      "Name": "Mage\u0027s Staff of Shock",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3923,7 +3923,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "0E9454:Oblivion.esm": {
-      "Name": "Mage's Staff of Shock",
+      "Name": "Mage\u0027s Staff of Shock",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3933,7 +3933,7 @@
       "Reason": "A custom quest-made Destruction staff that delivers elemental damage; its Arcane University origin supports a moderate named-reward rank, not exceptional status. Standard physical baseline; tier-bounded native effects."
     },
     "01FE13:Oblivion.esm": {
-      "Name": "Mage's Staff of Silence",
+      "Name": "Mage\u0027s Staff of Silence",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3943,7 +3943,7 @@
       "Reason": "A custom Arcane University staff with a distinct specialist magical function, but the supplied source gives no evidence of exceptional physical craftsmanship. Iron is only a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E9455:Oblivion.esm": {
-      "Name": "Mage's Staff of Silence",
+      "Name": "Mage\u0027s Staff of Silence",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3953,7 +3953,7 @@
       "Reason": "A custom Arcane University staff with a distinct specialist magical function, but the supplied source gives no evidence of exceptional physical craftsmanship. Iron is only a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E9456:Oblivion.esm": {
-      "Name": "Mage's Staff of Silence",
+      "Name": "Mage\u0027s Staff of Silence",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3963,7 +3963,7 @@
       "Reason": "A custom Arcane University staff with a distinct specialist magical function, but the supplied source gives no evidence of exceptional physical craftsmanship. Iron is only a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E9457:Oblivion.esm": {
-      "Name": "Mage's Staff of Silence",
+      "Name": "Mage\u0027s Staff of Silence",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3973,7 +3973,7 @@
       "Reason": "A custom Arcane University staff with a distinct specialist magical function, but the supplied source gives no evidence of exceptional physical craftsmanship. Iron is only a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "01FE14:Oblivion.esm": {
-      "Name": "Mage's Staff of Soul Trap",
+      "Name": "Mage\u0027s Staff of Soul Trap",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3983,7 +3983,7 @@
       "Reason": "A custom Arcane University staff selected for a specialist magical function. Its provenance supports a moderate named-equipment tier, but there is no evidence of exceptional physical craftsmanship. Iron is a comparison baseline, not a literal material claim. Standard physical baseline; tier-bounded native effects."
     },
     "0E9458:Oblivion.esm": {
-      "Name": "Mage's Staff of Soul Trap",
+      "Name": "Mage\u0027s Staff of Soul Trap",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -3993,7 +3993,7 @@
       "Reason": "A custom Arcane University staff selected for a specialist magical function. Its provenance supports a moderate named-equipment tier, but there is no evidence of exceptional physical craftsmanship. Iron is a comparison baseline, not a literal material claim. Standard physical baseline; tier-bounded native effects."
     },
     "0E9459:Oblivion.esm": {
-      "Name": "Mage's Staff of Soul Trap",
+      "Name": "Mage\u0027s Staff of Soul Trap",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4003,7 +4003,7 @@
       "Reason": "A custom Arcane University staff selected for a specialist magical function. Its provenance supports a moderate named-equipment tier, but there is no evidence of exceptional physical craftsmanship. Iron is a comparison baseline, not a literal material claim. Standard physical baseline; tier-bounded native effects."
     },
     "0E945A:Oblivion.esm": {
-      "Name": "Mage's Staff of Soul Trap",
+      "Name": "Mage\u0027s Staff of Soul Trap",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4013,7 +4013,7 @@
       "Reason": "A custom Arcane University staff selected for a specialist magical function. Its provenance supports a moderate named-equipment tier, but there is no evidence of exceptional physical craftsmanship. Iron is a comparison baseline, not a literal material claim. Standard physical baseline; tier-bounded native effects."
     },
     "01FE15:Oblivion.esm": {
-      "Name": "Mage's Staff of Telekinesis",
+      "Name": "Mage\u0027s Staff of Telekinesis",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4023,7 +4023,7 @@
       "Reason": "A custom Arcane University staff with a distinctive utility function. The supplied source supports its crafted, specialist identity, but not exceptional physical workmanship. Iron is a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E945B:Oblivion.esm": {
-      "Name": "Mage's Staff of Telekinesis",
+      "Name": "Mage\u0027s Staff of Telekinesis",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4033,7 +4033,7 @@
       "Reason": "A custom Arcane University staff with a distinctive utility function. The supplied source supports its crafted, specialist identity, but not exceptional physical workmanship. Iron is a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E945C:Oblivion.esm": {
-      "Name": "Mage's Staff of Telekinesis",
+      "Name": "Mage\u0027s Staff of Telekinesis",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4043,7 +4043,7 @@
       "Reason": "A custom Arcane University staff with a distinctive utility function. The supplied source supports its crafted, specialist identity, but not exceptional physical workmanship. Iron is a comparison baseline; staves are not physical weapons. Standard physical baseline; tier-bounded native effects."
     },
     "0E945D:Oblivion.esm": {
-      "Name": "Mage's Staff of Telekinesis",
+      "Name": "Mage\u0027s Staff of Telekinesis",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -4180,7 +4180,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002088:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Boots",
@@ -4190,7 +4190,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "00208F:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Boots",
@@ -4200,7 +4200,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002099:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Boots",
@@ -4210,7 +4210,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0020A3:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Boots",
@@ -4220,7 +4220,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, but the available entry establishes no exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "001B42:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cowl",
@@ -4230,7 +4230,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin\u2019s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
     },
     "001B92:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cowl",
@@ -4240,7 +4240,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin\u2019s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
     },
     "00208E:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cowl",
@@ -4250,7 +4250,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin\u2019s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
     },
     "002098:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cowl",
@@ -4260,7 +4260,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin\u2019s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
     },
     "0020A2:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cowl",
@@ -4270,7 +4270,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A distinctive black hood worn with the Morag Tong assassin’s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A distinctive black hood worn with the Morag Tong assassin\u2019s armor; no exceptional craftsmanship or special abilities are established in the entry. Standard physical baseline; tier-bounded native effects."
     },
     "001B89:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cuirass",
@@ -4280,7 +4280,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named piece of the assassin\u2019s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002085:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cuirass",
@@ -4290,7 +4290,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named piece of the assassin\u2019s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002090:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cuirass",
@@ -4300,7 +4300,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named piece of the assassin\u2019s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "00209A:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cuirass",
@@ -4310,7 +4310,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named piece of the assassin\u2019s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0020A4:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Cuirass",
@@ -4320,7 +4320,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named piece of the assassin’s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named piece of the assassin\u2019s leather armor, but the available entry provides no evidence of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "001B8A:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Gloves",
@@ -4330,7 +4330,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002086:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Gloves",
@@ -4340,7 +4340,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002091:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Gloves",
@@ -4350,7 +4350,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
     },
     "00209B:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Gloves",
@@ -4360,7 +4360,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0020A5:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Gloves",
@@ -4370,7 +4370,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor; the entry does not establish exceptional craftsmanship or special abilities. Standard physical baseline; tier-bounded native effects."
     },
     "001B8B:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Greaves",
@@ -4380,7 +4380,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002087:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Greaves",
@@ -4390,7 +4390,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "002092:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Greaves",
@@ -4400,7 +4400,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "00209C:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Greaves",
@@ -4410,7 +4410,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0020A6:DLCMehrunesRazor.esp": {
       "Name": "Morag Tong Greaves",
@@ -4420,10 +4420,10 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Part of the Morag Tong assassin’s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Part of the Morag Tong assassin\u2019s leather armor, with no evidence in the entry of exceptional craftsmanship or special lore-described abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0146C6:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4433,7 +4433,7 @@
       "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating. Standard physical baseline; tier-bounded native effects."
     },
     "07BE27:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4443,7 +4443,7 @@
       "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating. Standard physical baseline; tier-bounded native effects."
     },
     "07BE28:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4453,7 +4453,7 @@
       "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating. Standard physical baseline; tier-bounded native effects."
     },
     "07BE29:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4463,7 +4463,7 @@
       "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating. Standard physical baseline; tier-bounded native effects."
     },
     "07BE2A:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4473,7 +4473,7 @@
       "Reason": "A legendary artifact attributed to Mannimarco, described as exquisite and granting broad magical protection, recovery, resistance, and absorption abilities. Its artifact status supports a legendary tier, not the maximum combat rating. Standard physical baseline; tier-bounded native effects."
     },
     "07BE2B:Oblivion.esm": {
-      "Name": "Necromancer's Amulet",
+      "Name": "Necromancer\u0027s Amulet",
       "ArtifactTier": 8,
       "Unique": true,
       "QuestRelated": true,
@@ -4623,7 +4623,7 @@
       "Reason": "A named amulet awarded for a Bruma quest and identified as the true nature of the Mundane Amulet. The supplied entry gives no lore-described abilities or craftsmanship details to support a higher classification. Standard physical baseline; tier-bounded native effects."
     },
     "066F29:Oblivion.esm": {
-      "Name": "Pyke's Medallion",
+      "Name": "Pyke\u0027s Medallion",
       "ArtifactTier": 0,
       "Unique": true,
       "QuestRelated": true,
@@ -4633,7 +4633,7 @@
       "Reason": "A quest medallion identical to the Knights of the Thorn Medallion, found during a task and meant to be returned to Pyke. The entry gives no evidence of unusual power or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "066F2D:Oblivion.esm": {
-      "Name": "Pyke's Medallion",
+      "Name": "Pyke\u0027s Medallion",
       "ArtifactTier": 0,
       "Unique": true,
       "QuestRelated": true,
@@ -4643,7 +4643,7 @@
       "Reason": "A quest medallion identical to the Knights of the Thorn Medallion, found during a task and meant to be returned to Pyke. The entry gives no evidence of unusual power or exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "066FB6:Oblivion.esm": {
-      "Name": "Pyke's Medallion",
+      "Name": "Pyke\u0027s Medallion",
       "ArtifactTier": 0,
       "Unique": true,
       "QuestRelated": true,
@@ -4800,7 +4800,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "00BE66:DLCVileLair.esp": {
       "Name": "Raiment of the Crimson Scar",
@@ -4810,7 +4810,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "00BE67:DLCVileLair.esp": {
       "Name": "Raiment of the Crimson Scar",
@@ -4820,7 +4820,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "00BE68:DLCVileLair.esp": {
       "Name": "Raiment of the Crimson Scar",
@@ -4830,7 +4830,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "00BE6A:DLCVileLair.esp": {
       "Name": "Raiment of the Crimson Scar",
@@ -4840,7 +4840,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "00C35E:DLCVileLair.esp": {
       "Name": "Raiment of the Crimson Scar",
@@ -4850,7 +4850,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Rare light armor found in Greywyn's Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Rare light armor found in Greywyn\u0027s Armoire after fully upgrading Deepscorn Hollow. It is described as resembling Shrouded Armor with more powerful enchantments, but the entry does not establish exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "095A39:Oblivion.esm": {
       "Name": "Redwave",
@@ -4923,7 +4923,7 @@
       "Reason": "A distinctive cutlass with decorative detailing and a protective hand guard, but its personal history and quest-reward provenance do not establish exceptional craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "04F9E5:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -4933,7 +4933,7 @@
       "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement. Standard physical baseline; tier-bounded native effects."
     },
     "06BD6B:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -4943,7 +4943,7 @@
       "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement. Standard physical baseline; tier-bounded native effects."
     },
     "06BD6C:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -4953,7 +4953,7 @@
       "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement. Standard physical baseline; tier-bounded native effects."
     },
     "06BD6D:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -4963,7 +4963,7 @@
       "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement. Standard physical baseline; tier-bounded native effects."
     },
     "06BD6E:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -4973,7 +4973,7 @@
       "Reason": "A named reward from a side quest, but the supplied entry provides no lore or craftsmanship evidence to support a higher placement. Standard physical baseline; tier-bounded native effects."
     },
     "06BD6F:Oblivion.esm": {
-      "Name": "Ring of Eidolon's Edge",
+      "Name": "Ring of Eidolon\u0027s Edge",
       "ArtifactTier": 3,
       "Unique": true,
       "QuestRelated": true,
@@ -5290,7 +5290,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named reward for solving Rosethorn Hall’s hidden-treasure riddle, but the supplied acquisition account gives no evidence of exceptional power or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named reward for solving Rosethorn Hall\u2019s hidden-treasure riddle, but the supplied acquisition account gives no evidence of exceptional power or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "01C4DA:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5300,7 +5300,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06B654:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5310,7 +5310,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06B655:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5320,7 +5320,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06B656:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5330,7 +5330,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06B657:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5340,7 +5340,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "06B658:Oblivion.esm": {
       "Name": "Ring of the Vipereye",
@@ -5350,7 +5350,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger’s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Its Akaviri-artifact provenance and recovery with a messenger\u2019s diary support specialist-grade rarity. The available evidence does not establish exceptional combat power or physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0C8534:Oblivion.esm": {
       "Name": "Robe of the Apprentice",
@@ -5390,7 +5390,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0748A7:Oblivion.esm": {
       "Name": "Robe of the Conjurer",
@@ -5400,7 +5400,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0748A8:Oblivion.esm": {
       "Name": "Robe of the Conjurer",
@@ -5410,7 +5410,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0748A9:Oblivion.esm": {
       "Name": "Robe of the Conjurer",
@@ -5420,7 +5420,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0748AA:Oblivion.esm": {
       "Name": "Robe of the Conjurer",
@@ -5430,7 +5430,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "0748AB:Oblivion.esm": {
       "Name": "Robe of the Conjurer",
@@ -5440,7 +5440,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage’s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A named Mages Guild quest reward, but its appearance is identical to standard mage\u2019s robes and the supplied evidence describes no exceptional provenance or craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "014EC2:Oblivion.esm": {
       "Name": "Rockshatter",
@@ -5513,14 +5513,14 @@
       "Reason": "A distinctive Daedric artifact whose conjuration of a hostile Daedra makes it strong specialist equipment; its plain staff appearance offers no evidence of exceptional physical craftsmanship. Preserved: A distinctive Daedric artifact whose conjuration of a hostile Daedra makes it strong specialist equipment; its plain staff appearance offers no evidence of exceptional physical craftsmanship."
     },
     "027107:Oblivion.esm": {
-      "Name": "Saviour's Hide",
+      "Name": "Saviour\u0027s Hide",
       "ArtifactTier": 7,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": true,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Hircine's artifact hide has notable provenance and a specialist protective role, but the supplied entry does not establish craftsmanship beyond the best ordinary light armor. Standard physical baseline; tier-bounded native effects."
+      "Reason": "Hircine\u0027s artifact hide has notable provenance and a specialist protective role, but the supplied entry does not establish craftsmanship beyond the best ordinary light armor. Standard physical baseline; tier-bounded native effects."
     },
     "034897:Oblivion.esm": {
       "Name": "Shadowhunt",
@@ -5600,7 +5600,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "08078B:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5610,7 +5610,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "08078C:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5620,7 +5620,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "08078D:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5630,7 +5630,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "08078E:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5640,7 +5640,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "08078F:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5650,7 +5650,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "080790:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5660,7 +5660,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "080791:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5670,7 +5670,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "080792:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5680,7 +5680,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "080793:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5690,7 +5690,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "09535D:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5700,7 +5700,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "09535E:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5710,7 +5710,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "09535F:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5720,7 +5720,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "095360:Oblivion.esm": {
       "Name": "Shadowrend",
@@ -5730,7 +5730,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A main-quest weapon explicitly described as among the game's most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
+      "Reason": "A main-quest weapon explicitly described as among the game\u0027s most powerful, recovered after confronting a shadow counterpart. Its legendary significance supports the tier, but not exceptional physical craftsmanship. Standard physical baseline; tier-bounded native effects."
     },
     "000E92:Knights.esp": {
       "Name": "Shield of the Crusader",
@@ -6060,7 +6060,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "A uniquely crafted artifact with an unusual, wide-area incapacitating effect and a significant role in establishing Sheogorath’s rule. Its exceptional power is magical; no exceptional physical craftsmanship is described. Preserved: A uniquely crafted artifact with an unusual, wide-area incapacitating effect and a significant role in establishing Sheogorath’s rule. Its exceptional power is magical; no exceptional physical craftsmanship is described."
+      "Reason": "A uniquely crafted artifact with an unusual, wide-area incapacitating effect and a significant role in establishing Sheogorath\u2019s rule. Its exceptional power is magical; no exceptional physical craftsmanship is described. Preserved: A uniquely crafted artifact with an unusual, wide-area incapacitating effect and a significant role in establishing Sheogorath\u2019s rule. Its exceptional power is magical; no exceptional physical craftsmanship is described."
     },
     "04A24E:Oblivion.esm": {
       "Name": "Staff of Worms",
@@ -6070,7 +6070,7 @@
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "Mannimarco’s distinctive necromantic staff and a major Mages Guild quest reward, valued for its specialized ability to turn a fallen NPC into an ally. The evidence supports strong specialist utility, not exceptional physical craftsmanship. Preserved: Mannimarco’s distinctive necromantic staff and a major Mages Guild quest reward, valued for its specialized ability to turn a fallen NPC into an ally. The evidence supports strong specialist utility, not exceptional physical craftsmanship."
+      "Reason": "Mannimarco\u2019s distinctive necromantic staff and a major Mages Guild quest reward, valued for its specialized ability to turn a fallen NPC into an ally. The evidence supports strong specialist utility, not exceptional physical craftsmanship. Preserved: Mannimarco\u2019s distinctive necromantic staff and a major Mages Guild quest reward, valued for its specialized ability to turn a fallen NPC into an ally. The evidence supports strong specialist utility, not exceptional physical craftsmanship."
     },
     "0347EB:Oblivion.esm": {
       "Name": "Sufferthorn",
@@ -6213,7 +6213,7 @@
       "Reason": "A divine Crusader weapon with a distinctive constant Blade-fortifying ability and a special role against Umaril; its provenance supports the shared relic rank. Standard physical baseline; tier-bounded native effects."
     },
     "07F3D5:Oblivion.esm": {
-      "Name": "Syndel's Boltcaster",
+      "Name": "Syndel\u0027s Boltcaster",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6223,7 +6223,7 @@
       "Reason": "An unused staff identity with a shock-damage area effect supports a moderate specialist-equipment rank. It is not obtainable in vanilla play; the cited page says a patch adds it as a quest reward. Standard physical baseline; tier-bounded native effects."
     },
     "07F3D6:Oblivion.esm": {
-      "Name": "Syndel's Boltcaster",
+      "Name": "Syndel\u0027s Boltcaster",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6233,7 +6233,7 @@
       "Reason": "An unused staff identity with a shock-damage area effect supports a moderate specialist-equipment rank. It is not obtainable in vanilla play; the cited page says a patch adds it as a quest reward. Standard physical baseline; tier-bounded native effects."
     },
     "07F3D7:Oblivion.esm": {
-      "Name": "Syndel's Boltcaster",
+      "Name": "Syndel\u0027s Boltcaster",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6243,7 +6243,7 @@
       "Reason": "An unused staff identity with a shock-damage area effect supports a moderate specialist-equipment rank. It is not obtainable in vanilla play; the cited page says a patch adds it as a quest reward. Standard physical baseline; tier-bounded native effects."
     },
     "07F3D8:Oblivion.esm": {
-      "Name": "Syndel's Boltcaster",
+      "Name": "Syndel\u0027s Boltcaster",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6323,7 +6323,7 @@
       "Reason": "A unique amulet recovered after Baiting the Trap, with a distinctive Tsaesci-like design and a possible connection to relics from Trumbe. Its provenance supports a modest named-item rank, but no exceptional ability is documented here. Standard physical baseline; tier-bounded native effects."
     },
     "03489F:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6333,7 +6333,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A0:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6343,7 +6343,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A1:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6353,7 +6353,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A2:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6363,7 +6363,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A3:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6373,7 +6373,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A4:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6383,7 +6383,7 @@
       "Reason": "A distinctive-looking outfit, but the UESP entry describes it only as a Dark Brotherhood quest reward; it provides no evidence of exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "0348A5:Oblivion.esm": {
-      "Name": "The Deceiver's Finery",
+      "Name": "The Deceiver\u0027s Finery",
       "ArtifactTier": 2,
       "Unique": true,
       "QuestRelated": true,
@@ -6523,7 +6523,7 @@
       "Reason": "A named reward choice for The Wayward Knight. The entry calls it an artifact, but provides no lore-described abilities or exceptional craftsmanship to justify a higher rank. Standard physical baseline; tier-bounded native effects."
     },
     "000F20:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6533,7 +6533,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F21:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6543,7 +6543,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F22:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6553,7 +6553,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F23:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6563,7 +6563,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F24:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6573,7 +6573,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F25:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6583,7 +6583,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F26:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6593,7 +6593,7 @@
       "Reason": "The obtainable sword is identified as an Elven claymore received from Umaril. Its notable acquisition context merits a named-reward tier, but the entry does not establish exceptional craftsmanship or abilities. Standard physical baseline; tier-bounded native effects."
     },
     "000F27:Knights.esp": {
-      "Name": "Umaril's Sword",
+      "Name": "Umaril\u0027s Sword",
       "ArtifactTier": 4,
       "Unique": true,
       "QuestRelated": true,
@@ -6613,124 +6613,124 @@
       "Reason": "A powerful sword tied to the Clavicus Vile quest and identified as an artifact, supporting a legendary-artifact tier. The supplied entry does not establish exceptional physical craftsmanship beyond the Daedric baseline. Standard physical baseline; tier-bounded native effects."
     },
     "00A307:Oblivion.esm": {
-      "Name": "Umbra's Ebony Boots",
+      "Name": "Umbra\u0027s Ebony Boots",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the boots mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the boots mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30D:Oblivion.esm": {
-      "Name": "Umbra's Ebony Boots",
+      "Name": "Umbra\u0027s Ebony Boots",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the boots mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the boots mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A308:Oblivion.esm": {
-      "Name": "Umbra's Ebony Cuirass",
+      "Name": "Umbra\u0027s Ebony Cuirass",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the cuirass mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the cuirass mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30E:Oblivion.esm": {
-      "Name": "Umbra's Ebony Cuirass",
+      "Name": "Umbra\u0027s Ebony Cuirass",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the cuirass mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the cuirass mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A309:Oblivion.esm": {
-      "Name": "Umbra's Ebony Gauntlets",
+      "Name": "Umbra\u0027s Ebony Gauntlets",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the gauntlets mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the gauntlets mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30F:Oblivion.esm": {
-      "Name": "Umbra's Ebony Gauntlets",
+      "Name": "Umbra\u0027s Ebony Gauntlets",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the gauntlets mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the gauntlets mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30A:Oblivion.esm": {
-      "Name": "Umbra's Ebony Greaves",
+      "Name": "Umbra\u0027s Ebony Greaves",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the greaves mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the greaves mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A310:Oblivion.esm": {
-      "Name": "Umbra's Ebony Greaves",
+      "Name": "Umbra\u0027s Ebony Greaves",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the greaves mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the greaves mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30B:Oblivion.esm": {
-      "Name": "Umbra's Ebony Helmet",
+      "Name": "Umbra\u0027s Ebony Helmet",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the helmet mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the helmet mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A311:Oblivion.esm": {
-      "Name": "Umbra's Ebony Helmet",
+      "Name": "Umbra\u0027s Ebony Helmet",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the helmet mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the helmet mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A30C:Oblivion.esm": {
-      "Name": "Umbra's Ebony Shield",
+      "Name": "Umbra\u0027s Ebony Shield",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the shield mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the shield mythic. Standard physical baseline; tier-bounded native effects."
     },
     "00A312:Oblivion.esm": {
-      "Name": "Umbra's Ebony Shield",
+      "Name": "Umbra\u0027s Ebony Shield",
       "ArtifactTier": 6,
       "Unique": true,
       "QuestRelated": true,
       "Daedric": false,
       "HandTuned": false,
       "ExcludedFromNormalization": true,
-      "Reason": "The UESP entry identifies Umbra’s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the shield mythic. Standard physical baseline; tier-bounded native effects."
+      "Reason": "The UESP entry identifies Umbra\u2019s suit as ordinary Ebony armor at the regular Ebony tier; her ownership does not make the shield mythic. Standard physical baseline; tier-bounded native effects."
     },
     "027108:Oblivion.esm": {
       "Name": "Volendrung",

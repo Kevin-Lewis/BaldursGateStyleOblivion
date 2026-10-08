@@ -16519,7 +16519,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Brucetus_Festinius"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "00A0B2:Oblivion.esm": {
       "Name": "Bruma Guard",
@@ -20952,7 +20953,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dion"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 14
     },
     "02F864:Oblivion.esm": {
       "Name": "Diram Serethi",
@@ -22906,7 +22908,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dulfish_gro-Orum"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "01558C:Oblivion.esm": {
       "Name": "Dulphumph gro-Urgash",
@@ -23039,7 +23042,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dynari_Amnis"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0135B6:Oblivion.esm": {
       "Name": "Dyus",
@@ -23117,7 +23121,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eduard_Denile"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "074A94:Oblivion.esm": {
       "Name": "Eduard Hodge",
@@ -23129,7 +23134,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eduard_Hodge"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0327BA:Oblivion.esm": {
       "Name": "Eduard Retiene",
@@ -23263,7 +23269,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eletta"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "027F93:Oblivion.esm": {
       "Name": "Elidor",
@@ -23275,7 +23282,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Elidor"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 13
     },
     "016063:Oblivion.esm": {
       "Name": "Elisa Pierrane",
@@ -23763,7 +23771,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eridor"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "028F90:Oblivion.esm": {
       "Name": "Erina Jeranus",
@@ -24370,7 +24379,7 @@
     },
     "0947A9:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24382,7 +24391,7 @@
     },
     "0947AA:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24394,7 +24403,7 @@
     },
     "0947AB:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24406,7 +24415,7 @@
     },
     "0947AC:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24418,7 +24427,7 @@
     },
     "0947AD:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24430,7 +24439,7 @@
     },
     "0947AE:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -24442,7 +24451,7 @@
     },
     "0947AF:Oblivion.esm": {
       "Name": "Fighters Guild Porter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Imperial Fighters Guild porter in Chorrol, with no established combat training or personal combat feats.",
       "Reason": "The article confirms his identity and guild role but establishes no combat mastery or demonstrated feats. The ordinary-adult baseline is therefore appropriate.",
@@ -25069,7 +25078,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gaston_Tussaud"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 14
     },
     "0435A2:Oblivion.esm": {
       "Name": "Gatekeeper",
@@ -25249,7 +25259,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gaturn_gro-Gonk"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 14
     },
     "034E7D:Oblivion.esm": {
       "Name": "Geel",
@@ -25286,7 +25297,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Geimund"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "015EA3:Oblivion.esm": {
       "Name": "Gelephor",
@@ -25346,7 +25358,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gerard_Melie"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "035EBF:Oblivion.esm": {
       "Name": "Gerich Senarel",
@@ -25917,7 +25930,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Glenroy"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 13
     },
     "0222A3:Oblivion.esm": {
       "Name": "Glistel",
@@ -26694,7 +26708,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gogan"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "03B3D3:Oblivion.esm": {
       "Name": "Gogan",
@@ -26706,7 +26721,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gogan"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "023E38:Oblivion.esm": {
       "Name": "Gogron gro-Bolmog",
@@ -27453,7 +27469,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gromm"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "018C65:Oblivion.esm": {
       "Name": "Grommok gro-Barak",
@@ -27478,7 +27495,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Grommok_gro-Barak"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "0034C9:Oblivion.esm": {
       "Name": "Gruiand Garrana",
@@ -27490,7 +27508,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gruiand_Garrana"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "011B66:Oblivion.esm": {
       "Name": "Grummite Beater",
@@ -28567,7 +28586,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gukimir"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "026B38:Oblivion.esm": {
       "Name": "Gul gro-Burbog",
@@ -28714,7 +28734,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Haekwon"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "035EB0:Oblivion.esm": {
       "Name": "Hafid Hollowleg",
@@ -28800,7 +28821,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Hans_Black-Nail"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0B167F:Oblivion.esm": {
       "Name": "Hanz gro-Hubrag",
@@ -29607,7 +29629,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Hlofgar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "012081:Oblivion.esm": {
       "Name": "Hloval Dreth\u0027s Ghost",
@@ -38425,7 +38448,7 @@
     },
     "0222B9:Oblivion.esm": {
       "Name": "Orgnolf Hairy-Legs",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A castle porter and commoner involved as a suspect in the Canvas the Castle investigation.",
       "Reason": "The supplied UESP article establishes ordinary porter duties and drinking habits, but no relevant combat training, adventuring feats, or practical combat-adjacent expertise.",
