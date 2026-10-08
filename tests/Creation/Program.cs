@@ -26,6 +26,32 @@ foreach(var level in new[]{1,10,20,30})
 foreach(var race in proposed.Races)foreach(var cls in proposed.Classes)foreach(var level in new[]{1,10,20,30})PlayerBuilds.AtLevel(combat.Gameplay,proposed,cls.Specialization=="Magic"?"Mage":"Warrior",race.Key,false,null,level,creationClass:cls.Name);
 void Reject(CreationSettings test,string message){try{CreationBalance.Validate(test,baseline);throw new Exception(message);}catch(ArgumentException){}}
 var wrong=CreationBalance.Parse(JsonSerializer.Serialize(settings));wrong.Spells.First().Value.Effects.First().Value.Code="FIDG";Reject(wrong,"Effect identity substitution accepted");Reject(new(){Classes=new(){["Warrior"]=new(){Attributes=["Strength","Strength"]}}},"Duplicate class attributes accepted");Reject(new(){Races=new(){[imperial.Key]=new(){Male=new(){["Strength"]=101}}}},"Invalid racial attribute accepted");
+const string shieldKey="047AE3:Oblivion.esm";
+CreationCatalog ShieldCatalog(string actorValue,bool scripted=false)=>baseline with { Races=baseline.Races.Select(r=>r with { Abilities=(r.Abilities??[]).Select(a=>a.Key==shieldKey?a with { Effects=a.Effects.Select(f=>f with { ActorValue=actorValue,Scripted=scripted }).ToArray() }:a).ToArray() }).ToArray() };
+var uopShield=ShieldCatalog("DefendBonus");
+var compatible=CreationBalance.Apply(uopShield,settings);
+var shield=compatible.Races.SelectMany(r=>r.Abilities??[]).Single(a=>a.Key==shieldKey).Effects[0];
+Check(shield.ActorValue=="DefendBonus"&&shield.Code=="SHLD"&&shield.Magnitude==25&&shield.Duration==30,"UOP Shield identity retained while applying strength edits");
+foreach(var catalog in new[]{ShieldCatalog("Strength"),ShieldCatalog("DefendBonus",true)})
+{
+ try{CreationBalance.Validate(settings,catalog);throw new Exception("Invalid or scripted Shield accepted");}
+ catch(ArgumentException error){Check(error.Message.Contains(shieldKey)&&error.Message.Contains("effect 0"),"Mismatch identifies exact ability and effect");}
+}
+var changedAttribute=CreationBalance.Parse(JsonSerializer.Serialize(settings));changedAttribute.Spells["047AD3:Oblivion.esm"].Effects[2].ActorValue="Strength";Reject(changedAttribute,"Attribute target substitution accepted");
+var uopPath="C:/Users/kevle/AppData/Local/ModOrganizer/Oblivion/mods/Unofficial Oblivion Patch - UOP/Unofficial Oblivion Patch.esp";
+if(File.Exists(uopPath))
+{
+ using var uop=OblivionMod.CreateFromBinaryOverlay(uopPath,OblivionRelease.Oblivion);
+ CreationAbility WinningAbility(CreationAbility ability)
+ {
+  var native=uop.Spells.FirstOrDefault(s=>s.FormKey==FormKey.Factory(ability.Key));
+  return native is null?ability:ability with { Effects=native.Effects.Select((e,i)=>new CreationEffect(i,e.Data!.MagicEffect.ToString()??"",e.Data.ActorValue.ToString(),e.Data.Magnitude,e.Data.Duration,e.Data.Type.ToString(),e.Data.Area,e.ScriptEffect is not null)).ToArray() };
+ }
+ var winning=baseline with { Races=baseline.Races.Select(r=>r with { Abilities=(r.Abilities??[]).Select(WinningAbility).ToArray() }).ToArray(),Birthsigns=baseline.Birthsigns.Select(s=>s with { Abilities=(s.Abilities??[]).Select(WinningAbility).ToArray() }).ToArray() };
+ CreationBalance.Apply(winning,settings);
+ Console.WriteLine("Actual installed UOP racial/birthsign effects accepted without changing identities.");
+}
+Console.WriteLine("Vanilla/UOP Shield compatibility, metadata preservation, and identity/script safeguards passed.");
 using var vanilla=OblivionMod.CreateFromBinaryOverlay("F:/SteamLibrary/steamapps/common/Oblivion/Data/Oblivion.esm",OblivionRelease.Oblivion);
 var candidatePath=args.Length>1&&args[0]=="--edits"?args[1]:args.Length>0?args[0]:"artifacts/combat-first-pass/BaldursGateStyleOblivion.esp";
 using var candidate=OblivionMod.CreateFromBinaryOverlay(candidatePath,OblivionRelease.Oblivion);

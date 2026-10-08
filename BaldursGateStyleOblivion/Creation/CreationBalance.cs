@@ -61,7 +61,16 @@ public static class CreationBalance
             {
                 if(e.Value is null||e.Key<0||string.IsNullOrWhiteSpace(e.Value.Code)||string.IsNullOrWhiteSpace(e.Value.ActorValue))throw new ArgumentException("Ability effect identity missing.");
                 foreach(var v in new[]{e.Value.Magnitude,e.Value.Duration})if(v.HasValue&&(!double.IsFinite(v.Value)||v.Value<0||v.Value>1000||v.Value!=Math.Floor(v.Value)))throw new ArgumentException("Ability values must be whole numbers between 0 and 1000.");
-                if(abilities is not null){var f=abilities[p.Key].Effects.FirstOrDefault(f=>f.Index==e.Key);if(f is null||f.Code!=e.Value.Code||f.ActorValue!=e.Value.ActorValue||f.Scripted)throw new ArgumentException("Preserve native effect identities and scripts.");if(abilities[p.Key].Type=="Ability"&&e.Value.Duration is >0)throw new ArgumentException("Passive abilities must remain constant.");}
+                if(abilities is not null)
+                {
+                    var ability=abilities[p.Key];
+                    var f=ability.Effects.FirstOrDefault(f=>f.Index==e.Key);
+                    // Vanilla Nord Shield uses Health; UOP corrects this unused selector to DefendBonus.
+                    var shieldMetadata=f?.Code=="SHLD" && (f.ActorValue is "Health" or "DefendBonus") && (e.Value.ActorValue is "Health" or "DefendBonus");
+                    if(f is null||f.Code!=e.Value.Code||(!shieldMetadata&&f.ActorValue!=e.Value.ActorValue)||f.Scripted)
+                        throw new ArgumentException($"Preserve native effect identities and scripts: {ability.Name} ({p.Key}), effect {e.Key}; expected {e.Value.Code}/{e.Value.ActorValue}, found {f?.Code??"missing"}/{f?.ActorValue??"missing"}{(f?.Scripted==true?" (scripted)":"")}.");
+                    if(ability.Type=="Ability"&&e.Value.Duration is >0)throw new ArgumentException("Passive abilities must remain constant.");
+                }
             }
         }
     }
