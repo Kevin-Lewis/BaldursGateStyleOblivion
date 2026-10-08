@@ -14,6 +14,7 @@ internal static class EditorNavigation
             ("combat.html", "/combat", "Combat workbench"),
             ("enhancements.html", "/artifacts", "Artifacts / enchantments / alchemy"),
             ("magic.html", "/magic", "Magic analysis"),
+            ("economy.html", "/economy", "Economy"),
             ("merchants.html", "/merchants", "Merchants"),
             ("loot.html", "/loot", "World loot"),
             ("rewards.html", "/rewards", "Rewards & artifacts")

@@ -2,6 +2,8 @@ namespace BaldursGateStyleOblivion.Core;
 
 public sealed class PatcherSettings
 {
+    public bool EnableEconomyBalance { get; set; } = true;
+    public string EconomyConfigurationFile { get; set; } = "";
     public bool EnableCreationBalance { get; set; } = true;
     public string CreationConfigurationFile { get; set; } = "";
     public bool EnableEnchantmentBalance { get; set; } = true;

@@ -11,13 +11,13 @@ internal static class Program
         {
             if (args.Length == 0 || args[0] is "help" or "--help")
             {
-                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--list-config <creature-lists.json>] [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--source-page <UESP-title>] [--port <port>] [--parallelism <1-8>] [--no-open] [--refresh]");
+                Console.WriteLine("ActorResearch edit|catalog|research --reports <directory> --config <actor-classification.json> [--list-config <creature-lists.json>] [--formkey <ID:Plugin>] [--formkeys <text-file>] [--model <model>] [--work <directory>] [--output <html>] [--anchors <json-file>] [--source-page <UESP-title>] [--port <port>] [--parallelism <1-8>] [--no-open] [--refresh] [--review]");
                 return 0;
             }
             var options = new Dictionary<string, string>(StringComparer.Ordinal);
             for (var i = 1; i < args.Length; i++)
             {
-                if (args[i] is "--refresh" or "--no-open") options.Add(args[i], "true");
+                if (args[i] is "--refresh" or "--no-open" or "--review") options.Add(args[i], "true");
                 else if (!args[i].StartsWith("--") || i + 1 >= args.Length || args[i + 1].StartsWith("--")) throw new ArgumentException($"Missing option value: {args[i]}");
                 else options.Add(args[i], args[++i]);
             }
@@ -50,7 +50,7 @@ internal static class Program
                     new ParallelOptions { MaxDegreeOfParallelism = parallelism }, async (group, _) =>
                 {
                     foreach (var actor in group)
-                        try { await Research.Run(actor, config, work, Get("--model", settings.ResearchModel), options.ContainsKey("--refresh"), anchors, options.GetValueOrDefault("--source-page")); }
+                        try { await Research.Run(actor, config, work, Get("--model", settings.ResearchModel), options.ContainsKey("--refresh"), anchors, options.GetValueOrDefault("--source-page"), options.ContainsKey("--review")); }
                         catch (Exception exception) when (exception is InvalidDataException or HttpRequestException or TaskCanceledException or System.Text.Json.JsonException or KeyNotFoundException or IOException or UnauthorizedAccessException)
                         { failures.Add(actor.FormKey); Console.Error.WriteLine($"Research failed for {actor.Name} ({actor.FormKey}): {exception.Message}"); }
                 });

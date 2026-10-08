@@ -1,0 +1,15 @@
+# Shivering faction equipment audit
+
+Order swords were classified as `BladeOneHand` instead of `Longsword`. This left vanilla damage/weight/durability as the starting values and multiplied them by the material modifiers, bypassing the class baselines. The Perfect Order Sword consequently had 60 base damage while the normalized Daedric longsword had 31. Order swords now use the same longsword baseline and their existing named material grade; the perfect variant is 31, not 60.
+
+Golden Saint and Dark Seducer weapons encode rank rather than material in their EditorIDs. Their physical stats previously escaped normalization. The resolver now translates those ranks to Iron, Silver, Glass and Ebony. Golden bows use Silver, standard dark bows Dwarven, and frail dark bows Iron. These preserve the original equipment quality relationships; the reference identifies the favored Golden Longsword and Dark Mace as Ebony-quality arms, not weapons categorically beyond Daedric. [Original faction weapon reference](https://en.uesp.net/wiki/Shivering:Weapons).
+
+Dark Seducer `3Chain` armor now resolves to Chainmail. Golden officer helmets use Ebony-equivalent heavy protection; dark officer/elite helmets use Glass-equivalent light protection. These are explicit balancing choices within the existing material framework, not claims that their lore assigns a literal crafting metal. Numbered officer helmet variants are included.
+
+The same identities feed equipment rarity and the economy, so a corrected high-quality faction weapon is not priced or distributed as an unclassified ordinary item. Models, native equipment flags, quest links and enchantment identities are retained.
+
+Main faction armor covers the torso, legs, hands and feet in one record. Its rating, weight and durability are therefore larger than a standalone cuirass. The maximum Golden Saint body armor is 59.5 rating, matching the same combined Daedric body pieces; its separate helmet completes the normal heavy set. Dark Seducer body armor at Glass quality is 41.04, matching the combined Glass body pieces. Order body armor uses its existing covered slots and Daedric grade at the top end. These already fit the physical scale and were not blanket-nerfed. The artifact table now marks full-body suits and explains how to compare them.
+
+A dedicated regression audit covers all 99 non-test weapon/armor records in these families, including reward variants, armor coverage, weight, durability, equipment flags and native output. Native arrows were also audited against ordinary Daedric arrows and did not exceed that baseline; no arrow-strength change was needed. Tier/material edits remain available through the existing combat and artifact configuration.
+
+Validation note: the separate historical unique-item tier snapshot currently disagrees with 74 manually edited artifact rules (including Crusader armor changed from tier 8 to 7). Those saved choices were preserved. The dedicated faction audit validates native output against the current configuration.

@@ -29,4 +29,7 @@
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Magic/MagicConfiguration.cs" Link="Magic/MagicConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Magic/CasterKits.cs" Link="Magic/CasterKits.cs" /><Compile Include="../../BaldursGateStyleOblivion/Magic/MagicScenarios.cs" Link="Magic/MagicScenarios.cs" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Enhancements/EnhancementConfiguration.cs" Link="Enhancements/EnhancementConfiguration.cs" /><Compile Include="../../BaldursGateStyleOblivion/Enhancements/EnhancementBalance.cs" Link="Enhancements/EnhancementBalance.cs" /><None Update="enhancements.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 <ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Creation/CreationBalance.cs" Link="Creation/CreationBalance.cs" /><None Update="creation.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><Compile Include="../../BaldursGateStyleOblivion/Economy/EconomyBalance.cs" Link="Economy/EconomyBalance.cs" /><Compile Include="../../BaldursGateStyleOblivion/Economy/EconomyAnalysis.cs" Link="Economy/EconomyAnalysis.cs" /><None Update="economy.html" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><None Update="expertise-prompt.txt" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+<ItemGroup><None Update="named-npcs.json" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
 </Project>

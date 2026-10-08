@@ -12,7 +12,7 @@ internal sealed record EnhancementPreview(EnchantmentSettings Enchantments,Alche
 internal sealed record RecipePreview(AlchemySettings Settings,string First,string? Second,double Skill=50,double Luck=50,double MortarQuality=38,double BuyMultiplier=1.4,double SellMultiplier=.4,double? ObservedValue=null);
 internal static class EnhancementEditor
 {
-    private static readonly object Gate=new();
+    internal static readonly object Gate=new();
     public static void Map(WebApplication app,string folder,string reports,string token)
     {
         string PathFor(string kind)=>Path.Combine(folder,kind+".json");

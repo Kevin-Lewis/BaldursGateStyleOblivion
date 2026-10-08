@@ -201,6 +201,7 @@
     },
     "ActorBuilds": {
       "Warrior": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 1,
         "Endurance": 1,
@@ -242,6 +243,7 @@
         ]
       },
       "Knight": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.9,
         "Endurance": 1.05,
@@ -282,6 +284,7 @@
         ]
       },
       "Barbarian": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 1.05,
         "Endurance": 1,
@@ -321,6 +324,7 @@
         ]
       },
       "Rogue": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.9,
         "Endurance": 1,
@@ -360,6 +364,7 @@
         ]
       },
       "Scout": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.9,
         "Endurance": 1.05,
@@ -399,6 +404,7 @@
         ]
       },
       "Spellsword": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.95,
         "Endurance": 1,
@@ -439,6 +445,7 @@
         ]
       },
       "Battlemage": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.9,
         "Endurance": 0.95,
@@ -479,6 +486,7 @@
         ]
       },
       "Mage": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.6,
         "Endurance": 0.8,
@@ -521,6 +529,7 @@
         ]
       },
       "Civilian": {
+        "CreationClass": null,
         "Health": 1,
         "Strength": 0.8,
         "Endurance": 0.8,
@@ -553,6 +562,7 @@
         "Skills": []
       },
       "Conjurer": {
+        "CreationClass": "Mage",
         "Health": 1,
         "Strength": 0.6,
         "Endurance": 0.8,
@@ -592,10 +602,10 @@
           "Alteration",
           "Illusion",
           "Mysticism"
-        ],
-        "CreationClass": "Mage"
+        ]
       },
       "Necromancer": {
+        "CreationClass": "Mage",
         "Health": 1,
         "Strength": 0.6,
         "Endurance": 0.8,
@@ -635,10 +645,10 @@
           "Alteration",
           "Illusion",
           "Mysticism"
-        ],
-        "CreationClass": "Mage"
+        ]
       },
       "Illusionist": {
+        "CreationClass": "Mage",
         "Health": 1,
         "Strength": 0.6,
         "Endurance": 0.8,
@@ -678,10 +688,10 @@
           "Alteration",
           "Illusion",
           "Mysticism"
-        ],
-        "CreationClass": "Mage"
+        ]
       },
       "DefensiveCaster": {
+        "CreationClass": "Healer",
         "Health": 1,
         "Strength": 0.6,
         "Endurance": 0.8,
@@ -721,8 +731,7 @@
           "Alteration",
           "Illusion",
           "Mysticism"
-        ],
-        "CreationClass": "Healer"
+        ]
       }
     },
     "CreatureBuilds": {
@@ -751,7 +760,7 @@
       "023F2A:Oblivion.esm": {
         "Preserve": false,
         "Build": null,
-        "Health": 200
+        "Health": 180
       },
       "033CD8:Oblivion.esm": {
         "Preserve": false,
@@ -1024,11 +1033,11 @@
   "QuickClasses": {
     "Warrior": {
       "Build": "Balanced",
-      "Equipment": "Sword & shield"
+      "Equipment": "Sword \u0026 shield"
     },
     "Knight": {
       "Build": "Defensive",
-      "Equipment": "Sword & shield"
+      "Equipment": "Sword \u0026 shield"
     },
     "Barbarian": {
       "Build": "Berserker",
@@ -1044,7 +1053,7 @@
     },
     "Spellsword": {
       "Build": "Balanced",
-      "Equipment": "Sword & shield"
+      "Equipment": "Sword \u0026 shield"
     },
     "Battlemage": {
       "Build": "Balanced",

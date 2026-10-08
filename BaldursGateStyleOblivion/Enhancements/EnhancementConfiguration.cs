@@ -56,7 +56,7 @@ public sealed class EnchantmentSettings
 public sealed class AlchemySettings
 {
     public bool Enabled { get; set; } = true;
-    public double CraftedValueMultiplier { get; set; } = .12;
+    public double CraftedValueMultiplier { get; set; } = .18;
     public int MaximumActivePotions { get; set; } = 2;
     public double[] ApparatusQualities { get; set; } = [10,22,38,52,65];
     public double[] RecoveryBudgets { get; set; } = [40,65,100,145,190];
@@ -66,7 +66,7 @@ public sealed class AlchemySettings
     public int MaximumDuration { get; set; } = 90;
     public int MaximumControlSeconds { get; set; } = 3;
     public double WeaknessCap { get; set; } = 20;
-    public int CommonIngredientValueFloor { get; set; } = 5;
+    public int CommonIngredientValueFloor { get; set; } = 8;
     public int RareIngredientValue { get; set; } = 30;
     public int MerchantIngredientCount { get; set; } = 8;
     public int MerchantRareIngredientCount { get; set; } = 2;

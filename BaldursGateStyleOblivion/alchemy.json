@@ -1,6 +1,6 @@
 {
   "Enabled": true,
-  "CraftedValueMultiplier": 0.12,
+  "CraftedValueMultiplier": 0.18,
   "MaximumActivePotions": 2,
   "ApparatusQualities": [
     10,
@@ -30,10 +30,17 @@
     20,
     25
   ],
+  "ResourceCaps": [
+    15,
+    25,
+    35,
+    50,
+    65
+  ],
   "MaximumDuration": 90,
   "MaximumControlSeconds": 3,
   "WeaknessCap": 20,
-  "CommonIngredientValueFloor": 5,
+  "CommonIngredientValueFloor": 8,
   "RareIngredientValue": 30,
   "MerchantIngredientCount": 8,
   "MerchantRareIngredientCount": 2,
@@ -48,12 +55,5 @@
   "IngredientValues": {},
   "PotionValues": {},
   "PotionRanks": {},
-  "PreserveItems": [],
-  "ResourceCaps": [
-    15,
-    25,
-    35,
-    50,
-    65
-  ]
+  "PreserveItems": []
 }

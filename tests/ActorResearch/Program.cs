@@ -39,6 +39,20 @@ try
     Check(updated.FormKeyOverrides[key].Description == proposal.Description, "Editing must preserve LLM notes");
     Check(!ConfigurationEditor.AddActor(config, key, proposal), "Research must not overwrite an existing edit");
     Check(ActorConfiguration.Load(config).FormKeyOverrides[key].PowerTier == 7, "Existing edits must survive research");
+    var expected = ActorConfiguration.Load(config).FormKeyOverrides[key];
+    Check(ConfigurationEditor.ReviewActor(config, key, proposal, expected), "Fresh evaluation may update an existing tier-only override");
+    Check(ActorConfiguration.Load(config).FormKeyOverrides[key].Handling == ActorHandling.MajorBoss, "Review must preserve handling");
+    expected = ActorConfiguration.Load(config).FormKeyOverrides[key];
+    ConfigurationEditor.Actor(config, key, "Example", 7, "MajorBoss", 24, false);
+    var protectedText = File.ReadAllText(config);
+    Check(!ConfigurationEditor.ReviewActor(config, key, proposal, expected) && File.ReadAllText(config) == protectedText, "New level overrides must prevent all research writes");
+    expected = ActorConfiguration.Load(config).FormKeyOverrides[key];
+    Check(!ConfigurationEditor.ReviewActor(config, key, proposal, expected) && File.ReadAllText(config) == protectedText, "Preexisting level overrides must remain byte-for-byte intact");
+    ConfigurationEditor.Actor(config, key, "Example", 7, "MajorBoss");
+    expected = ActorConfiguration.Load(config).FormKeyOverrides[key];
+    ConfigurationEditor.Actor(config, key, "Example", 5, "Named");
+    Check(!ConfigurationEditor.ReviewActor(config, key, proposal, expected), "Concurrent manual changes must survive review");
+    ConfigurationEditor.Actor(config, key, "Example", 7, "MajorBoss");
     var original = File.ReadAllText(config);
     try { ConfigurationEditor.Actor(config, key, "Example", 11, null); throw new Exception("Invalid tier accepted"); }
     catch (ArgumentOutOfRangeException) { }

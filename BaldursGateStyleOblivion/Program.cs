@@ -95,6 +95,7 @@ public class Program
                     changes[change.Key]=changes.GetValueOrDefault(change.Key,[]).Concat(change.Value).Distinct().ToArray();
             });
             run.Module("Magic analysis",run.Settings.EnableMagicAnalysis,false,()=>Magic.MagicAnalysisModule.Run(state,run));
+            run.Module("Economy",run.Settings.EnableEconomyBalance,false,()=>{foreach(var change in Economy.EconomyModule.Run(state,run))changes[change.Key]=changes.GetValueOrDefault(change.Key,[]).Concat(change.Value).Distinct().ToArray();});
             run.Module("Diagnostics", run.Settings.EnableDiagnostics, false, () =>
             {
                 ActorReports.Write(state, run);

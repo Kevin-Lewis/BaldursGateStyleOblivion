@@ -28,6 +28,27 @@ internal static class ConfigurationEditor
         }
     }
 
+    public static bool ReviewActor(string path, string key, ActorOverride proposal, ActorOverride? expected)
+    {
+        if (proposal.PowerTier is null) return false;
+        lock (Gate)
+        {
+            var current = ActorConfiguration.Load(path).FormKeyOverrides.GetValueOrDefault(key);
+            if (current?.FixedLevel is not null || JsonSerializer.Serialize(current, ActorConfiguration.JsonOptions) != JsonSerializer.Serialize(expected, ActorConfiguration.JsonOptions)) return false;
+            path = current?.ConfigurationFile ?? path;
+            var original = File.ReadAllText(path);
+            var root = JsonNode.Parse(original)!.AsObject();
+            var actors = Actors(root);
+            var stored = actors.FirstOrDefault(pair => pair.Key.Equals(key, StringComparison.OrdinalIgnoreCase)).Key ?? key;
+            var entry = actors[stored]?.AsObject() ?? new JsonObject { ["Name"] = proposal.Name, ["Handling"] = proposal.Handling?.ToString() };
+            var researched = JsonSerializer.SerializeToNode(proposal, ActorConfiguration.JsonOptions)!.AsObject();
+            foreach (var field in new[] { "PowerTier", "Description", "Reason", "Uncertainty", "Sources", "Model" }) entry[field] = researched[field]?.DeepClone();
+            if (actors[stored] is null) actors[stored] = entry;
+            Save(path, root, original);
+            return true;
+        }
+    }
+
     public static void Actor(string path, string key, string name, int? tier, string? handling, int? fixedLevel = null, bool? delevel = null)
     {
         ActorConfiguration.ValidateFormKey(key);

@@ -11,6 +11,7 @@ using Mutagen.Bethesda.Synthesis;
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Combat.Tests")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Magic.Tests")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("ShiveringGear.Tests")]
 
 namespace BaldursGateStyleOblivion.Combat;
 
@@ -19,10 +20,22 @@ internal static class PhysicalCombatModule
     internal static string Material(string? editorID)
     {
         var match = Regex.Match(editorID ?? "", "Daedric|Ebony|Glass|Orcish|Elven|Dwarven|Silver|Steel|Iron|Mithril|Chainmail|Leather|Fur|Amber|Madness", RegexOptions.IgnoreCase);
-        return match.Success ? char.ToUpperInvariant(match.Value[0]) + match.Value[1..].ToLowerInvariant() : "Unknown";
+        if (match.Success) return char.ToUpperInvariant(match.Value[0]) + match.Value[1..].ToLowerInvariant();
+        var id=editorID??"";
+        // These faction names encode a weapon rank instead of a material name.
+        var ranked=Regex.Match(id,@"^SE(?:GoldenSaint|DarkSeducer)([1-4])(?:Longsword|Shortsword|Mace|Waraxe)$",RegexOptions.IgnoreCase);
+        if(ranked.Success)return new[]{"Iron","Silver","Glass","Ebony"}[int.Parse(ranked.Groups[1].Value)-1];
+        if(id.Equals("SEGoldenSaintBow",StringComparison.OrdinalIgnoreCase))return "Silver";
+        if(id.Equals("SEDarkSeducerBow",StringComparison.OrdinalIgnoreCase))return "Dwarven";
+        if(id.Equals("SEDarkSeducerBowFrail",StringComparison.OrdinalIgnoreCase))return "Iron";
+        if(Regex.IsMatch(id,@"^SEDarkSeducer(?:Armor|Helmet|Shield)(?:Reward)?3Chain$",RegexOptions.IgnoreCase))return "Chainmail";
+        if(Regex.IsMatch(id,@"^SEGoldenSaintOfficerHelmet\d*$",RegexOptions.IgnoreCase))return "Ebony";
+        if(Regex.IsMatch(id,@"^SEDarkSeducerOfficerHelmet\d*$",RegexOptions.IgnoreCase)||id.Equals("SE07ADarkSeducerEliteHelmet",StringComparison.OrdinalIgnoreCase))return "Glass";
+        return "Unknown";
     }
     internal static string WeaponClass(IWeaponGetter weapon)
     {
+        if(Regex.IsMatch(weapon.EditorID??"",@"^SEOrderKnight\dSword",RegexOptions.IgnoreCase))return "Longsword";
         var match = Regex.Match(weapon.EditorID ?? "", "Dagger|Shortsword|Longsword|Claymore|Waraxe|Battleaxe|Mace|Warhammer", RegexOptions.IgnoreCase);
         return match.Success ? char.ToUpperInvariant(match.Value[0]) + match.Value[1..].ToLowerInvariant() : weapon.Data?.Type.ToString() ?? "Unknown";
     }

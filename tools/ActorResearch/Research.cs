@@ -64,21 +64,24 @@ internal static class Research
     private sealed record Cached(string Model, string ResponseId, ActorOverride Proposal);
     private sealed record Completed(string Model, string ResponseId, ActorOverride Proposal, string[] RetrievedSources);
 
-    public static async Task Run(Actor actor, string config, string work, string model, bool refresh, string anchors = "[]", string? sourcePage = null)
+    public static async Task Run(Actor actor, string config, string work, string model, bool refresh, string anchors = "[]", string? sourcePage = null, bool review = false)
     {
-        if (ActorConfiguration.Load(config).FormKeyOverrides.ContainsKey(actor.FormKey))
+        if (review && actor.RecordType != "NPC") throw new ArgumentException("Class expertise review accepts NPC records only.");
+        var existing = ActorConfiguration.Load(config).FormKeyOverrides.GetValueOrDefault(actor.FormKey);
+        if (review ? existing?.FixedLevel is not null : existing is not null)
         {
             Console.WriteLine($"Already configured: {actor.Name}. Existing edits preserved.");
             return;
         }
         if (actor.EditorID == "Player") throw new ArgumentException("The player base actor is protected and cannot be researched for automatic tier assignment.");
+        var instructions = review ? File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "expertise-prompt.txt")) : Instructions;
         var wiki = await Uesp.Read(actor, work, refresh, sourcePage);
         var lore = actor.Name is "Mehrunes Dagon" or "Jyggalag" or "Sheogorath"
             ? await Uesp.Read(actor, work, refresh, "Lore:" + actor.Name) : null;
         var wikiSources = new[] { wiki, lore }.OfType<WikiSource>().ToArray();
-        var input = JsonSerializer.Serialize(new { actor.FormKey, actor.Name, actor.EditorID, actor.RecordType, actor.SourcePlugin }) + "\nVerified UESP article: " + JsonSerializer.Serialize(wikiSources)
-            + "\nProject reference tiers (design baselines, not source material): " + anchors;
-        var fingerprint = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(model + Instructions + input)));
+        var input = JsonSerializer.Serialize(new { actor.FormKey, actor.Name, actor.EditorID, actor.RecordType, actor.SourcePlugin, Disciplines = actor.Evidence.GetValueOrDefault("Class", []) }) + "\nVerified UESP article: " + JsonSerializer.Serialize(wikiSources)
+            + (review ? "" : "\nProject reference tiers (design baselines, not source material): " + anchors);
+        var fingerprint = Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(model + instructions + input)));
         var cache = Path.Combine(work, "cache", fingerprint + ".json");
         ActorOverride proposal;
         var completedPath = cache + ".completed.json";
@@ -118,7 +121,7 @@ internal static class Research
             };
             var payload = new
             {
-                model, store = false, instructions = Instructions, input = "Research this actor: " + input,
+                model, store = false, instructions, input = "Research this actor: " + input,
                 tools = new[] { new { type = "web_search", search_context_size = "low", filters = new { allowed_domains = new[] { "en.uesp.net", "en.m.uesp.net" } } } },
                 tool_choice = wikiSources.Length == 0 ? "required" : "auto", include = new[] { "web_search_call.action.sources" },
                 max_output_tokens = 4000,
@@ -170,7 +173,8 @@ internal static class Research
             Save(cache, new Cached(model, root.GetProperty("id").GetString()!, proposal));
         }
         proposal.Model = model;
-        if (ConfigurationEditor.AddActor(config, actor.FormKey, proposal))
+        var saved = review ? ConfigurationEditor.ReviewActor(config, actor.FormKey, proposal, existing) : ConfigurationEditor.AddActor(config, actor.FormKey, proposal);
+        if (saved)
             Console.WriteLine($"Saved {actor.Name}: Tier {proposal.PowerTier?.ToString() ?? "unassigned"}; {config}");
         else Console.WriteLine($"Existing edits preserved: {actor.Name}");
     }

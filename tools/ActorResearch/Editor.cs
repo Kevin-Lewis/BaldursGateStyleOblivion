@@ -86,6 +86,7 @@ internal static class Editor
         MagicEditor.Map(app, reports, Path.Combine(Path.GetDirectoryName(config)!, "magic.json"), token, config);
         CreationEditor.Map(app,Path.GetDirectoryName(config)!,reports,token);
         EnhancementEditor.Map(app,Path.GetDirectoryName(config)!,reports,token);
+        EconomyEditor.Map(app,Path.GetDirectoryName(config)!,reports,token);
         await app.StartAsync();
         Console.WriteLine($"Actor editor: {url}\nConfiguration: {config}\nKeep this window open while editing.");
         if (open) Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });

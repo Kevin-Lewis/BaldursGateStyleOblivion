@@ -32,7 +32,7 @@ internal sealed class EquipmentPoolBuilder
     public EquipmentQuality Quality(IMajorRecordGetter record, int requirement = 1)
     {
         if (settings.ItemOverrides.TryGetValue(record.FormKey.ToString(), out var quality)) return quality;
-        var id = record.EditorID ?? "";
+        var id = (record.EditorID ?? "")+" "+BaldursGateStyleOblivion.Combat.PhysicalCombatModule.Material(record.EditorID);
         quality = Regex.IsMatch(id, "Daedric", RegexOptions.IgnoreCase) ? EquipmentQuality.Rare
             : Regex.IsMatch(id, "Ebony|Glass", RegexOptions.IgnoreCase) ? EquipmentQuality.Elite
             : Regex.IsMatch(id, "Orcish|Elven|Mithril|Madness|Amber", RegexOptions.IgnoreCase) ? EquipmentQuality.HighQuality

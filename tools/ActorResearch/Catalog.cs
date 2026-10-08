@@ -4,10 +4,6 @@ using BaldursGateStyleOblivion.Classification;
 
 namespace ActorResearch;
 
-internal sealed record Actor(string FormKey, string? EditorID, string? Name, string RecordType, string SourcePlugin,
-    string WinningOverridePlugin, JsonElement Original, Dictionary<string, string[]> Evidence,
-    JsonElement? Scaling, JsonElement? Inventory, JsonElement? Usage, JsonElement? Stats = null, string? StatsStatus = null, bool AutoCalculated = false);
-
 internal static class Catalog
 {
     private static JsonElement[] Rows(string directory, string suffix, string property, bool required = false)
@@ -43,6 +39,8 @@ internal static class Catalog
         }).OrderBy(actor => actor.FormKey, StringComparer.Ordinal).ToArray();
     }
 
+    private static readonly HashSet<string> NamedNpcs = new(JsonSerializer.Deserialize<string[]>(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "named-npcs.json")))!, StringComparer.OrdinalIgnoreCase);
+
     public static object[] Rows(Actor[] actors, ClassificationSettings settings, string config)
     {
         var combatPath=Path.Combine(Path.GetDirectoryName(config)!,"combat.json");
@@ -55,7 +53,7 @@ internal static class Catalog
             var notes = manual;
             var assignment = profile.Dimensions.GetValueOrDefault("PowerTier")?.Selected;
             var usedBy = actor.Usage?.GetProperty("UsedBy").EnumerateArray().Where(item => item.GetProperty("RecordType").GetString() is "Quest" or "Script" or "DialogResponses").Select(item => item.GetProperty("EditorID").GetString() ?? item.GetProperty("FormKey").GetString()).ToArray() ?? [];
-            return new { actor.FormKey, actor.Name, actor.EditorID, actor.SourcePlugin, actor.WinningOverridePlugin, actor.RecordType,
+            return new { actor.FormKey, IsNamedNpc = actor.RecordType == "NPC" && (NamedNpcs.Contains(actor.FormKey) || Value("Handling")?.ToString() == "Named"), actor.Name, actor.EditorID, actor.SourcePlugin, actor.WinningOverridePlugin, actor.RecordType,
                 Group = Value("ActorCategory")?.ToString() ?? "Unclassified", Tier = profile.Tier?.Value,
                 FixedLevel = manual?.FixedLevel, Delevel = manual?.Delevel, DelevelingReview = manual?.DelevelingReview ?? "",
                 MappedLevel = manual?.FixedLevel ?? (profile.Tier is null ? null : settings.LevelMapping.GetValueOrDefault(profile.Tier.Value.Value)),
