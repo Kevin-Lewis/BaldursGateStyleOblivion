@@ -3,6 +3,18 @@ namespace BaldursGateStyleOblivion.Enhancements;
 
 public static class EnhancementBalance
 {
+    public static EnhancementEffect[] ArtifactTargets(EnhancementEffect[] native,EnhancementEffect[] configured,out bool compatible)
+    {
+        compatible=native.Length==configured.Length && native.All(effect=>configured.Count(edit=>edit.Code==effect.Code&&edit.ActorValue==effect.ActorValue&&edit.Scripted==effect.Scripted)==1);
+        if(!compatible)return native;
+        var targets=native.Select(effect=>
+        {
+            var edit=configured.Single(edit=>edit.Code==effect.Code&&edit.ActorValue==effect.ActorValue&&edit.Scripted==effect.Scripted);
+            return effect.Scripted?effect:effect with { Magnitude=edit.Magnitude,Duration=edit.Duration };
+        }).ToArray();
+        return targets;
+    }
+
     public static string Family(string code)=>code switch
     {
         "FIDG" or "FRDG" or "SHDG" or "DGHE"=>"Damage",

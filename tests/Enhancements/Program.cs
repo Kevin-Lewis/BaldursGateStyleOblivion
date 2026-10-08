@@ -6,6 +6,15 @@ using Mutagen.Bethesda.Plugins;
 using Mutagen.Bethesda.Plugins.Records;
 
 void Check(bool ok,string message){if(!ok)throw new Exception(message);}
+var nativeEffects=new[]{new EnhancementEffect("FOSK","Restoration",5,0),new EnhancementEffect("FOSK","Destruction",5,0)};
+var oldEffects=new[]{new EnhancementEffect("FOSK","Restoration",5,0),new EnhancementEffect("RSNW","ResistNormalWeapons",15,0),new EnhancementEffect("FOHE","Health",24,0)};
+Check(EnhancementBalance.ArtifactTargets(nativeEffects,oldEffects,out var mismatch).SequenceEqual(nativeEffects)&&!mismatch,"Changed mod enchantments retain native effects instead of failing");
+var reordered=EnhancementBalance.ArtifactTargets(nativeEffects,new[]{oldEffects[0] with { Magnitude=12 },nativeEffects[1] with { Magnitude=8 }}.Reverse().ToArray(),out var matched);
+Check(matched&&reordered[0].Code=="FOSK"&&reordered[0].ActorValue=="Restoration"&&reordered[0].Magnitude==12&&reordered[1].Magnitude==8,"Configured strengths match by identity, retaining native order");
+var artifactScript=new[]{new EnhancementEffect("SEFF","None",1,0,false,true)};
+Check(EnhancementBalance.ArtifactTargets(artifactScript,[artifactScript[0] with { Magnitude=99 }],out _).SequenceEqual(artifactScript),"Artifact configuration cannot rewrite scripted effects");
+Console.WriteLine("Modded artifact fallback, reordered identities and script preservation passed.");
+
 var enchant=EnhancementConfiguration.Load<EnchantmentSettings>("BaldursGateStyleOblivion/enchantments.json");var alchemy=EnhancementConfiguration.Load<AlchemySettings>("BaldursGateStyleOblivion/alchemy.json");
 EnhancementEffect[] source=[new("FIDG","None",20,3,true),new("FRDG","None",20,3,true)];var bounded=EnhancementBalance.Enchant(source,enchant,2,"Weapon",false);
 Check(EnhancementBalance.Damage(bounded)<=enchant.Tiers[2].Damage,"Multi-element enchantments share a budget");

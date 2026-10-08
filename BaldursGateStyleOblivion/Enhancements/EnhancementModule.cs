@@ -113,16 +113,22 @@ internal static class EnhancementModule
             if(source?.Data?.Type==Enchantment.EnchantmentType.Staff&&rule is null&&!enchant.ItemTiers.ContainsKey(key)){var damage=EnhancementBalance.Damage(before);tier=Array.FindIndex(enchant.StaffDamage,v=>v>=damage);if(tier<0)tier=10;}
             var preserve=(record.MajorRecordFlagsRaw&(int)OblivionMajorRecord.OblivionMajorRecordFlag.QuestItemPersistentReference)!=0&&rule is null||rule?.Preserve==true||enchant.PreserveItems.Contains(key)||registered&&rule is null||scripted&&rule is null||before.Any(e=>e.Scripted)&&rule?.BalanceScriptedEquipment!=true||record.EditorID?.StartsWith("Test",StringComparison.OrdinalIgnoreCase)==true;
             var after=preserve?before:EnhancementBalance.Enchant(before,enchant,tier,slots,constant,rule?.EnchantmentPower??1,source?.Data?.Type==Enchantment.EnchantmentType.Staff,rule?.BalanceScriptedEquipment==true);
+            var compatibilityNote="";
             if(rule?.Effects is {} explicitEffects)
             {
-                if(before.Length!=explicitEffects.Length||before.Zip(explicitEffects).Any(p=>p.First.Code!=p.Second.Code||p.First.ActorValue!=p.Second.ActorValue||p.First.Scripted&&p.First!=p.Second))throw new InvalidDataException("Artifact effect identities must remain native: "+key);
-                after=preserve?before:EnhancementBalance.Enchant(explicitEffects,enchant,tier,slots,constant,rule.EnchantmentPower,source?.Data?.Type==Enchantment.EnchantmentType.Staff,rule?.BalanceScriptedEquipment==true);
+                var targets=EnhancementBalance.ArtifactTargets(before,explicitEffects,out var compatible);
+                if(!compatible)
+                {
+                    compatibilityNote="Winning enchantment differs from configured effects; retaining winning identities and applying tier budgets.";
+                    run.Log($"Artifact compatibility: {record.EditorID} ({key}): {compatibilityNote}");
+                }
+                after=preserve?before:EnhancementBalance.Enchant(targets,enchant,tier,slots,constant,rule.EnchantmentPower,source?.Data?.Type==Enchantment.EnchantmentType.Staff,rule?.BalanceScriptedEquipment==true);
             }
             var proposedPhysical=physical;
             if(!preserve&&rule is not null&&physical is not null)proposedPhysical=EnhancementBalance.ArtifactPhysical(physical,combat,rule);
             if(source is null&&!registered&&rule is null)continue;
             var hits=rule?.ChargedHits??enchant.ChargedHits;
-            items.Add(new{FormKey=key,record.EditorID,Name=record switch{IWeaponGetter w=>w.Name?.ToString(),IArmorGetter a=>a.Name?.ToString(),IClothingGetter c=>c.Name?.ToString(),_=>record.EditorID},Tier=tier,Artifact=registered||rule is not null,Curated=rule is not null,Preserved=preserve,Scripted=scripted,Slots=slots,Activation=source?.Data?.Type.ToString()??"None",Before=before,After=after,BeforePhysical=physical,AfterPhysical=proposedPhysical,Charge=record is IWeaponGetter charged?charged.EnchantmentPoints:null,BeforeCost=source?.Data?.EnchantCost,ChargedHits=constant||source is null?0:hits,Damage=EnhancementBalance.Damage(after),Warnings=EnhancementBalance.Warnings(after,constant),Reason=rule?.Reason??(preserve?"Protected unique, quest, scripted or explicit exemption.":"Slot and tier budget; original effect identities retained.")});
+            items.Add(new{FormKey=key,record.EditorID,Name=record switch{IWeaponGetter w=>w.Name?.ToString(),IArmorGetter a=>a.Name?.ToString(),IClothingGetter c=>c.Name?.ToString(),_=>record.EditorID},Tier=tier,Artifact=registered||rule is not null,Curated=rule is not null,Preserved=preserve,CompatibilityNote=compatibilityNote,Scripted=scripted,Slots=slots,Activation=source?.Data?.Type.ToString()??"None",Before=before,After=after,BeforePhysical=physical,AfterPhysical=proposedPhysical,Charge=record is IWeaponGetter charged?charged.EnchantmentPoints:null,BeforeCost=source?.Data?.EnchantCost,ChargedHits=constant||source is null?0:hits,Damage=EnhancementBalance.Damage(after),Warnings=EnhancementBalance.Warnings(after,constant),Reason=rule?.Reason??(preserve?"Protected unique, quest, scripted or explicit exemption.":"Slot and tier budget; original effect identities retained.")});
             if(!writeEnchant||preserve)continue;
             var copy=record.DeepCopy();
             if(source?.Data is not null)
