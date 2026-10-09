@@ -12476,7 +12476,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Aryarie"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "03E29B:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -14126,7 +14127,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Baragon"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "03186C:Oblivion.esm": {
       "Name": "Barthel Gernand",
@@ -19358,7 +19360,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dahlia_Rackham"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "00A289:Oblivion.esm": {
       "Name": "Dairihill",
@@ -24351,7 +24354,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ferrum"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "026AD6:Oblivion.esm": {
       "Name": "Ferul Ravel",
@@ -24483,7 +24487,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:First_Mate_Filch"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "048962:Oblivion.esm": {
       "Name": "First Mate Malvulis",
@@ -24495,7 +24500,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:First_Mate_Malvulis"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "00BEE6:Oblivion.esm": {
       "Name": "Fithragaer",
@@ -24790,7 +24796,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Fortis"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "015D8B:Oblivion.esm": {
       "Name": "Foul Fagus",
@@ -25906,7 +25913,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Githriian"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0294C3:Oblivion.esm": {
       "Name": "Glarthir",
@@ -26501,7 +26509,7 @@
         "https://en.uesp.net/wiki/Oblivion:Goblin_Jim"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 10
+      "FixedLevel": 11
     },
     "181C6C:Oblivion.esm": {
       "Name": "Goblin Netherboss",
@@ -32291,7 +32299,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Jak_Silver"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0148D5:Oblivion.esm": {
       "Name": "Jakben, Earl of Imbel",
@@ -34416,7 +34425,7 @@
     },
     "0034DF:Oblivion.esm": {
       "Name": "Llevana Nedaren",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A farmer who demonstrates effective paralysis magic and uses vicious rats to kill Cheydinhal\u2019s corrupt guard captain.",
       "Reason": "Her planned killing succeeds through practical magical control and coordinated use of dangerous animals, establishing combat-adjacent capability beyond an ordinary civilian.",
@@ -34424,7 +34433,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Llevana_Nedaren"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 9
     },
     "03C9C3:Oblivion.esm": {
       "Name": "Llevana\u0027s Tunnel Rat",
@@ -34795,7 +34805,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Lynch"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0CD302:Oblivion.esm": {
       "Name": "Lynda Carter",
@@ -36609,7 +36620,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Minx"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "00A295:Oblivion.esm": {
       "Name": "Mirabelle Monet",
@@ -41910,7 +41922,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Scurvy_John_Hoff"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "0234B8:Oblivion.esm": {
       "Name": "Seed-Neeus",
@@ -41939,7 +41952,7 @@
     },
     "00C1D7:Oblivion.esm": {
       "Name": "Selene",
-      "PowerTier": 3,
+      "PowerTier": 4,
       "Handling": "QuestRelated",
       "Description": "Imperial thief and leader of the Blackwater Brigands, who hijack a ship and hold its proprietor hostage.",
       "Reason": "Her organized theft operation, armed confrontation, and active role defending the hostage support competent trained-thief capability, but not advanced expertise.",
@@ -41947,7 +41960,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Selene"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 15
     },
     "000F63:Knights.esp": {
       "Name": "Selene Duronia",
@@ -45455,7 +45469,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Umbacano"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "026B1B:Oblivion.esm": {
       "Name": "Umbra",
@@ -47986,7 +48001,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Wrath"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "06D682:Oblivion.esm": {
       "Name": "Wrath of Sithis",
@@ -48435,7 +48451,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Yinz%27r"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "041D90:Oblivion.esm": {
       "Name": "Yngvar Doom-Sayer",
@@ -49062,7 +49079,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Zedrick_Green"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "01208D:Oblivion.esm": {
       "Name": "Zoe Malene",
