@@ -81,7 +81,7 @@ foreach (var female in new[] { false, true })
 {
     var baselineProfile = new ActorProfile();
     baselineProfile.Apply(new ActorValues { PowerTier = tier, ActorCategory = category, Handling = ActorHandling.Generic }, "Test", "Test");
-    var expected = tier == 2 && category == ActorCategory.Civilian ? (female ? 3 : 4) : baselineSettings.LevelMapping[tier];
+    var expected = tier == 2 ? (female ? 3 : 4) : baselineSettings.LevelMapping[tier];
     var decision = ActorLevelPolicy.Decide(baselineSettings, key, "Citizen", "Citizen", false, true, 1, baselineProfile, female: female);
     Check(decision.TargetLevel == expected, $"Unexpected baseline for tier {tier}, {category}, female={female}");
     foreach (var level in new[] { 3, 4, 5, 7, 8, 9, 15 })

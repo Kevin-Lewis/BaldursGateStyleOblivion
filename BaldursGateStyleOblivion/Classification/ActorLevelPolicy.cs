@@ -26,8 +26,8 @@ internal static class ActorLevelPolicy
         if (tier == 10)
             return playerOffset ? Skip("Scaled Apex actor requires an individual FixedLevel override.")
                 : new(handling, tier, originalLevel, "Existing fixed Apex level", "Already-fixed Apex encounter preserved without a shared level formula.");
-        var target = MappedLevel(settings, key, profile, creature ? null : female);
-        if (target is null) return Skip("No level configured or civilian sex unavailable.");
+        var target = MappedLevel(settings, key, profile, female, creature);
+        if (target is null) return Skip("No level configured or NPC sex unavailable.");
         var curated = manual?.PowerTier is not null || manual?.Delevel == true;
         if (!curated && handling is ActorHandling.QuestRelated or ActorHandling.FactionLeader or ActorHandling.MinorBoss or ActorHandling.MajorBoss)
             return Skip("Quest-sensitive or boss actor needs a curated tier, FixedLevel, or explicit Delevel=true.");
@@ -37,14 +37,13 @@ internal static class ActorLevelPolicy
             curated ? "Curated actor tier mapped to a fixed level." : "Automatic tier fallback mapped to a fixed level.");
     }
 
-    // Explicit levels always win. A null sex means a creature or unavailable NPC metadata.
-    public static int? MappedLevel(ClassificationSettings settings, string key, ActorProfile? profile, bool? female)
+    // Explicit levels always win; only Tier 2 NPCs use sex-specific defaults.
+    public static int? MappedLevel(ClassificationSettings settings, string key, ActorProfile? profile, bool? female, bool creature = false)
     {
         if (settings.FormKeyOverrides.TryGetValue(key, out var manual) && manual.FixedLevel is not null)
             return manual.FixedLevel;
         if (profile?.Tier is null) return null;
-        if (profile.Tier.Value.Value == 2
-            && profile.Dimensions.GetValueOrDefault("ActorCategory")?.Selected.Value is ActorCategory.Civilian)
+        if (profile.Tier.Value.Value == 2 && !creature)
             return female is null ? null : female.Value ? 3 : 4;
         return settings.LevelMapping.GetValueOrDefault(profile.Tier.Value.Value);
     }

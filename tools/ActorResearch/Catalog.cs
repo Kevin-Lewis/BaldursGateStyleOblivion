@@ -58,7 +58,7 @@ internal static class Catalog
                 FixedLevel = manual?.FixedLevel, Delevel = manual?.Delevel, DelevelingReview = manual?.DelevelingReview ?? "",
                 MappedLevel = ActorLevelPolicy.MappedLevel(settings, actor.FormKey, profile,
                     actor.RecordType == "NPC" && actor.Original.TryGetProperty("Female", out var female)
-                        && female.ValueKind is JsonValueKind.True or JsonValueKind.False ? female.GetBoolean() : null),
+                        && female.ValueKind is JsonValueKind.True or JsonValueKind.False ? female.GetBoolean() : null, actor.RecordType == "Creature"),
                 HasOverride = manual is not null, OverrideTier = manual?.PowerTier, OverrideHandling = manual?.Handling?.ToString(), Handling = Value("Handling")?.ToString() ?? "Unclassified",
                 Model = notes?.Model ?? "", Description = notes?.Description ?? "", Reason = notes?.Reason ?? assignment?.Reason ?? "",
                 Uncertainty = notes?.Uncertainty ?? "", Sources = notes?.Sources ?? [], Rule = assignment?.Rule ?? "",

@@ -11350,7 +11350,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Anguilon"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0488F3:Oblivion.esm": {
       "Name": "Antoine Branck",
@@ -11400,7 +11401,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Antus_Odiil"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "00A0AE:Oblivion.esm": {
       "Name": "Anvil Guard",
@@ -11700,7 +11702,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "014C73:Oblivion.esm": {
       "Name": "Apostle",
@@ -11712,7 +11715,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "014CBE:Oblivion.esm": {
       "Name": "Apostle",
@@ -11724,7 +11728,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "01A388:Oblivion.esm": {
       "Name": "Apostle",
@@ -11736,7 +11741,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "052FE3:Oblivion.esm": {
       "Name": "Apostle",
@@ -11748,7 +11754,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "052FE4:Oblivion.esm": {
       "Name": "Apostle",
@@ -11760,7 +11767,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "054CA1:Oblivion.esm": {
       "Name": "Apostle",
@@ -11772,7 +11780,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "054CA2:Oblivion.esm": {
       "Name": "Apostle",
@@ -11784,7 +11793,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "06D1F4:Oblivion.esm": {
       "Name": "Apostle",
@@ -11796,7 +11806,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Apostle"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0A3163:Oblivion.esm": {
       "Name": "Arcturus",
@@ -11892,7 +11903,7 @@
     },
     "00556D:Oblivion.esm": {
       "Name": "Argonian Chieftain",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Leader of the Argonian tribe in Veyond Cave; this actor is one of four possible variants.",
       "Reason": "The article confirms the tribal-leader identity but establishes no combat training or notable feats. A basic baseline is appropriate; leadership alone does not establish greater combat power.",
@@ -11900,11 +11911,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Chieftain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "00556E:Oblivion.esm": {
       "Name": "Argonian Chieftain",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Leader of the Argonian tribe in Veyond Cave; this actor is one of four possible variants.",
       "Reason": "The article confirms the tribal-leader identity but establishes no combat training or notable feats. A basic baseline is appropriate; leadership alone does not establish greater combat power.",
@@ -11912,7 +11924,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Chieftain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 12
     },
     "00556F:Oblivion.esm": {
       "Name": "Argonian Chieftain",
@@ -11924,7 +11937,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Chieftain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005570:Oblivion.esm": {
       "Name": "Argonian Chieftain",
@@ -11936,7 +11950,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Chieftain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "00274F:DLCMehrunesRazor.esp": {
       "Name": "Argonian Laborer",
@@ -11948,7 +11963,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "002750:DLCMehrunesRazor.esp": {
       "Name": "Argonian Laborer",
@@ -11960,7 +11976,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "002751:DLCMehrunesRazor.esp": {
       "Name": "Argonian Laborer",
@@ -11972,7 +11989,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "00351F:DLCMehrunesRazor.esp": {
       "Name": "Argonian Laborer",
@@ -11984,7 +12002,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "003526:DLCMehrunesRazor.esp": {
       "Name": "Argonian Laborer",
@@ -11996,11 +12015,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "005569:Oblivion.esm": {
       "Name": "Argonian Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Argonian shaman encountered in Veyond Cave; the article establishes no exceptional combat feats or lore-based magical mastery.",
       "Reason": "Treat as an ordinary adult mortal at the Basic baseline; the evidence does not establish training or accomplishments warranting a higher tier.",
@@ -12008,11 +12028,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Shaman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "00556A:Oblivion.esm": {
       "Name": "Argonian Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Argonian shaman encountered in Veyond Cave; the article establishes no exceptional combat feats or lore-based magical mastery.",
       "Reason": "Treat as an ordinary adult mortal at the Basic baseline; the evidence does not establish training or accomplishments warranting a higher tier.",
@@ -12020,7 +12041,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Shaman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "00556B:Oblivion.esm": {
       "Name": "Argonian Shaman",
@@ -12032,7 +12054,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Shaman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "00556C:Oblivion.esm": {
       "Name": "Argonian Shaman",
@@ -12044,7 +12067,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Shaman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005560:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12056,7 +12080,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005561:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12068,7 +12093,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005562:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12080,7 +12106,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005563:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12092,7 +12119,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "005564:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12104,7 +12132,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "005565:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12116,7 +12145,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "005566:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12128,7 +12158,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "005567:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12140,7 +12171,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "005568:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12152,7 +12184,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "005571:Oblivion.esm": {
       "Name": "Argonian Tribesman",
@@ -12164,7 +12197,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Argonian_Tribesman"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0222B0:Oblivion.esm": {
       "Name": "Ariela Doran",
@@ -12240,7 +12274,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Armor_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "000CE5:DLCHorseArmor.esp": {
       "Name": "Armored Bay Horse",
@@ -12464,7 +12499,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Arvin_Dalvilu"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "02D01D:Oblivion.esm": {
       "Name": "Aryarie",
@@ -12489,7 +12525,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "03FBD9:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12501,7 +12538,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "046691:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12513,7 +12551,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "046692:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12525,7 +12564,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "05D369:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12537,7 +12577,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0998C1:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12549,7 +12590,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0998C2:Oblivion.esm": {
       "Name": "Ascended Immortal",
@@ -12609,7 +12651,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ascended_Immortal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "041193:Oblivion.esm": {
       "Name": "Ascended Zealot",
@@ -14397,7 +14440,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Beewos"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "01ECCF:Oblivion.esm": {
       "Name": "Beirir",
@@ -15187,7 +15231,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "093CD2:Oblivion.esm": {
       "Name": "Blind Moth Prelate",
@@ -15199,11 +15244,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "093CD4:Oblivion.esm": {
       "Name": "Blind Moth Prelate",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Blind Moth Prelate guarding Savilla\u2019s Stone, equipped with an Akaviri Dai-Katana; the article establishes no exceptional combat feats or training.",
       "Reason": "The source confirms an armed quest guardian, but provides no lore basis for ranking him as a seasoned fighter. Basic is a reasonable baseline for an adult mortal without established combat mastery.",
@@ -15211,11 +15257,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "14C46E:Oblivion.esm": {
       "Name": "Blind Moth Prelate",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Blind Moth Prelate guarding Savilla\u2019s Stone, equipped with an Akaviri Dai-Katana; the article establishes no exceptional combat feats or training.",
       "Reason": "The source confirms an armed quest guardian, but provides no lore basis for ranking him as a seasoned fighter. Basic is a reasonable baseline for an adult mortal without established combat mastery.",
@@ -15223,7 +15270,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "14C46F:Oblivion.esm": {
       "Name": "Blind Moth Prelate",
@@ -15235,7 +15283,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "00C51A:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15247,7 +15296,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "093CC8:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15259,7 +15309,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "093CCA:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15271,7 +15322,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "093CCE:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15283,7 +15335,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "093CCF:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15295,7 +15348,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "14C466:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15307,7 +15361,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "14C467:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15319,7 +15374,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "14C46A:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15331,7 +15387,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "14C46B:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15343,7 +15400,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "17C464:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15355,7 +15413,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "17C465:Oblivion.esm": {
       "Name": "Blind Moth Priest",
@@ -15367,7 +15426,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Blind_Moth_Priest"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "04872A:Oblivion.esm": {
       "Name": "Bloodcrust Vampire",
@@ -16328,7 +16388,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Brielus_Gawey"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0155A4:Oblivion.esm": {
       "Name": "Brithaur",
@@ -16838,7 +16899,7 @@
     },
     "0272C5:Oblivion.esm": {
       "Name": "Bruma Militia",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary Bruma militia member who may be called to defend the city, equipped with basic weapons and armor.",
       "Reason": "The article identifies this variant as militia used in place of unrecruited guards, and its dialogue suggests they are not professional soldiers. No combat training is established, so the ordinary-adult baseline applies.",
@@ -16846,11 +16907,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Bruma_Allies"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "027327:Oblivion.esm": {
       "Name": "Bruma Militia",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary Bruma militia member who may be called to defend the city, equipped with basic weapons and armor.",
       "Reason": "The article identifies this variant as militia used in place of unrecruited guards, and its dialogue suggests they are not professional soldiers. No combat training is established, so the ordinary-adult baseline applies.",
@@ -16858,7 +16920,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Bruma_Allies"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "0277A5:Oblivion.esm": {
       "Name": "Bruma Soldier",
@@ -17063,7 +17126,7 @@
     },
     "009235:Oblivion.esm": {
       "Name": "Camonna Tong Thug",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Camonna Tong criminal involved in Dulfish gro-Orum\u2019s skooma-smuggling operation at Walker Camp; the article describes two armed thug variants.",
       "Reason": "The source establishes a criminal role and weapons, but no notable combat training, mastery, or feats. The ordinary adult mortal baseline is therefore appropriate.",
@@ -17071,11 +17134,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Camonna_Tong_Thug"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "009236:Oblivion.esm": {
       "Name": "Camonna Tong Thug",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Camonna Tong criminal involved in Dulfish gro-Orum\u2019s skooma-smuggling operation at Walker Camp; the article describes two armed thug variants.",
       "Reason": "The source establishes a criminal role and weapons, but no notable combat training, mastery, or feats. The ordinary adult mortal baseline is therefore appropriate.",
@@ -17083,7 +17147,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Camonna_Tong_Thug"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "0243C8:Oblivion.esm": {
       "Name": "Candice Corgine",
@@ -18421,7 +18486,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Claudius_Arcadia"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "03E0DF:Oblivion.esm": {
       "Name": "Clesa",
@@ -18433,7 +18499,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Clesa"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0982F8:Oblivion.esm": {
       "Name": "Colin Stedrine",
@@ -18673,7 +18740,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Contumeliorus_Florius"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "189D01:Oblivion.esm": {
       "Name": "Corrick Northwode",
@@ -18690,183 +18758,223 @@
     },
     "073A2F:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A30:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A31:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A32:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A33:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A34:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A35:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A36:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A37:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A38:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A39:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3A:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3B:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3C:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3D:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3E:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A3F:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A40:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A41:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "073A42:Oblivion.esm": {
       "Name": "Corrupted Clone",
-      "Handling": "Generic",
+      "Handling": "ProtectedSpecial",
       "Description": "The record is labeled \u201CCorrupted Clone,\u201D but its specific encounter identity or combat form could not be verified from an actor-specific UESP source.",
       "Reason": "The supplied record alone does not establish combat ability or a supported special form, so assigning a tier would be speculative.",
       "Uncertainty": "No actor-specific UESP search result was found to confirm what this clone represents. Shared assessment from DASkullArgonianMale; individual specialization may differ.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "Delevel": false,
+      "DelevelingReview": "Preserve player-copy encounter scaling; do not assign a fixed level or rebalance actor combat stats."
     },
     "00C22D:Oblivion.esm": {
       "Name": "Corvus Umbranox",
@@ -19015,7 +19123,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Countess_Arriana_Valga"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "076472:Oblivion.esm": {
       "Name": "Countess Cirion",
@@ -19052,7 +19161,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Countess_Narina_Carvain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "0234A9:Oblivion.esm": {
       "Name": "Countess\u0027 Bodyguard",
@@ -19160,7 +19270,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Court_Healer"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "18AFCD:Oblivion.esm": {
       "Name": "Crazed Dog",
@@ -19201,7 +19312,7 @@
     },
     "0947BB:Oblivion.esm": {
       "Name": "Cylben Dolovas",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Dark Elf servant and bodyguard who guards Seridur\u2019s house, equipped with heavy armor and a claymore.",
       "Reason": "His bodyguard role and armed equipment support basic practical capability, but the article describes no specific training, combat feats, or advanced martial expertise.",
@@ -19209,7 +19320,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Cylben_Dolovas"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "016059:Oblivion.esm": {
       "Name": "Cyronin Sintav",
@@ -19373,7 +19485,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dairihill"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "078564:Oblivion.esm": {
       "Name": "Daisy",
@@ -19397,7 +19510,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Damian_Magius"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "045631:Oblivion.esm": {
       "Name": "Dancer",
@@ -19409,7 +19523,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Dancer"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "028FB9:Oblivion.esm": {
       "Name": "Danus Artellian",
@@ -19434,7 +19549,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dar_Jee"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "0280C9:Oblivion.esm": {
       "Name": "Dar-Ma",
@@ -20688,7 +20804,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Degil"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "019D34:Oblivion.esm": {
       "Name": "Deicide",
@@ -20895,7 +21012,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Dervera_Romalen"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "01207F:Oblivion.esm": {
       "Name": "Desideratus Annius\u0027 Ghost",
@@ -21057,7 +21175,7 @@
     },
     "01F106:Oblivion.esm": {
       "Name": "Doorkeeper",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "An Imperial Mythic Dawn agent guarding the Shrine of Dagon entrance; he may attack if challenged.",
       "Reason": "The article identifies him as a mortal agent and quest obstacle, but establishes no combat training or notable feats. Basic is a cautious ordinary-adult baseline.",
@@ -21065,7 +21183,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Doorkeeper"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "01FDD3:Oblivion.esm": {
       "Name": "Dorian",
@@ -21273,7 +21392,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Drels_Theran"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "01466D:Oblivion.esm": {
       "Name": "Dremora Archer",
@@ -22925,7 +23045,7 @@
         "https://en.uesp.net/wiki/Shivering:Dulphumph_gro-Urgash"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 4
+      "FixedLevel": 6
     },
     "01559D:Oblivion.esm": {
       "Name": "Dumag gro-Bonk",
@@ -23150,7 +23270,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eduard_Retiene"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "02D023:Oblivion.esm": {
       "Name": "Eilonwy",
@@ -23175,7 +23296,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eitar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "003435:Oblivion.esm": {
       "Name": "Elante of Alinor",
@@ -23859,7 +23981,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Eronor"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "0034C8:Oblivion.esm": {
       "Name": "Errandil",
@@ -23896,7 +24019,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Erver_Devani"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "000F5E:Knights.esp": {
       "Name": "Esbern",
@@ -24268,7 +24392,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Faurinthil"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "03AA89:Oblivion.esm": {
       "Name": "Faustina Cartia",
@@ -24293,7 +24418,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Felas_Sarandas"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "05FA45:Oblivion.esm": {
       "Name": "Felas Sarandas",
@@ -24305,7 +24431,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Felas_Sarandas"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "02D019:Oblivion.esm": {
       "Name": "Felen Relas",
@@ -24526,7 +24653,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Fjotreid"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "01E5EF:Oblivion.esm": {
       "Name": "Flame Atronach",
@@ -24688,7 +24816,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Forgotten_One"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "05DC99:Oblivion.esm": {
       "Name": "Forgotten One",
@@ -24712,7 +24841,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Forgotten_One"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "05DC9D:Oblivion.esm": {
       "Name": "Forgotten One",
@@ -24748,7 +24878,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Forgotten_One"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "05DCA4:Oblivion.esm": {
       "Name": "Forgotten One",
@@ -24760,7 +24891,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Forgotten_One"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "05DCA5:Oblivion.esm": {
       "Name": "Forgotten One",
@@ -24784,7 +24916,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Foroch"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0A3162:Oblivion.esm": {
       "Name": "Fortis",
@@ -24833,7 +24966,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Francine_Velain"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "0222B1:Oblivion.esm": {
       "Name": "Francois Motierre",
@@ -25073,7 +25207,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gaston_Surilie"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "025299:Oblivion.esm": {
       "Name": "Gaston Tussaud",
@@ -25863,7 +25998,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gilen_Norvalo"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "00A084:Oblivion.esm": {
       "Name": "Gilgondorin",
@@ -25926,7 +26062,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Glarthir"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "023F2B:Oblivion.esm": {
       "Name": "Glenroy",
@@ -27430,7 +27567,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Grantham_Blakeley"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "07929A:Oblivion.esm": {
       "Name": "Greater Skinned Hound",
@@ -27453,7 +27591,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gregory_Arne"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "01D252:Oblivion.esm": {
       "Name": "Grey-Throat",
@@ -27465,7 +27604,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Grey-Throat"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "023F0C:Oblivion.esm": {
       "Name": "Gromm",
@@ -28607,7 +28747,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Gul_gro-Burbog"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "034E68:Oblivion.esm": {
       "Name": "Gundalas",
@@ -28792,7 +28933,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Halion"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "015EA0:Oblivion.esm": {
       "Name": "Hamlof Red-Tooth",
@@ -28842,7 +28984,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Hanz_gro-Hubrag"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "033905:Oblivion.esm": {
       "Name": "Harrow",
@@ -28995,7 +29138,7 @@
     },
     "00A29B:Oblivion.esm": {
       "Name": "Heinrich Oaken-Hull",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Named Nord pirate and former ship captain residing in Anvil.",
       "Reason": "The article identifies him as a pirate and shipmaster but provides no evidence of combat, stealth, or other advanced practical capability.",
@@ -29003,7 +29146,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Heinrich_Oaken-Hull"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "035ED0:Oblivion.esm": {
       "Name": "Helvius Cecia",
@@ -29175,7 +29319,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Heretic"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "041278:Oblivion.esm": {
       "Name": "Heretic Novitiate",
@@ -29211,7 +29356,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Heretic"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "05282F:Oblivion.esm": {
       "Name": "Heretic Novitiate",
@@ -29247,7 +29393,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Heretic"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "041274:Oblivion.esm": {
       "Name": "Heretic Soldier",
@@ -29906,7 +30053,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Ilvel_Romayn"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "01E649:Oblivion.esm": {
       "Name": "Imp",
@@ -32241,7 +32389,8 @@
       "Reason": "The available UESP search results did not identify J\u2019zidzo. The record name alone is insufficient to establish combat capability or special handling.",
       "Uncertainty": "An actor-specific UESP article confirming J\u2019zidzo\u2019s identity or form is needed to assign a tier.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "01783D:Oblivion.esm": {
       "Name": "J\u0027zidzo",
@@ -32250,7 +32399,8 @@
       "Reason": "The available UESP search results did not identify J\u2019zidzo. The record name alone is insufficient to establish combat capability or special handling.",
       "Uncertainty": "An actor-specific UESP article confirming J\u2019zidzo\u2019s identity or form is needed to assign a tier.",
       "Sources": [],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "00A10C:Oblivion.esm": {
       "Name": "J\u0027zin-Dar",
@@ -32704,7 +32854,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Joofy_the_Brown"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "015D83:Oblivion.esm": {
       "Name": "Jorck the Outcast",
@@ -32989,7 +33140,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Kastav_Kvinchal"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "016064:Oblivion.esm": {
       "Name": "Kastus Sintav",
@@ -33087,7 +33239,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "001B9C:DLCMehrunesRazor.esp": {
       "Name": "Khajiit Laborer",
@@ -33099,7 +33252,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "00274D:DLCMehrunesRazor.esp": {
       "Name": "Khajiit Laborer",
@@ -33731,7 +33885,7 @@
     },
     "00A296:Oblivion.esm": {
       "Name": "Krognak gro-Brok",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An Orc pirate aboard The Serpent\u2019s Wake, carrying an iron dagger; no specific combat training or feats are documented.",
       "Reason": "Pirate crew membership and a dagger suggest basic capability, but the article establishes no advanced martial skill or demonstrated combat accomplishment.",
@@ -33739,7 +33893,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Krognak_gro-Brok"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 10
     },
     "02CD1F:Oblivion.esm": {
       "Name": "Kud-Ei",
@@ -33769,7 +33924,7 @@
     },
     "01FEEA:Oblivion.esm": {
       "Name": "Kurdan\u0027s Imperial Hunter",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "An Imperial client of Kurdan who participates in the lethal Hunter\u2019s Run at Fort Grief.",
       "Reason": "The article confirms his role as a human hunter in a lethal pursuit, but establishes no distinctive combat training, mastery, or exceptional feats beyond the ordinary-adult baseline.",
@@ -33777,7 +33932,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Kurdan%27s_Hunters"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 8
     },
     "01FEEC:Oblivion.esm": {
       "Name": "Kurdan\u0027s Nord Hunter",
@@ -33853,7 +34009,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Laborers"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "01EC33:Oblivion.esm": {
       "Name": "Lady Drad",
@@ -33877,7 +34034,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Lady_Rogbut_gra-Shurgak"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "028FA7:Oblivion.esm": {
       "Name": "Laenafil",
@@ -34579,7 +34737,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Lord_Rugdumph_gro-Shurgak"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0823BA:Oblivion.esm": {
       "Name": "Lorenz Bog-Trotter",
@@ -34707,7 +34866,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Lumdum_gro-Golpok"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "052FE5:Oblivion.esm": {
       "Name": "Luminary Kaz",
@@ -34781,7 +34941,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Luronk_gro-Glurzog"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "023DE6:Oblivion.esm": {
       "Name": "Luther Broad",
@@ -34929,7 +35090,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mach-Na"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "00A2A2:Oblivion.esm": {
       "Name": "Maelona",
@@ -35056,7 +35218,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06A832:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35068,7 +35231,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06A833:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35080,7 +35244,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAA9:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35092,7 +35257,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAA:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35104,7 +35270,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAB:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35116,7 +35283,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAC:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35128,7 +35296,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAD:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35140,7 +35309,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAE:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35152,7 +35322,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06AAAF:Oblivion.esm": {
       "Name": "Mage Apprentice",
@@ -35164,11 +35335,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Apprentice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "06A82E:Oblivion.esm": {
       "Name": "Mage Scholar",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Mages Guild scholars who lecture apprentices at the Arcane University; the article identifies several scholars but establishes no exceptional combat prowess.",
       "Reason": "The article confirms ordinary mortal scholars but no combat feats or established combat training. The ordinary-adult baseline is appropriate.",
@@ -35176,11 +35348,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 9
     },
     "06A82F:Oblivion.esm": {
       "Name": "Mage Scholar",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Mages Guild scholars who lecture apprentices at the Arcane University; the article identifies several scholars but establishes no exceptional combat prowess.",
       "Reason": "The article confirms ordinary mortal scholars but no combat feats or established combat training. The ordinary-adult baseline is appropriate.",
@@ -35188,7 +35361,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 9
     },
     "06A830:Oblivion.esm": {
       "Name": "Mage Scholar",
@@ -35200,7 +35374,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "06AAB0:Oblivion.esm": {
       "Name": "Mage Scholar",
@@ -35212,11 +35387,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 6
     },
     "06AAB1:Oblivion.esm": {
       "Name": "Mage Scholar",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Mages Guild scholars who lecture apprentices at the Arcane University; the article identifies several scholars but establishes no exceptional combat prowess.",
       "Reason": "The article confirms ordinary mortal scholars but no combat feats or established combat training. The ordinary-adult baseline is appropriate.",
@@ -35224,11 +35400,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 9
     },
     "06AAB2:Oblivion.esm": {
       "Name": "Mage Scholar",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Mages Guild scholars who lecture apprentices at the Arcane University; the article identifies several scholars but establishes no exceptional combat prowess.",
       "Reason": "The article confirms ordinary mortal scholars but no combat feats or established combat training. The ordinary-adult baseline is appropriate.",
@@ -35236,7 +35413,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mage_Scholar"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 9
     },
     "024165:Oblivion.esm": {
       "Name": "Maglir",
@@ -35261,7 +35439,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Magra_gro-Naybek"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0034D5:Oblivion.esm": {
       "Name": "Magub gro-Orum",
@@ -35298,7 +35477,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Maknok_gro-Coblug"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "03001C:Oblivion.esm": {
       "Name": "Malene",
@@ -35310,7 +35490,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Malene"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "0222A6:Oblivion.esm": {
       "Name": "Malintus Ancrus",
@@ -35334,7 +35515,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Malyani_Dalvilu"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "016060:Oblivion.esm": {
       "Name": "Mandil",
@@ -35435,7 +35617,7 @@
     },
     "033908:Oblivion.esm": {
       "Name": "Mankar Camoran",
-      "PowerTier": 9,
+      "PowerTier": 8,
       "Handling": "MajorBoss",
       "Description": "High Elf mage and Mythic Dawn founder encountered in his Paradise palace, wielding an enchanted staff and a broad arsenal of powerful spells.",
       "Reason": "This is the named Mankar Camoran encounter, the project\u2019s tier-9 reference. His creation of Paradise and formidable magical arsenal support the rating; this mortal form is not Mehrunes Dagon.",
@@ -35444,7 +35626,7 @@
         "https://en.uesp.net/wiki/Oblivion:Mankar_Camoran"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 42
+      "FixedLevel": 39
     },
     "016487:Oblivion.esm": {
       "Name": "Mannimarco",
@@ -35928,7 +36110,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Margarte"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "033904:Oblivion.esm": {
       "Name": "Marguerite Diel",
@@ -36078,7 +36261,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Matilde_Petit"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "030FDA:Oblivion.esm": {
       "Name": "Matthias Draconis",
@@ -36390,7 +36574,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Minerva"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "009D6B:Oblivion.esm": {
       "Name": "Minotaur",
@@ -36769,7 +36954,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mog_gra-Mogakh"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "08521A:Oblivion.esm": {
       "Name": "Mogens Wind-Shifter",
@@ -37086,7 +37272,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "022E37:Oblivion.esm": {
       "Name": "Mythic Dawn Acolyte",
@@ -37110,7 +37297,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "022E3C:Oblivion.esm": {
       "Name": "Mythic Dawn Acolyte",
@@ -37122,7 +37310,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "022E3D:Oblivion.esm": {
       "Name": "Mythic Dawn Acolyte",
@@ -37158,7 +37347,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "094E86:Oblivion.esm": {
       "Name": "Mythic Dawn Acolyte",
@@ -37182,7 +37372,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "094E88:Oblivion.esm": {
       "Name": "Mythic Dawn Acolyte",
@@ -37206,7 +37397,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "02F10A:Oblivion.esm": {
       "Name": "Mythic Dawn Agent",
@@ -37230,7 +37422,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "02F10F:Oblivion.esm": {
       "Name": "Mythic Dawn Agent",
@@ -37302,7 +37495,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "022EF5:Oblivion.esm": {
       "Name": "Mythic Dawn Guard",
@@ -37362,7 +37556,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "094E82:Oblivion.esm": {
       "Name": "Mythic Dawn Guard",
@@ -37374,7 +37569,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "094E83:Oblivion.esm": {
       "Name": "Mythic Dawn Guard",
@@ -37398,7 +37594,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "097CAF:Oblivion.esm": {
       "Name": "Mythic Dawn Guard",
@@ -37422,7 +37619,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Mythic_Dawn_Agents"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "097CB1:Oblivion.esm": {
       "Name": "Mythic Dawn Guard",
@@ -37507,7 +37705,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Nanette_Don"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "04D83C:Oblivion.esm": {
       "Name": "Nardhil",
@@ -39091,7 +39290,7 @@
         "https://en.uesp.net/wiki/Oblivion:Pelinal_Whitestrake"
       ],
       "Model": "gpt-6-luna",
-      "PowerTier": 7,
+      "PowerTier": 8,
       "FixedLevel": 35
     },
     "015D7F:Oblivion.esm": {
@@ -42129,7 +42328,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Shafaye"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 5
     },
     "02F861:Oblivion.esm": {
       "Name": "Shagol gro-Bumph",
@@ -42636,7 +42836,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Shivering:Sickly_Bernice"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "09C26A:Oblivion.esm": {
       "Name": "Siege Crawler Sentry",
@@ -43569,7 +43770,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Snak_gra-Bura"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "035EB2:Oblivion.esm": {
       "Name": "Snar the Cook",
@@ -43760,7 +43962,8 @@
       ],
       "Model": "gpt-6-luna",
       "FixedLevel": 3,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "000FAD:Knights.esp": {
       "Name": "Spriggan",
@@ -44025,8 +44228,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "03E9CB:Oblivion.esm": {
       "Name": "Stunted Scamp",
@@ -44038,8 +44242,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "07BAD3:Oblivion.esm": {
       "Name": "Stunted Scamp",
@@ -44051,8 +44256,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "090AB7:Oblivion.esm": {
       "Name": "Stunted Scamp",
@@ -44064,8 +44270,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "09122A:Oblivion.esm": {
       "Name": "Stunted Scamp",
@@ -44077,8 +44284,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "0C891A:Oblivion.esm": {
       "Name": "Stunted Scamp",
@@ -44090,8 +44298,9 @@
         "https://en.uesp.net/wiki/Oblivion:Daedra"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 2,
-      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group."
+      "FixedLevel": 3,
+      "DelevelingReview": "Lesser Daedra rank level; tier inherited from species group.",
+      "PowerTier": 2
     },
     "033900:Oblivion.esm": {
       "Name": "Styrbjorn",
@@ -45337,7 +45546,7 @@
     },
     "000F9A:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Umaril is an ancient Ayleid sorcerer-king, empowered by Meridia with an immortal spirit that survives the destruction of his physical form.",
       "Reason": "His divine ancestry, enduring immortality, and return from Oblivion make him exceptional even among legendary foes. Defeating him for good requires overcoming both his physical and spiritual forms.",
@@ -45346,11 +45555,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000F9B:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Umaril is an Ayleid sorcerer-king allied with Meridia, whose immortality lets his spirit survive the destruction of his physical form.",
       "Reason": "His divine ancestry, immortality, and the need to defeat him in both physical and spiritual planes support Mythic power. He is a formidable individual, not Meridia or a Daedric Prince.",
@@ -45359,11 +45568,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000F9C:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Umaril is the returned physical form of an Ayleid sorcerer-king, born of an Ayleid mother and divine father, whose alliance with Meridia lets his spirit survive bodily defeat.",
       "Reason": "His extraordinary lineage, ancient rule, and demonstrated ability to survive Pelinal\u2019s defeat and return support mythic power. He remains below the greatest divine powers: his physical form can be defeated, and his spirit requires separate destruction.",
@@ -45372,11 +45581,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000F9D:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Ayleid sorcerer-king bound to Meridia, Umaril is an immortal-returning supernatural foe who commands Aurorans and must be defeated in both physical and spiritual forms.",
       "Reason": "His supernatural survival and the need for a divinely empowered Crusader to destroy both body and spirit support Mythic power. His defeat by Pelinal and the Crusader keeps him below Apex.",
@@ -45385,11 +45594,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000F9E:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Umaril is an ancient Ayleid sorcerer-king whose bond to Meridia lets his spirit survive bodily defeat; this rates the Knights encounter, not Meridia or his divine father.",
       "Reason": "His immortality and return across realms, combined with the need to defeat both his body and spirit, support Mythic power. His defeat by Pelinal keeps him below the Overwhelming tier.",
@@ -45398,11 +45607,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000F9F:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "QuestRelated",
       "Description": "Umaril is an Ayleid sorcerer-king bound to Meridia, whose spirit survives bodily defeat; the Knights quest confronts his physical form and pursues his spirit.",
       "Reason": "His ancient rule, sorcerous power, divine parentage, Meridia-backed return from death, and the extraordinary efforts required to defeat him support mythic power, below deity-level anchors.",
@@ -45411,11 +45620,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000FA0:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "The physical form of Umaril the Unfeathered, an Ayleid sorcerer-king whose alliance with Meridia lets his spirit survive bodily defeat.",
       "Reason": "Umaril\u2019s ancient rule, divine parentage, and ability to return after death establish mythic power. Pelinal defeated him physically, but truly destroying him required following his spirit with Talos\u2019s blessing.",
@@ -45424,11 +45633,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 4
     },
     "000FA1:Knights.esp": {
       "Name": "Umaril",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "QuestRelated",
       "Description": "Umaril\u2019s spiritual encounter form: an Ayleid sorcerer-king bound to Meridia whose spirit survives bodily death and must be pursued into Oblivion.",
       "Reason": "Surviving bodily destruction and requiring a second battle on the spiritual plane support mythic power. His defeat by Pelinal and eventual defeat by the Divine Crusader place him below overwhelming or apex powers.",
@@ -45437,11 +45646,11 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000FB1:Knights.esp": {
       "Name": "Umaril the Unfeathered",
-      "PowerTier": 8,
+      "PowerTier": 9,
       "Handling": "MajorBoss",
       "Description": "Umaril is an Ayleid sorcerer-king bound to Meridia, whose returned physical form must be defeated before his spirit can be pursued into Oblivion.",
       "Reason": "His ancient rule, survival beyond bodily death, and return as a formidable foe requiring the Crusader\u2019s Relics and Talos\u2019s blessing support Mythic power. This rates the physical Umaril, not a Daedric Prince.",
@@ -45450,7 +45659,7 @@
         "https://en.uesp.net/wiki/Oblivion:Umaril_the_Unfeathered_(person)"
       ],
       "Model": "gpt-6-luna",
-      "FixedLevel": 38
+      "FixedLevel": 44
     },
     "000FB4:Knights.esp": {
       "Name": "Umaril the Unfeathered",
@@ -45635,7 +45844,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Unicorn"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 7
     },
     "08592F:Oblivion.esm": {
       "Name": "Unknown Victim",
@@ -48519,7 +48729,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Yushi"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "035EBC:Oblivion.esm": {
       "Name": "Yvara Channitte",
@@ -48543,7 +48754,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Zabhila"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 4
     },
     "0352B1:Oblivion.esm": {
       "Name": "Zahrasha",
@@ -49629,6 +49841,20 @@
       "Name": "Mountain Lion",
       "PowerTier": 3,
       "FixedLevel": 13
+    },
+    "000F70:Knights.esp": {
+      "Name": "Marz",
+      "FixedLevel": 5
+    },
+    "03B302:Oblivion.esm": {
+      "Name": "Blackwood Company Member",
+      "PowerTier": 3,
+      "FixedLevel": 8
+    },
+    "03E44F:Oblivion.esm": {
+      "Name": "Timber Wolf",
+      "PowerTier": 3,
+      "FixedLevel": 10
     }
   }
 }
