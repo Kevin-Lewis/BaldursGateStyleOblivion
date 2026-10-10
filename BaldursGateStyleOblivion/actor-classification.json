@@ -36870,7 +36870,7 @@
     },
     "01E5FA:Oblivion.esm": {
       "Name": "Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A mundane mountain lion: a rapid, vicious predator that attacks physically and can pose a serious threat in close combat.",
       "Reason": "The UESP identifies mountain lions as particularly dangerous predators. Their natural predatory ability supports a seasoned-threat rating, without relying on gameplay statistics.",
@@ -36878,11 +36878,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 13
     },
     "03D79C:Oblivion.esm": {
       "Name": "Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A mundane mountain lion: a rapid, vicious predator that attacks physically and can pose a serious threat in close combat.",
       "Reason": "The UESP identifies mountain lions as particularly dangerous predators. Their natural predatory ability supports a seasoned-threat rating, without relying on gameplay statistics.",
@@ -36890,11 +36891,12 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 13
     },
     "0CA004:Oblivion.esm": {
       "Name": "Mountain Lion",
-      "PowerTier": 4,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A mundane mountain lion: a rapid, vicious predator that attacks physically and can pose a serious threat in close combat.",
       "Reason": "The UESP identifies mountain lions as particularly dangerous predators. Their natural predatory ability supports a seasoned-threat rating, without relying on gameplay statistics.",
@@ -36902,7 +36904,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 13
     },
     "001982:DLCMehrunesRazor.esp": {
       "Name": "Msirae Faythung",
@@ -44771,7 +44774,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "02C332:Oblivion.esm": {
       "Name": "Timber Wolf",
@@ -44783,7 +44787,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "0CA001:Oblivion.esm": {
       "Name": "Timber Wolf",
@@ -44795,7 +44800,8 @@
       "Sources": [
         "https://en.uesp.net/wiki/Oblivion:Animals"
       ],
-      "Model": "gpt-6-luna"
+      "Model": "gpt-6-luna",
+      "FixedLevel": 11
     },
     "02991A:Oblivion.esm": {
       "Name": "Timothee LaRouche",
@@ -49613,6 +49619,16 @@
       "PowerTier": 2,
       "FixedLevel": 7,
       "DelevelingReview": "Goblin rank tuning: tier 2, fixed level 7."
+    },
+    "0872C3:Oblivion.esm": {
+      "Name": "Mountain Lion",
+      "PowerTier": 3,
+      "FixedLevel": 13
+    },
+    "00BC4E:Oblivion.esm": {
+      "Name": "Mountain Lion",
+      "PowerTier": 3,
+      "FixedLevel": 13
     }
   }
 }

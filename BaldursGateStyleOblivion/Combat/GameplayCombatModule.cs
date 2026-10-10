@@ -178,17 +178,17 @@ internal static class GameplayCombatModule
                 var name=creature.EditorID??"";var type=creature.Data.Type.ToString();
                 var build=Regex.IsMatch(name,"Ogre|Minotaur|Troll|Daedroth|Xivilai|Gatekeeper|Clannfear",RegexOptions.IgnoreCase)?"Large":type is "Daedra" or "Undead"?"Supernatural":Regex.IsMatch(name,"Rat|Deer|Imp",RegexOptions.IgnoreCase)?"Frail":"Default";
                 var budget=gameplay.ActorTiers[tier.Value];var factor=gameplay.CreatureBuilds[build];
-                var health=individual?.Health??Math.Round(budget.Health*factor.Health);var damage=CreatureAttacks.NaturalDamage(settings,creation,tier.Value,level,build);var speed=Math.Clamp(budget.Attribute*factor.Speed,5,100);
+                var health=individual?.Health??Math.Round(budget.Health*factor.Health);var damage=CreatureAttacks.NaturalDamage(settings,creation,tier.Value,level,build);var speed=creature.Data.Speed;
                 plans.Add(new{Kind="Creature",FormKey=key,Tier=tier,Level=level,Build=build,Health=health,AttackDamage=damage,PreviousAttackDamage=creature.Data.AttackDamage,ReferenceWarriorHit=CreatureAttacks.ReferenceHit(settings,creation,tier.Value,level),CombatSkill=budget.Specialty,WeaponDamageMultiplier=gameplay.WeaponPower(tier.Value)*factor.Damage,PowerAttackMultiplier=1,AttackModel="Natural attacks use AttackDamage; armed attacks use weapon stats (vanilla). Spells and resistances retained.",Speed=speed});
                 if(!write)continue;
                 var target=state.PatchMod.Creatures.GetOrAddAsOverride(creature);target.Configuration!.Flags&=~Creature.CreatureFlag.PCLevelOffset;target.Configuration.LevelOffset=(short)level;target.Configuration.CalcMin=target.Configuration.CalcMax=0;
-                target.Data!.Health=(uint)health;target.Data.AttackDamage=(ushort)damage;target.Data.CombatSkill=(byte)budget.Specialty;target.Data.Speed=(byte)speed;
+                target.Data!.Health=(uint)health;target.Data.AttackDamage=(ushort)damage;target.Data.CombatSkill=(byte)budget.Specialty;
                 target.Data.Strength=target.Data.Endurance=(byte)budget.Attribute;target.Configuration.Fatigue=(ushort)(budget.Attribute*4);
                 var role=profiles.GetValueOrDefault(actor.FormKey)?.Dimensions.GetValueOrDefault("CombatRole")?.Selected.Value?.ToString();
                 var style=role is "Mage" or "Support" or "Controller"?"Mage":role=="Archer"?"Archer":build=="Large"?"Berserker":"Aggressive Fighter";
                 target.CombatStyle.SetTo(Style(creature.CombatStyle.FormKey,style));
                 if(tier>6 || factor.Damage!=1)foreach(var entry in target.Items)entry.Item.SetTo(Weapon(entry.Item.FormKey,tier.Value,new(),factor.Damage));
-                records[target.FormKey]=target;changes[target.FormKey]=["Data.Health","Data.AttackDamage","Data.CombatSkill","Data.Speed","Data.Strength","Data.Endurance","Configuration","CombatStyle","Items"];
+                records[target.FormKey]=target;changes[target.FormKey]=["Data.Health","Data.AttackDamage","Data.CombatSkill","Data.Strength","Data.Endurance","Configuration","CombatStyle","Items"];
             }
         }
         Finish();return changes;
