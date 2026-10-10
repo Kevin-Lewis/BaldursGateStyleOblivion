@@ -151,6 +151,42 @@
       "Value": null,
       "Prestige": 3,
       "Reason": "Individual price exception."
+    },
+    "0228E3:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 60,
+      "Prestige": null,
+      "Reason": "Individual price exception."
+    },
+    "0228E2:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 25,
+      "Prestige": null,
+      "Reason": "Individual price exception."
+    },
+    "0228E4:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 40,
+      "Prestige": null,
+      "Reason": "Individual price exception."
+    },
+    "033568:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 75,
+      "Prestige": null,
+      "Reason": "Individual price exception."
+    },
+    "0CBD45:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 100,
+      "Prestige": null,
+      "Reason": "Individual price exception."
+    },
+    "026B5C:Oblivion.esm": {
+      "Preserve": false,
+      "Value": 50,
+      "Prestige": null,
+      "Reason": "Individual price exception."
     }
   },
   "GameSettings": {

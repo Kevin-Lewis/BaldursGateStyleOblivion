@@ -7,7 +7,7 @@ internal sealed record ActorLevelDecision(ActorHandling Handling, int? Tier, int
 internal static class ActorLevelPolicy
 {
     public static ActorLevelDecision Decide(ClassificationSettings settings, string key, string? editorId, string? name,
-        bool creature, bool playerOffset, int? originalLevel, ActorProfile? profile, string? scriptRisk = null)
+        bool creature, bool playerOffset, int? originalLevel, ActorProfile? profile, string? scriptRisk = null, bool? female = null)
     {
         settings.FormKeyOverrides.TryGetValue(key, out var manual);
         var handling = profile?.Dimensions.TryGetValue("Handling", out var field) == true
@@ -26,7 +26,8 @@ internal static class ActorLevelPolicy
         if (tier == 10)
             return playerOffset ? Skip("Scaled Apex actor requires an individual FixedLevel override.")
                 : new(handling, tier, originalLevel, "Existing fixed Apex level", "Already-fixed Apex encounter preserved without a shared level formula.");
-        if (!settings.LevelMapping.TryGetValue(tier.Value, out var target) || target is null) return Skip("No level configured for this tier.");
+        var target = MappedLevel(settings, key, profile, creature ? null : female);
+        if (target is null) return Skip("No level configured or civilian sex unavailable.");
         var curated = manual?.PowerTier is not null || manual?.Delevel == true;
         if (!curated && handling is ActorHandling.QuestRelated or ActorHandling.FactionLeader or ActorHandling.MinorBoss or ActorHandling.MajorBoss)
             return Skip("Quest-sensitive or boss actor needs a curated tier, FixedLevel, or explicit Delevel=true.");
@@ -34,6 +35,18 @@ internal static class ActorLevelPolicy
             return Skip("Already-fixed named actor has no curated tier; existing level preserved.");
         return new(handling, tier, target, $"Tier {tier} -> level {target}",
             curated ? "Curated actor tier mapped to a fixed level." : "Automatic tier fallback mapped to a fixed level.");
+    }
+
+    // Explicit levels always win. A null sex means a creature or unavailable NPC metadata.
+    public static int? MappedLevel(ClassificationSettings settings, string key, ActorProfile? profile, bool? female)
+    {
+        if (settings.FormKeyOverrides.TryGetValue(key, out var manual) && manual.FixedLevel is not null)
+            return manual.FixedLevel;
+        if (profile?.Tier is null) return null;
+        if (profile.Tier.Value.Value == 2
+            && profile.Dimensions.GetValueOrDefault("ActorCategory")?.Selected.Value is ActorCategory.Civilian)
+            return female is null ? null : female.Value ? 3 : 4;
+        return settings.LevelMapping.GetValueOrDefault(profile.Tier.Value.Value);
     }
 
     private static bool IsHelper(string? editorId, string? name, string? description) =>

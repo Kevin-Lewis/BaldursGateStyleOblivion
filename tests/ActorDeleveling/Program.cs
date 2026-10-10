@@ -73,6 +73,35 @@ var signals = ScriptDiscovery.Scan("; player.GetLevel\nMessage \"SetLevel 1\"\ni
 var writes = ActorDeleveling.ScalingWrites(signals);
 Check(writes.Length == 2 && writes.Any(signal => signal.ActorValue == "health") && writes.All(signal => signal.ActorValue != "aggression"), "Quest aggression changes are not player-dependent combat-stat scaling");
 Check(ActorDeleveling.ScalingWrites(ScriptDiscovery.Scan("foo.SetAV health 200")).Length == 0, "A fixed scripted health assignment alone is not player-level dependence");
+// Tier 2 defaults must never replace an explicit level or affect other categories/tiers.
+var baselineSettings = new ClassificationSettings();
+foreach (var tier in Enumerable.Range(0, 10))
+foreach (var category in new[] { ActorCategory.Civilian, ActorCategory.Bandit, ActorCategory.Animal })
+foreach (var female in new[] { false, true })
+{
+    var baselineProfile = new ActorProfile();
+    baselineProfile.Apply(new ActorValues { PowerTier = tier, ActorCategory = category, Handling = ActorHandling.Generic }, "Test", "Test");
+    var expected = tier == 2 && category == ActorCategory.Civilian ? (female ? 3 : 4) : baselineSettings.LevelMapping[tier];
+    var decision = ActorLevelPolicy.Decide(baselineSettings, key, "Citizen", "Citizen", false, true, 1, baselineProfile, female: female);
+    Check(decision.TargetLevel == expected, $"Unexpected baseline for tier {tier}, {category}, female={female}");
+    foreach (var level in new[] { 3, 4, 5, 7, 8, 9, 15 })
+    {
+        baselineSettings.FormKeyOverrides[key] = new() { FixedLevel = level };
+        Check(ActorLevelPolicy.Decide(baselineSettings, key, "Citizen", "Citizen", false, true, 1, baselineProfile, female: female).TargetLevel == level,
+            "Every explicit level, including the old baseline, must take precedence");
+    }
+    baselineSettings.FormKeyOverrides.Clear();
+}
+var horseProfile = new ActorProfile();
+horseProfile.Apply(new ActorValues { PowerTier = 2, ActorCategory = ActorCategory.Animal, Handling = ActorHandling.Generic }, "Horse", "Test");
+Check(ActorLevelPolicy.Decide(baselineSettings, key, "Horse", "Horse", true, true, 1, horseProfile).TargetLevel == 5, "Horse baseline must remain 5");
+var civilianProfile = new ActorProfile();
+civilianProfile.Apply(new ActorValues { PowerTier = 2, ActorCategory = ActorCategory.Civilian, Handling = ActorHandling.Generic }, "Citizen", "Test");
+Check(ActorLevelPolicy.MappedLevel(baselineSettings, key, civilianProfile, null) is null, "Old reports must not silently guess civilian sex");
+baselineSettings.FormKeyOverrides[key] = new() { FixedLevel = 8, Delevel = false };
+Check(ActorLevelPolicy.Decide(baselineSettings, key, "Citizen", "Citizen", false, true, 1, civilianProfile, female: true).TargetLevel is null,
+    "Exemptions must still take precedence");
+
 Console.WriteLine("Actor deleveling policy and record checks passed: mapping, handling, exemptions, Apex, source preservation, flags, bounds, stats and script candidates.");
 
 if (args.Length == 3 && args[0] == "verify")

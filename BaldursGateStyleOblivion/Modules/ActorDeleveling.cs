@@ -177,7 +177,8 @@ internal static class ActorDeleveling
         {
             profiles.TryGetValue(actor.FormKey, out var profile);
             var decision = ActorLevelPolicy.Decide(settings, actor.FormKey.ToString(), actor.EditorID, name,
-                type == "Creature", offset, level, profile, risks.GetValueOrDefault(actor.FormKey));
+                type == "Creature", offset, level, profile, risks.GetValueOrDefault(actor.FormKey),
+                actor is INpcGetter npc ? npc.Configuration?.Flags.HasFlag(Npc.NpcFlag.Female) : null);
             var fields = decision.TargetLevel is not null && level is not null
                 ? ChangedFields(level.Value, offset, minimum, maximum, decision.TargetLevel.Value, pinCreatureLevel: type == "Creature")
                 : [];

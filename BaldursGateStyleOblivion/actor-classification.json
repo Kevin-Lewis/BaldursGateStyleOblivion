@@ -10953,7 +10953,7 @@
     },
     "01D344:Oblivion.esm": {
       "Name": "Algot the Northerner",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Nord bard and Imperial City civilian who does odd jobs and some adventuring; no notable combat training or feats are established.",
       "Reason": "The article mentions only a little adventuring, with no evidence of professional training or exceptional ability. The project\u0027s ordinary adult civilian baseline applies.",
@@ -12974,7 +12974,7 @@
     },
     "001246:DLCFrostcrag.esp": {
       "Name": "Aurelinwae",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "High Elf enchanter and merchant who relies on higher-level spells from multiple magical schools.",
       "Reason": "Her broad, higher-level spellcasting supports seasoned combat-adjacent magical capability, though no exceptional feats establish elite mastery.",
@@ -13328,7 +13328,7 @@
     },
     "08521C:Oblivion.esm": {
       "Name": "Ayisha",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Khajiit bandit who attacks the player and Mazoga at Fisherman\u2019s Rock.",
       "Reason": "Her bandit role and direct participation in a melee attack support competent, trained combat capability, but no evidence establishes advanced expertise.",
@@ -13573,7 +13573,7 @@
     },
     "03DB27:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13586,7 +13586,7 @@
     },
     "03DB2B:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13599,7 +13599,7 @@
     },
     "03DB2D:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13612,7 +13612,7 @@
     },
     "03DB2F:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13625,7 +13625,7 @@
     },
     "03DB31:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13638,7 +13638,7 @@
     },
     "03DB33:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13651,7 +13651,7 @@
     },
     "03DB34:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13664,7 +13664,7 @@
     },
     "03DB35:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13677,7 +13677,7 @@
     },
     "069AD1:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13690,7 +13690,7 @@
     },
     "069AD5:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13703,7 +13703,7 @@
     },
     "06C355:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13716,7 +13716,7 @@
     },
     "06C357:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13729,7 +13729,7 @@
     },
     "06C35D:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13742,7 +13742,7 @@
     },
     "094048:Oblivion.esm": {
       "Name": "Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A generic bandit identified as a blunt-weapon melee fighter who attacks travelers on sight.",
       "Reason": "The actor-specific article confirms a combat-oriented melee role and weapon type, supporting a competent-fighter baseline, but gives no evidence of exceptional skill or feats.",
@@ -13755,7 +13755,7 @@
     },
     "03DC23:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13768,7 +13768,7 @@
     },
     "03DC42:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13781,7 +13781,7 @@
     },
     "03DC43:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13794,7 +13794,7 @@
     },
     "03DC44:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13807,7 +13807,7 @@
     },
     "03DC45:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13820,7 +13820,7 @@
     },
     "03DC46:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13833,7 +13833,7 @@
     },
     "03DC47:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13846,7 +13846,7 @@
     },
     "03DC48:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13859,7 +13859,7 @@
     },
     "069AD2:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13872,7 +13872,7 @@
     },
     "069AD3:Oblivion.esm": {
       "Name": "Bandit Bowman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit archer who fights with a bow and carries a dagger for close combat.",
       "Reason": "The actor-specific source identifies this variant as a Bandit Archer-class combatant. Its archery role supports a competent-fighter baseline, though its melee capability is comparatively limited.",
@@ -13885,7 +13885,7 @@
     },
     "11C3D1:DLCOrrery.esp": {
       "Name": "Bandit Carrier",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit encountered as a mundane human combatant, rather than a uniquely named or supernatural opponent.",
       "Reason": "UESP describes bandits as hostile NPCs and identifies ordinary bandits as blunt-weapon melee fighters. This supports a competent combatant baseline, but not an exceptional ranking.",
@@ -13898,7 +13898,7 @@
     },
     "11C3D4:DLCOrrery.esp": {
       "Name": "Bandit Carrier",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit encountered as a mundane human combatant, rather than a uniquely named or supernatural opponent.",
       "Reason": "UESP describes bandits as hostile NPCs and identifies ordinary bandits as blunt-weapon melee fighters. This supports a competent combatant baseline, but not an exceptional ranking.",
@@ -13911,7 +13911,7 @@
     },
     "11C3D5:DLCOrrery.esp": {
       "Name": "Bandit Carrier",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit encountered as a mundane human combatant, rather than a uniquely named or supernatural opponent.",
       "Reason": "UESP describes bandits as hostile NPCs and identifies ordinary bandits as blunt-weapon melee fighters. This supports a competent combatant baseline, but not an exceptional ranking.",
@@ -13924,7 +13924,7 @@
     },
     "11C3D7:DLCOrrery.esp": {
       "Name": "Bandit Carrier",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit encountered as a mundane human combatant, rather than a uniquely named or supernatural opponent.",
       "Reason": "UESP describes bandits as hostile NPCs and identifies ordinary bandits as blunt-weapon melee fighters. This supports a competent combatant baseline, but not an exceptional ranking.",
@@ -13937,7 +13937,7 @@
     },
     "11C3D8:DLCOrrery.esp": {
       "Name": "Bandit Carrier",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit encountered as a mundane human combatant, rather than a uniquely named or supernatural opponent.",
       "Reason": "UESP describes bandits as hostile NPCs and identifies ordinary bandits as blunt-weapon melee fighters. This supports a competent combatant baseline, but not an exceptional ranking.",
@@ -13950,7 +13950,7 @@
     },
     "03DC55:Oblivion.esm": {
       "Name": "Bandit Hedge Wizard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit hedge wizard, a spell-casting bandit rather than a uniquely identified individual.",
       "Reason": "The article confirms this variant uses magic and belongs to the hostile bandit archetype, supporting a competent combatant rating without evidence of exceptional mastery or unique feats.",
@@ -13963,7 +13963,7 @@
     },
     "03DC56:Oblivion.esm": {
       "Name": "Bandit Hedge Wizard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit hedge wizard, a spell-casting bandit rather than a uniquely identified individual.",
       "Reason": "The article confirms this variant uses magic and belongs to the hostile bandit archetype, supporting a competent combatant rating without evidence of exceptional mastery or unique feats.",
@@ -13976,7 +13976,7 @@
     },
     "03DC57:Oblivion.esm": {
       "Name": "Bandit Hedge Wizard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit hedge wizard, a spell-casting bandit rather than a uniquely identified individual.",
       "Reason": "The article confirms this variant uses magic and belongs to the hostile bandit archetype, supporting a competent combatant rating without evidence of exceptional mastery or unique feats.",
@@ -13989,7 +13989,7 @@
     },
     "03DC58:Oblivion.esm": {
       "Name": "Bandit Hedge Wizard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit hedge wizard, a spell-casting bandit rather than a uniquely identified individual.",
       "Reason": "The article confirms this variant uses magic and belongs to the hostile bandit archetype, supporting a competent combatant rating without evidence of exceptional mastery or unique feats.",
@@ -14002,7 +14002,7 @@
     },
     "069AD4:Oblivion.esm": {
       "Name": "Bandit Hedge Wizard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile bandit hedge wizard, a spell-casting bandit rather than a uniquely identified individual.",
       "Reason": "The article confirms this variant uses magic and belongs to the hostile bandit archetype, supporting a competent combatant rating without evidence of exceptional mastery or unique feats.",
@@ -14327,7 +14327,7 @@
     },
     "0034DD:Oblivion.esm": {
       "Name": "Bazur gro-Gharz",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Orc gang member identified as a thief, armed with a bow and dagger, but with no documented specialist feats.",
       "Reason": "His criminal affiliation and thief identity support basic capability, but the article gives no evidence of advanced theft, infiltration, assassination, or combat expertise.",
@@ -14601,7 +14601,7 @@
     },
     "0C57E1:Oblivion.esm": {
       "Name": "Bitterfish Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Bitterfish goblin berserker archer encountered at Miscarcand, representing a capable combatant within the goblin tribe.",
       "Reason": "The article identifies Bitterfish goblins as hostile and places berserkers in the middle of the goblin hierarchy, supporting a competent-fighter rating rather than an exceptional one.",
@@ -14615,7 +14615,7 @@
     },
     "0C57E2:Oblivion.esm": {
       "Name": "Bitterfish Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Bitterfish goblin berserker archer encountered at Miscarcand, representing a capable combatant within the goblin tribe.",
       "Reason": "The article identifies Bitterfish goblins as hostile and places berserkers in the middle of the goblin hierarchy, supporting a competent-fighter rating rather than an exceptional one.",
@@ -14629,7 +14629,7 @@
     },
     "0C57E0:Oblivion.esm": {
       "Name": "Bitterfish Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Bitterfish goblin shaman encountered in Miscarcand; a hostile goblin serving as a spiritual leader in a tribe with multiple shamans.",
       "Reason": "Goblins are hostile and undertake raids, supporting a competent combat threat. The shaman role establishes spiritual leadership, not exceptional fighting skill or magical mastery.",
@@ -14643,7 +14643,7 @@
     },
     "0C57E3:Oblivion.esm": {
       "Name": "Bitterfish Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Bitterfish goblin skirmisher: a hostile, organized goblin in a combat role, representing a capable but relatively low-ranking fighter.",
       "Reason": "UESP identifies Bitterfish goblins as randomly generated members without tribal relationships and describes skirmishers as a relatively low-level goblin type. Their combat role supports a competent-fighter baseline, not an exceptional ranking.",
@@ -14657,7 +14657,7 @@
     },
     "0C57E4:Oblivion.esm": {
       "Name": "Bitterfish Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A Bitterfish goblin skirmisher: a hostile, organized goblin in a combat role, representing a capable but relatively low-ranking fighter.",
       "Reason": "UESP identifies Bitterfish goblins as randomly generated members without tribal relationships and describes skirmishers as a relatively low-level goblin type. Their combat role supports a competent-fighter baseline, not an exceptional ranking.",
@@ -14733,7 +14733,7 @@
     },
     "0908AC:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14746,7 +14746,7 @@
     },
     "0908AF:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14759,7 +14759,7 @@
     },
     "0908B0:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14772,7 +14772,7 @@
     },
     "0908B1:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14785,7 +14785,7 @@
     },
     "0908B2:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14810,7 +14810,7 @@
     },
     "0908B4:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -14823,7 +14823,7 @@
     },
     "0908B5:Oblivion.esm": {
       "Name": "Black Bow Bandit",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Black Bow Bandit, a specialized bandit encountered near Leyawiin and associated with the Black Bow faction.",
       "Reason": "As a bandit combatant, she fits the competent-opponent baseline; the article gives no evidence that this ordinary variant is more accomplished than a capable fighter.",
@@ -15529,7 +15529,7 @@
     },
     "007714:Oblivion.esm": {
       "Name": "Bloody Hand Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Bloody Hand Tribe goblin berserker, a member of the goblins\u2019 middle hierarchy and an organized, hostile raiding culture.",
       "Reason": "The article identifies berserkers as middle-ranking goblins and describes goblins as organized, violent raiders. This supports a capable-fighter baseline, but not a higher tier without individual feats.",
@@ -15543,7 +15543,7 @@
     },
     "031534:Oblivion.esm": {
       "Name": "Bloody Hand Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Bloody Hand tribal goblin shaman, serving as spiritual leader and guardian of the tribe\u2019s sacred totem.",
       "Reason": "The UESP article describes goblins as hostile and tribal shamans as spiritual leaders, but establishes no exceptional combat mastery or feats for this form. A basic threat is appropriate.",
@@ -15557,7 +15557,7 @@
     },
     "02D686:Oblivion.esm": {
       "Name": "Bloody Hand Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Bloody Hand tribal goblin skirmisher: a hostile, organized goblin fighter in a relatively low-ranking combat role.",
       "Reason": "The UESP article identifies tribal skirmishers as relatively low-level goblins, while describing goblin tribes as organized and goblins as generally hostile. This supports a competent but not seasoned combatant rating.",
@@ -15571,7 +15571,7 @@
     },
     "0343C1:Oblivion.esm": {
       "Name": "Bloody Hand Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Bloody Hand tribal goblin skirmisher: a hostile, organized goblin fighter in a relatively low-ranking combat role.",
       "Reason": "The UESP article identifies tribal skirmishers as relatively low-level goblins, while describing goblin tribes as organized and goblins as generally hostile. This supports a competent but not seasoned combatant rating.",
@@ -16412,7 +16412,7 @@
     },
     "0982FC:Oblivion.esm": {
       "Name": "Brother Hjar",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A quiet Nord Moth caretaker whose documented routine centers on prayer and temple life.",
       "Reason": "The supplied UESP evidence establishes no combat, stealth, or practical magical training; monk identity alone does not demonstrate those capabilities.",
@@ -16437,7 +16437,7 @@
     },
     "0982FD:Oblivion.esm": {
       "Name": "Brother Hridi",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "Nord Moth Caretaker at the Temple of the Ancestor Moths; maintains crops and harvests silk.",
       "Reason": "The article supports ordinary caretaking and farming, but no demonstrated combat, stealth, or practical magical expertise. Monk identity alone does not establish mastery.",
@@ -17301,7 +17301,7 @@
     },
     "0A9487:Oblivion.esm": {
       "Name": "Casta Flavus",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Imperial mage and agent of Hermaeus Mora who delivers a summons; no specific practical magical feats or advanced training are established.",
       "Reason": "His mage identity indicates a relevant discipline, but the biography and dialogue provide no evidence of advanced combat-adjacent capability.",
@@ -20899,7 +20899,7 @@
     },
     "01207F:Oblivion.esm": {
       "Name": "Desideratus Annius\u0027 Ghost",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "Desideratus Annius\u2019s ghost is a Vitharn defender armed and armored as a warrior, but is portrayed as a fearful, ineffective fighter.",
       "Reason": "He carries a shortsword and is assigned to defend the courtyard, yet flees his post and is described as a gentle fool who should never have taken up the sword.",
@@ -22388,7 +22388,7 @@
     },
     "00A08F:Oblivion.esm": {
       "Name": "Dro\u0027Nahrahe",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Khajiit warrior and steward of Castle Bravil, with no documented exceptional combat accomplishments.",
       "Reason": "UESP identifies her as a warrior, supporting competent trained-fighter capability; her stewardship alone does not establish greater combat skill.",
@@ -22916,7 +22916,7 @@
     },
     "01558C:Oblivion.esm": {
       "Name": "Dulphumph gro-Urgash",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A self-proclaimed Scalon hunter who patrols near Deepwallow but flees when wildlife appears.",
       "Reason": "His warrior identity and iron shortsword indicate basic martial capability, but the article describes low confidence and says he runs from wildlife.",
@@ -22968,7 +22968,7 @@
     },
     "0AA645:Oblivion.esm": {
       "Name": "Dust Eater Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dust Eater tribal goblin berserker: a hostile goblin combatant occupying a middle rank in goblin society.",
       "Reason": "The actor\u2019s identity matches the goblin berserker form. UESP describes berserkers as part of the goblin hierarchy and goblins as generally hostile; this supports a competent-fighter baseline, not an exceptional ranking.",
@@ -22982,7 +22982,7 @@
     },
     "0AA290:Oblivion.esm": {
       "Name": "Dust Eater Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "FactionLeader",
       "Description": "A Dust Eater goblin tribal shaman, serving as the tribe\u2019s spiritual leader and guardian of its sacred totem.",
       "Reason": "The article confirms the shaman\u2019s leadership and guarding role, but establishes no individual combat feats or magical mastery. Basic best fits the evidenced threat.",
@@ -22996,7 +22996,7 @@
     },
     "0AA637:Oblivion.esm": {
       "Name": "Dust Eater Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Dust Eater tribal goblin skirmisher: a hostile humanoid raider belonging to an organized goblin tribe.",
       "Reason": "UESP identifies goblins as highly hostile and describes raids on travelers and farmers. This combat-oriented goblin merits a competent-opponent baseline, without evidence for exceptional individual prowess.",
@@ -23154,7 +23154,7 @@
     },
     "02D023:Oblivion.esm": {
       "Name": "Eilonwy",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Eilonwy is a High Elf alchemist and Mages Guild Conjurer who sells magical supplies in the Cheydinhal Guild Hall.",
       "Reason": "She identifies herself as only a conjurer. The article establishes no combat feats or combat mastery, so the Basic baseline for an ordinary adult or novice mage fits.",
@@ -26388,7 +26388,7 @@
     },
     "068BF9:Oblivion.esm": {
       "Name": "Goblin Ambusher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A quest-associated goblin ambusher, belonging to a hostile humanoid species that commonly responds to other peoples with violence.",
       "Reason": "The supplied UESP article establishes goblins as hostile humanoid monsters. The actor\u2019s name identifies an ambusher, supporting a competent combat threat, but no exceptional individual feats are established.",
@@ -26402,7 +26402,7 @@
     },
     "01FCB3:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26416,7 +26416,7 @@
     },
     "03B533:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26430,7 +26430,7 @@
     },
     "03B542:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26444,7 +26444,7 @@
     },
     "03D796:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26458,7 +26458,7 @@
     },
     "068BF7:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26472,7 +26472,7 @@
     },
     "084B2B:Oblivion.esm": {
       "Name": "Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin berserker, a combat-oriented member of goblin society that raids and responds violently to outsiders.",
       "Reason": "UESP identifies berserkers as a middle rank in the goblin hierarchy. Their combat role and the goblins\u2019 raiding and violent behavior support a competent-fighter baseline, not an exceptional ranking.",
@@ -26513,7 +26513,7 @@
     },
     "181C6C:Oblivion.esm": {
       "Name": "Goblin Netherboss",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin skirmisher: a hostile humanoid creature from a culture organized around tribal roles and raiding.",
       "Reason": "Its verified skirmisher form supports a competent combatant baseline, but the consulted article establishes no individual feats warranting a higher tier.",
@@ -26527,7 +26527,7 @@
     },
     "181C6D:Oblivion.esm": {
       "Name": "Goblin Netherboss",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin skirmisher: a hostile humanoid creature from a culture organized around tribal roles and raiding.",
       "Reason": "Its verified skirmisher form supports a competent combatant baseline, but the consulted article establishes no individual feats warranting a higher tier.",
@@ -26541,7 +26541,7 @@
     },
     "181C6E:Oblivion.esm": {
       "Name": "Goblin Netherboss",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A goblin skirmisher: a hostile humanoid creature from a culture organized around tribal roles and raiding.",
       "Reason": "Its verified skirmisher form supports a competent combatant baseline, but the consulted article establishes no individual feats warranting a higher tier.",
@@ -26569,7 +26569,7 @@
     },
     "01FCB4:Oblivion.esm": {
       "Name": "Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile goblin serving as a spiritual leader and guardian of a tribe\u2019s totem; goblins raid travelers and respond violently to outsiders.",
       "Reason": "The article identifies goblins as intelligent, extremely hostile raiders, supporting competent combat capability. The shaman\u2019s role is spiritual rather than military, so greater power is not established.",
@@ -26583,7 +26583,7 @@
     },
     "03D797:Oblivion.esm": {
       "Name": "Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile goblin serving as a spiritual leader and guardian of a tribe\u2019s totem; goblins raid travelers and respond violently to outsiders.",
       "Reason": "The article identifies goblins as intelligent, extremely hostile raiders, supporting competent combat capability. The shaman\u2019s role is spiritual rather than military, so greater power is not established.",
@@ -26597,7 +26597,7 @@
     },
     "159859:Oblivion.esm": {
       "Name": "Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A hostile goblin serving as a spiritual leader and guardian of a tribe\u2019s totem; goblins raid travelers and respond violently to outsiders.",
       "Reason": "The article identifies goblins as intelligent, extremely hostile raiders, supporting competent combat capability. The shaman\u2019s role is spiritual rather than military, so greater power is not established.",
@@ -26611,7 +26611,7 @@
     },
     "01FCB2:Oblivion.esm": {
       "Name": "Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary goblin skirmisher: an intelligent, hostile humanoid combatant in a relatively low-ranking goblin role.",
       "Reason": "Goblin skirmishers are a common, non-unique goblin type. Goblins are hostile and organized, but the article establishes no exceptional mastery or individual feats for this variant.",
@@ -26625,7 +26625,7 @@
     },
     "03B512:Oblivion.esm": {
       "Name": "Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary goblin skirmisher: an intelligent, hostile humanoid combatant in a relatively low-ranking goblin role.",
       "Reason": "Goblin skirmishers are a common, non-unique goblin type. Goblins are hostile and organized, but the article establishes no exceptional mastery or individual feats for this variant.",
@@ -26639,7 +26639,7 @@
     },
     "03D798:Oblivion.esm": {
       "Name": "Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary goblin skirmisher: an intelligent, hostile humanoid combatant in a relatively low-ranking goblin role.",
       "Reason": "Goblin skirmishers are a common, non-unique goblin type. Goblins are hostile and organized, but the article establishes no exceptional mastery or individual feats for this variant.",
@@ -26653,7 +26653,7 @@
     },
     "068BF6:Oblivion.esm": {
       "Name": "Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary goblin skirmisher: an intelligent, hostile humanoid combatant in a relatively low-ranking goblin role.",
       "Reason": "Goblin skirmishers are a common, non-unique goblin type. Goblins are hostile and organized, but the article establishes no exceptional mastery or individual feats for this variant.",
@@ -26667,7 +26667,7 @@
     },
     "084B2A:Oblivion.esm": {
       "Name": "Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "An ordinary goblin skirmisher: an intelligent, hostile humanoid combatant in a relatively low-ranking goblin role.",
       "Reason": "Goblin skirmishers are a common, non-unique goblin type. Goblins are hostile and organized, but the article establishes no exceptional mastery or individual feats for this variant.",
@@ -26694,7 +26694,7 @@
     },
     "03B52D:Oblivion.esm": {
       "Name": "Goblin Witch",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Goblin shaman and spiritual leader who guards a tribe\u2019s sacred totem; goblins are organized, hostile raiders.",
       "Reason": "Its goblin identity and shaman role are supported; goblin hostility and raiding indicate a competent combat threat, but no exceptional individual feats are established.",
@@ -27409,7 +27409,7 @@
     },
     "00C1D5:Oblivion.esm": {
       "Name": "Graman gro-Marad",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Bloated Float bouncer and helmsman with no demonstrated ability against armed opponents.",
       "Reason": "He says he is mostly ornamental, is used to drunken louts rather than armed thieves, and waits for the player to clear danger before acting.",
@@ -28673,7 +28673,7 @@
     },
     "022466:Oblivion.esm": {
       "Name": "Gwinas",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A Wood Elf noble and book collector involved in The Path of Dawn, with no demonstrated combat or combat-adjacent training.",
       "Reason": "His dialogue shows interest in Daedric cults and contact arranged with the Mythic Dawn, but no practical martial, magical, stealth, or alchemical expertise.",
@@ -29771,7 +29771,7 @@
     },
     "029D75:Oblivion.esm": {
       "Name": "Hundolin",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Named Wood Elf Arena gatekeeper and bookmaker; no combat-adjacent training or accomplishments are established.",
       "Reason": "The biography and dialogue describe betting and Arena directions, not warrior practice. His possible attack under low disposition does not establish advanced combat capability.",
@@ -29847,7 +29847,7 @@
     },
     "01605D:Oblivion.esm": {
       "Name": "Ida Vlinorman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Imperial acrobat in the Elven Gardens District who offers basic Acrobatics training.",
       "Reason": "Her acrobat identity supports basic discipline, but no advanced or combat-adjacent feats are verified; trainer service alone does not establish a higher tier.",
@@ -32622,7 +32622,7 @@
     },
     "000F7A:Knights.esp": {
       "Name": "Jesper",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Nord priest who worships Kynareth and studies religious text at her shrine.",
       "Reason": "The article establishes his priestly role and religious study, but describes no practical magic, healing, combat training, or dangerous accomplishments. Basic civilian capability is supported.",
@@ -32683,7 +32683,7 @@
     },
     "02AB4C:Oblivion.esm": {
       "Name": "Jollring",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Jollring is Umbacano\u2019s butler and artifact-seeker; he knows agent spells but has no described combat or covert-operation feats.",
       "Reason": "His agent discipline and knowledge of spells suggest some relevant capability, but the article describes no practical use or advanced training; ordinary-adult baseline applies.",
@@ -34425,7 +34425,7 @@
     },
     "0034DF:Oblivion.esm": {
       "Name": "Llevana Nedaren",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A farmer who demonstrates effective paralysis magic and uses vicious rats to kill Cheydinhal\u2019s corrupt guard captain.",
       "Reason": "Her planned killing succeeds through practical magical control and coordinated use of dangerous animals, establishing combat-adjacent capability beyond an ordinary civilian.",
@@ -34834,7 +34834,7 @@
     },
     "0C47EC:Oblivion.esm": {
       "Name": "M\u0027aiq the Liar",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "A Khajiit savant who travels Cyrodiil and carries an iron dagger for possible self-defense.",
       "Reason": "The article establishes no relevant training, magical expertise, or dangerous accomplishments. Carrying a dagger for defense supports basic capability, not trained-adventurer status.",
@@ -35907,7 +35907,7 @@
     },
     "01ECAB:Oblivion.esm": {
       "Name": "Maren the Seal",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Nord hunter and Peryite worshipper encountered as a trapped soul during the shrine quest.",
       "Reason": "Her hunter identity supports basic relevant outdoor capability, but the article gives no evidence of advanced hunting, combat, stealth, or magical expertise.",
@@ -36005,7 +36005,7 @@
     },
     "0280CB:Oblivion.esm": {
       "Name": "Marlena Brussiner",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Imperial hunter and Hackdirt cultist involved in Dar-Ma\u2019s disappearance.",
       "Reason": "Her hunter identity and cult involvement suggest a relevant role, but the article establishes no specific hunting skill, covert feat, or combat expertise beyond basic adult capability.",
@@ -37947,7 +37947,7 @@
     },
     "00C516:DLCBattlehornCastle.esp": {
       "Name": "Niels",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Nord castle blacksmith; the article provides no evidence of combat or combat-adjacent training.",
       "Reason": "His smithing profession and the Armorer skill book in his home do not establish practical martial, stealth, or magical ability; ordinary adult baseline applies.",
@@ -38376,7 +38376,7 @@
     },
     "035EB5:Oblivion.esm": {
       "Name": "Olfand",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Nord Winds proprietor, weapon and armor smith, and basic Light Armor trainer in Bruma.",
       "Reason": "Smithing and commerce do not establish combat capability. His basic Light Armor instruction supports ordinary trained familiarity, but not advanced expertise or demonstrated adventuring ability.",
@@ -38487,7 +38487,7 @@
     },
     "02D022:Oblivion.esm": {
       "Name": "Orintur",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A High Elf Mages Guild Magician and sorcerer; the article establishes a magical and scholarly role, but no combat feats or demonstrated combat mastery.",
       "Reason": "His guild title and spell-selling role do not establish combat proficiency. With no reported combat feats or training, the ordinary adult baseline is appropriate.",
@@ -40943,7 +40943,7 @@
     },
     "02D6D4:Oblivion.esm": {
       "Name": "Rock Biter Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Rock Biter tribal goblin berserker: a hostile, combat-capable goblin occupying the middle of the goblin hierarchy.",
       "Reason": "The UESP article identifies goblin berserkers as a middle-rank type and describes goblins as generally hostile. This supports a competent combatant baseline, but not an exceptional tier.",
@@ -40957,7 +40957,7 @@
     },
     "031531:Oblivion.esm": {
       "Name": "Rock Biter Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "FactionLeader",
       "Description": "A Rock Biter goblin shaman and spiritual leader who guards the tribe\u2019s sacred totem staff.",
       "Reason": "The article identifies tribal shamans as spiritual leaders and describes goblins as hostile. That supports a basic natural threat, but the shaman role alone does not establish greater combat or magical mastery.",
@@ -40971,7 +40971,7 @@
     },
     "02D738:Oblivion.esm": {
       "Name": "Rock Biter Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Rock Biter tribal goblin skirmisher: a relatively low-ranking goblin combatant from a hostile, organized tribe.",
       "Reason": "The article identifies tribal goblin skirmishers as goblins and describes goblins as hostile, raiding creatures. A skirmisher warrants a competent-combatant baseline, but the source establishes no exceptional personal ability.",
@@ -41161,7 +41161,7 @@
     },
     "033C74:Oblivion.esm": {
       "Name": "Rosentia Gallenus",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "Imperial commoner and collector of arcane curiosities, trapped at home by the Staff of the Everscamp.",
       "Reason": "She explicitly says she cannot fight and relies on the player to handle the danger; collecting artifacts and translating a rune do not establish practical combat capability.",
@@ -41357,7 +41357,7 @@
     },
     "01A116:Oblivion.esm": {
       "Name": "S\u0027fara",
-      "PowerTier": 1,
+      "PowerTier": 2,
       "Handling": "QuestRelated",
       "Description": "A mentally incapacitated Khajiit scout found wandering at the Strange Door under close watch.",
       "Reason": "Her severe mental incapacity and aimless wandering support limited practical capability; the article gives no evidence of relevant accomplishments or effective training.",
@@ -41445,7 +41445,7 @@
     },
     "00A280:Oblivion.esm": {
       "Name": "S\u0027shani",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Retired Khajiit sea captain and rover, now a shipowner living in Anvil.",
       "Reason": "His former seafaring career suggests ordinary adult capability, but the article establishes no specific combat, magical, stealth, or other advanced combat-adjacent expertise.",
@@ -41555,7 +41555,7 @@
     },
     "01FC52:Oblivion.esm": {
       "Name": "Samuel Bantien",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Retired locksmith and former agent whose reputation centers on exceptional lockpicking; he now teaches basic Security skills.",
       "Reason": "Multiple rumors describe advanced lockpicking and claim he could pick any lock in the city. This supports highly accomplished Security expertise, not equal mastery in combat or other disciplines.",
@@ -41647,7 +41647,7 @@
         "https://en.uesp.net/wiki/Oblivion:Goblins"
       ],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "FixedLevel": 9,
       "DelevelingReview": "Goblin rank tuning: tier 2, fixed level 9."
     },
@@ -41661,7 +41661,7 @@
         "https://en.uesp.net/wiki/Oblivion:Goblins"
       ],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "FixedLevel": 9,
       "DelevelingReview": "Goblin rank tuning: tier 2, fixed level 9."
     },
@@ -41942,7 +41942,7 @@
     },
     "02D020:Oblivion.esm": {
       "Name": "Selena Orania",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Imperial Mages Guild alchemist in Bruma; the article establishes no combat training or notable combat feats.",
       "Reason": "Her alchemy work and Guild rank do not establish combat mastery. As an ordinary adult mortal without established combat training, the Basic baseline fits.",
@@ -42291,7 +42291,7 @@
     },
     "0AA647:Oblivion.esm": {
       "Name": "Sharp Tooth Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Sharp Tooth tribal goblin berserker, a hostile warrior occupying the middle of goblin society\u2019s hierarchy.",
       "Reason": "The UESP identifies berserkers as middle-ranking goblins and describes goblins as hostile, raid-oriented creatures. This supports a competent combatant baseline, but not an exceptional tier.",
@@ -42305,7 +42305,7 @@
     },
     "0AA622:Oblivion.esm": {
       "Name": "Sharp Tooth Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "Sharp Tooth Tribe\u0027s goblin shaman is its spiritual leader and guards its sacred totem staff; goblins are intelligent, hostile humanoid monsters.",
       "Reason": "The source establishes a hostile goblin and a tribal spiritual role, but no combat mastery or exceptional abilities. Basic threat is appropriate without assuming the shaman\u0027s title makes it a stronger fighter.",
@@ -42319,7 +42319,7 @@
     },
     "0AA644:Oblivion.esm": {
       "Name": "Sharp Tooth Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Sharp Tooth tribal goblin skirmisher: a hostile, organized goblin raider and capable combatant, but not identified as a distinctive or exceptional individual.",
       "Reason": "The article identifies goblin skirmishers as a goblin type and describes goblins as hostile, organized, and prone to raids. That supports a competent-fighter baseline, not an exceptional tier.",
@@ -42591,7 +42591,7 @@
     },
     "028FB6:Oblivion.esm": {
       "Name": "Shum gro-Yarug",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Shum gro-Yarug is the named butler of Castle Skingrad and can assist during the Lost Histories quest.",
       "Reason": "The verified article establishes a civilian butler role and no relevant combat, stealth, or practical magical training; ordinary adult baseline applies.",
@@ -42916,7 +42916,7 @@
     },
     "0ACE73:Oblivion.esm": {
       "Name": "Sister Phebe Jeanard",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "A charity sister and healer at Gottlesfont Priory, knowledgeable about Lady\u2019s Mantle\u2019s use in healing wounds and potions.",
       "Reason": "Her healer role and practical knowledge of a healing ingredient support basic healing-related ability, but the article establishes no advanced magical or alchemical expertise.",
@@ -42929,7 +42929,7 @@
     },
     "035F43:Oblivion.esm": {
       "Name": "Skaleel",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Argonian Mages Guild member assigned to research at Vahtacen.",
       "Reason": "Her research role establishes guild affiliation, but the article gives no demonstrated magical mastery or notable practical magical accomplishments. Basic capability is appropriate.",
@@ -43472,7 +43472,7 @@
     },
     "02FE93:Oblivion.esm": {
       "Name": "Skull Breaker Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Skull Breaker tribal goblin berserker, a hostile member of an organized goblin tribe and a combatant in its warrior hierarchy.",
       "Reason": "The UESP article places berserkers in the middle of the goblin hierarchy and describes goblins as generally hostile and violent. This supports a competent combatant, without evidence for exceptional individual mastery.",
@@ -43486,7 +43486,7 @@
     },
     "031532:Oblivion.esm": {
       "Name": "Skull Breaker Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Skull Breaker tribal goblin shaman who serves as the tribe\u2019s spiritual leader and guards its sacred totem.",
       "Reason": "Goblin shamans belong to an extremely hostile creature kind, giving this actor a modest natural threat; the source establishes no exceptional combat feats or mastery.",
@@ -43500,7 +43500,7 @@
     },
     "02FEA3:Oblivion.esm": {
       "Name": "Skull Breaker Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Skull Breaker tribal goblin skirmisher: a hostile member of an organized tribe with a combat role, but no individual distinction established.",
       "Reason": "Its skirmisher role and the goblins\u2019 raiding culture support a competent-fighter baseline. The source establishes no individual feats or specialist mastery warranting a higher tier.",
@@ -43825,7 +43825,7 @@
     },
     "000F79:Knights.esp": {
       "Name": "Stanet",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "A shrine priest who provides guidance during Nature\u2019s Fury, with no verified combat or practical magical feats.",
       "Reason": "His documented role is worship and quest guidance; the evidence establishes no relevant training or demonstrated adventuring capability, supporting an ordinary-adult baseline.",
@@ -44651,7 +44651,7 @@
     },
     "0AA646:Oblivion.esm": {
       "Name": "Three Feather Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Three Feather tribal goblin berserker, a middle-ranking combatant from a hostile, organized goblin tribe.",
       "Reason": "Goblin berserkers occupy the middle of the goblin hierarchy, and goblins conduct raids within organized tribal groups. This supports a competent fighter, but not exceptional individual mastery.",
@@ -44665,7 +44665,7 @@
     },
     "0AA643:Oblivion.esm": {
       "Name": "Three Feather Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A Three Feather tribal goblin skirmisher: a low-ranking combatant belonging to an organized, hostile goblin tribe.",
       "Reason": "UESP identifies goblin skirmishers as a goblin combat type and describes tribal goblins as organized, hostile groups. This supports a competent combatant baseline, not an exceptional individual ranking.",
@@ -44693,7 +44693,7 @@
     },
     "0AA621:Oblivion.esm": {
       "Name": "Three Feathers Goblin Shaman",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "FactionLeader",
       "Description": "Three Feathers\u2019 tribal goblin shaman and spiritual leader, responsible for guarding the tribe\u2019s sacred totem.",
       "Reason": "The article identifies this as the Three Feather Tribe\u2019s shaman. Goblins are described as hostile and as raiders; the spiritual leadership role supports faction-leader handling, but not exceptional combat mastery.",
@@ -45198,7 +45198,7 @@
     },
     "034E69:Oblivion.esm": {
       "Name": "Tun-Zeeus",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Argonian smith and shop owner who forges weapons and armor for Leyawiin\u2019s guard.",
       "Reason": "His verified expertise is smithing and commerce; the article establishes no combat, adventuring, or other combat-adjacent training. Basic adult capability is supported.",
@@ -45249,7 +45249,7 @@
     },
     "028F8D:Oblivion.esm": {
       "Name": "Ugak gra-Mogakh",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "QuestRelated",
       "Description": "Ugak gra-Mogakh is an Orc ostler who sells horses at Grateful Pass Stables.",
       "Reason": "The article describes a peaceful horse seller and provides no evidence of relevant combat, magical, or stealth training; ordinary adult baseline applies.",
@@ -45739,7 +45739,7 @@
     },
     "02B5EA:Oblivion.esm": {
       "Name": "Usheeja",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Argonian manor guard equipped with chainmail and a shortsword; no specific combat training or accomplishments are documented.",
       "Reason": "His guard duty and equipment support basic capability, but the article establishes no advanced martial training or demonstrated feats.",
@@ -45802,7 +45802,7 @@
     },
     "028E84:Oblivion.esm": {
       "Name": "Uuras the Shepherd",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Wood Elf shepherd and basic Athletics trainer; no advanced scout capability is established.",
       "Reason": "His scout identity and Athletics training support basic physical capability, but the article describes shepherding and cheese-making, not advanced scouting or dangerous exploits.",
@@ -45828,7 +45828,7 @@
     },
     "01FB55:Oblivion.esm": {
       "Name": "Uzul gro-Grulam",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "An Orc warehouse worker who carries a steel battle axe and owns fur armor, with no combat accomplishments described.",
       "Reason": "The article identifies him as a warrior and notes his weapon and armor, but provides no evidence of relevant training or demonstrated combat skill.",
@@ -47521,7 +47521,7 @@
     },
     "0034D6:Oblivion.esm": {
       "Name": "Voranil",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Named",
       "Description": "Voranil is a High Elf noble and Riverview owner; the article establishes no combat training or notable fighting ability.",
       "Reason": "The actor-specific article identifies him as an adult civilian, with no evidence of combat proficiency or exceptional combat capability. The ordinary adult civilian baseline is appropriate.",
@@ -47741,7 +47741,7 @@
     },
     "03131A:Oblivion.esm": {
       "Name": "White Skin Goblin Berserker",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A White Skin tribal goblin berserker, a hostile humanoid combatant occupying the middle of goblin society\u2019s hierarchy.",
       "Reason": "The UESP article identifies goblin berserkers as middle-ranking goblins and describes goblins as hostile, raid-oriented fighters. This supports a competent combatant baseline, but not exceptional individual power.",
@@ -47755,7 +47755,7 @@
     },
     "03131B:Oblivion.esm": {
       "Name": "White Skin Goblin Skirmisher",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Handling": "Generic",
       "Description": "A White Skin tribal goblin skirmisher and raiding combatant from a hostile, organized goblin tribe.",
       "Reason": "UESP identifies skirmishers as a goblin type and describes goblins as hostile raiders. This supports a capable ordinary fighter, without evidence of exceptional individual skill.",
@@ -48373,7 +48373,7 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter; modest training baseline.",
       "FixedLevel": 8
@@ -48386,7 +48386,7 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
       "FixedLevel": 8
@@ -48399,7 +48399,7 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
       "FixedLevel": 8
@@ -48412,7 +48412,7 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 2,
+      "PowerTier": 3,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
       "FixedLevel": 8

@@ -61,6 +61,7 @@ internal static class DiagnosticReports
         {
             Level = c.Record.Configuration?.LevelOffset,
             PCLevelOffset = c.Record.Configuration?.Flags.HasFlag(Npc.NpcFlag.PCLevelOffset),
+            Female = c.Record.Configuration?.Flags.HasFlag(Npc.NpcFlag.Female),
             MinimumLevel = c.Record.Configuration?.CalcMin, MaximumLevel = c.Record.Configuration?.CalcMax,
             Class = c.Record.Class.FormKeyNullable?.ToString(), Race = c.Record.Race.FormKeyNullable?.ToString(),
             Factions = c.Record.Factions.Select(f => new { FormKey = f.Faction.FormKey.ToString(), f.Rank }).ToArray()

@@ -56,7 +56,9 @@ internal static class Catalog
             return new { actor.FormKey, IsNamedNpc = actor.RecordType == "NPC" && (NamedNpcs.Contains(actor.FormKey) || Value("Handling")?.ToString() == "Named"), actor.Name, actor.EditorID, actor.SourcePlugin, actor.WinningOverridePlugin, actor.RecordType,
                 Group = Value("ActorCategory")?.ToString() ?? "Unclassified", Tier = profile.Tier?.Value,
                 FixedLevel = manual?.FixedLevel, Delevel = manual?.Delevel, DelevelingReview = manual?.DelevelingReview ?? "",
-                MappedLevel = manual?.FixedLevel ?? (profile.Tier is null ? null : settings.LevelMapping.GetValueOrDefault(profile.Tier.Value.Value)),
+                MappedLevel = ActorLevelPolicy.MappedLevel(settings, actor.FormKey, profile,
+                    actor.RecordType == "NPC" && actor.Original.TryGetProperty("Female", out var female)
+                        && female.ValueKind is JsonValueKind.True or JsonValueKind.False ? female.GetBoolean() : null),
                 HasOverride = manual is not null, OverrideTier = manual?.PowerTier, OverrideHandling = manual?.Handling?.ToString(), Handling = Value("Handling")?.ToString() ?? "Unclassified",
                 Model = notes?.Model ?? "", Description = notes?.Description ?? "", Reason = notes?.Reason ?? assignment?.Reason ?? "",
                 Uncertainty = notes?.Uncertainty ?? "", Sources = notes?.Sources ?? [], Rule = assignment?.Rule ?? "",
