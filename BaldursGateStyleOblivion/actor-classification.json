@@ -48583,10 +48583,10 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter; modest training baseline.",
-      "FixedLevel": 8
+      "FixedLevel": 7
     },
     "02A2AE:Oblivion.esm": {
       "Name": "Yellow Team Pit Dog",
@@ -48596,10 +48596,10 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
-      "FixedLevel": 8
+      "FixedLevel": 7
     },
     "02A2B1:Oblivion.esm": {
       "Name": "Yellow Team Pit Dog",
@@ -48609,10 +48609,10 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
-      "FixedLevel": 8
+      "FixedLevel": 7
     },
     "02A2B3:Oblivion.esm": {
       "Name": "Yellow Team Pit Dog",
@@ -48622,10 +48622,10 @@
       "Uncertainty": "Initial balance assignment; editable after in-game testing.",
       "Sources": [],
       "Model": "gpt-6-luna",
-      "PowerTier": 3,
+      "PowerTier": 2,
       "Delevel": true,
       "DelevelingReview": "Pit Dog entry-rank arena fighter.",
-      "FixedLevel": 8
+      "FixedLevel": 7
     },
     "029938:Oblivion.esm": {
       "Name": "Yellow Team Warrior",

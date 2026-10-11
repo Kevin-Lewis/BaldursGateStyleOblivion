@@ -45,6 +45,7 @@ public sealed class EconomyOuting
 public sealed class EconomySettings
 {
     public bool Enabled { get; set; } = true;
+    public double ApparelEnchantmentValueMultiplier { get; set; } = .2;
     public double CoinLootMultiplier { get; set; } = .75;
     public Dictionary<string, double> Materials { get; set; } = new() { ["Iron"] = 1, ["Steel"] = 1.9, ["Silver"] = 2.5, ["Dwarven"] = 4, ["Elven"] = 6, ["Orcish"] = 6, ["Glass"] = 11, ["Ebony"] = 18, ["Daedric"] = 30, ["Amber"] = 12, ["Madness"] = 19, ["Fur"] = .45, ["Leather"] = .7, ["Chainmail"] = 3, ["Mithril"] = 5 };
     public Dictionary<string, double> Weapons { get; set; } = new() { ["Dagger"] = 12, ["Shortsword"] = 28, ["Longsword"] = 45, ["Claymore"] = 80, ["Waraxe"] = 40, ["Battleaxe"] = 75, ["Mace"] = 45, ["Warhammer"] = 90, ["Bow"] = 55 };
@@ -86,8 +87,9 @@ public sealed class EconomySettings
         ["Gathering trip"] = new() { Enemies = 0, Containers = 0, Ingredients = 30, HealingPotions = 0, RepairWear = 0, Hours = 2 }
     };
 }
-public sealed record EconomyItem(string Key, string Name, string? EditorID, string Kind, string Material, string Class, string Slots, int Tier, uint Value, double Weight, double Damage, double Armor, uint Durability, bool Enchanted, bool Unique, bool Preserve, string Reason, EnhancementEffect[] Effects, int ChargedHits = 0, int SoulCapacity = 0, int Soul = 0,bool Lootable=true);
-public sealed record EconomyPrice(string Key, uint Value, double Equipment, double Enchantment, double Prestige, bool Preserved, string Reason);
+public sealed record EconomyItem(string Key, string Name, string? EditorID, string Kind, string Material, string Class, string Slots, int Tier, uint Value, double Weight, double Damage, double Armor, uint Durability, bool Enchanted, bool Unique, bool Preserve, string Reason, EnhancementEffect[] Effects, int ChargedHits = 0, int SoulCapacity = 0, int Soul = 0,bool Lootable=true, NativePrice? NativePrice=null);
+public sealed record NativePrice(double Addition, bool Apparel, bool Known=true, string Note="", bool ZeroBaseSuppresses=true);
+public sealed record EconomyPrice(string Key, uint Value, double Equipment, double Enchantment, double Prestige, bool Preserved, string Reason, uint BaseValue=0, uint BeforeValue=0, uint? TargetValue=null, bool TotalKnown=true, bool BelowMinimum=false);
 public static class EconomyBalance
 {
     public static readonly JsonSerializerOptions Options = new() { WriteIndented = true, PropertyNameCaseInsensitive = false, UnmappedMemberHandling = System.Text.Json.Serialization.JsonUnmappedMemberHandling.Disallow };
@@ -97,6 +99,7 @@ public static class EconomyBalance
     {
         void Range(double v, double lo, double hi, string name) => CombatConfiguration.Range(v, lo, hi, name);
         if (s.Materials is null || s.Weapons is null || s.ArmorSlots is null || s.Categories is null || s.Merchants is null || s.MerchantOverrides is null || s.ItemOverrides is null || s.Outings is null || s.GameSettings is null) throw new ArgumentException("Economy tables cannot be null.");
+        Range(s.ApparelEnchantmentValueMultiplier, 0, 1, "Apparel enchantment value multiplier");
         Range(s.CoinLootMultiplier, 0, 3, "Coin loot multiplier");
         foreach (var v in s.Materials.Values) Range(v, .1, 100, "Material price"); foreach (var v in s.Weapons.Values) Range(v, 1, 1000, "Weapon baseline price"); foreach (var v in s.ArmorSlots.Values) Range(v, 0, 1000, "Armor slot price"); foreach (var v in s.Categories.Values) Range(v, .1, 5, "Category multiplier");
         foreach (var v in new[] { s.EnchantmentDamageValue, s.EnchantmentBonusValue, s.EnchantmentDefenseValue }) Range(v, 0, 100, "Effect price"); Range(s.ScrollEffectMultiplier, .01, 1, "Scroll effect multiplier"); Range(s.AmmoBaseValue, .1, 10, "Arrow base price"); Range(s.AmmoEffectMultiplier, .01, 1, "Arrow effect share");
@@ -124,23 +127,48 @@ public static class EconomyBalance
     public static EconomyPrice Price(EconomyItem item, EconomySettings s)
     {
         s.ItemOverrides.TryGetValue(item.Key, out var manual);
-        if (item.Kind == "Currency" || manual?.Preserve == true || item.Preserve && manual?.Value is null) return new(item.Key, item.Value, item.Value, 0, 1, true, manual?.Reason ?? item.Reason);
-        if (manual?.Value is { } exact) return new(item.Key, exact, exact, 0, 1, false, manual.Reason);
-        double equipment = item.Value; var effect = 0d; var reason = "Existing value retained with category adjustment.";
+        if (!s.Enabled || item.Kind == "Currency" || manual?.Preserve == true || item.Preserve && manual?.Value is null)
+            return Finish(item, s, item.Value, item.Value, 1, true, manual?.Reason ?? item.Reason);
+        if (manual?.Value is { } exact)
+        {
+            var addition = Addition(item, s);
+            var minimumBase = item.NativePrice?.ZeroBaseSuppresses == false ? 0u : 1u;
+            var written = exact == 0 ? 0 : exact > addition ? exact - addition : minimumBase;
+            return Finish(item, s, written, written, 1, false, manual.Reason, exact);
+        }
+        double equipment = item.Value; var reason = "Existing value retained with category adjustment.";
         var material = s.Materials.GetValueOrDefault(item.Material, 1);
         if (item.Kind == "Weapon" && s.Weapons.TryGetValue(item.Class, out var basePrice)) { equipment = basePrice * material; reason = "Weapon class manufacturing baseline × material scarcity."; }
-        else if (item.Kind == "Weapon" && item.Class == "Staff") { equipment = 120 + item.Tier * 25; reason = "Staff construction plus repeat-use effect power."; }
+        else if (item.Kind == "Weapon" && item.Class == "Staff") { equipment = 120 + item.Tier * 25; reason = "Staff construction baseline; native enchantment value added separately."; }
         else if (item.Kind is "Armor" or "Shield" && item.Armor > 0) { equipment = item.Slots.Split(',', StringSplitOptions.TrimEntries).Sum(slot => s.ArmorSlots.GetValueOrDefault(slot)) * material; reason = "Slot coverage × material scarcity."; }
-        else if (item.Kind is "Clothing" or "Jewelry") { equipment = item.Enchanted ? Math.Clamp(item.Value, item.Kind == "Jewelry" ? 20 : 10, item.Kind == "Jewelry" ? 150 : 80) : item.Value; reason = "Garment/jewelry baseline plus bounded magic and prestige."; }
+        else if (item.Kind is "Clothing" or "Jewelry") { equipment = item.Enchanted ? Math.Clamp(item.Value, item.Kind == "Jewelry" ? 20 : 10, item.Kind == "Jewelry" ? 150 : 80) : item.Value; reason = "Garment/jewelry physical baseline; native enchantment value added separately."; }
         else if (item.Kind == "Soul gem") { equipment = s.EmptySoulGems[item.SoulCapacity]; if (item.Soul > 0) equipment = Math.Max(equipment, s.FilledSoulGems[item.Soul]); reason = "Soul capacity and contained soul; portable recharge/enchanting utility."; }
         else if (item.Kind == "Apparatus") { equipment = new double[] { 30, 80, 220, 500, 1000 }[Math.Clamp(item.Tier, 0, 4)]; reason = "Apparatus rank and production utility."; }
         else if (item.Kind == "Sigil stone") { equipment = 100 + item.Effects.Sum(e => EffectValue(e, s)) * .5; reason = "Transferable enchantment utility and discovery scarcity."; }
         else if (item.Kind == "Ammo" && item.Material != "Unknown") { equipment = s.AmmoBaseValue * material; reason = "Arrow material and single-use enchantment; no reusable weapon premium."; }
         else if (item.Kind == "Scroll") { equipment = 8; reason = "Single-use effect utility; no repeat-use weapon premium."; }
         else if (item.Kind == "Book" && item.Class == "Skill book") { equipment = Math.Max(60, item.Value); reason = "Skill-book utility premium."; }
-        if (item.Enchanted && item.Kind is not "Potion" and not "Ingredient") { effect = item.Effects.Sum(e => EffectValue(e, s)); effect *= item.Kind == "Scroll" ? s.ScrollEffectMultiplier : item.Kind == "Ammo" ? s.AmmoEffectMultiplier : Math.Clamp(item.ChargedHits / 35d, 1, 1.25); }
+        // Equipment magic value is supplied by the engine, never added to the base field.
         var prestige = manual?.Prestige ?? (item.Unique ? s.Prestige[Math.Clamp(item.Tier, 0, 10)] : 1);
-        var value = (uint)Math.Clamp(Math.Round((equipment + effect) * prestige * s.Categories.GetValueOrDefault(item.Kind, 1), MidpointRounding.AwayFromZero), item.Value == 0 && !item.Enchanted ? 0 : 1, 100000);
-        return new(item.Key, value, equipment, effect, prestige, false, reason + (item.Unique ? " Lore-tier prestige premium; not a combat multiplier." : ""));
+        var value = (uint)Math.Clamp(Math.Round(equipment * prestige * s.Categories.GetValueOrDefault(item.Kind, 1), MidpointRounding.AwayFromZero), item.Value == 0 && !item.Enchanted ? 0 : 1, 100000);
+        return Finish(item, s, value, equipment, prestige, false, reason + (item.Unique ? " Prestige applies to the physical price." : ""));
     }
+    public static uint Addition(EconomyItem item, EconomySettings settings, bool original=false)
+    {
+        var native = item.NativePrice;
+        var factor = !original && settings.Enabled && native?.Apparel == true ? settings.ApparelEnchantmentValueMultiplier : 1;
+        return (uint)Math.Clamp(Math.Floor((native?.Addition ?? 0) * factor), 0, uint.MaxValue);
+    }
+    public static uint CurrentValue(EconomyItem item) => item.Enchanted && item.Value == 0 && item.NativePrice?.ZeroBaseSuppresses != false ? 0 : (uint)Math.Min(uint.MaxValue, (ulong)item.Value + Addition(item, new(), true));
+    private static EconomyPrice Finish(EconomyItem item, EconomySettings settings, uint written, double equipment, double prestige, bool preserved, string reason, uint? target=null)
+    {
+        var known = !item.Enchanted || item.NativePrice?.Known == true;
+        if (!known) { written = item.Value; preserved = true; reason = "Unverified enchantment valuation; base price retained. " + item.NativePrice?.Note; }
+        var addition = item.Enchanted && written == 0 && item.NativePrice?.ZeroBaseSuppresses != false ? 0 : Addition(item, settings);
+        var total = (uint)Math.Min(uint.MaxValue, (ulong)written + addition);
+        var minimum = known && target.HasValue && total > target.Value;
+        if (minimum) reason += $" Target {target} is below the lowest positive inventory value {total}.";
+        return new(item.Key, total, equipment, addition, prestige, preserved, reason, written, CurrentValue(item), target, known, minimum);
+    }
+
 }

@@ -32,7 +32,7 @@ public static class EconomyAnalysis
         void Range(double v, double min, double max, string name) => BaldursGateStyleOblivion.Combat.CombatConfiguration.Range(v, min, max, name);
         Range(scenario.Tier, 0, 10, "Tier"); Range(scenario.Level, 1, 100, "Level"); Range(carry, 0, 1000, "Loot carrying capacity"); Range(sell, .01, 1, "Sale factor"); Range(buy, 1, 5, "Purchase factor"); Range(scenario.Condition, .01, 1.25, "Loot condition"); Range(scenario.QuestGold, 0, 100000, "Quest gold"); Range(scenario.OtherExpenses, 0, 100000, "Other expenses");
         if (!settings.Outings.TryGetValue(scenario.Outing, out var outing)) throw new ArgumentException("Choose an outing preset.");
-        var items = catalog.Items.ToDictionary(i => i.Key); var prices = catalog.Items.ToDictionary(i => i.Key, i => settings.Enabled ? EconomyBalance.Price(i, settings).Value : i.Value); var pools = catalog.Pools.ToDictionary(p => p.Key);
+        var items = catalog.Items.ToDictionary(i => i.Key); var prices = catalog.Items.ToDictionary(i => i.Key, i => EconomyBalance.Price(i, settings).Value); var pools = catalog.Pools.ToDictionary(p => p.Key);
         var merchant = catalog.Merchants.FirstOrDefault(m => m.Key == scenario.Merchant) ?? catalog.Merchants.FirstOrDefault(m => m.Profile == "General Store" && m.Buys.Length >= 5) ?? throw new ArgumentException("No selling merchant in catalogue.");
         var policy = settings.MerchantOverrides.GetValueOrDefault(merchant.Key) ?? settings.Merchants.GetValueOrDefault(merchant.Profile); var gold = settings.Enabled ? policy?.Gold ?? merchant.Gold : merchant.Gold;
         var merchantSkill = settings.Enabled ? Math.Max(merchant.Mercantile, policy?.Mercantile ?? 0) : merchant.Mercantile; if (merchantSkill >= 100) gold += (int)settings.GameSettings.GetValueOrDefault("iPerkExtraBarterGoldMaster", 500);
@@ -55,7 +55,7 @@ public static class EconomyAnalysis
             void Roll(string key, int count, bool scaleCoins, HashSet<string> path)
             {
                 if (count <= 0) return; if (++visits > 20000) { unknown++; return; }
-                if (items.TryGetValue(key, out var item)) { if (item.Unique||!item.Lootable) return; var amount = item.Kind == "Currency" && scaleCoins && settings.Enabled ? EconomyBalance.Coins(count, settings) : count; found[key] = Math.Min(100000, found.GetValueOrDefault(key) + amount); return; }
+                if (items.TryGetValue(key, out var item)) { if (item.Unique||!item.Lootable) return; if (!EconomyBalance.Price(item, settings).TotalKnown) { unknown++; return; } var amount = item.Kind == "Currency" && scaleCoins && settings.Enabled ? EconomyBalance.Coins(count, settings) : count; found[key] = Math.Min(100000, found.GetValueOrDefault(key) + amount); return; }
                 if (!pools.TryGetValue(key, out var pool) || !path.Add(key) || path.Count > 40) { unknown++; return; }
                 if (pool.Entries.Any(e => e.Level > 1)) { unknown++; path.Remove(key); return; }
                 var repetitions = pool.Each ? Math.Min(count, 1000) : 1; var multiplier = pool.Each ? 1 : count;

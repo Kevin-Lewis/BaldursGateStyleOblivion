@@ -1,5 +1,6 @@
 {
   "Enabled": true,
+  "ApparelEnchantmentValueMultiplier": 0.2,
   "CoinLootMultiplier": 0.75,
   "Materials": {
     "Iron": 1,

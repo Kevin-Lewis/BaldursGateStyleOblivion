@@ -23,7 +23,7 @@ internal static class EconomyEditor
         {
             var files=Directory.GetFiles(reports,"*.economy.json");if(files.Length!=1)throw new InvalidDataException("Rebuild the candidate to generate the economy report.");
             var modified=File.GetLastWriteTimeUtc(files[0]);if(cached is not null&&modified==stamp)return cached;
-            using var d=JsonDocument.Parse(File.ReadAllText(files[0]));report=d.RootElement.Clone();cached=report.GetProperty("Catalog").Deserialize<EconomyCatalog>(EconomyBalance.Options)!;stamp=modified;
+            using var d=JsonDocument.Parse(File.ReadAllText(files[0]));report=d.RootElement.Clone();if(!report.TryGetProperty("Schema",out var schema)||schema.GetInt32()<2)throw new InvalidDataException("Rebuild the candidate with the corrected economy code. This old report lacks native enchantment values.");cached=report.GetProperty("Catalog").Deserialize<EconomyCatalog>(EconomyBalance.Options)!;stamp=modified;
             var enhancements=Directory.GetFiles(reports,"*.enhancements.json");if(enhancements.Length==1){using var e=JsonDocument.Parse(File.ReadAllText(enhancements[0]));ingredientValues=e.RootElement.GetProperty("Ingredients").EnumerateArray().ToDictionary(i=>i.GetProperty("FormKey").GetString()!,i=>i.GetProperty("BeforeValue").GetUInt32());}
             return cached;
         }
@@ -63,7 +63,8 @@ internal static class EconomyEditor
             var gear=Kit(profile.WeaponMaterial,light?profile.LightArmorMaterial:profile.ArmorMaterial,mage);var target=c.Items.FirstOrDefault(i=>i.Key==scenario.Target);var targetMaterial=scenario.Target.Replace(" kit","");
             if(target is null&&!request.Settings.Materials.ContainsKey(targetMaterial))throw new ArgumentException("Choose a purchase target.");
             var targetKit=target is null?Kit(targetMaterial,targetMaterial):[target];
-            double Value(EconomyItem i,EconomySettings s)=>s.Enabled?EconomyBalance.Price(i,s).Value:i.Value;
+            if(targetKit.Any(i=>!EconomyBalance.Price(i,request.Settings).TotalKnown))throw new ArgumentException("This purchase target has an unresolved enchantment price. Choose a verified target.");
+            double Value(EconomyItem i,EconomySettings s)=>EconomyBalance.Price(i,s).Value;
             var carry=scenario.CarryWeight??Math.Max(0,stats["Strength"]*5-gear.Sum(i=>i.Weight)-40);var mercantile=stats.GetValueOrDefault("Mercantile");
             var sell=scenario.SellFactor??(mercantile>=100?1:Math.Min(.55,.22+mercantile*.002));var buy=scenario.BuyFactor??(mercantile>=100?1:Math.Max(1.4,2.3-mercantile*.006));
             EconomyResult Run(EconomySettings s,EconomyScenario sc)=>EconomyAnalysis.Run(s.Enabled?c:Catalog(),s,sc,carry,sell,buy,gear.Sum(i=>Value(i,s)),targetKit.Sum(i=>Value(i,s)),playerMercantile:mercantile);
@@ -79,8 +80,8 @@ internal static class EconomyEditor
             {
                 var sc=new EconomyScenario{Tier=tier,Level=scenario.Level,Category=scenario.Category,Outing=scenario.Outing,Merchant=scenario.Merchant,Condition=scenario.Condition,QuestGold=scenario.QuestGold,OtherExpenses=scenario.OtherExpenses,HealingPotions=scenario.HealingPotions,Poisons=scenario.Poisons,RepairWear=scenario.RepairWear,ChargeSpent=scenario.ChargeSpent};var r=Run(request.Settings,sc);return new{Tier=tier,r.MedianProfit,r.LowProfit,r.WindfallProfit,r.OutingsToPurchase,r.UnknownBranches};
             }).ToArray();
-            var prices=c.Items.Select(i=>request.Settings.Enabled?EconomyBalance.Price(i,request.Settings):new EconomyPrice(i.Key,i.Value,i.Value,0,1,true,"Economy disabled.")).ToArray();
-            return new{Current=original,Proposed=result,Curve=curve,Crafting=crafting,Prices=prices,Defaults=new{CarryWeight=carry,SellFactor=sell,BuyFactor=buy,Mercantile=mercantile,Stats=stats,Gear=gear.Select(i=>new{i.Name,i.Weight,Value=Value(i,request.Settings)}),Target=targetKit.Select(i=>new{i.Name,Value=Value(i,request.Settings)}),Hours=request.Settings.Outings[scenario.Outing].Hours},Warnings=prices.Where(p=>p.Value>10000||p.Enchantment>p.Equipment*4).Select(p=>new{Item=c.Items.First(i=>i.Key==p.Key).Name,p.Value,p.Reason}).Take(80)};
+            var prices=c.Items.Select(i=>EconomyBalance.Price(i,request.Settings)).ToArray();
+            return new{Current=original,Proposed=result,Curve=curve,Crafting=crafting,Prices=prices,Defaults=new{CarryWeight=carry,SellFactor=sell,BuyFactor=buy,Mercantile=mercantile,Stats=stats,Gear=gear.Select(i=>new{i.Name,i.Weight,Value=Value(i,request.Settings)}),Target=targetKit.Select(i=>new{i.Name,Value=Value(i,request.Settings)}),Hours=request.Settings.Outings[scenario.Outing].Hours},Warnings=prices.Where(p=>!p.TotalKnown||p.BelowMinimum||p.Value>10000||p.Enchantment>p.Equipment*4).Select(p=>new{Item=c.Items.First(i=>i.Key==p.Key).Name,p.Value,p.Reason}).Take(80)};
         }
         app.MapGet("/economy",()=>Results.Content(EditorNavigation.ReadTemplate("economy.html").Replace("/*TOKEN*/\"\"",JsonSerializer.Serialize(token)),"text/html"));
         app.MapGet("/api/economy",()=>Handle(()=>Results.Json(Data(),EconomyBalance.Options)));
